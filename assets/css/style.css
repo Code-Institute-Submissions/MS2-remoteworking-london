@@ -3,8 +3,40 @@
 
 
 /*  FONTS  */ 
+h1, h2, h3, h4, h5, h6, p, a {
+
+}
+
+
+/* GLOBAL PARENTS */
+
+body, div, section {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+}
+
+/*  NAVBAR  */ 
+.navbar-brand img {
+    max-width: 150px;
+}
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+
+/* === LOCATION LISTING PAGE === */
+/* ===  === === === === ===  === */
 
 
 
+/* Google Maps */
 
-/*  FONTS  */ 
+#map {
+    height: 400px;
+    width: 100%;
+}
