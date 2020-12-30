@@ -1,45 +1,47 @@
-<img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
+# WFAnywhere - Remote Working
 
-Welcome USER_NAME,
+## About this Site
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use.
+This site will provide users with a directory of local listings in which users can visit and work from remotely.
 
-## Gitpod Reminders
+The site is primarily designed for those users who either as Freelancers, need a working environment they can meet with colleagues and clients, or for those working from home full-time since lockdown during the pandemic, need a suitable place to work for the day with spaces to make calls.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
-`python3 -m http.server`
+## User Experience (UX)
+As the primary purpose of this site is to quickly provide users with information that they are likely to use in conjunction with wider research. Since this site will likely be one of many similar sites they visit, the user needs to quickly learn what content the site provides and convince them that reading further is worth their attention.
 
-A blue button should appear to click: *Make Public*,
+In order to achieve this, the site is built with simplicity in mind - a simple landing page that clearly sets out the purpose, followed by a single directory listing page, that also allows the user to chose how they view (via list or map) and quickly search for and filter listings that are most relevant to them (through keyword search and area and tag filters) 
 
-Another blue button should appear to click: *Open Browser*.
+### User Stories
+ 
+- #### First time visitors
+    - As a first time visitor, I want to quickly decide whether spending more time on this site will be worthwhile in answering my needs.
+    - I am only interested in listings that are within suitable distance to me.
+    - I will likely use the content from this site and others to form a decision on the best location to visit, so my time on this site will be limited.
+- #### Returning visitors
+    - As a returning visitor, I have already seen the content from the site on the initial visit - I am only looking for new listings.
+    - Part of the reason I am returning may be to give feedback on a listing after visiting their location.
+- #### Freelancers who work irregular or part time hours
+    - As a Freelancer, my day will likely be split between multiple projects and clients. I don't always need a location to work from for a full day, so I want to see listings that do not require a full day booking.
+    - I am looking for locations that will allow me to meet clients and collaborate for a few hours at a time.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+- #### A full time employee who cannot work from home comfortably
+    - As a full time employee working from home due to the pandemic, I am solely interested in listings that I know I can work from for the full day. 
+    - I want to see only the listings that will have quiet places I can make calls with a good internet connection
+- #### Location owners
+    - As someone who owns a location users can work remotely from, I want to add my listing to the site with ease in order to promote my business.
+    - I want to see what other listings are offering in order to learn more about the site users and tailor my listing content accordingly. 
+- #### Site owner
+    - As the site owner, I want to ensure that information is accurate and user feedback is received, to improve value to the user.
+    - I want users to share the site content with others to drive traffic to site.
 
-A blue button should appear to click: *Make Public*,
+### Design
 
-Another blue button should appear to click: *Open Browser*.
+#### Typography
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+#### Imagery
 
-## Updates Since The Instructional Video
+#### Colours
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
---------
-
-Happy coding!
