@@ -5,9 +5,20 @@ function moreDetails(j) {
 
 function searchField() {
     let search = $("#search").val();
-  //  let searchLc = $("#search").val().toTitleCase();
-    
+
+    $(".marker").addClass("hide");
     $(".list_item").addClass("hide");
-    $(`.list_item:contains(${search})`).removeClass("hide"); 
- //   $(`.list_item:contains(${searchLc})`).removeClass("hide"); 
+    $(`.list_item:contains(${search})`).removeClass("hide");
+    $(`.infowindow:contains(${search})`).removeClass("hide");
+
 } 
+
+function showMap() {
+    $("#locations_list").addClass("hide");
+    $("#map").removeClass("hide");
+}
+
+function showList() {
+    $("#map").addClass("hide");
+    $("#locations_list").removeClass("hide");
+}

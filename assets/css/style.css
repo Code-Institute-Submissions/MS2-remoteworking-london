@@ -33,7 +33,12 @@ body {
 /* ===  === === === === ===  === */
 
 .hide {
-    display: none;
+    display: none!important;
+}
+
+.list-item-img img {
+    max-width: 100px;
+    height: auto;
 }
 
 
