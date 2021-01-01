@@ -54,11 +54,11 @@
                 <input type="text" id="search" name="search" placeholder="Search"
             oninput="searchField();">
                 <span class="filter-label">Filter by Area</span>
-                <button id="north_btn" class="active" onclick="clear();">North London</button>
-                <button id="south_btn" class="">South London</button>
-                <button>East London</button>
-                <button>West London</button>
-                <button>All</button>
+                <button id="north_btn" class="area-btn" onclick="filterArea(this.value);listFilterArea(this.value);" value="North London">North London</button>
+                <button id="south_btn" class="area-btn" onclick="filterArea(this.value);listFilterArea(this.value);" value="South London">South London</button>
+                <button id="east_btn" class="area-btn" onclick="filterArea(this.value);listFilterArea(this.value);" value="East London">East London</button>
+                <button id="west_btn" class="area-btn" onclick="filterArea(this.value);listFilterArea(this.value);" value="West London">West London</button>
+                <button id="all_btn" class="area-btn active" onclick="filterArea(this.value);listFilterArea(this.value);" value="">All</button>
 
                 <span class="filter-label">Sort by:</span>
                 <button>Latest</button>
@@ -71,7 +71,7 @@
 
             </div>
             <div class="col-md-10">locations list
-                <div id="locations_list"></div>
+                <div id="locations_list">tyu</div>
                 <div id="map" class="hide"></div>
                 <div id="locations_sidebar"></div>
 
