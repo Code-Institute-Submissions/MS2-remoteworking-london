@@ -66,15 +66,16 @@
 
 
                 <span class="filter-label">Display:</span>
-                <button onclick="showList();">List</button>
-                <button onclick="showMap();">Map</button>
+                <button onclick="showList();hideOverlay();">List</button>
+                <button onclick="showMap();hideOverlay();">Map</button>
 
             </div>
             <div class="col-md-10">locations list
+                <div class="list-overlay" onclick="hideOverlay();"></div>
                 <div id="map" class="hide"></div>
                 <div id="locations_list">tyu</div>
        
-                <div id="locations_sidebar"><button onclick="closeBtn();" id="close_btn">X</button>
+                <div id="locations_sidebar"><button onclick="closeBtn();hideOverlay();" class="btn" id="close_btn"><i class="fas fa-times"></i></button>
                 <div id="sidebar_item_container"></div>
 
 

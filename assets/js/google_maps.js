@@ -86,11 +86,21 @@ let mm = m
 
                     let sidebarContent = $("#sidebar_item_container").append(
 
-                        `<div class="hide sidebar-item" id="sidebar_list_${[x]}"><strong>
-                            ${place.name}
-                            </strong><br>
-                            ${place.formatted_address}
-                            <br><img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${location.photo_reference}&key=${gAPI}">
+                        `<div class="hide sidebar-item" id="sidebar_list_${[x]}">
+                            
+                            
+                            
+                            <div class="sidebar-img-wrapper"><img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${location.photo_reference}&key=${gAPI}"></div>
+                            <div class="sidebar-content-wrapper p-4">
+                            <h4>${place.name}</h4>
+                            <p class="area-tag m-0">${location.area}</p>
+                            <p class="m-0">${place.formatted_address}</p>
+                            <div class="hz-rule"></div>
+                            <p>${location.para}</p>
+                            <button class="btn sidebar-website-btn"><a href="${location.web}" target="_blank">Visit Website</a></button>
+                            </div>
+                            
+                            
                             </div>`
                     );
                     

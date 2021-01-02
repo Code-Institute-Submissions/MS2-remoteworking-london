@@ -3,14 +3,19 @@ function moreDetails(j) {
     $("#locations_sidebar").animate({ right: '0' }, "medium");
     $(".sidebar-item").addClass("hide");
     $(`#sidebar_list_${[j]}`).removeClass("hide");
-
+    $(".list-overlay").animate({ opacity: '1' }, "medium").css("z-index","2")
 };
 
+function hideOverlay() {
+        $(".list-overlay").animate({ opacity: '0' }, "medium").css("z-index", "0")
+        closeBtn();
+}
+
 function closeBtn() {
-    $("#locations_sidebar").animate({ right: '-50%' }, "medium");
-    setTimeout(function (){
+    $("#locations_sidebar").animate({ right: '-51%' }, "medium");
+    setTimeout(function () {
         $(".sidebar-item").addClass("hide");
-        },1000)
+    }, 1000);
 }
 
 
