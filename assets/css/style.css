@@ -41,6 +41,15 @@ body {
     height: auto;
 }
 
+#locations_sidebar {
+    background-color: blue;
+    height: 100%;
+    position: absolute;
+    right: -50%;
+    z-index: 1;
+    top: 0px;
+    width: 50%;
+}
 
 /* Google Maps */
 

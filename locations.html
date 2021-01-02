@@ -61,19 +61,20 @@
                 <button id="all_btn" class="area-btn active" onclick="filterArea(this.value);listFilterArea(this.value);" value="">All</button>
 
                 <span class="filter-label">Sort by:</span>
-                <button>Latest</button>
-                <button>Oldest</button>
+                <button class="sort-date" id="btn_des" onclick=";">Latest</button>
+                <button class="sort-date" id="btn_asc" onclick=";">Oldest</button>
 
 
                 <span class="filter-label">Display:</span>
                 <button onclick="showList();">List</button>
-                <button onclick="showMap();">Map</button>
+                <button onclick="showMap();initMap();">Map</button>
 
             </div>
             <div class="col-md-10">locations list
-                <div id="locations_list">tyu</div>
                 <div id="map" class="hide"></div>
-                <div id="locations_sidebar"></div>
+                <div id="locations_list">tyu</div>
+       
+                <div id="locations_sidebar"><button onclick="closeBtn();" id="close_btn">X</button></div>
 
 
                 

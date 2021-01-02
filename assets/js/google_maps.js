@@ -4,8 +4,13 @@ let markers = [];
 let filteredMarkers = [];
 let locationListings = [];
 
+// Sort the request array by location post date
+request.sort((a, b) => b.posted - a.posted);
+
+
 // Initialize the Google Map
 function initMap() {
+
     
 
     const map = new google.maps.Map(document.getElementById("map"), {
@@ -18,35 +23,41 @@ function initMap() {
     const infowindow = new google.maps.InfoWindow();
     const service = new google.maps.places.PlacesService(map);
     
-
     // For ...in loop to iterate through 'request' array and show on map as markers and infowindow
-    for (var m in request) {
+    for (var m = 0; m < request.length; m++) {
         let locationMap = request[m];
 
         service.getDetails(locationMap, (place, status) => {
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-                addMarker(locationMap, place, map, infowindow);
-            } else {
-                console.log("Error - place could not be found");
-            }
+         //   if (status === google.maps.places.PlacesServiceStatus.OK) {
+               // let m = -5;
+            
+               let content = `<h6>${place.name}</h6><p>${place.formatted_address}<br>${place.place_id}</p><p onclick="moreDetails(${[m++]});">Read More</p>`;
+                addMarker(locationMap, place, map, infowindow, content );
+            //} else {
+           //     console.log("Error - place could not be found");
+            //}
         });
     };
-    
-    // For ...in loop to iterate through 'request' array and show as list
-    for (let x = 0; x < request.length; x++) {
-        let location = request[x];
+
+        // For ...in loop to iterate through 'request' array and show as list
+        for (let x = 0; x < request.length; x++) {
+            let location = request[x];
+            $("#locations_list").html("");
+            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            let postedDate = location.posted;
+            let formatted_date = postedDate.getDate() + " " + months[postedDate.getMonth()] + " " + postedDate.getFullYear();
 
 
         
-        //   if (location.photo_reference === undefined) {
-        //     return "";
-        //  } else {
-        service.getDetails(location, (place, status) => {
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-                let cardContent =
-                    $("#locations_list").append(
+            //   if (location.photo_reference === undefined) {
+            //     return "";
+            //  } else {
+            service.getDetails(location, (place, status) => {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    
+                        $("#locations_list").append(
 
-                    `<div class="d-flex card flex-row list-item" id="list_item_${[x]}">
+                            `<div class="d-flex card flex-row list-item" id="list_item_${[x]}">
                     <div class="list-item-img"><img
                             src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${location.photo_reference}&key=${gAPI}">
                     </div>
@@ -54,33 +65,38 @@ function initMap() {
                         <h3>
                             ${place.name}
                             ${location.area}
+                            ${formatted_date}
                         </h3>
                         <div class="area-tag">${location.area}</div>
                         <h4>${place.formatted_address}</h4>
-                        <p class="list-item-short-desc">${location.para.substr(0, 50)} <span onclick="moreDetails(${[x]});" class="read-more-trigger" href="#">Read More</span></p>
+                        <p class="list-item-short-desc">${location.para.substr(0, 1500)} <span onclick="moreDetails(${[x]});" class="read-more-trigger" href="#">Read More</span></p>
                         
                 
                     </div>
 
                 </div>`);
 
- let sidebarContent = $("#locations_sidebar").append(
+                    let sidebarContent = $("#locations_sidebar").append(
 
-                            `<div class="hide" id="sidebar_list_${[x]}"><strong>
+                        `<div class="hide sidebar-item" id="sidebar_list_${[x]}"><strong>
                             ${place.name}
                             </strong><br>
                             ${place.formatted_address}
                             <br><img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${location.photo_reference}&key=${gAPI}">
                             </div>`
-                        );
+                    );
+                    
+                    
+                } else {
+                    console.log("Error - place could not be found");
+                }
+            });
 
-            } else {
-                console.log("Error - place could not be found");
-            }
-        });
+    
+        }
 
-    }
 
+    
         // Sidebar each item
    /* for (let s = 0; s < request.length; s++) {
             let locationSide = request[s];
@@ -111,16 +127,20 @@ function initMap() {
 
         }*/
 
-    }
+}
+    
+
 
 // Add marker function to push markers to array, allowing filter and sorting. 
 // ** Acknowledgements - Peter on JS Fiddle for function concept - https://jsfiddle.net/peter/drytwvL8/ **
-function addMarker(locationMap, place, map, infowindow) {
+function addMarker(locationMap, place, map, infowindow, content) {
+    //let x++ = 0; 
     let title = locationMap.title;
     let position = place.geometry.location;
     let address = place.formatted_address;
-    let content = `<h6>${place.name}</h6><p>${address}<br>${place.place_id}</p>`;
+ //   let content = `<h6>${place.name}</h6><p>${place.formatted_address}<br>${place.place_id}</p><p onclick="moreDetails(${[m++]});">Read More</p>`;
     let area = locationMap.area;
+    
 
 
 
@@ -143,27 +163,13 @@ function addMarker(locationMap, place, map, infowindow) {
             infowindow.setContent(content);
             infowindow.open(map, marker);
             map.panTo(this.getPosition());
+            closeBtn();
             return
 
         });
     })(marker, content);
 };
 
-
-
-
-
-
-function showList() {
-    for (var ll = 0; ll < locationListings.length; ll++) {
-        item = locationListings[ll];
-        for (var property in item) {
-            $("#locations_list").append(property);
-
-
-            console.log("hi there");
-        }
-    }
-};
-
-showList();
+function emptyMapMarkers() {
+ let   filteredMarkers = [];
+}
