@@ -45,3 +45,7 @@ In order to achieve this, the site is built with simplicity in mind - a simple l
 
 
 
+## Testing 
+
+### Issue Log:
+ - Quota limit within same page causing places to not render - Google API

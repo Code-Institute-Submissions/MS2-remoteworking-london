@@ -1,7 +1,9 @@
 // Show the sidebar details when 'read more' is clicked
 function moreDetails(j) {
     $("#locations_sidebar").animate({ right: '0' }, "medium");
+    $(".sidebar-item").addClass("hide");
     $(`#sidebar_list_${[j]}`).removeClass("hide");
+
 };
 
 function closeBtn() {
@@ -26,6 +28,7 @@ function searchField() {
 function showMap() {
     $("#locations_list").addClass("hide");
     $("#map").removeClass("hide");
+    closeBtn();
 }
 
 function showList() {
@@ -47,20 +50,13 @@ jQuery(function ($) {
     });
 });
 
-/*
+
 // Refresh location list sorted by date ascending or descending
 jQuery(function ($) {
     
     $(".sort-date").click(function () {
-        let sortAsc = $("#btn_asc").hasClass("active");
-        let sortDes = $("#btn_des").hasClass("active");
-
-        if (sortDes) {
-            request.sort((a, b) => b.posted - a.posted);
-        } else if (sortAsc) {
-            request.sort((a, b) => a.posted - b.posted);
-        }
-
+        initMap();
+        /*
         $("#locations_list").html("");
 const map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 51.501027, lng: -0.124095 },
@@ -73,10 +69,10 @@ const map = new google.maps.Map(document.getElementById("map"), {
         for (let x = 0; x < request.length; x++) {
             let location = request[x];
             let locationMap = request[x];
-
+            let xx = x;
             service.getDetails(location, (place, status) => {
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
-                    let content = `<h6>${place.name}</h6><p>${place.formatted_address}<br>${place.place_id}</p><p onclick="moreDetails(${[x++]});">Read More</p>`;
+                    let content = `<h6>${place.name}</h6><p>${place.formatted_address}<br>${place.place_id}</p><p onclick="moreDetails(${[xx]});">Read More</p>`;
 addMarker(locationMap, place, map, infowindow, content);
                     let cardContent =
                         $("#locations_list").append(
@@ -103,11 +99,11 @@ addMarker(locationMap, place, map, infowindow, content);
                     console.log("Error - the place could not be found");
                 }
             })
-        }
-    })
+        }*/
+    }) 
 });
 
-*/
+
 // Filter markers by area only
 function filterArea(area) {
     for (var i in filteredMarkers) {

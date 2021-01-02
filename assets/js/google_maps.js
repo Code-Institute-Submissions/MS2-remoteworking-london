@@ -1,17 +1,24 @@
 
 // Define arrays for markers to allow for filtering by area on Map
-let markers = [];
+//let markers = [];
 let filteredMarkers = [];
 let locationListings = [];
 
 // Sort the request array by location post date
-request.sort((a, b) => b.posted - a.posted);
+//request.sort((a, b) => a.posted - b.posted);
 
 
 // Initialize the Google Map
 function initMap() {
 
-    
+    let sortAsc = $("#btn_asc").hasClass("active");
+        let sortDes = $("#btn_des").hasClass("active");
+
+        if (sortDes) {
+            request.sort((a, b) => a.posted - b.posted);
+        } else if (sortAsc) {
+            request.sort((a, b) => b.posted - a.posted);
+        }
 
     const map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 51.501027, lng: -0.124095 },
@@ -26,12 +33,12 @@ function initMap() {
     // For ...in loop to iterate through 'request' array and show on map as markers and infowindow
     for (var m = 0; m < request.length; m++) {
         let locationMap = request[m];
-
+let mm = m
         service.getDetails(locationMap, (place, status) => {
          //   if (status === google.maps.places.PlacesServiceStatus.OK) {
                // let m = -5;
             
-               let content = `<h6>${place.name}</h6><p>${place.formatted_address}<br>${place.place_id}</p><p onclick="moreDetails(${[m++]});">Read More</p>`;
+               let content = `<h6>${place.name}</h6><p>${place.formatted_address}<br>${place.place_id}</p><p onclick="moreDetails(${[mm]});">Read More</p>`;
                 addMarker(locationMap, place, map, infowindow, content );
             //} else {
            //     console.log("Error - place could not be found");
@@ -43,6 +50,7 @@ function initMap() {
         for (let x = 0; x < request.length; x++) {
             let location = request[x];
             $("#locations_list").html("");
+            $("#sidebar_item_container").html("");
             const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
             let postedDate = location.posted;
             let formatted_date = postedDate.getDate() + " " + months[postedDate.getMonth()] + " " + postedDate.getFullYear();
@@ -76,7 +84,7 @@ function initMap() {
 
                 </div>`);
 
-                    let sidebarContent = $("#locations_sidebar").append(
+                    let sidebarContent = $("#sidebar_item_container").append(
 
                         `<div class="hide sidebar-item" id="sidebar_list_${[x]}"><strong>
                             ${place.name}
