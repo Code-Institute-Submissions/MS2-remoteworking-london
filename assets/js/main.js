@@ -1,14 +1,42 @@
+function initList() {
+    listingObjectCombined.sort((a, b) => b.date - a.date);
+    for (var i = 0; i < listingObjectCombined.length; i++) {
+        let item = listingObjectCombined[i];
+        $("#locations_list").append(
+            `<div class="fade-in">${item.content}</div>`
+        )
+    }
+};
+
+function sort(sort) {
+    if (sort === "asc") {
+        listingObjectCombined.sort((a, b) => a.date - b.date);
+    } else {
+        listingObjectCombined.sort((a, b) => b.date - a.date);
+    }
+
+    $("#locations_list").html("");
+
+    for (var i = 0; i < listingObjectCombined.length; i++) {
+        let item = listingObjectCombined[i];
+        $("#locations_list").append(
+            `<div class="fade-in">${item.content}</div>`
+        )
+    }
+};
+
+
 // Show the sidebar details when 'read more' is clicked
 function moreDetails(j) {
     $("#locations_sidebar").animate({ right: '0' }, "medium");
     $(".sidebar-item").addClass("hide");
     $(`#sidebar_list_${[j]}`).removeClass("hide");
-    $(".list-overlay").animate({ opacity: '1' }, "medium").css("z-index","2")
+    $(".list-overlay").animate({ opacity: '1' }, "medium").css("z-index", "2")
 };
 
 function hideOverlay() {
-        $(".list-overlay").animate({ opacity: '0' }, "medium").css("z-index", "0")
-        closeBtn();
+    $(".list-overlay").animate({ opacity: '0' }, "medium").css("z-index", "0")
+    closeBtn();
 }
 
 function closeBtn() {
@@ -57,7 +85,7 @@ jQuery(function ($) {
 
 
 // Refresh location list sorted by date ascending or descending
-jQuery(function ($) {
+/*jQuery(function ($) {
     
     $(".sort-date").click(function () {
         initMap();
@@ -104,9 +132,9 @@ addMarker(locationMap, place, map, infowindow, content);
                     console.log("Error - the place could not be found");
                 }
             })
-        }*/
+        }
     }) 
-});
+});*/
 
 
 // Filter markers by area only

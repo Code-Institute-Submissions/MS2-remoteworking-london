@@ -2,7 +2,9 @@
 // Define arrays for markers to allow for filtering by area on Map
 //let markers = [];
 let filteredMarkers = [];
-let locationListings = [];
+const locationListings = new Array();
+const locationListingsDates = [];
+const listingObjectCombined = [];
 
 // Sort the request array by location post date
 //request.sort((a, b) => a.posted - b.posted);
@@ -10,15 +12,6 @@ let locationListings = [];
 
 // Initialize the Google Map
 function initMap() {
-
-    let sortAsc = $("#btn_asc").hasClass("active");
-        let sortDes = $("#btn_des").hasClass("active");
-
-        if (sortDes) {
-            request.sort((a, b) => a.posted - b.posted);
-        } else if (sortAsc) {
-            request.sort((a, b) => b.posted - a.posted);
-        }
 
     const map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 51.501027, lng: -0.124095 },
@@ -63,9 +56,9 @@ let mm = m
             service.getDetails(location, (place, status) => {
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
                     
-                        $("#locations_list").append(
+                    let cardContent =     //$("#locations_list").append(
 
-                            `<div class="d-flex card flex-row list-item" id="list_item_${[x]}">
+                        `<div class="d-flex card flex-row list-item" id="list_item_${[x]}">
                     <div class="list-item-img"><img
                             src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${location.photo_reference}&key=${gAPI}">
                     </div>
@@ -82,7 +75,8 @@ let mm = m
                 
                     </div>
 
-                </div>`);
+                </div>`;
+                //);
 
                     let sidebarContent = $("#sidebar_item_container").append(
 
@@ -104,7 +98,17 @@ let mm = m
                             </div>`
                     );
                     
+                    locationListings.push(cardContent);
+                    locationListingsDates.push(location.posted);
+                    listingObjectCombined[x] = {content: cardContent, date: location.posted}
                     
+                  //  console.log(locationListings);
+                 /*   for (var i in locationListings) {
+        let item = locationListings[i];
+        $("#locations_list").append(
+            `<div>${item}</div>`
+        )
+    }*/
                 } else {
                     console.log("Error - place could not be found");
                 }
@@ -112,6 +116,7 @@ let mm = m
 
     
         }
+
 
 
     
@@ -191,3 +196,6 @@ function addMarker(locationMap, place, map, infowindow, content) {
 function emptyMapMarkers() {
  let   filteredMarkers = [];
 }
+
+
+

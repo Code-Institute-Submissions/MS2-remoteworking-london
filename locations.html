@@ -19,12 +19,12 @@
     
     <script src="assets/js/dataset.js"></script>
     <script src="assets/js/google_maps.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script defer src="assets/js/main.js"></script>
 
 
 </head>
 
-<body>
+<body onload="initList();">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light">
             <a class="navbar-brand" href="#"><img src="assets/images/placeholder_logo.jpg" alt="logo"></a>
@@ -46,31 +46,32 @@
 
         </nav>
     </header>
-    <div class="container">
-        <div class="row">
+    <div class="container locations-pg-wrapper">
+        <div class="row full-width">
 
 
-            <div class="col-md-2" style="background-color: red;">filter list
+            <div class="col-md-3" id="filter-sidebar">
+                <h3>filter list</h3>
                 <input type="text" id="search" name="search" placeholder="Search"
-            oninput="searchField();">
-                <span class="filter-label">Filter by Area</span>
-                <button id="north_btn" class="area-btn" onclick="filterArea(this.value);listFilterArea(this.value);" value="North London">North London</button>
-                <button id="south_btn" class="area-btn" onclick="filterArea(this.value);listFilterArea(this.value);" value="South London">South London</button>
-                <button id="east_btn" class="area-btn" onclick="filterArea(this.value);listFilterArea(this.value);" value="East London">East London</button>
-                <button id="west_btn" class="area-btn" onclick="filterArea(this.value);listFilterArea(this.value);" value="West London">West London</button>
-                <button id="all_btn" class="area-btn active" onclick="filterArea(this.value);listFilterArea(this.value);" value="">All</button>
+            oninput="searchField();showList();">
+                <h4 class="filter-label">Filter by Area</h4>
+                <button id="north_btn" class="btn area-btn" onclick="filterArea(this.value);listFilterArea(this.value);" value="North London">North London</button>
+                <button id="south_btn" class="btn area-btn" onclick="filterArea(this.value);listFilterArea(this.value);" value="South London">South London</button>
+                <button id="east_btn" class="btn area-btn" onclick="filterArea(this.value);listFilterArea(this.value);" value="East London">East London</button>
+                <button id="west_btn" class="btn area-btn" onclick="filterArea(this.value);listFilterArea(this.value);" value="West London">West London</button>
+                <button id="all_btn" class="btn area-btn active" onclick="filterArea(this.value);listFilterArea(this.value);" value="">All</button>
 
-                <span class="filter-label">Sort by:</span>
-                <button class="sort-date active" id="btn_des" onclick=";">Latest</button>
-                <button class="sort-date" id="btn_asc" onclick=";">Oldest</button>
+                <h4 class="filter-label">Sort by:</h4>
+                <button class="btn sort-date" id="btn_des" onclick="sort(this.value);" value="des">Latest</button>
+                <button class="btn sort-date" id="btn_asc" onclick="sort(this.value);" value="asc">Oldest</button>
 
 
-                <span class="filter-label">Display:</span>
-                <button onclick="showList();hideOverlay();">List</button>
-                <button onclick="showMap();hideOverlay();">Map</button>
+                <h4 class="filter-label">Display:</h4>
+                <button class="btn" onclick="showList();hideOverlay();">List</button>
+                <button class="btn" onclick="showMap();hideOverlay();">Map</button>
 
             </div>
-            <div class="col-md-10">locations list
+            <div class="col-md-9 p-0">
                 <div class="list-overlay" onclick="hideOverlay();"></div>
                 <div id="map" class="hide"></div>
                 <div id="locations_list">tyu</div>

@@ -34,6 +34,15 @@ body, div, section {
 body {
     min-height: 100vh;
     overflow-x: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px #7b7b7b;
 }
 
 /*  NAVBAR  */ 
@@ -55,12 +64,23 @@ body {
     border-bottom: 1px solid #a9a9a9;
 }
 
+.hide {
+    display: none!important;
+}
+
+.full-width {
+    width: 100vw
+}
+
 
 /* === LOCATION LISTING PAGE === */
 /* ===  === === === === ===  === */
 
-.hide {
-    display: none!important;
+.locations-pg-wrapper {
+    max-width: 100%;
+    height: -webkit-fill-available;
+    background: antiquewhite;
+    display: -webkit-box;
 }
 
 .list-item-img img {
@@ -96,6 +116,7 @@ body {
     background-color: #ffffffb0;
     border-radius: 0px;
     z-index: 1;
+    box-shadow: none;
 }
 
 .area-tag {
@@ -121,11 +142,32 @@ body {
     opacity: 0;
 }
 
+#filter-sidebar {
+    background-color: #a9a9a9;
+    box-shadow: 1px 1px 1px #a9a9a9;
+}
+
 
 /* Google Maps */
 
 #map {
-    height: 400px;
+    height: 100%;
     width: 100%;
 }
+
+
+
+/* ANIMATIONS */
+
+.fade-in {
+    animation-name: fadeIn;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
 
