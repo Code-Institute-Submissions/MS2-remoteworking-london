@@ -1,12 +1,77 @@
+
+listingObjectCombined;
+
+const nextPage = $("#next-page");
+const prevPage = $("#prev-page");
+let page = 0;
+let listLength = listingObjectCombined.length;
+console.log(listLength);
+
 function initList() {
     listingObjectCombined.sort((a, b) => b.date - a.date);
-    for (var i = 0; i < listingObjectCombined.length; i++) {
+    for (var i = 0; i < page + 3; i++) {
         let item = listingObjectCombined[i];
         $("#locations_list").append(
             `<div class="fade-in">${item.content}</div>`
         )
     }
+
+    let listLength = listingObjectCombined.length;
+    let pageNum = Math.ceil(listLength / 3);
+
+    // Credits: https://www.youtube.com/watch?v=1s57PDmaVEo 
+    console.log(pageNum);
+    
+    
+
+
+    
+    $("#next-page").click(() => {
+        for (let nextClick = 1; nextClick < pageNum; nextClick++) {
+            console.log("list length", listingObjectCombined.length)
+
+            let item = listingObjectCombined[i];
+            page == listingObjectCombined.length - 3 ? page = 0 : (page += 3);
+            console.log("page", page)
+            for (let j = page; j < listingObjectCombined.length; j++) {
+
+                $("#locations_list").html("");
+
+                $("#locations_list").append(
+                    `<div class="fade-in">${item.content}</div>`
+                )
+                
+               
+            }
+
+            console.log("pageNum", nextClick)
+                 if (nextClick === pageNum) {
+            $("#next-page").addClass("disabled");
+            console.log("broken")
+            break;
+        }
+        }
+         
+
+        
+   
+    });    
+    
+    $("#prev-page").click(() => {
+        $("#locations_list").html("");
+        let item = listingObjectCombined[i];
+        console.log("length", listingObjectCombined.length);
+        page == listingObjectCombined.length - 3 ? page = 0 : (page += 3);
+
+        for (let j = page; j < listingObjectCombined.length; j++) {
+            $("#locations_list").append(
+                `<div class="fade-in">${item.content}</div>`
+            )
+        };
+        i
+    })
 };
+
 
 function sort(sort) {
     if (sort === "asc") {
@@ -24,6 +89,8 @@ function sort(sort) {
         )
     }
 };
+
+
 
 
 // Show the sidebar details when 'read more' is clicked

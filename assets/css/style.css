@@ -5,7 +5,8 @@
 
 
 h1, h2, h3, h4, h5, h6, p {
-
+ margin: 0;
+ padding: 0;
 }
 
 a {
@@ -82,10 +83,22 @@ button {
     background: antiquewhite;
     display: -webkit-box;
 }
+.list-item-img {
+    max-width: 150px;
+    min-height: 100%;
+    max-height: 170px;
+    overflow: hidden;
+}
 
-.list-item-img img {
-    max-width: 100px;
-    height: auto;
+.list-item-img > img {
+    width: auto;
+    height: 100%;
+    display: flex;
+}
+
+.location-info {
+    width: -webkit-fill-available;
+    height: max-content;
 }
 
 #locations_sidebar {
@@ -142,9 +155,20 @@ button {
     opacity: 0;
 }
 
+.read-more-trigger {
+    font-weight: bold;
+    color: #0062cc;
+}
+
 #filter-sidebar {
     background-color: #a9a9a9;
     box-shadow: 1px 1px 1px #a9a9a9;
+}
+
+.list-item{
+        border-radius: 5px;
+    box-shadow: 1px 1px 4px -1px #a9a9a9;
+    overflow: hidden;
 }
 
 
