@@ -2,28 +2,68 @@
 //(function () { let list = listingObjectCombined })();
 
 
-console.log("emoty or not",listingObjectCombined)
+console.log("emoty or not", listingObjectCombined)
 
+console.log("north", listingObjectNorth);
 
+let currentPage = 1;
+let itemsPerPage = 3;
 
-let currentPage= 1;
-    let itemsPerPage = 3;
-
-    
 // new credits: https://www.youtube.com/watch?v=IqYiVHrO2U8 
 
 // =======
 // =======
 
 function initList(page) {
+
+    let asc = $("#btn_asc").hasClass("active");
+    let desc = $("#btn_des").hasClass("active");
+
+    let btnNorth = $("#north_btn").hasClass("active");
+    let btnSouth = $("#south_btn").hasClass("active");
+    let btnEast = $("#east_btn").hasClass("active");
+    let btnWest = $("#west_btn").hasClass("active");
+
+    let arrayChoice;
+    if (btnNorth == true) { arrayChoice = listingObjectNorth }
+    else if (btnSouth == true) { arrayChoice = listingObjectSouth }
+    else if (btnEast == true) { arrayChoice = listingObjectEast }
+    else if (btnWest == true) { arrayChoice = listingObjectWest }
+    else { arrayChoice = listingObjectCombined }
+
+    console.log(asc)
+    console.log(desc)
+
+    if (asc == true) {
+        arrayChoice.sort((a, b) => a.date - b.date);
+        console.log("ascend")
+    } else {
+        arrayChoice.sort((a, b) => b.date - a.date);
+
+        console.log("descend")
+        console.log("asc result")
+    }
+
+    // Determine item count from each area
+    let north = request.filter(function (item) { return item.area === "North London"; }).length
+    let south = request.filter(function (item) { return item.area === "South London"; }).length
+    let east = request.filter(function (item) { return item.area === "East London"; }).length
+    let west = request.filter(function (item) { return item.area === "West London"; }).length
+
+    console.log("north:", north)
+    //$("#no_locations").addClass("hide");
+
+
+
     $("#locations_list").html("");
     page--;
-console.log("currentPage after click:", page)
-    listingObjectCombined.sort((a, b) => b.date - a.date);
-    console.log("Allitems", listingObjectCombined)
+    console.log("currentPage after click:", page)
+    //listingObjectCombined.sort((a, b) => b.date - a.date);
+    console.log("Allitems", arrayChoice)
     let start = itemsPerPage * page;
     let end = start + itemsPerPage;
-    let pagItems = listingObjectCombined.slice(start, end);
+
+    let pagItems = arrayChoice.slice(start, end);
 
 
     console.log("items", pagItems)
@@ -33,8 +73,6 @@ console.log("currentPage after click:", page)
 
 
 
-    console.log("lenght", listingObjectCombined.length)
-    
     for (var i = 0; i < pagItems.length; i++) {
         let item = pagItems[i];
         $("#locations_list").append(
@@ -42,146 +80,65 @@ console.log("currentPage after click:", page)
         )
 
     }
+
+    if (arrayChoice.length == 0) {
+        $("#no_locations").removeClass("hide")
+    } else { $("#no_locations").addClass("hide") };
 };
 
-function pagination(currentPage) { 
-          
-    let pageCount = Math.ceil(listingObjectCombined.length / itemsPerPage);
+function pagination(currentPage) {
+    let btnNorth = $("#north_btn").hasClass("active");
+    let btnSouth = $("#south_btn").hasClass("active");
+    let btnEast = $("#east_btn").hasClass("active");
+    let btnWest = $("#west_btn").hasClass("active");
+
+    let array;
+    if (btnNorth == true) { array = listingObjectNorth }
+    else if (btnSouth == true) { array = listingObjectSouth }
+    else if (btnEast == true) { array = listingObjectEast }
+    else if (btnWest == true) { array = listingObjectWest }
+    else { array = listingObjectCombined }
+    console.log("array length", array.length)
+    let pageCount = Math.ceil(array.length / itemsPerPage);
 
     for (let i = 1; i < pageCount + 1; i++) {
         let btn = pagButtons(i);
         $("#pagination_btns").append(btn)
-
     }
+};
 
 
-console.log("initPag", pageCount);
-
-}
-
-console.log("current page GLOBAL", currentPage);
-      //  console.log("totalpages ", i)
-
-function pagButtons (btnNum) {
-let button = document.createElement("button");
+function pagButtons(btnNum) {
+    let button = document.createElement("button");
     button.innerText = btnNum;
-    button.classList.add("pagination-btn")
-    
+    button.classList.add("btn", "pagination-btn")
 
-
-
-
-    console.log("button_num", btnNum)
-    console.log("button_num",currentPage)
-    if (currentPage == btnNum) button.classList.add("active"); 
+    if (currentPage == btnNum) button.classList.add("active");
 
     button.addEventListener('click', function () {
         currentPage = btnNum;
-        console.log("current",currentPage)
+        console.log("current", currentPage)
         initList(currentPage);
         $(".pagination-btn.active").removeClass("active");
         $(this).addClass("active");
     })
-return button;        
+    return button;
 }
 pagination();
 initList(currentPage);
 
 
-
-
-    // if(currentPage == (i-1)){$(".pagination-btn").addClass("active")}else{false}
-
-
-
-    // Credits: https://www.youtube.com/watch?v=1s57PDmaVEo 
-    
-
-    /*  $('#locations_list').pagination({
-      dataSource: [1, 2, 3, 4, 5, 6, 7, 35],
-      pageSize: 3,
-      pageNumber: 3,
-      callback: function(data, pagination) {
-          // template method of yourself
-          var html = template(data);
-          dataContainer.html(html);
-      }
-  }) */
-
-
-    /*             
-        $("#next-page").click(() => {
-      for (let j = page; j <page +3; j++) {
-            ;
-            //for (let nextClick = 1; nextClick < pageNum; nextClick++) {
-                console.log("list length", listingObjectCombined.length)
-    
-            
-            
-            
-            //    page == listingObjectCombined.length - 3 ? page = 0 : (page += 3);
-                console.log("page", page)
-      //          for (let j = page; j <page +3; j++) {
-    let itemBtn = listingObjectCombined[j];
-                    $("#locations_list").html("");
-    
-                    $("#locations_list").append(
-                        `<div class="fade-in">${itemBtn.content}</div>`
-                    )
-                     /*if (nextClick === pageNum) {
-                $("#next-page").addClass("disabled");
-                console.log("broken")
-          
-          var page = 3;
-          console.log("new page", page);
-            }   
-                   
-           //     }
-    
-              //  console.log("pageNum", k)
-                
-           // }
-             
-    
-            
-       
-        });    
-        
-        $("#prev-page").click(() => {
-            $("#locations_list").html("");
-            let item = listingObjectCombined[i];
-            console.log("length", listingObjectCombined.length);
-            page == listingObjectCombined.length - 3 ? page = 0 : (page += 3);
-    
-            for (let j = page; j < listingObjectCombined.length; j++) {
-                $("#locations_list").append(
-                    `<div class="fade-in">${item.content}</div>`
-                )
-            };
-            i
-        })
-};*/
-
-
-function initPagination() {
-
-}
-
 function sort(sort) {
-    if (sort === "asc") {
-        listingObjectCombined.sort((a, b) => a.date - b.date);
+
+    if (sort == "asc") {
+        $("#btn_asc").addClass("active");
+        $("#btn_des").removeClass("active");
     } else {
-        listingObjectCombined.sort((a, b) => b.date - a.date);
+        $("#btn_des").addClass("active");
+        $("#btn_asc").removeClass("active");
     }
 
-    $("#locations_list").html("");
-
-    for (var i = 0; i < listingObjectCombined.length; i++) {
-        let item = listingObjectCombined[i];
-        $("#locations_list").append(
-            `<div class="fade-in">${item.content}</div>`
-        )
-    }
+    initList(currentPage);
 };
 
 
@@ -192,11 +149,11 @@ function moreDetails(j) {
     $("#locations_sidebar").animate({ right: '0' }, "medium");
     $(".sidebar-item").addClass("hide");
     $(`#sidebar_list_${[j]}`).removeClass("hide");
-    $(".list-overlay").animate({ opacity: '1' }, "medium").css("z-index", "2")
+    $(".list-overlay").animate({ opacity: '1' }, "medium").css({ "z-index": "2", "display": "block" })
 };
 
 function hideOverlay() {
-    $(".list-overlay").animate({ opacity: '0' }, "medium").css("z-index", "0")
+    $(".list-overlay").animate({ opacity: '0' }, "medium").css({ "z-index": "0", "display": "none" })
     closeBtn();
 }
 
@@ -204,7 +161,7 @@ function closeBtn() {
     $("#locations_sidebar").animate({ right: '-51%' }, "medium");
     setTimeout(function () {
         $(".sidebar-item").addClass("hide");
-    }, 1000);
+    }, 500);
 }
 
 
@@ -221,6 +178,7 @@ function searchField() {
 
 function showMap() {
     $("#locations_list").addClass("hide");
+    $("#pagination_btns").addClass("hide");
     $("#map").removeClass("hide");
     closeBtn();
 }
@@ -228,75 +186,15 @@ function showMap() {
 function showList() {
     $("#map").addClass("hide");
     $("#locations_list").removeClass("hide");
+    $("#pagination_btns").removeClass("hide");
 };
 
-jQuery(function ($) {
+/*jQuery(function ($) {
     $(".area-btn").click(function () {
         $(".area-btn").removeClass("active");
         $(this).addClass("active");
     });
-});
-
-jQuery(function ($) {
-    $(".sort-date").click(function () {
-        $(".sort-date").removeClass("active");
-        $(this).addClass("active");
-    });
-});
-
-
-// Refresh location list sorted by date ascending or descending
-/*jQuery(function ($) {
-    
-    $(".sort-date").click(function () {
-        initMap();
-        /*
-        $("#locations_list").html("");
-const map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 51.501027, lng: -0.124095 },
-        zoom: 12,
-        mapId: "1daab95bc3f973ff",
-        mapTypeControl: false,
-});
-        const infowindow = new google.maps.InfoWindow();
-        const service = new google.maps.places.PlacesService(map);
-        for (let x = 0; x < request.length; x++) {
-            let location = request[x];
-            let locationMap = request[x];
-            let xx = x;
-            service.getDetails(location, (place, status) => {
-                if (status === google.maps.places.PlacesServiceStatus.OK) {
-                    let content = `<h6>${place.name}</h6><p>${place.formatted_address}<br>${place.place_id}</p><p onclick="moreDetails(${[xx]});">Read More</p>`;
-addMarker(locationMap, place, map, infowindow, content);
-                    let cardContent =
-                        $("#locations_list").append(
-
-                            `<div class="d-flex card flex-row list-item" id="list_item_${[x]}">
-                    <div class="list-item-img"><img
-                            src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${location.photo_reference}&key=${gAPI}">
-                    </div>
-                    <div class="location-info d-flex flex-column">
-                        <h3>
-                            ${place.name}
-                            ${location.area}
-                            ${location.posted}
-                        </h3>
-                        <div class="area-tag">${location.area}</div>
-                        <h4>${place.formatted_address}</h4>
-                        <p class="list-item-short-desc">${location.para.substr(0, 50)} <span onclick="moreDetails(${[x]});" class="read-more-trigger" href="#">Read More</span></p>
-                        
-                
-                    </div>
-
-                </div>`);
-                } else {
-                    console.log("Error - the place could not be found");
-                }
-            })
-        }
-    }) 
 });*/
-
 
 // Filter markers by area only
 function filterArea(area) {
@@ -312,17 +210,66 @@ function filterArea(area) {
 }
 
 function listFilterArea(area) {
-    for (var li in request) {
-        let item = request[li];
 
 
-        if (area === "") {
-            $(`.list-item`).removeClass("hide");
-        } else if (item.area === area)
-            $(`#list_item_${li}`).removeClass("hide");
-
-        else {
-            $(`#list_item_${li}`).addClass("hide");
-        }
+    if (area == "North London") {
+        $(".area-btn").removeClass("active");
+        $("#north_btn").addClass("active");
+    } else if (area == "South London") {
+        $(".area-btn").removeClass("active");
+        $("#south_btn").addClass("active");
+    } else if (area == "East London") {
+        $(".area-btn").removeClass("active");
+        $("#east_btn").addClass("active");
+    } else if (area == "West London") {
+        $(".area-btn").removeClass("active");
+        $("#west_btn").addClass("active");
+    } else {
+        $(".area-btn").removeClass("active");
+        $("#all_btn").addClass("active");
     }
+
+    currentPage = 1;
+    $("#pagination_btns").html("");
+    initList(currentPage);
+    pagination(currentPage);
+
+
+
+    // Determine item count from each area
+    /*    let north = request.filter(function (item) {
+            return item.area === "North London";
+        }).length
+        let south = request.filter(function (item) {
+            return item.area === "South London";
+        }).length
+        let east = request.filter(function (item) {
+            return item.area === "East London";
+        }).length
+        let west = request.filter(function (item) {
+            return item.area === "West London";
+        }).length
+    
+        console.log("north:", north)
+        //$("#no_locations").addClass("hide");
+        for (var li in request) {
+            let item = request[li];
+    
+    
+            if (area == "") {
+                $(`.list-item`).removeClass("hide");
+                //          $(`#no_locations`).addClass("hide");
+            } else if (item.area == area) {
+                $(`#list_item_${li}`).removeClass("hide");
+                //    $(`#no_locations`).addClass("hide");
+            }
+            else //if(north == 0 || south == 0 || east == 0 || west == 0  ) 
+            {
+                $(`#list_item_${li}`).addClass("hide");
+                //    $(`#no_locations`).removeClass("hide");
+                console.log("no item:", item)
+            }
+    
+    
+        }*/
 }

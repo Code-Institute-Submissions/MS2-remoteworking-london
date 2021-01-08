@@ -5,6 +5,11 @@ let filteredMarkers = [];
 const locationListings = new Array();
 const locationListingsDates = [];
 var listingObjectCombined = [];
+var listingObjectNorth = [];
+var listingObjectSouth = [];
+var listingObjectEast = [];
+var listingObjectWest = [];
+
 
 // Sort the request array by location post date
 //request.sort((a, b) => a.posted - b.posted);
@@ -93,8 +98,13 @@ function initMap() {
                 locationListings.push(cardContent);
                 locationListingsDates.push(location.posted);
                 listingObjectCombined[x] = { content: cardContent, date: location.posted }
+                if (location.area == "North London") listingObjectNorth.push({ content: cardContent, date: location.posted });
+                if (location.area == "South London") listingObjectSouth.push({ content: cardContent, date: location.posted });
+                if (location.area == "East London") listingObjectEast.push({ content: cardContent, date: location.posted });
+                if (location.area == "West London") listingObjectWest.push({ content: cardContent, date: location.posted });
+                
 
-                //  console.log(locationListings);
+                 
                 /*   for (var i in locationListings) {
        let item = locationListings[i];
        $("#locations_list").append(
