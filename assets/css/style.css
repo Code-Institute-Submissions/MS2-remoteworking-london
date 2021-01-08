@@ -19,12 +19,15 @@ h2 {
 }
 h3 {
     font-size: 1.6rem;
+    font-weight: 300;
 }
 h4 {
     font-size: 1.1rem;
+    font-weight: 300;
 }
 h5 {
-    font-size: 22px;
+    font-size: 0.9rem;
+    font-weight: 300;
 }
 
 
@@ -36,7 +39,9 @@ a:hover {
     text-decoration: none;
 }
 
-
+.bold-in-text {
+    font-weight: 800;
+}
 
 
 /*  COLOURS  */ 
@@ -56,7 +61,7 @@ body, div, section {
 body {
     min-height: 100vh;
     overflow-x: hidden;
-    height: 100vh;
+    height: max-content;
     display: flex;
     flex-direction: column;
 }
@@ -65,7 +70,7 @@ button {
     background: #fff;
     border-radius: 5px;
     box-shadow: 1px 1px 5px #7b7b7b;
-    border: none!important;
+    border: none;
 }
 
 button:focus {
@@ -106,7 +111,7 @@ background-color: #ffffff;
 }
 
 .full-width {
-    width: 100vw
+    width: 100vw;
 }
 
 .underline-hdr {
@@ -114,6 +119,25 @@ background-color: #ffffff;
     padding-bottom: 10px;
     border-bottom: 3px solid #fff;
 }
+
+/* FOOTER */
+
+footer {
+    display: flex;
+    flex-grow: 2;
+}
+
+footer > div {
+    flex-flow: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+footer > div div {
+    margin: auto ;
+}
+
+
 
 /* === LOCATION LISTING PAGE === */
 /* ===  === === === === ===  === */
@@ -124,8 +148,18 @@ background-color: #ffffff;
     background: #f1f1f1;
     display: -webkit-box;
 }
+.location-list-wrapper {
+    padding: 0 40px;
+}
+
+
+#results_title {
+    padding: 15px 0;
+    margin: 40px 0px 20px 0px;
+}
+
 .list-item-img {
-    max-width: 150px;
+    max-width: 250px;
     min-height: 100%;
     max-height: 170px;
     overflow: hidden;
@@ -147,7 +181,7 @@ background-color: #ffffff;
     height: 100%;
     position: absolute;
     right: -50%;
-    z-index: 2;
+    z-index: 3;
     top: 0px;
     width: 50%;
     box-shadow: -2px 1px 4px -1px #a9a9a9;
@@ -190,7 +224,7 @@ background-color: #ffffff;
 .list-overlay, .map-overlay {
     width: 100%;
     height: 100%;
-    background-color: #a9a9a940;
+    background-color: #71717180;
     z-index: 0;
     position: absolute;
     opacity: 0;
@@ -206,10 +240,10 @@ background-color: #ffffff;
 #filter-sidebar {
     background: linear-gradient(160deg, rgb(0 61 138 / 92%) 60%, rgba(94,121,255,1) 100%);
     box-shadow: 1px 1px 1px #a9a9a9;
-    padding: 0 40px;
+    padding: 40px 40px;
 }
 
-.filter-btn, .area-btn, .sort-date {
+.filter-btn, .area-btn, .sort-date, .search-btn {
     
     background: #ffffff;
     background: linear-gradient( to right, #fff 50%, #ffc6c3fa 50%);
@@ -220,7 +254,7 @@ background-color: #ffffff;
     transition: 0.5s ease-in-out;
 }
 
-.filter-btn:hover, .area-btn:hover, .sort-date:hover {
+.filter-btn:hover, .area-btn:hover, .sort-date:hover, .search-btn:hover {
    background-position: right;
 }
 
@@ -237,6 +271,18 @@ background-color: #ffffff;
 
 .filter-section input:focus {
     box-shadow: inset 1px 1px 4px 0px #3c3c3c;
+}
+
+#search {
+    width: 50%;
+    flex-grow: 2;
+    margin-right: 0;
+    border-radius: 2px 0px 0px 2px;
+}
+
+.search-btn {
+    margin-right: 0!important;
+    border-radius: 0px 2px 2px 0px!important;
 }
 
 .filter-section button, .filter-section input {
@@ -260,9 +306,64 @@ background-color: #ffffff;
 
 
 .list-item{
-        border-radius: 5px;
+    border-radius: 5px;
     box-shadow: 1px 1px 4px -1px #a9a9a9;
     overflow: hidden;
+    transition: 0.3s ease-in-out;
+}
+
+.list-item:hover {
+    box-shadow: 1px 1px 6px -1px #484848;
+}
+
+#pagination_wrapper {
+    width: -webkit-fill-available;
+    height: max-content;
+    margin-top: auto;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#pagination_btns {
+    width: max-content; 
+    height: max-content;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-shadow: 1px 1px 4px 0px #3c3c3c;
+    background: transparent;
+    border: none;
+    border-radius: 2px;
+}
+
+.pagination-btn {
+    box-shadow: none;
+    border-right: 1px solid #a9a9a9;
+    border-radius: inherit;
+    margin: 0;
+    padding: 15px 20px;
+    transition: 1.5s ease-in-out
+
+
+}
+.pagination-btn:last-of-type {
+    border-right: none;
+    border-radius: 0px 2px 2px 0px;
+}
+.pagination-btn:first-of-type {
+    border-radius: 2px 0px 0px 2px;
+}
+
+.pagination-btn.active {
+    background: #f8554a;
+    color: #fff;
+    box-shadow: inset 1px 1px 4px 0px #3c3c3c;
+    border: none;
 }
 
 

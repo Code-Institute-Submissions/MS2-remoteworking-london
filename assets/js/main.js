@@ -127,6 +127,11 @@ function initList(page) {
     let pageCount = Math.ceil(arrayChoice.length / itemsPerPage);
     pagination(btnNorth,btnSouth,btnEast,btnWest,pageCount);
 
+// Declare number of results
+    $("#results_title").html(
+        `<h3>We found <span class="bold-in-text">${arrayChoice.length}</span> results that you may be interested in</h3>`
+    )
+
 };
 
 function pagination(btnNorth,btnSouth,btnEast,btnWest,pageCount) {
@@ -148,9 +153,10 @@ function pagButtons(btnNum) {
     button.addEventListener('click', function () {
         currentPage = btnNum;
         console.log("current", currentPage)
+        console.log("button nuber", currentPage)
         initList(currentPage);
-        $(".pagination-btn.active").removeClass("active");
-        $(this).addClass("active");
+        //$(".pagination-btn.active").removeClass("active");
+        //$(this).addClass("active");
     })
     return button;
 }
@@ -195,6 +201,17 @@ function closeBtn() {
 }
 
 
+function enterKey() {
+    document.getElementById("search").addEventListener('keyup', function (event) {
+        if (event.keyCode === 13) {
+            $(".search-btn").click();
+        }
+    });
+}
+
+
+
+
 // Filter items functions
 function searchField() {
     let search = $("#search").val();
@@ -203,11 +220,13 @@ function searchField() {
     $(".list-item").addClass("hide");
     $(`.list-item:contains(${search})`).removeClass("hide");
     $(`.infowindow:contains(${search})`).removeClass("hide");
+    hideOverlay()
     initList(currentPage)
 }
 
 function showMap() {
     $("#locations_list").addClass("hide");
+    $(".location-list-wrapper").addClass("hide");
     $("#pagination_btns").addClass("hide");
     $("#list_btn").removeClass("active");
     $("#no_locations").addClass("no-results-map")
@@ -224,6 +243,7 @@ function showList() {
     $("#list_btn").addClass("active");
     $("#no_locations").removeClass("no-results-map")
     $("#locations_list").removeClass("hide");
+    $(".location-list-wrapper").removeClass("hide");
     $("#pagination_btns").removeClass("hide");
 };
 

@@ -63,7 +63,7 @@ function initMap() {
 
                 let cardContent =
 
-                    `<div class="d-flex card flex-row list-item mx-3 mt-3" id="list_item_${[x]}">
+                    `<div class="d-flex card flex-row list-item mt-3" id="list_item_${[x]}" onclick="moreDetails(${[x]});">
                     <div class="list-item-img"><img
                             src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${location.photo_reference}&key=${gAPI}">
                     </div>
