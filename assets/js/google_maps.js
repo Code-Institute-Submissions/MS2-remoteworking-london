@@ -4,7 +4,7 @@
 let filteredMarkers = [];
 const locationListings = new Array();
 const locationListingsDates = [];
-let listingObjectCombined = [];
+var listingObjectCombined = [];
 
 // Sort the request array by location post date
 //request.sort((a, b) => a.posted - b.posted);
@@ -188,5 +188,3 @@ function addMarker(locationMap, place, map, infowindow, content) {
 function emptyMapMarkers() {
     let filteredMarkers = [];
 }
-
-

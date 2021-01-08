@@ -1,77 +1,170 @@
 
-listingObjectCombined;
+//(function () { let list = listingObjectCombined })();
 
-const nextPage = $("#next-page");
-const prevPage = $("#prev-page");
-let page = 0;
-let listLength = listingObjectCombined.length;
-console.log(listLength);
 
-function initList() {
+console.log("emoty or not",listingObjectCombined)
+
+
+
+let currentPage= 1;
+    let itemsPerPage = 3;
+
+    
+// new credits: https://www.youtube.com/watch?v=IqYiVHrO2U8 
+// =======
+// =======
+
+function initList(page) {
+    $("#locations_list").html("");
+    page--;
+console.log("currentPage after click:", page)
     listingObjectCombined.sort((a, b) => b.date - a.date);
-    for (var i = 0; i < page + 3; i++) {
-        let item = listingObjectCombined[i];
+    console.log("Allitems", listingObjectCombined)
+    let start = itemsPerPage * page;
+    let end = start + itemsPerPage;
+    let pagItems = listingObjectCombined.slice(start, end);
+
+
+    console.log("items", pagItems)
+    console.log("start:", start, "end", end)
+
+    // new credits: https://www.youtube.com/watch?v=IqYiVHrO2U8 
+
+
+
+    console.log("lenght", listingObjectCombined.length)
+    
+    for (var i = 0; i < pagItems.length; i++) {
+        let item = pagItems[i];
         $("#locations_list").append(
             `<div class="fade-in">${item.content}</div>`
         )
+
+    }
+};
+
+function pagination(currentPage) { 
+          
+    let pageCount = Math.ceil(listingObjectCombined.length / itemsPerPage);
+
+    for (let i = 1; i < pageCount + 1; i++) {
+        let btn = pagButtons(i);
+        $("#pagination_btns").append(btn)
+
     }
 
-    let listLength = listingObjectCombined.length;
-    let pageNum = Math.ceil(listLength / 3);
+
+console.log("initPag", pageCount);
+
+}
+
+console.log("current page GLOBAL", currentPage);
+      //  console.log("totalpages ", i)
+
+function pagButtons (btnNum) {
+let button = document.createElement("button");
+    button.innerText = btnNum;
+    button.classList.add("pagination-btn")
+    
+
+
+
+
+    console.log("button_num", btnNum)
+    console.log("button_num",currentPage)
+    if (currentPage == btnNum) button.classList.add("active"); 
+
+    button.addEventListener('click', function () {
+        currentPage = btnNum;
+        console.log("current",currentPage)
+        initList(currentPage);
+        $(".pagination-btn.active").removeClass("active");
+        $(this).addClass("active");
+    })
+return button;        
+}
+pagination();
+initList(currentPage);
+
+
+
+
+    // if(currentPage == (i-1)){$(".pagination-btn").addClass("active")}else{false}
+
+
 
     // Credits: https://www.youtube.com/watch?v=1s57PDmaVEo 
-    console.log(pageNum);
-    
     
 
+    /*  $('#locations_list').pagination({
+      dataSource: [1, 2, 3, 4, 5, 6, 7, 35],
+      pageSize: 3,
+      pageNumber: 3,
+      callback: function(data, pagination) {
+          // template method of yourself
+          var html = template(data);
+          dataContainer.html(html);
+      }
+  }) */
 
+
+    /*             
+        $("#next-page").click(() => {
+      for (let j = page; j <page +3; j++) {
+            ;
+            //for (let nextClick = 1; nextClick < pageNum; nextClick++) {
+                console.log("list length", listingObjectCombined.length)
     
-    $("#next-page").click(() => {
-        for (let nextClick = 1; nextClick < pageNum; nextClick++) {
-            console.log("list length", listingObjectCombined.length)
-
+            
+            
+            
+            //    page == listingObjectCombined.length - 3 ? page = 0 : (page += 3);
+                console.log("page", page)
+      //          for (let j = page; j <page +3; j++) {
+    let itemBtn = listingObjectCombined[j];
+                    $("#locations_list").html("");
+    
+                    $("#locations_list").append(
+                        `<div class="fade-in">${itemBtn.content}</div>`
+                    )
+                     /*if (nextClick === pageNum) {
+                $("#next-page").addClass("disabled");
+                console.log("broken")
+          
+          var page = 3;
+          console.log("new page", page);
+            }   
+                   
+           //     }
+    
+              //  console.log("pageNum", k)
+                
+           // }
+             
+    
+            
+       
+        });    
+        
+        $("#prev-page").click(() => {
+            $("#locations_list").html("");
             let item = listingObjectCombined[i];
+            console.log("length", listingObjectCombined.length);
             page == listingObjectCombined.length - 3 ? page = 0 : (page += 3);
-            console.log("page", page)
+    
             for (let j = page; j < listingObjectCombined.length; j++) {
-
-                $("#locations_list").html("");
-
                 $("#locations_list").append(
                     `<div class="fade-in">${item.content}</div>`
                 )
-                
-               
-            }
+            };
+            i
+        })
+};*/
 
-            console.log("pageNum", nextClick)
-                 if (nextClick === pageNum) {
-            $("#next-page").addClass("disabled");
-            console.log("broken")
-            break;
-        }
-        }
-         
 
-        
-   
-    });    
-    
-    $("#prev-page").click(() => {
-        $("#locations_list").html("");
-        let item = listingObjectCombined[i];
-        console.log("length", listingObjectCombined.length);
-        page == listingObjectCombined.length - 3 ? page = 0 : (page += 3);
+function initPagination() {
 
-        for (let j = page; j < listingObjectCombined.length; j++) {
-            $("#locations_list").append(
-                `<div class="fade-in">${item.content}</div>`
-            )
-        };
-        i
-    })
-};
-
+}
 
 function sort(sort) {
     if (sort === "asc") {
