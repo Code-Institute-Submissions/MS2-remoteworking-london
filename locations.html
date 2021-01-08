@@ -18,13 +18,15 @@
         </script>
 
     <script src="assets/js/dataset.js"></script>
-    <script src="assets/js/google_maps.js"></script>
+    <!--<script src="assets/js/google_maps.js"></script>-->
     
     <!-- Load script only after page loaded and Google callback function executed -->
     <script>
         $(window).bind("load", function () {
             $("head").append(
+                `<script  src="assets/js/google_maps.js"><\/script>`
                 `<script  src="assets/js/main.js"><\/script>`
+
             );
         });
     </script>
