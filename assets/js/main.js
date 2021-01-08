@@ -1,3 +1,8 @@
+// Initilialize Popper.js tooltios
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+
 
 //(function () { let list = listingObjectCombined })();
 
@@ -9,13 +14,15 @@ console.log("north", listingObjectNorth);
 let currentPage = 1;
 let itemsPerPage = 3;
 
+
+
 // new credits: https://www.youtube.com/watch?v=IqYiVHrO2U8 
 
 // =======
 // =======
 
 function initList(page) {
-
+    
     let asc = $("#btn_asc").hasClass("active");
     let desc = $("#btn_des").hasClass("active");
 
@@ -23,35 +30,57 @@ function initList(page) {
     let btnSouth = $("#south_btn").hasClass("active");
     let btnEast = $("#east_btn").hasClass("active");
     let btnWest = $("#west_btn").hasClass("active");
-
-    let arrayChoice;
-    if (btnNorth == true) { arrayChoice = listingObjectNorth }
-    else if (btnSouth == true) { arrayChoice = listingObjectSouth }
-    else if (btnEast == true) { arrayChoice = listingObjectEast }
-    else if (btnWest == true) { arrayChoice = listingObjectWest }
-    else { arrayChoice = listingObjectCombined }
-
-    console.log(asc)
-    console.log(desc)
+    
+    let searchResults = [];
+    let search = $("#search").val();
+    console.log("the search", search)
+    let arrayChoiceArea;
+    if (btnNorth == true) { arrayChoiceArea = listingObjectNorth }
+    else if (btnSouth == true) { arrayChoiceArea = listingObjectSouth }
+    else if (btnEast == true) { arrayChoiceArea = listingObjectEast }
+    else if (btnWest == true) { arrayChoiceArea = listingObjectWest }
+    else { arrayChoiceArea = listingObjectCombined}
 
     if (asc == true) {
-        arrayChoice.sort((a, b) => a.date - b.date);
-        console.log("ascend")
-    } else {
-        arrayChoice.sort((a, b) => b.date - a.date);
+        arrayChoiceArea.sort((a, b) => a.date - b.date);
 
-        console.log("descend")
-        console.log("asc result")
+    } else {
+        arrayChoiceArea.sort((a, b) => b.date - a.date);
+
     }
 
+    let arrayChoice;
+
+    if (search == "") {
+        arrayChoice = arrayChoiceArea
+    } else {
+        for (var i = 0; i < arrayChoiceArea.length; i++) {
+
+            let item = arrayChoiceArea[i]
+
+            console.log("each item", item.content)
+
+            if (item.content.includes(search))
+                searchResults.push(item)
+
+
+
+        }
+        arrayChoice = searchResults;
+    }
+    console.log("serch results", searchResults)
+    console.log("found something", arrayChoice)
+
+    console.log("what is array", arrayChoice)
+
     // Determine item count from each area
-    let north = request.filter(function (item) { return item.area === "North London"; }).length
+    /*let north = request.filter(function (item) { return item.area === "North London"; }).length
     let south = request.filter(function (item) { return item.area === "South London"; }).length
     let east = request.filter(function (item) { return item.area === "East London"; }).length
     let west = request.filter(function (item) { return item.area === "West London"; }).length
 
     console.log("north:", north)
-    //$("#no_locations").addClass("hide");
+    //$("#no_locations").addClass("hide");*/
 
 
 
@@ -81,25 +110,26 @@ function initList(page) {
 
     }
 
+    let mapActive = $("#map_btn").hasClass("filter-btn.active")
+    console.log("map?", mapActive)
+
     if (arrayChoice.length == 0) {
-        $("#no_locations").removeClass("hide")
-    } else { $("#no_locations").addClass("hide") };
+        $("#no_locations").removeClass("hide");
+        $(".map-overlay").css({ "z-index": "1", "opacity": "1", "display": "block" })
+    } else {
+        $("#no_locations").addClass("hide");
+        $(".map-overlay").css({ "z-index": "-1", "opacity": "0", "display": "none" })
+    };
+
+
+// Start pagination
+    $("#pagination_btns").html("")
+    let pageCount = Math.ceil(arrayChoice.length / itemsPerPage);
+    pagination(btnNorth,btnSouth,btnEast,btnWest,pageCount);
+
 };
 
-function pagination(currentPage) {
-    let btnNorth = $("#north_btn").hasClass("active");
-    let btnSouth = $("#south_btn").hasClass("active");
-    let btnEast = $("#east_btn").hasClass("active");
-    let btnWest = $("#west_btn").hasClass("active");
-
-    let array;
-    if (btnNorth == true) { array = listingObjectNorth }
-    else if (btnSouth == true) { array = listingObjectSouth }
-    else if (btnEast == true) { array = listingObjectEast }
-    else if (btnWest == true) { array = listingObjectWest }
-    else { array = listingObjectCombined }
-    console.log("array length", array.length)
-    let pageCount = Math.ceil(array.length / itemsPerPage);
+function pagination(btnNorth,btnSouth,btnEast,btnWest,pageCount) {
 
     for (let i = 1; i < pageCount + 1; i++) {
         let btn = pagButtons(i);
@@ -124,7 +154,7 @@ function pagButtons(btnNum) {
     })
     return button;
 }
-pagination();
+//pagination();
 initList(currentPage);
 
 
@@ -173,18 +203,26 @@ function searchField() {
     $(".list-item").addClass("hide");
     $(`.list-item:contains(${search})`).removeClass("hide");
     $(`.infowindow:contains(${search})`).removeClass("hide");
-
+    initList(currentPage)
 }
 
 function showMap() {
     $("#locations_list").addClass("hide");
     $("#pagination_btns").addClass("hide");
+    $("#list_btn").removeClass("active");
+    $("#no_locations").addClass("no-results-map")
+    $("#map_btn").addClass("active");
     $("#map").removeClass("hide");
+    $(".map-overlay").removeClass("hide")
     closeBtn();
 }
 
 function showList() {
     $("#map").addClass("hide");
+    $("#map_btn").removeClass("active");
+    $(".map-overlay").addClass("hide")
+    $("#list_btn").addClass("active");
+    $("#no_locations").removeClass("no-results-map")
     $("#locations_list").removeClass("hide");
     $("#pagination_btns").removeClass("hide");
 };
@@ -231,6 +269,7 @@ function listFilterArea(area) {
 
     currentPage = 1;
     $("#pagination_btns").html("");
+    $("#locations_list").html("");
     initList(currentPage);
     pagination(currentPage);
 
