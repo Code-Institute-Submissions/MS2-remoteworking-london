@@ -152,7 +152,7 @@ footer > div div {
 /* ===  === === === === ===  === */
 
 #locations_header {
-    background: url(/assets/images/london_eye_dusk.jpg);
+    background: url(../images/london_eye_dusk.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
