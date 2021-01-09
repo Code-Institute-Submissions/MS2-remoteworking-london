@@ -4,39 +4,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-
+    <title>Locations</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
-    <script type="text/javascript"
-        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!--<script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMVUvw_I7qUBzKQmDtLsmAk2ktpqvD7Mo&map_ids=1daab95bc3f973ff&libraries=places&callback=initMap">
+        </script>-->
+
     <script src="assets/js/dataset.js"></script>
+    <!--<script src="assets/js/google_maps.js"></script>-->
     <script src="assets/js/main.js"></script>
+
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#"><img src="assets/images/placeholder_logo.jpg" alt="logo"></a>
-        <ul class="navbar-nav">
+    <header id="home_header">
+        <div class="homepage-overlay"></div>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#"><img src="assets/images/logo.svg" alt="logo"></a>
+            <ul class="navbar-nav">
 
-            <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="locations.html">Locations</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="about_us.html">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact</a>
-            </li>
-        </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="locations.html">Locations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about_us.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+            </ul>
 
-    </nav>
+        </nav>
+        <div id="landing_pg_search">
+            <div class="page-title">
+                <h1>Find remote working locations near you</h1>
+            </div>
+            <div class="d-flex" id="hompage_search_wrapper">
+                <input class="home-search" type="text" id="search" name="search" placeholder="Search"
+                    oninput="enterKey();">
+                <button class="search-btn home" onclick="landingSearch();showList();">
+                    <i class="fas fa-search pr-2"></i><p>Find Location</p>
+                </button>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="container">
+        <div class="row"></div>
+
+    </div>
+
+    <footer>
+
+        <div class="d-flex">
+            <div class="footer-left p-3"><a href="">Contact Us</a></div>
+            <div class="footer-right p-3"><a href="">Contact Us</a>
+                <a href="">Contact Us</a></div>
+
+
+
+        </div>
+    </footer>
+
 </body>
 
 </html>

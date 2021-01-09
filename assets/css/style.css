@@ -83,7 +83,7 @@ body, div, section {
 }
 
 body {
-    
+    min-height: 100vh;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
@@ -94,6 +94,12 @@ button {
     border-radius: 5px;
     box-shadow: 1px 1px 5px #7b7b7b;
     border: none;
+    outline: none;
+}
+
+input {
+    border: none;
+    outline: none;
 }
 
 button:focus {
@@ -121,14 +127,7 @@ background-color: #ffffff;
     bottom: 25px;
 }
 
-/*  NAVBAR  */ 
-.navbar-brand img {
-    max-width: 150px;
-}
 
-.navbar-nav {
-    margin-left: auto;
-}
 
 .container {
     max-width: 100%;
@@ -160,6 +159,45 @@ background-color: #ffffff;
     width: 60%;
 }
 
+/*  NAVBAR  */ 
+.navbar {
+    margin: 0;
+    padding: 20px 40px;
+}
+
+.navbar-brand img {
+    max-width: 170px;
+}
+
+.navbar-nav {
+    margin-left: auto;
+    
+}
+
+.nav-link {
+    color: #fff!important;
+}
+
+nav ul li a {
+    color: #fff;
+    background: transparent;
+    background: linear-gradient(to bottom, transparent 50%, #f8554a 50%);
+    background-size: 100% 200%;
+    background-position: top;
+    transition: 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+background-position: bottom;
+}
+
+nav ul li a.active {
+    padding-bottom: 5px;
+    border-bottom: 3px solid #f8554a;
+}
+
+
+
 /* FOOTER */
 
 footer {
@@ -182,8 +220,62 @@ footer > div div {
 }
 
 
+/* === HOMEPAGE === */
+/* ===  === === === === ===  === */
 
+#home_header {
+    background: url(../images/london_arial3.jpg);
+    background-size: cover;
+    background-position-y: 0%;
+    background-repeat: no-repeat;
+    box-shadow: 0px 2px 5px -2px #2b2b2b;
+    z-index: 3;
+    background-attachment: fixed;
+    height: 70vh;
+}
 
+#hompage_search_wrapper {
+    width: 50%;
+    margin: 40px;
+}
+
+.homepage-overlay {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #00224ca6 0%, rgb(94 121 255 / 0%) 60%);
+    position: absolute;
+    z-index: -1;
+}
+
+.home-search {
+    padding: 20px;
+    box-shadow: 1px 1px 4px 0px #3c3c3c;
+}
+
+.home-search:focus {
+    box-shadow: inset 1px 1px 4px 0px #3c3c3c;
+}
+
+.search-btn.home {
+    color: #fff;
+    margin-left: 20px;
+    border-radius: 2px;
+    background: #f8554a;
+    background: linear-gradient( to right, #f8554a 50%, #7bfac3 50%);
+    background-size: 200% 100%;
+    background-position: left;
+    font-size: 16px;
+    padding: 20px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 1px 1px 4px 0px #3c3c3c;
+
+}
+
+.search-btn.home:hover {
+    background-position: right ;
+    color: #000;
+}
 
 /* === LOCATION LISTING PAGE === */
 /* ===  === === === === ===  === */
@@ -198,23 +290,7 @@ footer > div div {
     background-attachment: fixed;
 }
 
-#locations_header nav ul li a {
-    color: #fff;
-    background: transparent;
-    background: linear-gradient(to bottom, transparent 50%, #f8554a 50%);
-    background-size: 100% 200%;
-    background-position: top;
-    transition: 0.3s ease-in-out;
-}
 
-#locations_header nav ul li a:hover {
-background-position: bottom;
-}
-
-#locations_header nav ul li a.active {
-    padding-bottom: 5px;
-    border-bottom: 3px solid #f8554a;
-}
 
 
 .locations-pg-wrapper {
@@ -400,8 +476,6 @@ background-position: bottom;
     margin-top: 10px;
     margin-right: 5px;
     border-radius: 2px;
-    outline: none;
-    border: none;
     box-shadow: 1px 1px 4px 0px #3c3c3c;
     transition: 0.3s ease-in-out;
 }

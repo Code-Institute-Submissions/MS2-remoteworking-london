@@ -1,7 +1,24 @@
+let currentPage = 1;
+let itemsPerPage = 4;
+
+
+// Get search query from URL & run search if exists
+    (function () {
+        let href = window.location.href;
+        let URLstring = href.split('q=');
+        let URLsearch = URLstring[1];
+        if (URLsearch != undefined) { searchField(URLsearch) }
+        else {
+            return false
+        };
+    })();
+
+
 // Smooth scrolling
 
-/// ==== CREDIT https://codepen.io/damianocel/pen/EVpqNJ
 
+
+/// ==== CREDIT https://codepen.io/damianocel/pen/EVpqNJ
 
 $(window).scroll(function () {
       var top =  $("#top_page");
@@ -30,8 +47,6 @@ console.log("emoty or not", listingObjectCombined)
 
 console.log("north", listingObjectNorth);
 
-let currentPage = 1;
-let itemsPerPage = 4;
 
 
 
@@ -239,15 +254,24 @@ function enterKey() {
 
 
 // Filter items functions
-function searchField() {
-    let search = $("#search").val();
+function searchField(URLsearch) {
 
+    if (URLsearch != "") $("#search").val(URLsearch); 
+    
+    let search = $("#search").val();
+    
     $(".marker").addClass("hide");
     $(".list-item").addClass("hide");
     $(`.list-item:contains(${search})`).removeClass("hide");
     $(`.infowindow:contains(${search})`).removeClass("hide");
     hideOverlay()
     initList(currentPage)
+}
+
+function landingSearch() {
+    let search = $("#search").val();
+    window.location.href = `/locations.html?&q=${search}`;
+    //searchField();
 }
 
 function showMap() {
