@@ -36,7 +36,18 @@ function initMap() {
             //   if (status === google.maps.places.PlacesServiceStatus.OK) {
             // let m = -5;
 
-            let content = `<h6>${place.name}</h6><p>${place.formatted_address}<br>${place.place_id}</p><p onclick="moreDetails(${[mm]});">Read More</p>`;
+            let content = `
+            <div class="d-flex flex-row infowindow">
+                <div class="infowindow-img-wrap">
+                    <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${locationMap.photo_reference}&key=${gAPI}" alt="alt">
+                </div>
+                <div class="d-flex flex-column mx-2">
+                    <h6>${place.name}</h6><p>${place.formatted_address}<br>${place.place_id}</p>
+                </div>
+                <div class="d-flex">
+                    <button class="btn cta-btn infowindow-cta" onclick="moreDetails(${[mm]});"><i class="fas fa-chevron-circle-right"></i></p>
+                </div>
+            </div>`;
             addMarker(locationMap, place, map, infowindow, content);
             //} else {
             //     console.log("Error - place could not be found");
@@ -102,9 +113,9 @@ function initMap() {
                 if (location.area == "South London") listingObjectSouth.push({ content: cardContent, date: location.posted });
                 if (location.area == "East London") listingObjectEast.push({ content: cardContent, date: location.posted });
                 if (location.area == "West London") listingObjectWest.push({ content: cardContent, date: location.posted });
-                
 
-                 
+
+
                 /*   for (var i in locationListings) {
        let item = locationListings[i];
        $("#locations_list").append(

@@ -2,20 +2,20 @@
 
 /// ==== CREDIT https://codepen.io/damianocel/pen/EVpqNJ
 
-/*
+
 $(window).scroll(function () {
       var top =  $("#top_page");
     if ( $('body').height() <= (    $(window).height() + $(window).scrollTop() + 200 )) {
-    top.animate({"top": "0"}, 700);
+    top.animate({"top": "0"}, 1500);
     } else {
-        top.animate({"margin-left": "-100%"},1500);
+        //top.animate({"margin-left": "-100%"},1500);
     }
       });
 
-    $("button").on('click', function () {
-        $("html, body").animate({ scrollTop: 0 }, 1000);
+    $("#to_top").on('click', function () {
+        $("html, body").animate({ scrollTop: 0 }, 100);
     });
-*/
+
     
 // Initilialize Popper.js tooltips
 $(function () {
@@ -133,10 +133,19 @@ function initList(page) {
     console.log("map?", mapActive)
 
     if (arrayChoice.length == 0) {
-        $("#no_locations").removeClass("hide");
+        $("#results_title").html(
+            `<div id="no_results" class="card fade-in"><h3>Looks like we're all out of ideas here. <i class="far fa-frown"></i> </h3><p>Try a different flavour or show all results for inspiration</p>
+        <button class="btn cta-btn" onclick="listFilterArea('All');">Show all results</button></div>`
+    )
         $(".map-overlay").css({ "z-index": "1", "opacity": "1", "display": "block" })
     } else {
-        $("#no_locations").addClass("hide");
+        $("#results_title").html(
+               
+            `<div id="results" class="fade-in">
+        <h3>We found <span class="bold-in-text">${arrayChoice.length} results</span> that you may be interested in</h3>
+        </div>`
+    )
+     
         $(".map-overlay").css({ "z-index": "-1", "opacity": "0", "display": "none" })
     };
 
@@ -146,12 +155,8 @@ function initList(page) {
     let pageCount = Math.ceil(arrayChoice.length / itemsPerPage);
     pagination(btnNorth,btnSouth,btnEast,btnWest,pageCount);
 
-// Declare number of results
-    $("#results_title").html(
-        `<h2>We found <span class="bold-in-text">${arrayChoice.length} results</span> that you may be interested in</h2>`
-    )
-
-    screenTop();
+// Reset the overlay before displaying results
+    hideOverlay();
 
 };
 
@@ -250,10 +255,11 @@ function showMap() {
     $(".location-list-wrapper").addClass("hide");
     $("#pagination_btns").addClass("hide");
     $("#list_btn").removeClass("active");
-    $("#no_locations").addClass("no-results-map")
+    //$("#results_title").addClass("no-results-map")
     $("#map_btn").addClass("active");
     $("#map").removeClass("hide");
     $(".map-overlay").removeClass("hide")
+    $("#results_title").addClass("map")
     closeBtn();
 }
 
@@ -262,10 +268,11 @@ function showList() {
     $("#map_btn").removeClass("active");
     $(".map-overlay").addClass("hide")
     $("#list_btn").addClass("active");
-    $("#no_locations").removeClass("no-results-map")
+  //  $("#no_locations").removeClass("no-results-map")
     $("#locations_list").removeClass("hide");
     $(".location-list-wrapper").removeClass("hide");
     $("#pagination_btns").removeClass("hide");
+    $("#results_title").removeClass("map")
 };
 
 /*jQuery(function ($) {
