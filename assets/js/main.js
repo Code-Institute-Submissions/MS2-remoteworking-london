@@ -1,4 +1,23 @@
-// Initilialize Popper.js tooltios
+// Smooth scrolling
+
+/// ==== CREDIT https://codepen.io/damianocel/pen/EVpqNJ
+
+/*
+$(window).scroll(function () {
+      var top =  $("#top_page");
+    if ( $('body').height() <= (    $(window).height() + $(window).scrollTop() + 200 )) {
+    top.animate({"top": "0"}, 700);
+    } else {
+        top.animate({"margin-left": "-100%"},1500);
+    }
+      });
+
+    $("button").on('click', function () {
+        $("html, body").animate({ scrollTop: 0 }, 1000);
+    });
+*/
+    
+// Initilialize Popper.js tooltips
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
@@ -12,7 +31,7 @@ console.log("emoty or not", listingObjectCombined)
 console.log("north", listingObjectNorth);
 
 let currentPage = 1;
-let itemsPerPage = 3;
+let itemsPerPage = 4;
 
 
 
@@ -129,8 +148,10 @@ function initList(page) {
 
 // Declare number of results
     $("#results_title").html(
-        `<h3>We found <span class="bold-in-text">${arrayChoice.length}</span> results that you may be interested in</h3>`
+        `<h2>We found <span class="bold-in-text">${arrayChoice.length} results</span> that you may be interested in</h2>`
     )
+
+    screenTop();
 
 };
 

@@ -57,3 +57,9 @@ In order to achieve this, the site is built with simplicity in mind - a simple l
 
  ### Credit:
  - cssgradient.io
+
+
+ - location header Photo by Alex Chistol from Pexels - https://www.pexels.com/photo/luminous-ferris-wheel-in-modern-city-district-on-river-bank-at-night-3835461/
+    - Pixabay: https://www.pexels.com/photo/architecture-bay-boats-bridge-372470/ 
+    - Photo by Chait Goli from Pexels https://www.pexels.com/photo/white-and-brown-sailing-ship-1796715/
+    - Image by <a href="https://pixabay.com/photos/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=945497">Free-Photos</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=945497">Pixabay</a>
