@@ -57,7 +57,7 @@ In order to achieve this, the site is built with simplicity in mind - a simple l
 
  ### Credit:
  - cssgradient.io
-
+- Indirect snap-scroll support Stack Overflow: "Luke" https://stackoverflow.com/questions/60724786/why-is-my-simple-css-scroll-snap-not-working 
 
  - location header Photo by Alex Chistol from Pexels - https://www.pexels.com/photo/luminous-ferris-wheel-in-modern-city-district-on-river-bank-at-night-3835461/
     - Pixabay: https://www.pexels.com/photo/architecture-bay-boats-bridge-372470/ 

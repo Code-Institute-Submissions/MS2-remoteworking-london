@@ -22,7 +22,6 @@ console.log("request", request);
     })();
 
 
-
     // Get featured items on homepage
 (function () {
     for (var i = 0; i < 3; i++) {

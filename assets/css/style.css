@@ -74,7 +74,7 @@ i {
 /* GLOBAL PARENTS */
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth;    
 }
 
 body, div, section {
@@ -83,7 +83,7 @@ body, div, section {
 }
 
 body {
-    min-height: 100vh;
+    /*min-height: 100vh;*/
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
@@ -91,6 +91,21 @@ body {
 
 section {
     margin: 40px;
+}
+
+.snap-scroll-parent {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+.snap-scroll-child {
+    scroll-snap-align: start;
+    
+}
+
+.rm-body-scroll {
+    overflow-y: hidden;
 }
 
 
@@ -231,12 +246,12 @@ footer > div div {
 #home_header {
     background: url(../images/london_arial3.jpg);
     background-size: cover;
-    background-position-y: 0%;
     background-repeat: no-repeat;
     box-shadow: 0px 2px 5px -2px #2b2b2b;
     z-index: 2;
     background-attachment: fixed;
     height: 100vh;
+    position: relative;
 }
 
 #hompage_search_wrapper {
