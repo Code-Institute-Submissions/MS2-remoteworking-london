@@ -2,13 +2,14 @@
 // Define arrays for markers to allow for filtering by area on Map
 //let markers = [];
 let filteredMarkers = [];
-const locationListings = new Array();
-const locationListingsDates = [];
-var listingObjectCombined = [];
-var listingObjectNorth = [];
-var listingObjectSouth = [];
-var listingObjectEast = [];
-var listingObjectWest = [];
+let locationListings = new Array();
+let locationListingsDates = [];
+let featured = [];
+let listingObjectCombined = [];
+let listingObjectNorth = [];
+let listingObjectSouth = [];
+let listingObjectEast = [];
+let listingObjectWest = [];
 
 
 // Sort the request array by location post date
@@ -39,7 +40,7 @@ function initMap() {
             let content = `
             <div class="d-flex flex-row infowindow">
                 <div class="infowindow-img-wrap">
-                    <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${locationMap.photo_reference}&key=${gAPI}" alt="alt">
+                    <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${locationMap.photo_reference}&key=${gAPI}" alt="${locationMap.name}">
                 </div>
                 <div class="d-flex flex-column mx-2">
                     <h6>${place.name}</h6><p>${place.formatted_address}<br>${place.place_id}</p>
@@ -108,12 +109,24 @@ function initMap() {
 
                 locationListings.push(cardContent);
                 locationListingsDates.push(location.posted);
+                featured.push({
+                    place: place.name,
+                    address: place.formatted_address,
+                    area: location.area,
+                    date: location.posted,
+                    para: location.para,
+                    title: location.title,
+                    id: [x],
+                    photo: location.photo_reference
+                });
+                featured.sort((a, b) => b.date - a.date);
+                request.sort((a, b) => b.posted - a.posted);
                 listingObjectCombined[x] = { content: cardContent, date: location.posted }
+                listingObjectCombined.sort((a, b) => b.posted - a.posted);
                 if (location.area == "North London") listingObjectNorth.push({ content: cardContent, date: location.posted });
                 if (location.area == "South London") listingObjectSouth.push({ content: cardContent, date: location.posted });
                 if (location.area == "East London") listingObjectEast.push({ content: cardContent, date: location.posted });
                 if (location.area == "West London") listingObjectWest.push({ content: cardContent, date: location.posted });
-
 
 
                 /*   for (var i in locationListings) {

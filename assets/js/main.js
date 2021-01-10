@@ -1,17 +1,55 @@
 let currentPage = 1;
 let itemsPerPage = 4;
+console.log("featured", featured);
+console.log("request", request);
 
-
-// Get search query from URL & run search if exists
+// Get search query from URL & run text search ore 'read more' if exists
     (function () {
         let href = window.location.href;
-        let URLstring = href.split('q=');
+        let addSpace = href.replace("%20", " ");
+        let URLstring = addSpace.split('q=')
+ //let URLstringSearch = href.split('q=');
+        let idInfo = href.split('id=');
+                
+        let idInfoSearch = idInfo[1]
+        console.log("id", idInfoSearch)
         let URLsearch = URLstring[1];
         if (URLsearch != undefined) { searchField(URLsearch) }
-        else {
-            return false
-        };
+        else {  };
+        if (idInfoSearch != undefined) { moreDetails(idInfoSearch); }
+        else { return false }
+        console.log("id", idInfoSearch)
     })();
+
+
+
+    // Get featured items on homepage
+(function () {
+    for (var i = 0; i < 3; i++) {
+        let item = request[i]
+        $(`#ft${[i]}`).append(
+            `<div class="featured-img-wrap">
+                    <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${item.photo_reference}&key=${gAPI}" alt="${item.name}">
+                </div>
+                <div class="featured-icon"><i class="fas fa-${item.cat_icon}"></i></div>
+            <div class="featured-content">
+                <h4 class="mb-1">${item.title}</h4>
+                <div class="area-tag mb-1">${item.area}</div>
+                <p  class="mb-1">${item.para}</p>
+                <button class="cta-btn featured-btn-cta" onclick="landingSearch('${item.title}');" value="${item.title}">Read More</button>
+            </div>`
+            
+            );
+        console.log(item)
+    }
+    console.log("it worked on the home page")
+})();
+
+
+function openInfoHome(loc_id) {
+    let id = loc_id
+    window.location.href = `/locations.html?&id=${id}`;
+}
 
 
 // Smooth scrolling
@@ -224,14 +262,19 @@ function sort(sort) {
 // Show the sidebar details when 'read more' is clicked
 function moreDetails(j) {
     $("#locations_sidebar").animate({ right: '0' }, "medium");
-    $(".sidebar-item").addClass("hide");
+    //$(".sidebar-item").addClass("hide");
     $(`#sidebar_list_${[j]}`).removeClass("hide");
     $(".list-overlay").animate({ opacity: '1' }, "medium").css({ "z-index": "2", "display": "block" })
 };
 
 function hideOverlay() {
-    $(".list-overlay").animate({ opacity: '0' }, "medium").css({ "z-index": "0", "display": "none" })
-    closeBtn();
+        $(".list-overlay").animate({ opacity: '0' }, "medium").css({ "z-index": "0", "display": "none" })
+    if ($("#locations_sidebar").css({ "right": '-51%' }) === false) {
+        closeBtn();
+    } else {
+        return false
+    }
+
 }
 
 function closeBtn() {
@@ -239,6 +282,11 @@ function closeBtn() {
     setTimeout(function () {
         $(".sidebar-item").addClass("hide");
     }, 500);
+    if ($(".list-overlay").css({ "display": "none" }) == false) {
+        hideOverlay();
+    } else {
+        return false
+    }
 }
 
 
@@ -268,8 +316,8 @@ function searchField(URLsearch) {
     initList(currentPage)
 }
 
-function landingSearch() {
-    let search = $("#search").val();
+function landingSearch(searchInput) {
+    let search = searchInput;
     window.location.href = `/locations.html?&q=${search}`;
     //searchField();
 }
@@ -384,3 +432,4 @@ function listFilterArea(area) {
     
         }*/
 }
+

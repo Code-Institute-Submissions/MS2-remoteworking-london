@@ -16,19 +16,29 @@
     <script type="text/javascript"
         src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <!--<script async
+<script async
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMVUvw_I7qUBzKQmDtLsmAk2ktpqvD7Mo&map_ids=1daab95bc3f973ff&libraries=places&callback=initMap">
-        </script>-->
+        </script>
 
     <script src="assets/js/dataset.js"></script>
-    <!--<script src="assets/js/google_maps.js"></script>-->
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/google_maps.js"></script>
+    
+    <script>
+        $(window).bind("load", function () {
+            $("head").append(
+             
+                `<script  src="assets/js/main.js"><\/script>`
+
+            );
+        });
+    </script>
 
 </head>
 
 <body>
+    <div id="map" class="hide"></div>
     <header id="home_header">
-        <div class="homepage-overlay"></div>
+        <div class="homepage-overlay">
         <nav class="navbar navbar-expand-lg navbar-light">
             <a class="navbar-brand" href="#"><img src="assets/images/logo.svg" alt="logo"></a>
             <ul class="navbar-nav">
@@ -51,22 +61,35 @@
         <div id="landing_pg_search">
             <div class="page-title">
                 <h1>Find remote working locations near you</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio qui, accusantium molestiae
+                    nesciunt facilis reprehenderit laboriosam aspernatur architecto. Quibusdam aperiam ducimus quis
+                    excepturi quas voluptatibus rerum nobis esse. Eligendi, iure!</p>
             </div>
+
             <div class="d-flex" id="hompage_search_wrapper">
                 <input class="home-search" type="text" id="search" name="search" placeholder="Search"
                     oninput="enterKey();">
-                <button class="search-btn home" onclick="landingSearch();showList();">
-                    <i class="fas fa-search pr-2"></i><p>Find Location</p>
+                <button class="search-btn home" onclick="landingSearch($('#search').val());showList();">
+                    <i class="fas fa-search pr-2"></i>
+                    <p>Find Location</p>
                 </button>
             </div>
+        </div>
         </div>
     </header>
 
 
+    <section>
     <div class="container">
-        <div class="row"></div>
+        <div class="home-section-hdr mb-5"><h2>Our Latest Additions</h2></div>
+        <div class="row" id="featured_locations">
+            <div class="card featured-card" id="ft0"></div>
+            <div class="card featured-card" id="ft1"></div>
+            <div class="card featured-card" id="ft2"></div>
+        </div>
 
     </div>
+    </section>
 
     <footer>
 
