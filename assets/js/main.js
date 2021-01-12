@@ -69,6 +69,17 @@ jQuery(function ($) {
 
 
 
+// Show scroll to top button 
+$(window).on('scroll', function () {
+    let scrollLength = $(document).scrollTop()
+    if (scrollLength >= 50) {
+        $("#to_top").removeClass("hide")
+    } else {
+        $("#to_top").addClass("hide")
+    }  
+});
+
+
 // Smooth scrolling
 
 

@@ -96,7 +96,7 @@ section {
 }
 
 .snap-scroll-parent {
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: y proximity;
     overflow-y: scroll;
     height: 100vh;
 }
@@ -147,6 +147,10 @@ background-color: #ffffff;
     position: fixed;
     right: 25px;
     bottom: 25px;
+    z-index: 4;
+    font-size: 24px;
+    background-color: #f8554a;
+    color: #fff;
 }
 
 
@@ -162,6 +166,9 @@ background-color: #ffffff;
 }
 
 .hide {
+    animation-name: fadeOut;
+    animation-duration: 0.7s;
+    animation-fill-mode: forwards;
     display: none!important;
 }
 
@@ -172,7 +179,8 @@ background-color: #ffffff;
 .underline-hdr {
     width: max-content;
     padding-bottom: 10px;
-    border-bottom: 3px solid #fff;
+    border-bottom: 3px solid #f8554a;
+max-width: 100%;
 }
 
 .page-title {
@@ -265,17 +273,20 @@ footer > div div {
 
 .footer-links {
     justify-content: space-evenly;
-    width: 50%;
     display: flex;
 }
 
 .footer-links a {
-    padding: 5px 10px;
+    padding: 0px 10px;
+    border-right: 1px solid #fff;
     background: transparent;
     background: linear-gradient(to bottom, transparent 50%, #f8554a 50%);
     background-size: 100% 200%;
     background-position: top;
     transition: 0.3s ease-in-out;
+}
+.footer-links a:last-of-type {
+border-right: none;
 }
 
 .footer-links a:hover {
@@ -450,9 +461,9 @@ color: #fff;
 /* ===  === === === === ===  === */
 
 #locations_header {
-    background: url(../images/london_eye_dusk.jpg);
-    background-size: contain;
-    background-position-y: -65%;
+    background: url(../images/london_arial3.jpg);
+    background-size: cover;
+    background-position-y: 85%;
     background-repeat: no-repeat;
     box-shadow: 0px 2px 5px -2px #2b2b2b;
     z-index: 3;
@@ -593,24 +604,26 @@ color: #fff;
 }
 
 #filter-sidebar {
-    background: linear-gradient(160deg, rgb(0 61 138 / 92%) 60%, rgba(94,121,255,1) 100%);
-    box-shadow: 1px 1px 1px #a9a9a9;
-    padding: 40px 40px;
+    background: #fdfdfd;
+    padding: 0px 40px;
+    margin: 40px 0;
+    border-right: 1px solid #ccc;
 }
 
 .filter-btn, .area-btn, .sort-date, .search-btn {
     
     background: #ffffff;
-    background: linear-gradient( to right, #fff 50%, #7bfac3 50%);
+    background: linear-gradient( to right, rgb(0 61 138 / 92%) 50%, #7bfac3 50%);
     background-size: 200% 100%;
     background-position: left;
-    
+    color: #fff;
     font-size: 16px;
     transition: 0.5s ease-in-out;
 }
 
 .filter-btn:hover, .area-btn:hover, .sort-date:hover, .search-btn:hover {
    background-position: right;
+   color: #000;
 }
 
 .filter-btn.active, .area-btn.active, .sort-date.active {
@@ -621,7 +634,7 @@ color: #fff;
 }
 
 .filter-section {
-    color: #ffffff;
+    color: #000;
 }
 
 .filter-section input:focus {
@@ -659,6 +672,7 @@ color: #fff;
 
 .list-item:hover {
     box-shadow: 1px 1px 6px -1px #484848;
+    transform: translateX(-5px);
 }
 
 #pagination_wrapper {
@@ -844,13 +858,24 @@ height: max-content;
 
 .fade-in {
     animation-name: fadeIn;
-    animation-duration: 1.5s;
+    animation-duration: 0.7s;
+    animation-fill-mode: forwards;
+}
+
+.fade-out {
+    animation-name: fadeOut;
+    animation-duration: 0.7s;
     animation-fill-mode: forwards;
 }
 
 @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity: 1;}
+}
+
+@keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0; display: none!important;}
 }
 
 @keyframes slideUp {
