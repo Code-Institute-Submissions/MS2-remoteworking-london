@@ -51,6 +51,24 @@ function openInfoHome(loc_id) {
 }
 
 
+
+// Mobile - change dropdown menu on click
+jQuery(function ($) {
+    let width = screen.width;
+    let mobile = (width <= 576);
+    console.log(mobile)
+    if (mobile == true) {
+        $(".navbar-expand-lg").addClass("pb-0");
+    }
+    $(".navbar-toggler").click(() => {
+        $(".navbar-toggler > i").addClass("fa-times").removeClass("fa-bars");
+        $(".homepage-overlay").toggleClass("mobile");
+        $(".navbar-toggler.collapsed > i").addClass("fa-bars").removeClass("fa-times");
+    })
+});
+
+
+
 // Smooth scrolling
 
 

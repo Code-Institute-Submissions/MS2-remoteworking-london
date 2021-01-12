@@ -5,17 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Locations</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
-    <script type="text/javascript"
-        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
     <script async
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMVUvw_I7qUBzKQmDtLsmAk2ktpqvD7Mo&map_ids=1daab95bc3f973ff&libraries=places&callback=initMap">
         </script>
@@ -37,85 +34,121 @@
 </head>
 
 <body class="rm-body-scroll">
-<div class="snap-scroll-parent">
-    <div id="map" class="hide"></div>
-    
-    <header id="home_header" class="snap-scroll-child">
-        <div class="homepage-overlay">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="#"><img src="assets/images/logo.svg" alt="logo"></a>
-                <ul class="navbar-nav">
+    <div class="snap-scroll-parent">
+        <div id="map" class="hide"></div>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="locations.html">Locations</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about_us.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                </ul>
+        <header id="home_header" class="snap-scroll-child">
+            <div class="homepage-overlay">
+                <div class="mobile-menu-wrapper clear fade-in">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand" href="#"><img src="assets/images/logo.svg" alt="logo"></a>
+                        <ul class="navbar-nav d-none d-md-flex">
 
-            </nav>
-            <div id="landing_pg_search">
-                <div class="page-title">
-                    <h1>Find remote working locations near you</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio qui, accusantium molestiae
-                        nesciunt facilis reprehenderit laboriosam aspernatur architecto. Quibusdam aperiam ducimus quis
-                        excepturi quas voluptatibus rerum nobis esse. Eligendi, iure!</p>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="locations.html">Locations</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about_us.html">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">Contact</a>
+                            </li>
+                        </ul>
+
+
+
+                        <button class="navbar-toggler d-sm" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#mobile_menu" aria-controls="mobile_menu" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </nav>
+                    <nav class="navbar mobile">
+                        <div id="mobile_menu" class="collapse">
+                            <ul class="navbar-nav">
+
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="index.html">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="locations.html">Locations</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="about_us.html">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="contact.html">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
+                
+                </nav>
+                </div>
+                <div id="landing_pg_search">
+                    <div class="homepage-title">
+                        <h1>Find remote working locations near you</h1>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio qui, accusantium
+                            molestiae nesciunt facilis reprehenderit.</p>
+                        <div class="d-flex" id="homepage_search_wrapper">
+                            <input class="home-search" type="text" id="search" name="search"
+                                placeholder="What are you looking for?" oninput="enterKey();">
+                            <button class="search-btn home" onclick="landingSearch($('#search').val());showList();">
+                                <i class="fas fa-search pr-2"></i>
+                                <p>Find Location</p>
+                            </button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </header>
+
+
+
+
+        <section id="ft_section" class="snap-scroll-child">
+            <div class="container">
+                <div class="home-section-hdr mb-5">
+                    <h2>Our Latest Additions</h2>
+                </div>
+                <div class="row" id="featured_locations">
+                    <div class="card featured-card" id="ft0"></div>
+                    <div class="card featured-card" id="ft1"></div>
+                    <div class="card featured-card" id="ft2"></div>
+                </div>
+                <div class="feature-section-copy py-5">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi provident eum dolorum
+                        blanditiis consequuntur optio natus dolore, impedit, illum ullam alias quasi deserunt libero
+                        ratione, in perferendis deleniti itaque architecto.</p>
+                </div>
+            </div>
+        </section>
+
+
+
+        <footer>
+
+            <div class="d-flex flex-column">
+
+                <div class="footer-links mb-3">
+                    <p> <a href="">About Us</a> | <a href="">Contact Us</a> | <a href="">Privacy</a></p>
+                </div>
+                <div>
+                    <p>&copy; Copyright 2021 Remote London </p>
                 </div>
 
-                <div class="d-flex" id="hompage_search_wrapper">
-                    <input class="home-search" type="text" id="search" name="search" placeholder="Search"
-                        oninput="enterKey();">
-                    <button class="search-btn home" onclick="landingSearch($('#search').val());showList();">
-                        <i class="fas fa-search pr-2"></i>
-                        <p>Find Location</p>
-                    </button>
-                </div>
+
             </div>
-        </div>
-    </header>
-
-    
-
-
-    <section id="ft_section" class="snap-scroll-child">
-        <div class="container">
-            <div class="home-section-hdr mb-5">
-                <h2 class="lax" data-lax-translate-y="0 0, 400, -400">Our Latest Additions</h2>
-            </div>
-            <div class="row" id="featured_locations">
-                <div class="card featured-card"  id="ft0"></div>
-                <div class="card featured-card" id="ft1"></div>
-                <div class="card featured-card" id="ft2"></div>
-            </div>
-
-        </div>
-    </section>
-    <section style="background-color: red;" class="snap-scroll-child"></section>
-
-    
-    <footer>
-
-        <div class="d-flex">
-            <div class="footer-left p-3"><a href="">Contact Us</a></div>
-            <div class="footer-right p-3"><a href="">Contact Us</a>
-                <a href="">Contact Us</a></div>
+        </footer>
 
 
 
-        </div>
-    </footer>
 
-
-
-   
-</div>
+    </div>
 </body>
 
 </html>
