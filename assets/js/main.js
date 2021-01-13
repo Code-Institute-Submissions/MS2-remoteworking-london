@@ -4,25 +4,25 @@ console.log("featured", featured);
 console.log("request", request);
 
 // Get search query from URL & run text search ore 'read more' if exists
-    (function () {
-        let href = window.location.href;
-        let addSpace = href.replace("%20", " ");
-        let URLstring = addSpace.split('q=')
- //let URLstringSearch = href.split('q=');
-        let idInfo = href.split('id=');
-                
-        let idInfoSearch = idInfo[1]
-        console.log("id", idInfoSearch)
-        let URLsearch = URLstring[1];
-        if (URLsearch != undefined) { searchField(URLsearch) }
-        else {  };
-        if (idInfoSearch != undefined) { moreDetails(idInfoSearch); }
-        else { return false }
-        console.log("id", idInfoSearch)
-    })();
+(function () {
+    let href = window.location.href;
+    let addSpace = href.replace("%20", " ");
+    let URLstring = addSpace.split('q=')
+    //let URLstringSearch = href.split('q=');
+    let idInfo = href.split('id=');
+
+    let idInfoSearch = idInfo[1]
+    console.log("id", idInfoSearch)
+    let URLsearch = URLstring[1];
+    if (URLsearch != undefined) { searchField(URLsearch) }
+    else { };
+    if (idInfoSearch != undefined) { moreDetails(idInfoSearch); }
+    else { return false }
+    console.log("id", idInfoSearch)
+})();
 
 
-    // Get featured items on homepage
+// Get featured items on homepage
 (function () {
     for (var i = 0; i < 3; i++) {
         let item = request[i]
@@ -37,8 +37,8 @@ console.log("request", request);
                 <p  class="mb-1">${item.para}</p>
                 <button class="cta-btn featured-btn-cta" onclick="landingSearch('${item.title}');" value="${item.title}">Read More</button>
             </div>`
-            
-            );
+
+        );
         console.log(item)
     }
     console.log("it worked on the home page")
@@ -83,7 +83,7 @@ $(window).on('scroll', function () {
         $("#to_top").removeClass("hide")
     } else {
         $("#to_top").addClass("hide")
-    }  
+    }
 });
 
 
@@ -94,19 +94,19 @@ $(window).on('scroll', function () {
 /// ==== CREDIT https://codepen.io/damianocel/pen/EVpqNJ
 
 $(window).scroll(function () {
-      var top =  $("#top_page");
-    if ( $('body').height() <= (    $(window).height() + $(window).scrollTop() + 200 )) {
-    top.animate({"top": "0"}, 1500);
+    var top = $("#top_page");
+    if ($('body').height() <= ($(window).height() + $(window).scrollTop() + 200)) {
+        top.animate({ "top": "0" }, 1500);
     } else {
         //top.animate({"margin-left": "-100%"},1500);
     }
-      });
+});
 
-    $("#to_top").on('click', function () {
-        $("html, body").animate({ scrollTop: 0 }, 100);
-    });
+$("#to_top").on('click', function () {
+    $("html, body").animate({ scrollTop: 0 }, 100);
+});
 
-    
+
 // Initilialize Popper.js tooltips
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
@@ -129,7 +129,7 @@ console.log("north", listingObjectNorth);
 // =======
 
 function initList(page) {
-    
+
     let asc = $("#btn_asc").hasClass("active");
     let desc = $("#btn_des").hasClass("active");
 
@@ -137,7 +137,7 @@ function initList(page) {
     let btnSouth = $("#south_btn").hasClass("active");
     let btnEast = $("#east_btn").hasClass("active");
     let btnWest = $("#west_btn").hasClass("active");
-    
+
     let searchResults = [];
     let search = $("#search").val();
     console.log("the search", search)
@@ -146,7 +146,7 @@ function initList(page) {
     else if (btnSouth == true) { arrayChoiceArea = listingObjectSouth }
     else if (btnEast == true) { arrayChoiceArea = listingObjectEast }
     else if (btnWest == true) { arrayChoiceArea = listingObjectWest }
-    else { arrayChoiceArea = listingObjectCombined}
+    else { arrayChoiceArea = listingObjectCombined }
 
     if (asc == true) {
         arrayChoiceArea.sort((a, b) => a.date - b.date);
@@ -224,31 +224,31 @@ function initList(page) {
         $("#results_title").html(
             `<div id="no_results" class="card fade-in"><h3>Looks like we're all out of ideas here. <i class="far fa-frown"></i> </h3><p>Try a different flavour or show all results for inspiration</p>
         <button class="btn cta-btn" onclick="listFilterArea('All');">Show all results</button></div>`
-    )
+        )
         $(".map-overlay").css({ "z-index": "1", "opacity": "1", "display": "block" })
     } else {
         $("#results_title").html(
-               
+
             `<div id="results" class="fade-in">
         <h3>We found <span class="bold-in-text">${arrayChoice.length} results</span> <span class="d-none d-lg-block">that you may be interested in</span></h3>
         </div>`
-    )
-     
+        )
+
         $(".map-overlay").css({ "z-index": "-1", "opacity": "0", "display": "none" })
     };
 
 
-// Start pagination
+    // Start pagination
     $("#pagination_btns").html("")
     let pageCount = Math.ceil(arrayChoice.length / itemsPerPage);
-    pagination(btnNorth,btnSouth,btnEast,btnWest,pageCount);
+    pagination(btnNorth, btnSouth, btnEast, btnWest, pageCount);
 
-// Reset the overlay before displaying results
+    // Reset the overlay before displaying results
     hideOverlay();
 
 };
 
-function pagination(btnNorth,btnSouth,btnEast,btnWest,pageCount) {
+function pagination(btnNorth, btnSouth, btnEast, btnWest, pageCount) {
 
     for (let i = 1; i < pageCount + 1; i++) {
         let btn = pagButtons(i);
@@ -296,15 +296,14 @@ function sort(sort) {
 
 // Show the sidebar details when 'read more' is clicked
 function moreDetails(j) {
-    $("#locations_sidebar").animate({ right: '0' }, "medium");
-    //$(".sidebar-item").addClass("hide");
+    $("#locations_sidebar").removeClass("hidden");
     $(`#sidebar_list_${[j]}`).removeClass("hide");
     $(".list-overlay").animate({ opacity: '1' }, "medium").css({ "z-index": "2", "display": "block" })
 };
 
 function hideOverlay() {
-        $(".list-overlay").animate({ opacity: '0' }, "medium").css({ "z-index": "0", "display": "none" })
-    if ($("#locations_sidebar").css({ "right": '-51%' }) === false) {
+    $(".list-overlay").animate({ opacity: '0' }, "medium").css({ "z-index": "0", "display": "none" })
+    if ($("#locations_sidebar").hasClass("hidden") === false) {
         closeBtn();
     } else {
         return false
@@ -313,7 +312,7 @@ function hideOverlay() {
 }
 
 function closeBtn() {
-    $("#locations_sidebar").animate({ right: '-51%' }, "medium");
+    $("#locations_sidebar").addClass("hidden");
     setTimeout(function () {
         $(".sidebar-item").addClass("hide");
     }, 500);
@@ -339,10 +338,10 @@ function enterKey() {
 // Filter items functions
 function searchField(URLsearch) {
 
-    if (URLsearch != "") $("#search").val(URLsearch); 
-    
+    if (URLsearch != "") $("#search").val(URLsearch);
+
     let search = $("#search").val();
-    
+
     $(".marker").addClass("hide");
     $(".list-item").addClass("hide");
     $(`.list-item:contains(${search})`).removeClass("hide");
@@ -375,7 +374,7 @@ function showList() {
     $("#map_btn").removeClass("active");
     $(".map-overlay").addClass("hide")
     $("#list_btn").addClass("active");
-  //  $("#no_locations").removeClass("no-results-map")
+    //  $("#no_locations").removeClass("no-results-map")
     $("#locations_list").removeClass("hide");
     $(".location-list-wrapper").removeClass("hide");
     $("#pagination_btns").removeClass("hide");
@@ -476,7 +475,11 @@ function listFilterArea(area) {
 $(function () {
     // Bind the swipeHandler callback function to the swipe event on div.box
     $("#locations_sidebar").on("swipe", function () {
-        $("#locations_sidebar").css("right", "-101%");
+        if ($("#locations_sidebar").hasClass("hidden") == false) {
+            closeBtn();
+        } else {
+            return false;
+        }
     }
     )
 });

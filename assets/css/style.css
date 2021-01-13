@@ -96,7 +96,7 @@ section {
 }
 
 .snap-scroll-parent {
-    scroll-snap-type: y proximity;
+    scroll-snap-type: y mandatory;
     overflow-y: scroll;
     height: 100vh;
 }
@@ -544,14 +544,23 @@ color: #fff;
 }
 
 #locations_sidebar {
+    animation-name: slideIn;
+animation-duration: 0.3s;
     background-color: #fff;
     height: 100%;
     position: fixed;
-    right: -50%;
+    right: 0%;
     z-index: 3;
     top: 0px;
     width: 25%;
     box-shadow: -2px 1px 20px -5px #7b7b7b;
+    transition: 0.5s ease-in-out;
+}
+
+#locations_sidebar.hidden {
+right: -100%;
+transition: 0.5s ease-in-out;
+
 }
 
 .sidebar-img-wrapper {
@@ -905,7 +914,6 @@ height: max-content;
 #locations_sidebar {
     width: 100%;
     z-index: 5;
-    right: -101%;
 }
 
 }
@@ -940,6 +948,16 @@ height: max-content;
     animation-name: fadeOut;
     animation-duration: 0.7s;
     animation-fill-mode: forwards;
+}
+
+@keyframes slideIn {
+    from {right:-100%}
+    to {right: 0%}
+}
+
+@keyframes slideOut {
+    from {right:0%}
+    to {right: -100%!important}
 }
 
 @keyframes fadeIn {
