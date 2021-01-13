@@ -59,12 +59,19 @@ jQuery(function ($) {
     console.log(mobile)
     if (mobile == true) {
         $(".navbar-expand-lg").addClass("pb-0");
+        //$("#filter > .filter-section:nth-child(1)").removeClass("mt-4");
     }
-    $(".navbar-toggler").click(() => {
-        $(".navbar-toggler > i").addClass("fa-times").removeClass("fa-bars");
+    $("#nav_collapse").click(() => {
+        $("#nav_collapse > i").addClass("fa-times").removeClass("fa-bars");
         $(".homepage-overlay").toggleClass("mobile");
-        $(".navbar-toggler.collapsed > i").addClass("fa-bars").removeClass("fa-times");
+        $("#nav_collapse.collapsed > i").addClass("fa-bars").removeClass("fa-times");
     })
+    $("#filter_mobile").click(() => {
+        $("#filter_mobile > i").addClass("fa-times").removeClass("fa-filter");
+        $("#filter_mobile.collapsed > i").addClass("fa-filter").removeClass("fa-times");
+    })
+
+
 });
 
 
@@ -223,7 +230,7 @@ function initList(page) {
         $("#results_title").html(
                
             `<div id="results" class="fade-in">
-        <h3>We found <span class="bold-in-text">${arrayChoice.length} results</span> that you may be interested in</h3>
+        <h3>We found <span class="bold-in-text">${arrayChoice.length} results</span> <span class="d-none d-lg-block">that you may be interested in</span></h3>
         </div>`
     )
      
@@ -460,4 +467,17 @@ function listFilterArea(area) {
     
         }*/
 }
+
+
+
+
+// ---- MOBILE ---- \\
+
+$(function () {
+    // Bind the swipeHandler callback function to the swipe event on div.box
+    $("#locations_sidebar").on("swipe", function () {
+        $("#locations_sidebar").css("right", "-101%");
+    }
+    )
+});
 

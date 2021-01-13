@@ -75,15 +75,16 @@ function initMap() {
 
                 let cardContent =
 
-                    `<div class="d-flex card flex-row list-item mt-3" id="list_item_${[x]}" onclick="moreDetails(${[x]});">
+                    `<div class="d-flex card list-item mt-3" id="list_item_${[x]}" onclick="moreDetails(${[x]});">
                     <div class="list-item-img"><img
                             src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${location.photo_reference}&key=${gAPI}">
                     </div>
                     <div class="location-info d-flex flex-column p-2">
                         <h4>${place.name}</h4>
-                        <div class="d-flex flex-row"><div class="area-tag">${location.area}</div> <p class="list-item-address my-auto pl-2">${place.formatted_address}</p></div>
+                        <div class="d-flex"><div class="area-tag">${location.area}</div> <p class="list-item-address my-auto pl-2">${place.formatted_address}</p></div>
                         <p class="list-item-date">Posted on: ${formatted_date}</p>
                         <p class="list-item-short-desc">${location.para.substr(0, 150)}... <span onclick="moreDetails(${[x]});" class="read-more-trigger">Read More</span></p>
+                        <button onclick="moreDetails(${[x]});" class="read-more-trigger d-lg-none d-xl-none d-xxl-none">Read More</button>
                     </div>
                     </div>`;
 
@@ -109,7 +110,7 @@ function initMap() {
 
                 locationListings.push(cardContent);
                 locationListingsDates.push(location.posted);
-                featured.push({
+               /* featured.push({
                     place: place.name,
                     address: place.formatted_address,
                     area: location.area,
@@ -118,7 +119,7 @@ function initMap() {
                     title: location.title,
                     id: [x],
                     photo: location.photo_reference
-                });
+                });*/
                 featured.sort((a, b) => b.date - a.date);
                 request.sort((a, b) => b.posted - a.posted);
                 listingObjectCombined[x] = { content: cardContent, date: location.posted }
