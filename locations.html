@@ -111,16 +111,16 @@
 
 
             <div class="col-md-4 col-lg-3" id="filter-sidebar">
-                <div class="filter-section mb-4 ">
-                    <h3 class="underline-hdr d-none d-lg-block">Filter your search</h3>
+                <div class="underline-hdr  filter-section mb-4 ">
+                    <h3 class="d-none d-lg-inline">Filter your search</h3>
                     <h3 class="d-lg-none d-xl-none d-xxl-none">Filter</h3>
-                    <button id="filter_mobile" class="navbar-toggler d-sm" type="button" data-bs-toggle="collapse"
+                    <button id="filter_mobile" class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#filter" aria-controls="filter" aria-expanded="false"
                         aria-label="Toggle navigation">
                         <i class="fas fa-filter"></i>
                     </button>
                 </div>
-                <div id="filter" class="collapse">
+                <div id="filter">
                     <div class="filter-section mt-4 ">
                         <h4>By Keyword</h4>
                         <div class="d-flex">
@@ -168,7 +168,7 @@
             </div>
             <div class="col-md-8 col-lg-9 p-0 d-flex flex-column">
                 <div id="results_title">
-                    <h3>We found <span class="bold-in-text">0 results </span><span class="d-none d-lg-block">that you
+                    <h3>We found <span class="bold-in-text">0 results</span><span class="d-none d-lg-inline"> that you
                             may be interested in</span></h3>
 
                 </div>
@@ -201,11 +201,14 @@
             <div>
                 <p>&copy; Copyright 2021 Remote London </p>
             </div>
+            <div>
+                <p class="to-top">Back to top</p>
+            </div>
 
 
         </div>
     </footer>
-    <button id="to_top" class="fade-in hide"><i class="fas fa-arrow-circle-up"></i></button>
+    <button class="to-top" class="fade-in d-xs-none d-sm-none hide"><i class="fas fa-arrow-circle-up"></i></button>
 </body>
 
 </html>

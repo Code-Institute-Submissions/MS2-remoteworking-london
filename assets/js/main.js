@@ -55,10 +55,11 @@ function openInfoHome(loc_id) {
 // Mobile - change dropdown menu on click
 jQuery(function ($) {
     let width = screen.width;
-    let mobile = (width <= 576);
+    let mobile = (width <= 767);
     console.log(mobile)
     if (mobile == true) {
         $(".navbar-expand-lg").addClass("pb-0");
+        $("#filter").addClass("collapse");
         //$("#filter > .filter-section:nth-child(1)").removeClass("mt-4");
     }
     $("#nav_collapse").click(() => {
@@ -102,7 +103,7 @@ $(window).scroll(function () {
     }
 });
 
-$("#to_top").on('click', function () {
+$(".to-top").on('click', function () {
     $("html, body").animate({ scrollTop: 0 }, 100);
 });
 
@@ -230,7 +231,7 @@ function initList(page) {
         $("#results_title").html(
 
             `<div id="results" class="fade-in">
-        <h3>We found <span class="bold-in-text">${arrayChoice.length} results</span> <span class="d-none d-lg-block">that you may be interested in</span></h3>
+        <h3>We found <span class="bold-in-text">${arrayChoice.length} results</span> <span class="d-none d-lg-inline">that you may be interested in</span></h3>
         </div>`
         )
 

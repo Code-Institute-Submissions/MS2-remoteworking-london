@@ -143,7 +143,7 @@ background-color: #ffffff;
     background-color: #f8554a;
 }
 
-#to_top {
+button.to-top {
     position: fixed;
     right: 25px;
     bottom: 25px;
@@ -153,7 +153,9 @@ background-color: #ffffff;
     color: #fff;
 }
 
-
+p.to-top {
+    display: none;
+}
 
 .container {
     max-width: 100%;
@@ -462,7 +464,7 @@ color: #fff;
 /* ===  === === === === ===  === */
 
 #locations_header {
-    background: url(../images/london_arial.jpg);
+    background: url(../images/london_arial2.jpg);
     background-size: cover;
     background-position-y: 85%;
     background-repeat: no-repeat;
@@ -620,7 +622,6 @@ transition: 0.5s ease-in-out;
     border-right: 1px solid #ccc;
 }
 
-
 .filter-btn, .area-btn, .sort-date, .search-btn {
     
     background: #ffffff;
@@ -660,6 +661,7 @@ transition: 0.5s ease-in-out;
     box-shadow: none;
     margin: 0;
     outline: none;
+    display: none;
 }
 #filter_mobile i {
     color: #f8564b;
@@ -695,6 +697,7 @@ transition: 0.5s ease-in-out;
     box-shadow: 1px 1px 15px -5px #afafaf;
     overflow: hidden;
     transition: 0.3s ease-in-out;
+    flex-direction: row;
 }
 
 
@@ -803,6 +806,7 @@ h1 {
     margin-bottom: 10px;
 }
 
+
 .homepage-title {
     margin-top: 60px;
     width: 100%;
@@ -884,6 +888,11 @@ height: max-content;
     margin-bottom: 0!important;
     padding-bottom: 10px;
     border-bottom: 1px solid #ccc;
+    width: 100%;
+}
+
+#filter_mobile {
+    display: inline;
 }
 
 #results_title {
@@ -916,10 +925,32 @@ height: max-content;
     z-index: 5;
 }
 
+.read-more-trigger {
+    font-weight: 400;
+    color: #fff;
+    padding: 10px 15px;
+    width: max-content;
+    margin: 10px auto;
+    background: #f85549;
+}
+
 }
 
 @media (max-width: 767.98px) {
 
+p.to-top {
+    display: block;
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+button.to-top {
+    display: none;
+}
+
+.list-item:hover {
+    transform: translateX(0px);
+}
 }
 
 @media (max-width: 991.98px) {
