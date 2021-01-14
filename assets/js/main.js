@@ -172,10 +172,11 @@ function initList(page) {
         for (var i = 0; i < arrayChoiceArea.length; i++) {
 
             let item = arrayChoiceArea[i]
-
+            let itemLower = item.content.toLowerCase()
+            
             console.log("each item", item.content)
 
-            if (item.content.includes(search))
+            if (item.content.includes(search) || itemLower.includes(search))
                 searchResults.push(item)
 
 
