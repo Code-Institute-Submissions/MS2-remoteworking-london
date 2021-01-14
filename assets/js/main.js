@@ -88,6 +88,13 @@ $(window).on('scroll', function () {
 });
 
 
+// Pre-loader
+
+$(document).ready(function(){
+    $(".pre-load-bg").fadeOut("medium");
+})
+
+
 // Smooth scrolling
 
 

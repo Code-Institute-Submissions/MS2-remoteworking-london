@@ -90,6 +90,29 @@ body {
     flex-direction: column;
 }
 
+.pre-loader {
+    height: 120px;
+    width: 120px;
+    border: 7px solid #ececec;
+    border-top: 7px solid #f8554a;
+    border-right: 7px solid #f8554a;
+    border-radius: 50%;
+    margin: auto;
+    animation-name: preLoad;
+    animation-iteration-count: infinite;
+    animation-duration: 1.3s;
+    animation-timing-function: linear;
+}
+
+.pre-load-bg {
+    position: absolute;
+    display: flex;
+    z-index: 8;
+    height: 100%;
+    width: 100%;
+    background: #fff
+}
+
 section {
     padding: 40px;
     background-color: #fdfdfd;
@@ -478,7 +501,7 @@ color: #fff;
 
 .locations-pg-wrapper {
     max-width: 100%;
-    height: -webkit-fill-available;
+    height: -webkit-min-content;
     background: #fdfdfd;
     display: -webkit-box;
     transition: 0.7s ease-in-out;
@@ -1004,6 +1027,11 @@ button.to-top {
 @keyframes slideUp {
     from {opacity: 0; transform: translateY(-50px);}
     to {opacity: 1; transform: translateY(0px);}
+}
+
+@keyframes preLoad {
+    from {transform: rotate(0deg);}
+    to  {transform: rotate(360deg);}
 }
 
 
