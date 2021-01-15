@@ -8,6 +8,7 @@ h1, h2, h3, h4, h5, h6, p, a {
  margin: 0;
  padding: 0;
  font-family: "Poppins", sans-serif;
+ margin-bottom: 0.2rem;
 }
 
 h1 {
@@ -19,11 +20,11 @@ h2 {
     font-weight: 300;
 }
 h3 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 300;
 }
 h4 {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 300;
 }
 h5 {
@@ -553,12 +554,12 @@ color: #fff;
 .list-item-img {
     max-width: 250px;
     min-height: 100%;
-    max-height: 140px;
+    max-height: 100%;
     overflow: hidden;
 }
 
 .list-item-img > img {
-    width: auto;
+    width: 100%;
     height: 100%;
     display: flex;
 }
@@ -566,6 +567,11 @@ color: #fff;
 .location-info {
     width: -webkit-fill-available;
     height: max-content;
+}
+
+.location-info > h4 {
+    font-weight: 400;
+    margin-bottom: 0.8rem;
 }
 
 #locations_sidebar {
@@ -612,8 +618,15 @@ transition: 0.5s ease-in-out;
     padding: 3px 8px;
     background-color: #dedede;
     box-shadow: 1px 1px 1px #a9a9a9;
-    width: fit-content;
+    width: min-content;
     border-radius: 5px;
+    margin: 0px 10px 5px 0px;
+    white-space: pre;
+    display: flex;
+}
+
+.area-tag > span {
+    margin: auto;
 }
 
 .sidebar-website-btn {
@@ -639,8 +652,9 @@ button.read-more-trigger {
 }
 
 .read-more-trigger {
-    font-weight: bold;
-    color: #0062cc;
+    color: #f8564b;
+    font-weight: 500;
+    border-bottom: 2px solid #f8564b;
 }
 
 #filter-sidebar {
@@ -989,6 +1003,11 @@ button.to-top {
     width: 100%;
 }
 
+#map > div {
+    min-height: 100vh;
+    position: relative!important;
+}
+
 }
 
 @media (min-width: 768px){
@@ -1006,6 +1025,13 @@ button.to-top {
 #filter.collapse {
     display: block;
 }
+}
+
+@media (max-width: 949.98px) { 
+.location-info > div {
+    flex-direction: column;
+}
+
 }
 
 @media (max-width: 991.98px) {

@@ -81,7 +81,7 @@ function initMap() {
                     </div>
                     <div class="location-info d-flex flex-column p-2">
                         <h4>${place.name}</h4>
-                        <div class="d-flex"><div class="area-tag">${location.area}</div> <p class="list-item-address my-auto pl-2">${place.formatted_address}</p></div>
+                        <div class="d-flex"><div class="area-tag"><span>${location.area}</span></div> <p class="list-item-address my-auto pl-2">${place.formatted_address}</p></div>
                         <p class="list-item-date">Posted on: ${formatted_date}</p>
                         <p class="list-item-short-desc">${location.para.substr(0, 150)}... <span onclick="moreDetails(${[x]});" class="read-more-trigger">Read More</span></p>
                         <button onclick="moreDetails(${[x]});" class="read-more-trigger d-lg-none d-xl-none d-xxl-none">Read More</button>

@@ -44,6 +44,7 @@
 <div class="pre-load-bg">
     <div class="pre-loader"></div>
 </div>
+<div class="snap-scroll-parent">
     <header id="locations_header" class="snap-scroll-child">
         <div class="">
             <div class="mobile-menu-wrapper clear fade-in">
@@ -169,7 +170,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8 col-lg-9 p-0 d-flex flex-column">
+            <div class="col-md-8 col-lg-9 p-0 d-flex flex-column snap-scroll-child">
                 <div id="results_title">
                     <h3>We found <span class="bold-in-text">0 results</span><span class="d-none d-lg-inline"> that you
                             may be interested in</span></h3>
@@ -178,7 +179,7 @@
                 <div class="list-overlay" onclick="hideOverlay();"></div>
 
                 <div class="map-overlay hide"></div>
-                <div id="map" class="fade-in fade-out hide"> </div>
+                <div id="map" class="hide"> </div>
                 <div class="location-list-wrapper">
 
                     <div id="locations_list"></div>
@@ -194,6 +195,7 @@
 
         </div>
     </div>
+    
     <footer>
 
         <div class="d-flex flex-column">
@@ -212,6 +214,7 @@
         </div>
     </footer>
     <button class="to-top" class="fade-in d-xs-none d-sm-none hide"><i class="fas fa-arrow-circle-up"></i></button>
+    </div>
 </body>
 
 </html>
