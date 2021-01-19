@@ -40,7 +40,7 @@ function initMap() {
             let content = `
             <div class="d-flex flex-row infowindow">
                 <div class="infowindow-img-wrap">
-                    <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${locationMap.photo_reference}&key=${gAPI}" alt="${locationMap.name}">
+                    <img src="${locationMap.photo_reference}" alt="${locationMap.name}">
                 </div>
                 <div class="d-flex flex-column mx-2">
                     <h6>${place.name}</h6><p>${place.formatted_address}<br>${place.place_id}</p>
@@ -77,7 +77,7 @@ function initMap() {
 
                     `<div class="d-flex card list-item mt-3" id="list_item_${[x]}" onclick="moreDetails(${[x]});">
                     <div class="list-item-img"><img
-                            src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${location.photo_reference}&key=${gAPI}">
+                            src="${location.photo_reference}"> alt="${place.name}"
                     </div>
                     <div class="location-info d-flex flex-column p-2">
                         <h4>${place.name}</h4>
@@ -94,7 +94,7 @@ function initMap() {
                             
                             
                             
-                            <div class="sidebar-img-wrapper"><img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${location.photo_reference}&key=${gAPI}"></div>
+                            <div class="sidebar-img-wrapper"><img src="${location.photo_reference}" alt="${place.name}"></div>
                             <div class="sidebar-content-wrapper p-4">
                             <h4>${place.name}</h4>
                             <p class="area-tag m-0">${location.area}</p>

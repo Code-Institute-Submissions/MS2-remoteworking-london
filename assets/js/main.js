@@ -28,7 +28,7 @@ console.log("request", request);
         let item = request[i]
         $(`#ft${[i]}`).append(
             `<div class="featured-img-wrap">
-                    <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${item.photo_reference}&key=${gAPI}" alt="${item.name}">
+                    <img src="${item.photo_reference}" alt="${item.title}">
                 </div>
                 <div class="featured-icon"><i class="fas fa-${item.cat_icon}"></i></div>
             <div class="featured-content">
@@ -234,7 +234,7 @@ function initList(page) {
             `<div id="no_results" class="card fade-in"><h3>Looks like we're all out of ideas here. <i class="far fa-frown"></i> </h3><p>Try a different flavour or show all results for inspiration</p>
         <button class="btn cta-btn" onclick="listFilterArea('All');">Show all results</button></div>`
         )
-        $(".map-overlay").css({ "z-index": "1", "opacity": "1", "display": "block" })
+        //$(".map-overlay").css({ "z-index": "1", "opacity": "1", "display": "block" })
     } else {
         $("#results_title").html(
 
@@ -243,7 +243,7 @@ function initList(page) {
         </div>`
         )
 
-        $(".map-overlay").css({ "z-index": "-1", "opacity": "0", "display": "none" })
+        //$(".map-overlay").css({ "z-index": "-1", "opacity": "0", "display": "none" })
     };
 
 
@@ -306,12 +306,15 @@ function sort(sort) {
 // Show the sidebar details when 'read more' is clicked
 function moreDetails(j) {
     $("#locations_sidebar").removeClass("hidden");
+    $(".modal-overlay").addClass("show");
     $(`#sidebar_list_${[j]}`).removeClass("hide");
     $(".list-overlay").animate({ opacity: '1' }, "medium").css({ "z-index": "2", "display": "block" })
 };
 
 function hideOverlay() {
-    $(".list-overlay").animate({ opacity: '0' }, "medium").css({ "z-index": "0", "display": "none" })
+    $(".modal-overlay").click(function (){
+        $(".modal-overlay").removeClass("show");
+    })
     if ($("#locations_sidebar").hasClass("hidden") === false) {
         closeBtn();
     } else {
@@ -322,6 +325,7 @@ function hideOverlay() {
 
 function closeBtn() {
     $("#locations_sidebar").addClass("hidden");
+    $(".modal-overlay").removeClass("show");
     setTimeout(function () {
         $(".sidebar-item").addClass("hide");
     }, 500);
@@ -373,7 +377,7 @@ function showMap() {
     //$("#results_title").addClass("no-results-map")
     $("#map_btn").addClass("active");
     $("#map").removeClass("hide");
-    $(".map-overlay").removeClass("hide")
+    //$(".map-overlay").removeClass("hide")
     $("#results_title").addClass("map")
     closeBtn();
 }
@@ -381,7 +385,7 @@ function showMap() {
 function showList() {
     $("#map").addClass("hide");
     $("#map_btn").removeClass("active");
-    $(".map-overlay").addClass("hide")
+    //$(".map-overlay").addClass("hide")
     $("#list_btn").addClass("active");
     //  $("#no_locations").removeClass("no-results-map")
     $("#locations_list").removeClass("hide");
