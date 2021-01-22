@@ -67,3 +67,4 @@ In order to achieve this, the site is built with simplicity in mind - a simple l
     -  london eye wide angle <span>Photo by <a href="https://unsplash.com/@arkadiuszradek?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Arkadiusz Radek</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
     - arial 2 - <span>Photo by <a href="https://unsplash.com/@giamboscaro?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Giammarco Boscaro</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
     - css loader - https://www.w3schools.com/howto/howto_css_loader.asp 
+    - emailjs lesson in CI  

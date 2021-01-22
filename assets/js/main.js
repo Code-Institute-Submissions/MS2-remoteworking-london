@@ -78,9 +78,6 @@ $(function () {
 })
 
 
-
-
-
 // new credits: https://www.youtube.com/watch?v=IqYiVHrO2U8 
 
 // =======
