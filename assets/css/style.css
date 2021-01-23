@@ -221,6 +221,10 @@ max-width: 100%;
     width: 60%;
 }
 
+.support-page-header {
+    padding-bottom: 30px;
+}
+
 /*  NAVBAR  */ 
 .navbar {
     margin: 0;
@@ -253,6 +257,26 @@ background-position: bottom;
 nav ul li a.active {
     padding-bottom: 5px;
     border-bottom: 3px solid #f8554a;
+}
+
+.color-bg-nav {
+    background: linear-gradient(160deg,#f8554a 30%, #dc3545 80%);
+}
+
+.color-bg-nav > ul > li > .nav-link {
+    background: transparent;
+    background: linear-gradient(to bottom, transparent 50%, #7bfac3 50%);
+    background-size: 100% 200%;
+    background-position: top;
+    transition: 0.3s ease-in-out;
+}
+.color-bg-nav > ul > li > .nav-link.active {
+    border-bottom: 3px solid #7bfac3;
+}
+
+.color-bg-nav > ul > li > .nav-link:hover {
+    background-position: bottom;
+    color: #000!important;
 }
 
 /* --- Mobile --- */
@@ -866,7 +890,7 @@ button.read-more-trigger {
 
 .contact-input {
     border: 1px solid transparent;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     padding: 15px 20px;
     border-radius: 2px;
     box-shadow: 1px 1px 4px 0px #3c3c3c;
@@ -876,6 +900,7 @@ button.read-more-trigger {
 .form-label {
     color: #3c3c3c;
     width: max-content;
+    margin-bottom: 0.3em;
 }
 
 .contact-input:focus {
@@ -888,19 +913,25 @@ textarea {
     overflow-x: hidden;
 }
 
+
+
+.input-group-item{
+  display: flex;
+  width: 49%;    
+}
+
 input.cta-btn {
     background: linear-gradient( to right, #f8554a 50%, #7bfac3 50%);
     background-size: 200% 100%;
     background-position: left;
     transition: 0.3s ease-in-out;
-    border: 1px solid #f8554a;
+    border: none;
     width: 50%;
     margin: auto;
 }
 
 input.cta-btn:hover {
     background-position: right;
-    border: 1px solid #7bfac3;
     color: #000000;
 }
 
@@ -914,6 +945,12 @@ h1 {
     margin-bottom: 10px;
 }
 
+.input-row-section {
+    flex-direction: column;
+}
+.input-group-item {
+    width: 100%;
+}
 
 .homepage-title {
     margin-top: 60px;
@@ -1026,6 +1063,10 @@ button.read-more-trigger {
     width: max-content;
     margin: 10px auto;
     background: #f85549;
+}
+
+.info-pg-wrapper {
+    width: 85%;
 }
 
 

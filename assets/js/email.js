@@ -4,18 +4,19 @@
 
 function sendEmail(contactForm) {
     var templateParams = {
-        from_name: contactForm.name.value,
+        from_name: contactForm.fname.value + contactForm.fname.value,
+        fname: contactForm.fname.value,
         email: contactForm.email.value,
-        to_name: "Bradley",
         subject: contactForm.subject.value,
         message_body: contactForm.message_body.value,
+        termsAccept: contactForm.terms.value,
     }
 
     emailjs.send("service_fsjc9yj", "template_evpkkwd", templateParams)
         .then(function (response) {
-            console.log("Success", response.status, response.text)
+            console.log("Success", response.text)
         }, function (error) {
-            console.log("Error", response.status, response.text)
+            console.log("Error", response.text)
         });
     return false;
 }

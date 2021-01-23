@@ -27,10 +27,10 @@
         <div class="pre-loader"></div>
     </div>
 
-    <header id="locations_header">
-        <div class="">
+    <header id="contact_header">
+        
             <div class="mobile-menu-wrapper clear fade-in">
-                <nav class="navbar navbar-expand-lg navbar-light">
+                <nav class="navbar navbar-expand-lg navbar-light color-bg-nav">
                     <a class="navbar-brand" href="index.html"><img src="assets/images/logo.svg" alt="logo"></a>
                     <ul class="navbar-nav d-none d-md-flex d-sm-md-none">
 
@@ -77,48 +77,78 @@
 
                 </nav>
             </div>
-            <div id="landing_pg_search">
-                <div class="page-title">
-                    <h1>Find remote working locations near you</h1>
-
-                </div>
+            
+                
 
 
-            </div>
-        </div>
+            
+        
+            
     </header>
     <div class="info-pg-wrapper">
+<div class="support-page-header">
+<h1 class="info-pg-title">Contact Us</h1>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut omnis similique rerum aliquam ex iusto voluptatum tempora hic mollitia? Mollitia aut voluptates esse vel iusto similique beatae dolorem omnis deleniti?</p>
 
-        <h1 class="info-pg-title">Contact Us</h1>
+                </div>
+        
 
 
         <div>
             <form id="contact_form" class="d-flex flex-column" onsubmit="return sendEmail(this);" method="POST">
-                <label for="name" class="form-label">Name</label>
-                <input class="contact-input" type="text" name="name">
+                <div class="d-flex justify-content-between input-row-section">
+                    <div class="input-group-item flex-column">
+                    <label for="fname" class="form-label">First Name</label>
+                    <input class="contact-input" type="text" name="fname" required>
+                    </div>
+                    <div class="input-group-item flex-column">
+                    <label for="lname" class="form-label">Last Name</label>
+                    <input class="contact-input" type="text" name="lname" required>
+                    </div>
+                </div>
                 <label for="email" class="form-label">Email</label>
-                <input class="contact-input" type="email" name="email">
+                <input class="contact-input" type="email" name="email" required>
                 <label for="subject" class="form-label">Subject Line</label>
-                <input class="contact-input" type="text" name="subject">
+                <input class="contact-input" type="text" name="subject" required>
                 <label for="message_body" class="form-label">Your Message</label>
-                <textarea class="contact-input" rows="4" type="textarea" name="message_body"></textarea>
+                <textarea class="contact-input" rows="4" type="textarea" name="message_body" required></textarea>
                 <label for="terms_approved" class="form-label">terms and conditions</label>
-                <input class="contact-input" type="checkbox" name="terms_approved">
+                <input class="contact-input" type="checkbox" name="terms_approved" required>
                 <input class="contact-input cta-btn" type="submit" value="Submit">
             </form>
 
         </div>
+    </div>
+
+    <footer class="snap-scroll-end">
+
+        <div class="d-flex flex-column">
+
+            <div class="footer-links mb-3">
+                <p> <a href="">About Us</a><a href="">Contact Us</a><a href="">Privacy</a></p>
+            </div>
+            <div>
+                <p>&copy; Copyright 2021 Remote London </p>
+            </div>
+            <div>
+                <p class="to-top">Back to top</p>
+            </div>
+
+
+        </div>
+    </footer>
 
 
 
-        <!-- Load and initialise Email.js script-->
-        <script src="assets/js/email.js"></script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
-        <script type="text/javascript">
-            (function () {
-                emailjs.init("user_kzLXPsKeCx1gBgjDlfL4H");
-            })();
-        </script>
+
+    <!-- Load and initialise Email.js script-->
+    <script src="assets/js/email.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("user_kzLXPsKeCx1gBgjDlfL4H");
+        })();
+    </script>
 
 </body>
 
