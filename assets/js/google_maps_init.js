@@ -43,7 +43,9 @@ function initMap() {
                     <img src="${locationMap.photo_reference}" alt="${locationMap.name}">
                 </div>
                 <div class="d-flex flex-column mx-2">
-                    <h6>${place.name}</h6><p>${place.formatted_address}<br>${place.place_id}</p>
+                    <h6>${place.name}</h6>
+                    <p>${place.formatted_address}</p>
+                    <p onclick="moreDetails(${[mm]});" class="infowindow-readmore">Read More</p>
                 </div>
                 <div class="d-flex">
                     <button class="btn cta-btn infowindow-cta" onclick="moreDetails(${[mm]});"><i class="fas fa-chevron-circle-right"></i></p>
@@ -110,16 +112,16 @@ function initMap() {
 
                 locationListings.push(cardContent);
                 locationListingsDates.push(location.posted);
-               /* featured.push({
-                    place: place.name,
-                    address: place.formatted_address,
-                    area: location.area,
-                    date: location.posted,
-                    para: location.para,
-                    title: location.title,
-                    id: [x],
-                    photo: location.photo_reference
-                });*/
+                /* featured.push({
+                     place: place.name,
+                     address: place.formatted_address,
+                     area: location.area,
+                     date: location.posted,
+                     para: location.para,
+                     title: location.title,
+                     id: [x],
+                     photo: location.photo_reference
+                 });*/
                 featured.sort((a, b) => b.date - a.date);
                 request.sort((a, b) => b.posted - a.posted);
                 listingObjectCombined[x] = { content: cardContent, date: location.posted }

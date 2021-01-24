@@ -342,8 +342,8 @@ nav ul li a.active {
 /* FOOTER */
 
 .footer-wrapper{
-    position: sticky;
    min-height: 150px;
+   position: relative;
 }
 
 footer {
@@ -619,7 +619,7 @@ color: #fff;
     z-index: 2;
     padding: 40px;
     margin: auto;
-    box-shadow: 1px 1px 15px -5px #afafaf;
+    box-shadow: 1px 1px 10px 0px #afafaf;
 }
 
 #results_title.map > #no_results {
@@ -734,10 +734,11 @@ button.read-more-trigger {
     display: none;
 }
 
-.read-more-trigger {
+.read-more-trigger, .infowindow-readmore {
     color: #f8564b;
     font-weight: 500;
     border-bottom: 2px solid #f8564b;
+    width: max-content;
 }
 
 #filter-sidebar {
@@ -905,6 +906,10 @@ button.read-more-trigger {
  background-color: #7bfac3;
 }
 
+.infowindow-readmore {
+    display: none;
+}
+
 .infowindow-img-wrap {
     overflow: hidden;
     max-width: 50px;
@@ -1009,9 +1014,17 @@ h1 {
     margin-bottom: 10px;
 }
 
+.footer-wrapper {
+ position: sticky;
+}
+
 footer {
     max-height: 150px;
     padding: 20px 40px;
+}
+
+.footer-links {
+    margin-bottom: 10px!important;
 }
 
 .snap-scroll-child-mobile {
@@ -1118,6 +1131,15 @@ height: max-content;
     margin-top: 0px;
 }
 
+#no_results {
+width: 100%;
+padding: 20px;
+}
+
+#no_results > p{
+padding: 10px 0;
+}
+
 .list-item {
     flex-direction: column;
     text-align: center;
@@ -1159,9 +1181,20 @@ button.read-more-trigger {
     background: #f85549;
 }
 
+.infowindow-cta {
+    display: none;
+}
+
+.infowindow-readmore {
+    display: block;
+}
+
+/* Support Pages */
+
 .info-pg-wrapper {
     width: 85%;
 }
+
 
 
 }

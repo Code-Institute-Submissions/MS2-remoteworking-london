@@ -102,7 +102,7 @@ function initList(page) {
     if (arrayChoice.length == 0) {
         $("#results_title").html(
             `<div id="no_results" class="card fade-in"><h3>Looks like we're all out of ideas here. <i class="far fa-frown"></i> </h3><p>Try a different flavour or show all results for inspiration</p>
-        <button class="btn cta-btn" onclick="listFilterArea('All');">Show all results</button></div>`
+        <a href="locations.html"><button class="btn cta-btn">Show all results</button></a></div>`
         )
         //$(".map-overlay").css({ "z-index": "1", "opacity": "1", "display": "block" })
     } else {
@@ -229,9 +229,20 @@ function searchField(URLsearch) {
     $(".list-item").addClass("hide");
     $(`.list-item:contains(${search})`).removeClass("hide");
     $(`.infowindow:contains(${search})`).removeClass("hide");
+    $("#filter_mobile").addClass("collapsed");
+    $("#filter_mobile i").addClass("fa-filter").removeClass("fa-times");
+    $("#filter").removeClass("show");
     hideOverlay()
     initList(currentPage)
 }
+
+$(document).ready(function () {
+    $(".search-btn").click(function () {
+    $("#list_section").animate({ scrollTop: 0 }, 300);    
+    })
+    
+})
+
 
 function landingSearch(searchInput) {
     let search = searchInput;
