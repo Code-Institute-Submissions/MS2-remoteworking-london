@@ -74,7 +74,8 @@ function initMap() {
         //  } else {
         service.getDetails(location, (place, status) => {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
-
+                let paraWords = location.para.split(" ", 22);
+                let paraWordLimit = paraWords.join(" ");
                 let cardContent =
 
                     `<div class="d-flex card list-item mt-3" id="list_item_${[x]}" onclick="moreDetails(${[x]});">
@@ -85,7 +86,7 @@ function initMap() {
                         <h4>${place.name}</h4>
                         <div class="d-flex"><div class="area-tag"><span>${location.area}</span></div> <p class="list-item-address my-auto pl-2">${place.formatted_address}</p></div>
                         <p class="list-item-date">Posted on: ${formatted_date}</p>
-                        <p class="list-item-short-desc">${location.para.substr(0, 150)}... <span onclick="moreDetails(${[x]});" class="read-more-trigger">Read More</span></p>
+                        <p class="list-item-short-desc">${paraWordLimit}... <span onclick="moreDetails(${[x]});" class="read-more-trigger">Read More</span></p>
                         <button onclick="moreDetails(${[x]});" class="read-more-trigger d-lg-none d-xl-none d-xxl-none">Read More</button>
                     </div>
                     </div>`;
@@ -103,7 +104,7 @@ function initMap() {
                             <p class="m-0">${place.formatted_address}</p>
                             <div class="hz-rule"></div>
                             <p>${location.para}</p>
-                            <button class="btn sidebar-website-btn"><a href="${location.web}" target="_blank">Visit Website</a></button>
+                            <a href="${location.web}" target="_blank"><button class="btn sidebar-website-btn">Visit Website</button></a>
                             </div>
                             
                             

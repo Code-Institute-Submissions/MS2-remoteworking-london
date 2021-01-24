@@ -83,6 +83,7 @@ html {
 body, div, section {
     margin: 0;
     padding: 0;
+    outline: none;
 }
 
 body {
@@ -324,7 +325,7 @@ nav ul li a.active {
 }
 
 .navbar.mobile {
-    padding: 0 40px 20px 40px;
+    padding: 0px 40px;
     display: flex;
     justify-content: flex-end;
     text-align: right;
@@ -654,6 +655,16 @@ color: #fff;
     margin-bottom: 0.8rem;
 }
 
+.list-item-short-desc {
+    padding: 10px 10px 10px 0px;
+}
+
+.list-item-date {
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 5px;
+}
+
 #locations_sidebar {
     animation-name: slideIn;
 animation-duration: 0.3s;
@@ -700,6 +711,10 @@ transition: 0.5s ease-in-out;
     width: 100%;
     transform: translateY(-75px);
 }
+.sidebar-content-wrapper p {
+ padding-bottom: 10px;
+ padding-top: 5px;
+}
 
 #close_btn {
     position: absolute;
@@ -728,6 +743,14 @@ transition: 0.5s ease-in-out;
     background-color: #0062cc;
     box-shadow: 1px 1px 5px #7b7b7b;
     color: #ffffff;
+    border: 1px solid #0062cc;
+}
+
+.sidebar-website-btn:hover {
+    background-color: #fff;
+    box-shadow: 1px 1px 5px #7b7b7b;
+    color: #f8564b;
+    border: 1px solid #f8564b;
 }
 
 button.read-more-trigger {
@@ -824,13 +847,16 @@ button.read-more-trigger {
     overflow: hidden;
     transition: 0.3s ease-in-out;
     flex-direction: row;
+    transform: translate3d(0,0,0);
+    backface-visibility: hidden; 
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
 }
 
 
 .list-item:hover {
     box-shadow: 1px 1px 6px -1px #484848;
-    transform: translateX(-5px);
-    border: none;
+    transform: translate3d(0,-3px,0)!important;
 }
 
 #pagination_wrapper {

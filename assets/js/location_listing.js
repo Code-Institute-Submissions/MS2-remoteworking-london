@@ -18,7 +18,6 @@ function initList(page) {
 
     let searchResults = [];
     let search = $("#search").val();
-    console.log("the search", search)
     let arrayChoiceArea;
     if (btnNorth == true) { arrayChoiceArea = listingObjectNorth }
     else if (btnSouth == true) { arrayChoiceArea = listingObjectSouth }
@@ -40,49 +39,28 @@ function initList(page) {
         arrayChoice = arrayChoiceArea
     } else {
         for (var i = 0; i < arrayChoiceArea.length; i++) {
-
-            let item = arrayChoiceArea[i]
-            let itemLower = item.content.toLowerCase()
-            
-            console.log("each item", item.content)
-
-            if (item.content.includes(search) || itemLower.includes(search))
-                searchResults.push(item)
-
-
-
+            if (arrayChoiceArea === undefined) {
+                $("#results_title").html(
+                    `<div id="no_results" class="card fade-in"><h3>Looks like we're all out of ideas here. <i class="far fa-frown"></i> </h3><p>Try a different flavour or show all results for inspiration</p>
+        <a href="locations.html"><button class="btn cta-btn">Show all results</button></a></div>`
+                )
+            } else {
+                let item = arrayChoiceArea[i]
+                let itemLower = item.content.toLowerCase()
+                if (item.content.includes(search) || itemLower.includes(search))
+                    searchResults.push(item)
+            }
         }
         arrayChoice = searchResults;
+
     }
-    console.log("serch results", searchResults)
-    console.log("found something", arrayChoice)
-
-    console.log("what is array", arrayChoice)
-
-    // Determine item count from each area
-    /*let north = request.filter(function (item) { return item.area === "North London"; }).length
-    let south = request.filter(function (item) { return item.area === "South London"; }).length
-    let east = request.filter(function (item) { return item.area === "East London"; }).length
-    let west = request.filter(function (item) { return item.area === "West London"; }).length
-
-    console.log("north:", north)
-    //$("#no_locations").addClass("hide");*/
-
-
 
     $("#locations_list").html("");
     page--;
-    console.log("currentPage after click:", page)
-    //listingObjectCombined.sort((a, b) => b.date - a.date);
-    console.log("Allitems", arrayChoice)
     let start = itemsPerPage * page;
     let end = start + itemsPerPage;
 
     let pagItems = arrayChoice.slice(start, end);
-
-
-    console.log("items", pagItems)
-    console.log("start:", start, "end", end)
 
     // new credits: https://www.youtube.com/watch?v=IqYiVHrO2U8 
 
@@ -90,16 +68,23 @@ function initList(page) {
 
     for (var i = 0; i < pagItems.length; i++) {
         let item = pagItems[i];
-        $("#locations_list").append(
-            `<div class="fade-in">${item.content}</div>`
-        )
+        if (pagItems === undefined) {
+            $("#results_title").html(
+                `<div id="no_results" class="card fade-in"><h3>Looks like we're all out of ideas here. <i class="far fa-frown"></i> </h3><p>Try a different flavour or show all results for inspiration</p>
+        <a href="locations.html"><button class="btn cta-btn">Show all results</button></a></div>`
+            )
+        } else {
 
+            $("#locations_list").append(
+                `<div class="fade-in">${item.content}</div>`
+            )
+
+        }
     }
 
     let mapActive = $("#map_btn").hasClass("filter-btn.active")
-    console.log("map?", mapActive)
 
-    if (arrayChoice.length == 0) {
+    if (arrayChoice.length === 0) {
         $("#results_title").html(
             `<div id="no_results" class="card fade-in"><h3>Looks like we're all out of ideas here. <i class="far fa-frown"></i> </h3><p>Try a different flavour or show all results for inspiration</p>
         <a href="locations.html"><button class="btn cta-btn">Show all results</button></a></div>`
@@ -145,11 +130,7 @@ function pagButtons(btnNum) {
 
     button.addEventListener('click', function () {
         currentPage = btnNum;
-        console.log("current", currentPage)
-        console.log("button nuber", currentPage)
         initList(currentPage);
-        //$(".pagination-btn.active").removeClass("active");
-        //$(this).addClass("active");
     })
     return button;
 }
@@ -182,7 +163,7 @@ function moreDetails(j) {
 };
 
 function hideOverlay() {
-    $(".modal-overlay").click(function (){
+    $(".modal-overlay").click(function () {
         $(".modal-overlay").removeClass("show");
     })
     if ($("#locations_sidebar").hasClass("hidden") === false) {
@@ -238,9 +219,9 @@ function searchField(URLsearch) {
 
 $(document).ready(function () {
     $(".search-btn").click(function () {
-    $("#list_section").animate({ scrollTop: 0 }, 300);    
+        $("#list_section").animate({ scrollTop: 0 }, 300);
     })
-    
+
 })
 
 
@@ -361,7 +342,7 @@ function listFilterArea(area) {
         }*/
 }
 
-// Get search query from URL & run text search ore 'read more' if exists
+// Get search query from URL & run text search more 'read more' if exists
 (function () {
     let href = window.location.href;
     let addSpace = href.replace("%20", " ");
@@ -370,13 +351,11 @@ function listFilterArea(area) {
     let idInfo = href.split('id=');
 
     let idInfoSearch = idInfo[1]
-    console.log("id", idInfoSearch)
     let URLsearch = URLstring[1];
     if (URLsearch != undefined) { searchField(URLsearch) }
     else { };
     if (idInfoSearch != undefined) { moreDetails(idInfoSearch); }
     else { return false }
-    console.log("id", idInfoSearch)
 })();
 
 
@@ -397,9 +376,7 @@ function listFilterArea(area) {
             </div>`
 
         );
-        console.log(item)
     }
-    console.log("it worked on the home page")
 })();
 
 

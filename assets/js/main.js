@@ -48,7 +48,7 @@ $(window).on("load", function () {
 $(document).ready(function () {
     $(".snap-scroll-parent").scroll(function () {
         let scrollLength = $(".snap-scroll-parent").scrollTop()
-        if (scrollLength >= 10) {
+        if (scrollLength >= 150) {
             $(".to-top").removeClass("hide")
         } else {
             $(".to-top").addClass("hide")
