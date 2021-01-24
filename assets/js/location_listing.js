@@ -1,6 +1,10 @@
 let currentPage = 1;
 let itemsPerPage = 4;
 
+// new credits: https://www.youtube.com/watch?v=IqYiVHrO2U8 
+
+// =======
+// =======
 
 function initList(page) {
 

@@ -66,6 +66,7 @@ i {
 }
 
 
+
 /*  COLOURS  */ 
 
 
@@ -85,10 +86,12 @@ body, div, section {
 }
 
 body {
-    /*min-height: 100vh;*/
+    min-height: 100vh;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
+    background: #efefef;
+    position: relative;
 }
 
 .pre-loader {
@@ -120,7 +123,7 @@ section {
 }
 
 .snap-scroll-parent {
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: y proximity;
     overflow-y: scroll;
     height: 100vh;
     overflow-x: hidden;
@@ -147,6 +150,25 @@ button {
     box-shadow: 1px 1px 5px #7b7b7b;
     border: none;
     outline: none;
+}
+
+.btn-primary {
+    margin-top: 30px;
+    width: max-content;
+    text-align: center;
+    justify-content: center;
+    padding: 15px 40px;
+    display: flex;
+    border-radius: 2px;
+    background: linear-gradient( to right, #f8554a 50%, #7bfac3 50%);
+    background-size: 200% 100%;
+    background-position: left;
+    transition: 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-position: right;
+    color: #000;
 }
 
 input {
@@ -225,6 +247,10 @@ max-width: 100%;
     padding-bottom: 30px;
 }
 
+.card {
+    border: none;
+}
+
 /*  NAVBAR  */ 
 .navbar {
     margin: 0;
@@ -263,18 +289,18 @@ nav ul li a.active {
     background: linear-gradient(160deg,#f8554a 30%, #dc3545 80%);
 }
 
-.color-bg-nav > ul > li > .nav-link {
+.color-bg-nav nav > ul > li > .nav-link {
     background: transparent;
     background: linear-gradient(to bottom, transparent 50%, #7bfac3 50%);
     background-size: 100% 200%;
     background-position: top;
     transition: 0.3s ease-in-out;
 }
-.color-bg-nav > ul > li > .nav-link.active {
+.color-bg-nav nav > ul > li > .nav-link.active {
     border-bottom: 3px solid #7bfac3;
 }
 
-.color-bg-nav > ul > li > .nav-link:hover {
+.color-bg-nav nav > ul > li > .nav-link:hover {
     background-position: bottom;
     color: #000!important;
 }
@@ -289,15 +315,23 @@ nav ul li a.active {
     border: none;
 }
 
+.navbar {
+    padding: 10px 40px;
+}
+
 .navbar-toggler:focus {
     box-shadow: none;
 }
 
 .navbar.mobile {
-    padding: 0 40px;
+    padding: 0 40px 20px 40px;
     display: flex;
     justify-content: flex-end;
     text-align: right;
+}
+
+#mobile_menu {
+    margin-top: -20px;
 }
 
 .homepage-overlay.mobile {
@@ -307,8 +341,16 @@ nav ul li a.active {
 
 /* FOOTER */
 
+.footer-wrapper{
+    position: sticky;
+   min-height: 150px;
+}
+
 footer {
     display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     flex-grow: 2;
     background: linear-gradient(160deg, rgb(0 61 138 / 92%) 60%, rgba(94,121,255,1) 100%);
     min-height: 150px;
@@ -777,7 +819,7 @@ button.read-more-trigger {
 
 .list-item{
     border-radius: 2px;
-    box-shadow: 1px 1px 15px -5px #afafaf;
+    box-shadow: 1px 1px 10px -1px #afafaf;
     overflow: hidden;
     transition: 0.3s ease-in-out;
     flex-direction: row;
@@ -886,6 +928,9 @@ button.read-more-trigger {
 .info-pg-wrapper {
     width: 60%;
     margin: 50px auto;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .contact-input {
@@ -903,16 +948,35 @@ button.read-more-trigger {
     margin-bottom: 0.3em;
 }
 
+.t_and_cs {
+    font-size: 12px;
+}
+
 .contact-input:focus {
     border: 1px solid #f8554a;
     border-radius: 2px;
 }
 
-textarea {
-    box-sizing: border-box;
-    overflow-x: hidden;
+.form-control {
+    background-clip: unset;
 }
 
+.form-control:focus {
+    box-shadow: 1px 1px 4px 0px #3c3c3c;
+}
+
+.form-check-input, .form-check-input:checked, .form-check-input:focus {
+    padding:10px;
+    border: none;
+    border-color: transparent;
+    box-shadow: 1px 1px 4px 0px #3c3c3c;
+    margin-right: 10px;
+    margin-top: 0px;
+}
+
+.form-check-input:checked {
+    background:#f8554a;
+}
 
 
 .input-group-item{
@@ -943,6 +1007,34 @@ input.cta-btn:hover {
 h1 {
     font-size: 2.3rem;
     margin-bottom: 10px;
+}
+
+footer {
+    max-height: 150px;
+    padding: 20px 40px;
+}
+
+.snap-scroll-child-mobile {
+    scroll-snap-align: start;
+}
+
+.color-bg-nav nav ul li a.active {
+    padding-bottom: 5px;
+    border-bottom: 3px solid #7bfac3;
+}
+
+.color-bg-nav nav ul li a:hover {
+    padding-bottom: 2px;
+    border-bottom: 3px solid #7bfac3;
+}
+
+.nav-link {
+    width: min-content;
+    margin-left: auto;
+}
+
+.nav-link:hover {
+    background: transparent;
 }
 
 .input-row-section {
@@ -1033,11 +1125,13 @@ height: max-content;
 
 .list-item-img {
     max-width: 100%;
+    width: 100%;
 }
-/*
-.list-overlay {
-    display: none;
-}*/
+.list-item-img > img {
+    width: 100%;
+    height: auto;
+}
+
 .location-info div {
     flex-direction: column;
     margin: auto;

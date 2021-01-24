@@ -15,7 +15,6 @@ jQuery(function ($) {
     let mobile = (width <= 767);
     console.log(mobile)
     if (mobile == true) {
-        $(".navbar-expand-lg").addClass("pb-0");
         $("#filter").addClass("collapse");
         //$("#filter > .filter-section:nth-child(1)").removeClass("mt-4");
     }
@@ -34,41 +33,30 @@ jQuery(function ($) {
 
 
 
-// Show scroll to top button 
-$(window).on('scroll', function () {
-    let scrollLength = $(document).scrollTop()
-    if (scrollLength >= 50) {
-        $("#to_top").removeClass("hide")
-    } else {
-        $("#to_top").addClass("hide")
-    }
-});
-
-
 // Pre-loader
 
-$(window).on("load", function(){
- $(".pre-load-bg").fadeOut("medium");   
+$(window).on("load", function () {
+    $(".pre-load-bg").fadeOut("medium");
 })
 
 
-// Smooth scrolling
 
 
 
-/// ==== CREDIT https://codepen.io/damianocel/pen/EVpqNJ
 
-$(window).scroll(function () {
-    var top = $("#top_page");
-    if ($('body').height() <= ($(window).height() + $(window).scrollTop() + 200)) {
-        top.animate({ "top": "0" }, 1500);
-    } else {
-        //top.animate({"margin-left": "-100%"},1500);
-    }
-});
-
-$(".to-top").on('click', function () {
-    $("html, body").animate({ scrollTop: 0 }, 100);
+// Show scroll to top button
+$(document).ready(function () {
+    $(".snap-scroll-parent").scroll(function () {
+        let scrollLength = $(".snap-scroll-parent").scrollTop()
+        if (scrollLength >= 10) {
+            $(".to-top").removeClass("hide")
+        } else {
+            $(".to-top").addClass("hide")
+        }
+    });
+    $('.to-top').on('click', function () {
+        $('.snap-scroll-parent').animate({ scrollTop: 0 }, 300);
+    });
 });
 
 
@@ -78,8 +66,5 @@ $(function () {
 })
 
 
-// new credits: https://www.youtube.com/watch?v=IqYiVHrO2U8 
 
-// =======
-// =======
 

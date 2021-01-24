@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Remote London</title>
+    <title>Thank You! | Remote London</title>
 
     <!-- Styles-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -23,12 +23,7 @@
 </head>
 
 <body>
-    <div class="pre-load-bg">
-        <div class="pre-loader"></div>
-    </div>
-
     <header id="contact_header">
-
         <div class="mobile-menu-wrapper clear fade-in  color-bg-nav">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a class="navbar-brand" href="index.html"><img src="assets/images/logo.svg" alt="logo"></a>
@@ -80,51 +75,18 @@
     </header>
 
     <div class="info-pg-wrapper">
-        <div class="support-page-header">
-            <h1 class="info-pg-title">Contact Us</h1>
-            <p>Have a new listing to share, or feedback for an existing one? Perhaps you are looking for something
-                specific and have ideas to improve our site offering? Whatever it may be, send us a message below and
-                we'll come back to you to discuss it further.</p>
-
-        </div>
-
-
-
-        <div>
-            <form id="contact_form" class="d-flex flex-column mb-3" action="/thank_you.html"
-                onsubmit="sendEmail(this);">
-                <div class="d-flex justify-content-between input-row-section">
-                    <div class="input-group-item flex-column">
-                        <label for="fname" class="form-label">First Name</label>
-                        <input class="contact-input" type="text" name="fname" required>
-                    </div>
-                    <div class="input-group-item flex-column">
-                        <label for="lname" class="form-label">Last Name</label>
-                        <input class="contact-input" type="text" name="lname" required>
-                    </div>
-                </div>
-                <label for="email" class="form-label">Email</label>
-                <input class="contact-input" type="email" name="email" required>
-                <label for="subject" class="form-label">Subject Line</label>
-                <input class="contact-input" type="text" name="subject" required>
-                <label for="message_body" class="form-label">Your Message</label>
-                <textarea class="contact-input form-control" rows="4" type="textarea" name="message_body"
-                    required></textarea>
-                <div class="d-flex flex-row mb-4">
-                    <input class="contact-input form-check-input" type="checkbox" name="terms_approved" required>
-                    <label for="terms_approved" class="form-label t_and_cs">Please confirm that you are happy for us to
-                        use your email address to contact you regarding this form submission and that we may use the
-                        message information to help guide us on what our users are looking for. Your personal
-                        information will only be used to respond to you.</label>
-                </div>
-                <input class="contact-input cta-btn" type="submit" value="Send Message">
-            </form>
-
+        <div class="support-page-header m-auto">
+            <h1 class="info-pg-title">Thank you!</h1>
+            <p>We have received your message and will be in touch with you shortly to discuss it. Until then, click
+                below to head back home...</p>
+            <a href="index.html"><button class="btn-primary">Head Home</button></a>
         </div>
     </div>
 
+
+
     <!-- Footer wrapper div ensures footer always at bottom of page if content less than 100vh-->
-    <div class="footer-wrapper">
+    <div>
         <footer>
             <div class="d-flex flex-column">
                 <div class="footer-links mb-3">
@@ -139,7 +101,6 @@
             </div>
         </footer>
     </div>
-
 
 
 

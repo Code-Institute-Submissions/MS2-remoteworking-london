@@ -16,10 +16,10 @@
     <script async
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMVUvw_I7qUBzKQmDtLsmAk2ktpqvD7Mo&map_ids=1daab95bc3f973ff&libraries=places&callback=initMap">
         </script>
-<script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js"></script>
     <script src="assets/js/dataset.js"></script>
     <script src="assets/js/google_maps_init.js"></script>
-    
+
 
     <script>
         $(window).bind("load", function () {
@@ -36,8 +36,8 @@
 
 <body class="rm-body-scroll">
     <div class="pre-load-bg">
-    <div class="pre-loader"></div>
-</div>
+        <div class="pre-loader"></div>
+    </div>
     <div class="snap-scroll-parent">
         <div id="map" class="hide"></div>
 
@@ -88,8 +88,8 @@
                                 </li>
                             </ul>
                         </div>
-                
-                </nav>
+
+                    </nav>
                 </div>
                 <div id="landing_pg_search">
                     <div class="homepage-title">
@@ -132,26 +132,22 @@
             </div>
         </section>
 
-
-
-        <footer>
-
-            <div class="d-flex flex-column snap-scroll-child">
-
-                <div class="footer-links mb-3">
-                    <p> <a href="">About Us</a><a href="">Contact Us</a><a href="">Privacy</a></p>
+        <!-- Footer wrapper div ensures footer always at bottom of page if content less than 100vh-->
+        <div class="footer-wrapper">
+            <footer class="snap-scroll-end">
+                <div class="d-flex flex-column">
+                    <div class="footer-links mb-3">
+                        <p> <a href="">About Us</a><a href="">Contact Us</a><a href="">Privacy</a></p>
+                    </div>
+                    <div>
+                        <p>&copy; Copyright 2021 Remote London </p>
+                    </div>
+                    <div>
+                        <p class="to-top">Back to top</p>
+                    </div>
                 </div>
-                <div>
-                    <p>&copy; Copyright 2021 Remote London </p>
-                </div>
-
-
-            </div>
-        </footer>
-
-
-
-
+            </footer>
+        </div>
     </div>
 </body>
 

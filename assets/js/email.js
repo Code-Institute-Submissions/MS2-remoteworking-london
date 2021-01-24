@@ -13,8 +13,9 @@ function sendEmail(contactForm) {
     }
 
     emailjs.send("service_fsjc9yj", "template_evpkkwd", templateParams)
-        .then(function (response) {
-            console.log("Success", response.text)
+        .then(function () {
+            console.log("Success");
+            $("#contact_form").fadeOut();
         }, function (error) {
             console.log("Error", response.text)
         });
