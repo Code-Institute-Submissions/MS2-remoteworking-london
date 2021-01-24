@@ -5,38 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Locations</title>
+
+    <!-- Styles -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-
-
-    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
-    <script async
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMVUvw_I7qUBzKQmDtLsmAk2ktpqvD7Mo&map_ids=1daab95bc3f973ff&libraries=places&callback=initMap">
-        </script>
-
+    <script async src="assets/js/google_maps_init.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/dataset.js"></script>
-    <script async src="assets/js/google_maps_init.js"></script>
-
-    <script>
-        $(window).bind("load", function () {
-            $("head").append(
-                `<script src="assets/js/location_listing.js"><\/script>`
-            );
-        });
-    </script>
-
 </head>
-
-
 
 <body id="top_page">
     <div class="pre-load-bg">
@@ -44,7 +28,7 @@
     </div>
     <div class="snap-scroll-parent">
         <header id="locations_header">
-            <div class="">
+            <div class="homepage-overlay">
                 <div class="mobile-menu-wrapper clear fade-in">
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <a class="navbar-brand" href="index.html"><img src="assets/images/logo.svg" alt="logo"></a>
@@ -104,8 +88,7 @@
             </div>
         </header>
         <div class="modal-overlay fade-in" onclick="hideOverlay();"></div>
-        <div id="locations_sidebar" class="hidden"><button onclick="closeBtn();hideOverlay();" class="btn"
-                id="close_btn"><i class="fas fa-times"></i></button>
+        <div id="locations_sidebar" class="hidden">
             <div id="sidebar_item_container"></div>
         </div>
         <div class="container locations-pg-wrapper">
@@ -203,7 +186,8 @@
             <footer>
                 <div class="d-flex flex-column">
                     <div class="footer-links mb-3">
-                        <p> <a href="about_us.html">About Us</a><a href="contact.html">Contact Us</a><a href="privacy.html">Privacy</a></p>
+                        <p> <a href="about_us.html">About Us</a><a href="contact.html">Contact Us</a><a
+                                href="privacy.html">Privacy</a></p>
                     </div>
                     <div>
                         <p>&copy; Copyright 2021 Remote London </p>
@@ -218,9 +202,17 @@
     </div>
     <button class="to-top fade-in d-xs-none d-sm-none d-lg-block d-xl-block d-xxl-block hide"><i
             class="fas fa-arrow-circle-up"></i></button>
-    <script type="text/javascript">
 
+    <!-- Load the Google API & listings once complete -->
+    <script>
+        $(window).bind("load", function () {
+            $("head").append(
+                `<script src="assets/js/location_listing.js"><\/script>`
+            );
+        });
     </script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMVUvw_I7qUBzKQmDtLsmAk2ktpqvD7Mo&map_ids=1daab95bc3f973ff&libraries=places&callback=initMap"></script>
+
 </body>
 
 </html>

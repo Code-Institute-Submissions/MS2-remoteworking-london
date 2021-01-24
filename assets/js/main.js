@@ -13,7 +13,6 @@ function openInfoHome(loc_id) {
 jQuery(function ($) {
     let width = screen.width;
     let mobile = (width <= 767);
-    console.log(mobile)
     if (mobile == true) {
         $("#filter").addClass("collapse");
         //$("#filter > .filter-section:nth-child(1)").removeClass("mt-4");

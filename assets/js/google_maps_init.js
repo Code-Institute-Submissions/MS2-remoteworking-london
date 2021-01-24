@@ -94,7 +94,7 @@ function initMap() {
                 let sidebarContent = $("#sidebar_item_container").append(
 
                     `<div class="hide sidebar-item" id="sidebar_list_${[x]}">
-                            
+                            <button onclick="closeBtn();hideOverlay();" class="btn close_btn"><i class="fas fa-times"></i></button>
                             
                             
                             <div class="sidebar-img-wrapper"><img src="${location.photo_reference}" alt="${place.name}"></div>
@@ -205,10 +205,6 @@ function addMarker(locationMap, place, map, infowindow, content) {
     });
 
     filteredMarkers.push(marker);
-
-    console.log(filteredMarkers);
-
-
 
     (function (marker, content) {
         // Show info on marker click
