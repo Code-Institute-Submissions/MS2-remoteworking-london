@@ -345,6 +345,7 @@ nav ul li a.active {
 .footer-wrapper{
    min-height: 150px;
    position: relative;
+   margin-top: auto;
 }
 
 footer {
@@ -356,7 +357,7 @@ footer {
     background: linear-gradient(160deg, rgb(0 61 138 / 92%) 60%, rgba(94,121,255,1) 100%);
     min-height: 150px;
     box-shadow: 1px -1px 4px 0px #3c3c3c;
-    z-index: -1;
+    z-index: 1;
     padding: 40px;
     color: #fff;
 }
@@ -640,7 +641,7 @@ color: #fff;
     max-width: 250px;
     width: 200px;
     min-height: 100%;
-    max-height: 173px;
+    max-height: 185px;
     overflow: hidden;
 }
 
@@ -749,6 +750,9 @@ transition: 0.5s ease-in-out;
     display: flex;
 }
 
+p.area-tag {
+    padding: 3px 8px;
+}
 .area-tag > span {
     margin: auto;
 }

@@ -227,7 +227,7 @@ $(document).ready(function () {
 
 function landingSearch(searchInput) {
     let search = searchInput;
-    window.location.href = `/locations.html?&q=${search}`;
+    window.location.href = `./locations.html?&q=${search}`;
     //searchField();
 }
 
@@ -363,6 +363,9 @@ function listFilterArea(area) {
 (function () {
     for (var i = 0; i < 3; i++) {
         let item = request[i]
+        let paraWords = item.para.split(" ", 22);
+        let paraWordLimit = paraWords.join(" ");
+
         $(`#ft${[i]}`).append(
             `<div class="featured-img-wrap">
                     <img src="${item.photo_reference}" alt="${item.title}">
@@ -371,7 +374,7 @@ function listFilterArea(area) {
             <div class="featured-content">
                 <h4 class="mb-1">${item.title}</h4>
                 <div class="area-tag mb-1">${item.area}</div>
-                <p  class="mb-1">${item.para}</p>
+                <p  class="mb-1">${paraWordLimit}</p>
                 <button class="cta-btn featured-btn-cta" onclick="landingSearch('${item.title}');" value="${item.title}">Read More</button>
             </div>`
 
