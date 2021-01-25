@@ -8,6 +8,7 @@ let itemsPerPage = 4;
 
 function initList(page) {
 
+    // Define buttons in html that are active filters
     let asc = $("#btn_asc").hasClass("active");
     let desc = $("#btn_des").hasClass("active");
 
@@ -19,15 +20,23 @@ function initList(page) {
     let searchResults = [];
     let search = $("#search").val();
     let arrayChoiceArea;
-    if (btnNorth == true) { arrayChoiceArea = listingObjectNorth }
-    else if (btnSouth == true) { arrayChoiceArea = listingObjectSouth }
-    else if (btnEast == true) { arrayChoiceArea = listingObjectEast }
-    else if (btnWest == true) { arrayChoiceArea = listingObjectWest }
-    else { arrayChoiceArea = listingObjectCombined }
 
+    // Use filter() to sort array by area. Credits: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+    if (btnNorth == true) {
+        arrayChoiceArea = listingObjectCombined.filter(listingObjectCombined => listingObjectCombined.location === "North London")
+    } else if (btnSouth == true) {
+        arrayChoiceArea = listingObjectCombined.filter(listingObjectCombined => listingObjectCombined.location === "South London")
+    } else if (btnEast == true) {
+        arrayChoiceArea = listingObjectCombined.filter(listingObjectCombined => listingObjectCombined.location === "East London")
+    } else if (btnWest == true) {
+        arrayChoiceArea = listingObjectCombined.filter(listingObjectCombined => listingObjectCombined.location === "West London")
+    } else {
+        arrayChoiceArea = listingObjectCombined
+    }
+
+    // Sort the dates based on button value
     if (asc == true) {
         arrayChoiceArea.sort((a, b) => a.date - b.date);
-
     } else {
         arrayChoiceArea.sort((a, b) => b.date - a.date);
 
@@ -381,19 +390,3 @@ function listFilterArea(area) {
         );
     }
 })();
-
-
-
-// ---- MOBILE ---- \\
-
-$(function () {
-    // Bind the swipeHandler callback function to the swipe event on div.box
-    $("#locations_sidebar").on("swipe", function () {
-        if ($("#locations_sidebar").hasClass("hidden") == false) {
-            closeBtn();
-        } else {
-            return false;
-        }
-    }
-    )
-});

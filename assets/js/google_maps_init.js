@@ -1,22 +1,18 @@
 
-// Define arrays for markers to allow for filtering by area on Map
-//let markers = [];
+// Define arrays for markers and cards to allow for filtering
 let filteredMarkers = [];
 let locationListings = new Array();
 let locationListingsDates = [];
-let featured = [];
 let listingObjectCombined = [];
 let listingObjectNorth = [];
 let listingObjectSouth = [];
 let listingObjectEast = [];
 let listingObjectWest = [];
 
+// Empty array for only the three featured cards on the homepage
+let featured = [];
 
-// Sort the request array by location post date
-//request.sort((a, b) => a.posted - b.posted);
-
-
-// Initialize the Google Map
+// Initialize the Google Map & generate all place information in single page load
 function initMap() {
 
     const map = new google.maps.Map(document.getElementById("map"), {
@@ -34,10 +30,9 @@ function initMap() {
         let locationMap = request[m];
         let mm = m
         service.getDetails(locationMap, (place, status) => {
-            //   if (status === google.maps.places.PlacesServiceStatus.OK) {
-            // let m = -5;
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
 
-            let content = `
+                let content = `
             <div class="d-flex flex-row infowindow">
                 <div class="infowindow-img-wrap">
                     <img src="${locationMap.photo_reference}" alt="${locationMap.name}">
@@ -51,10 +46,10 @@ function initMap() {
                     <button class="btn cta-btn infowindow-cta" onclick="moreDetails(${[mm]});"><i class="fas fa-chevron-circle-right"></i></p>
                 </div>
             </div>`;
-            addMarker(locationMap, place, map, infowindow, content);
-            //} else {
-            //     console.log("Error - place could not be found");
-            //}
+                addMarker(locationMap, place, map, infowindow, content);
+            } else {
+                console.log("Error - place could not be found");
+            }
         });
     };
 
@@ -64,20 +59,18 @@ function initMap() {
         $("#locations_list").html("");
         $("#sidebar_item_container").html("");
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        
+        // Get the date posted from the object and create string for frontend. Credits to https://www.w3schools.com/js/js_date_methods.asp for date methods.
         let postedDate = location.posted;
         let formatted_date = postedDate.getDate() + " " + months[postedDate.getMonth()] + " " + postedDate.getFullYear();
 
-
-
-        //   if (location.photo_reference === undefined) {
-        //     return "";
-        //  } else {
         service.getDetails(location, (place, status) => {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
+                // Find and limit the number of words shown in the 'para' key. Credits to ProNeticas for providing core solution here: https://stackoverflow.com/questions/1662308/javascript-substr-limit-by-word-not-char
                 let paraWords = location.para.split(" ", 22);
                 let paraWordLimit = paraWords.join(" ");
-                let cardContent =
 
+                let cardContent =
                     `<div class="d-flex card list-item mt-3" id="list_item_${[x]}" onclick="moreDetails(${[x]});">
                     <div class="list-item-img"><img
                             src="${location.photo_reference}"> alt="${place.name}"
@@ -95,8 +88,6 @@ function initMap() {
 
                     `<div class="hide sidebar-item" id="sidebar_list_${[x]}">
                             <button onclick="closeBtn();hideOverlay();" class="btn close_btn"><i class="fas fa-times"></i></button>
-                            
-                            
                             <div class="sidebar-img-wrapper"><img src="${location.photo_reference}" alt="${place.name}"></div>
                             <div class="sidebar-content-wrapper p-4">
                             <h4>${place.name}</h4>
@@ -106,28 +97,19 @@ function initMap() {
                             <p>${location.para}</p>
                             <a href="${location.web}" target="_blank"><button class="btn sidebar-website-btn">Visit Website</button></a>
                             </div>
-                            
-                            
                             </div>`
                 );
 
+
                 locationListings.push(cardContent);
                 locationListingsDates.push(location.posted);
-                /* featured.push({
-                     place: place.name,
-                     address: place.formatted_address,
-                     area: location.area,
-                     date: location.posted,
-                     para: location.para,
-                     title: location.title,
-                     id: [x],
-                     photo: location.photo_reference
-                 });*/
+                listingObjectCombined[x] = { content: cardContent, date: location.posted, location: location.area }
+
+                // Set the default sorting of arrays based on most recent posting date
                 featured.sort((a, b) => b.date - a.date);
                 request.sort((a, b) => b.posted - a.posted);
-                listingObjectCombined[x] = { content: cardContent, date: location.posted }
                 listingObjectCombined.sort((a, b) => b.posted - a.posted);
-                if (location.area == "North London") listingObjectNorth.push({ content: cardContent, date: location.posted });
+                /*if (location.area == "North London") listingObjectNorth.push({ content: cardContent, date: location.posted });
                 if (location.area == "South London") listingObjectSouth.push({ content: cardContent, date: location.posted });
                 if (location.area == "East London") listingObjectEast.push({ content: cardContent, date: location.posted });
                 if (location.area == "West London") listingObjectWest.push({ content: cardContent, date: location.posted });
@@ -148,7 +130,7 @@ function initMap() {
     }
 
 
-
+console.log("added date",listingObjectCombined)
 
     // Sidebar each item
     /* for (let s = 0; s < request.length; s++) {
