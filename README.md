@@ -1,4 +1,4 @@
-# WFAnywhere - Remote Working
+# Remote London
 
 ## About this Site
 
@@ -8,7 +8,7 @@ The site is primarily designed for those users who either as Freelancers, need a
 
 
 ## User Experience (UX)
-As the primary purpose of this site is to quickly provide users with information that they are likely to use in conjunction with wider research. Since this site will likely be one of many similar sites they visit, the user needs to quickly learn what content the site provides and convince them that reading further is worth their attention.
+The primary purpose of this site is to quickly provide users with information that they are likely to use in conjunction with wider research. Since this site will likely be one of many similar sites they visit, the user needs to quickly learn what content the site provides and convince them that reading further is worth their attention.
 
 In order to achieve this, the site is built with simplicity in mind - a simple landing page that clearly sets out the purpose, followed by a single directory listing page, that also allows the user to chose how they view (via list or map) and quickly search for and filter listings that are most relevant to them (through keyword search and area and tag filters) 
 
@@ -35,17 +35,85 @@ In order to achieve this, the site is built with simplicity in mind - a simple l
     - As the site owner, I want to ensure that information is accurate and user feedback is received, to improve value to the user.
     - I want users to share the site content with others to drive traffic to site.
 
-### Design
+<br>
+
+### <ins><b>Design</b></ins>
+The overall design for the Remote London uses a clear, clean layout with ease of use in mind - bold header areas with a clear directory listing area and contact form.
 
 #### Typography
-
-#### Imagery
+The Google Font "Poppins" is used as an easy to read, sans-serif font that compliments the contemporary, straight lines of the layout and design. It's heavier weight is impactful and quickly grabs the users eye when used as headings.
 
 #### Colours
+Colours on Remote London have been selected based on the initial emotional response a user can be expected to have, according to color theory guides such as <a href="https://userpeek.com/blog/what-is-color-psychology-in-ux/" target="_blank">User Peek</a>.
+- The blue footer, overlay on headers and accent within the body evokes a feeling of stability and confidence
+- The lighter, slightly pastel orange with the accompanying pastel teal promotes a feeling of inspiration and creativity, but without the agression that can often be felt with darker, warmer colours. 
+
+
+#### Imagery
+Images within the primary site body are used to compliment the colour palette in the rest of the site, whilst also clearly identifying to the user what the site is about. Examples of this include: 
+- The header on the home page shows a cityscape of London, clearly focussing user attention on London as the core reason for the site. The darker blue gradient overlay on the top of the image is used to both improve visibility of the the navbar, but also introduce the blue colour accent at the earliest opportunity.
+- The header on the location listing page shows again a cityscape of London, but with a warmer tone, complimenting the pastel orange colours on the rest of the site.
+
+<br>
+
+### **Wireframes**
+- View the <a href="" target="_blank">Desktop wireframe here</a>.
+- View the <a href="" target="_blank">Tablet wireframe here</a>.
+- View the <a href="" target="_blank">Mobile wireframe here</a>.
+
+<br>
+
+## **Testing**
+
+### **Code Validation**
+To ensure accessibility by all modern browsers and differing devices and users, the Remote London website has been validated on W3C HTML, W3 Jigsaw CSS and JS Hint validators. Whilst the initial codebase passed validation, the third party libraries such as FontAwesome and Bootstrap have presented common errors and warnings. See further details below:
+- ### W3C HTML Results
+    - dddddd
+- ### W3 CSS Results
+    - 
+- ### JS Hint Results
+    - 
+
+> insert screenshot here!
+
+### **User Story Testing**
+> user story testing to add
+
+### **Lighthouse Testing**
 
 
 
-## Testing 
+### **Fixed Bugs**
+- Google API & Location listing (google_maps_init.js & location_listing.js)
+    - Items not filtering by date order 
+        - Since the code is written to only pull the data from Google on the initial page load, to increase site performance and reduce data quota,
+
+
+
+- Top page button not scrolling - document read function required before would load
+- Footer not sticking to bottom of page when height of content is less than 100vh
+- Location listing JS frequently not finding initMap() function content 
+- Fixed broken image links when deploying - required singular './' to begin file path from base URL
+- Fixed search query from homepage returning 404 in deployment due to broken URL path
+- 
+
+
+### **Known Bugs**
+- Thank_you.html file path broken in deployment
+
+## **Features**
+
+
+
+
+
+
+## **Languages & Frameworks**
+
+## **Deployment**
+> how this was deployed to github pages
+
+> how to run this locally
 
 ### Issue Log:
  - Quota limit within same page causing places to not render - Google API
