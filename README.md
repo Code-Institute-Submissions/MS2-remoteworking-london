@@ -6,6 +6,11 @@ This site will provide users with a directory of local listings in which users c
 
 The site is primarily designed for those users who either as Freelancers, need a working environment they can meet with colleagues and clients, or for those working from home full-time since lockdown during the pandemic, need a suitable place to work for the day with spaces to make calls.
 
+<br>
+
+---
+
+<br>
 
 ## User Experience (UX)
 The primary purpose of this site is to quickly provide users with information that they are likely to use in conjunction with wider research. Since this site will likely be one of many similar sites they visit, the user needs to quickly learn what content the site provides and convince them that reading further is worth their attention.
@@ -37,7 +42,7 @@ In order to achieve this, the site is built with simplicity in mind - a simple l
 
 <br>
 
-### <ins><b>Design</b></ins>
+### **Design**
 The overall design for the Remote London uses a clear, clean layout with ease of use in mind - bold header areas with a clear directory listing area and contact form.
 
 #### Typography
@@ -63,18 +68,64 @@ Images within the primary site body are used to compliment the colour palette in
 
 <br>
 
+---
+
+<br>
+
 ## **Features**
-- 
+- Location Search from homepage - this feature allows users to search the directory from the homepage by entering a search query in the text input in the header section. Submitting the search query will return all results on the 'Location' page where the query matches any string of text within the name, or content of the listing.
+- Most recent listings on homepage - this feature enables users to quickly see if there are new listings on the site, but viewing the 'Our Latest Additions' section on the homepage.
+- Instant listing filter without page load - as the data is loaded into the page when the DOM is loaded, the listings are filtered by hiding and unhiding results based on criteria, versus triggering a new HTTP request each time, requiring a page reload <em>(note: this method of serving data may need to be adjusted in future versions where more listings are shown, to avoid longer page load times).</em>
+- Filter listings by area of London - on the 'Locations' page, users are able to filter the listings based on the area of london. By simply clicking one of the area buttons, the results will immediately hide all results that do not meet the criteria.
+- Filter listings by most recent or oldest posts - users can sort the listings on the 'Locations' page by clicking 'Latest' or 'Oldest' in the filter section.
+- Display listings in a list view or map view - Users can select how they wish to view the listings by clicking either the list or map icon buttons at the bottom of the filter section. On hover, a tooltip provides guidance on what the buttons do.
+- View and filter listing markers on map - the above filters are available to users on the map view also, with the markers hidden and unhidden based on the search criteria. If the user enters a text search query, the view will default back to the list view to show more detailed information.
 
+### **Features to add in future releases**
+- Social sharing of each listing to social media sites.
+- User rating system for each listing based on criteria (rating for coffee quality, cost, atmosphere etc).
+- User frontend submission of listing with admin moderation. 
+- User testimonials on listings. 
 
-## **Technologies Used**
+<br>
+
+---
+
+<br>
+
+## **Technologies & Tools Used**
+The core codebase for the Remote London website is created using HTML5, CSS3 and Javascript. In addition to these core languages, a number of frameworks, libraries and APIs were used to create the initial release. A full list of these are shown below:
+- [HTML5](https://html.spec.whatwg.org/multipage/) - is used as the core language to create the Document Object Model (DOM).
+- [CSS3](https://www.w3.org/Style/CSS/specs.en.html) - is used to style the HTML elements. 
+- [Javascript](https://www.javascript.com/) - is used to manipulate the DOM elements and change styling based on a number of functions in the site.
+- [jQuery](https://jquery.com/) - library is used to extend the vanilla Javascript functionality and efficiently manipulate DOM elements both with IIFE functions and function declarations.
+- [Google Places API](https://cloud.google.com/maps-platform/places) - has been used to pull place information from Google using the place ID, into the 'request' dataset, which generates the objects for the listings loop.
+- [EmailJS](https://emailjs.com) - used as an API to send an email from the contact form on 'Contact' page and return an auto-reply to the user.
+- [Bootstrap](https://getbootstrap.com/) - a frontend framework used to create the base for styling the layout and elements on the page.
+- [GitHub](https://github.com) - used to for code version control and hosting. 
+- [GitHub Pages](https://pages.github.com/) - used to deploy to a production environment accessible by users.
+- [GitPod](https://gitpod.io/) - browser based code editor used to write, edit and commit code directly to GitHub. 
+- [Tiny PNG](https://tinypng.com/) - an image lossless compression tool used to reduce the site image assets.
+- [Balsamiq](https://balsamiq.com) - a wireframe creator used to create the mobile, desktop and tablet wireframes in the section above.
+- [CSS Gradient](https://cssgradient.io) - a tool used to create the background colour gradients found on the site, such as the header, footer and buttons.
+- [Chrome Dev Tools](https://developers.google.com/web/tools/chrome-devtools) - used for debugging of JS, CSS and HTML.
+- [Jigsaw W3 Validator](https://jigsaw.w3.org/css-validator/) - CSS validation tool used to test quality of CSS code.
+- [W3 HTML Validator](https://validator.w3.org/) - used to validate and check quality of HTML on site.
+- [JS Hint](https://jshint.com/) 
+> need to add js hint
+
+<br>
+
+---
+
+<br>
 
 ## **Testing**
 
 ### **Code Validation**
 To ensure accessibility by all modern browsers and differing devices and users, the Remote London website has been validated on W3C HTML, W3 Jigsaw CSS and JS Hint validators. Whilst the initial codebase passed validation, the third party libraries such as FontAwesome and Bootstrap have presented common errors and warnings. See further details below:
 - ### W3C HTML Results
-    - dddddd
+    - 
 - ### W3 CSS Results
     - 
 - ### JS Hint Results
@@ -179,9 +230,15 @@ To ensure accessibility by all modern browsers and differing devices and users, 
 
 
 ### **Known Bugs**
+- Currently there is an existing limitation present on the site caused by pulling data from the Google Places API. If a user makes too many requests in a single session, the request will return no, or only partial results. Whilst a fix is being researched, this appears to be a Google quota limitation to avoid overloading the server with requests.
+
 > complete known bugs
 
+<br>
 
+---
+
+<br>
 
 ## **Deployment**
 
@@ -221,16 +278,36 @@ To create a new branch within this repository, follow the below steps (note: you
 
 <br>
 
-## Credits:
- - cssgradient.io
-- Indirect snap-scroll support Stack Overflow: "Luke" https://stackoverflow.com/questions/60724786/why-is-my-simple-css-scroll-snap-not-working 
+---
 
- - location header Photo by Alex Chistol from Pexels - https://www.pexels.com/photo/luminous-ferris-wheel-in-modern-city-district-on-river-bank-at-night-3835461/
-    - Pixabay: https://www.pexels.com/photo/architecture-bay-boats-bridge-372470/ 
-    - Photo by Chait Goli from Pexels https://www.pexels.com/photo/white-and-brown-sailing-ship-1796715/
+<br>
+
+## Credits:
+
+### **Images**
+- Homepage header image - Pixabay on [Pixabay](https://www.pexels.com/photo/architecture-bay-boats-bridge-372470/)
+- Location page header image - Jaanus Jagomägi on [Pixabay](https://unsplash.com/@jaanus?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)
+- Rude Health listing image - [Rude Health Website](https://rudehealth.com/rude-health-cafe/)
+- Uncommon listing image - [Uncommon Website](https://uncommon.co.uk/)
+- The Dock listing image - [The Tobacco Dock Website](https://www.tobaccodocklondon.com/workspaces/private-offices/)
+- Headspace listing image - [Headspace Website](https://www.headspacegroup.co.uk/location/farringdon/)
+- Work.Life Bermondsey listing image - [Work.Life Website](https://work.life/locations/bermondsey/)
+
+### **Code Snippets**
+- Snap-scroll CSS attribute used with guidance from [Stack Overflow: "Luke"](https://stackoverflow.com/questions/60724786/why-is-my-simple-css-scroll-snap-not-working).
+- EmailJS lession code snippet guidance from the 'Rosie Resume' lesson on [Code Institute](https://codeinstitute.net/).
+- CSS pre-loader tutorial and guidance from [W3 Schools](https://www.w3schools.com/howto/howto_css_loader.asp)
+- API places name, address and location date from [Google Places API](https://developers.google.com/places/web-service/overview)
+
+### **Acknowledgements**
+
+ > to complete
+
+
+ <!-- >   - Photo by Chait Goli from Pexels https://www.pexels.com/photo/white-and-brown-sailing-ship-1796715/
     - Image by <a href="https://pixabay.com/photos/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=945497">Free-Photos</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=945497">Pixabay</a>
     - arial - <span>Photo by <a href="https://unsplash.com/@jaanus?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jaanus Jagomägi</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span> 
     -  london eye wide angle <span>Photo by <a href="https://unsplash.com/@arkadiuszradek?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Arkadiusz Radek</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
     - arial 2 - <span>Photo by <a href="https://unsplash.com/@giamboscaro?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Giammarco Boscaro</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
-    - css loader - https://www.w3schools.com/howto/howto_css_loader.asp 
-    - emailjs lesson in CI  
+
+    
