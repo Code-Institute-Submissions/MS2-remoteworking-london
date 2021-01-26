@@ -93,7 +93,7 @@ function initMap() {
                             </div>
                             </div>`
                 );
-                
+
                 listingObjectCombined[x] = { content: cardContent, date: location.posted, location: location.area }
 
                 // Set the default sorting of arrays based on most recent posting date
@@ -108,9 +108,6 @@ function initMap() {
 
 
     }
-
-
-console.log("added date",listingObjectCombined)
 
     // Sidebar each item
     /* for (let s = 0; s < request.length; s++) {

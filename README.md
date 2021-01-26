@@ -63,6 +63,12 @@ Images within the primary site body are used to compliment the colour palette in
 
 <br>
 
+## **Features**
+- 
+
+
+## **Technologies Used**
+
 ## **Testing**
 
 ### **Code Validation**
@@ -78,6 +84,52 @@ To ensure accessibility by all modern browsers and differing devices and users, 
 
 ### **User Story Testing**
 > user story testing to add
+
+- #### First time visitors
+    - As a first time visitor, I want to quickly decide whether spending more time on this site will be worthwhile in answering my needs.
+        - This is accomplished by the immediate indication on the index.html page what the site content is about with the headline 'Find remote working locations near you' and the background image of London.
+        - This, coupled with the brand logo 'Remote London' clearly signifies that this site has been created to show information on where to work.
+    - I am only interested in listings that are within suitable distance to me.
+        - The site currently clearly states that the listings will cover the London area only. 
+        - Whilst not yet on the site, future releases will include geolocation of the user and the ability to filter locations based on the distance from the user.
+    - I will likely use the content from this site and others to form a decision on the best location to visit, so my time on this site will be limited.
+        - The site clearly pushes users to a single listings page through 'call to action' search inputs and listing cards on the homepage. 
+        - Once on the listings page, information is clearly laid out and easy to read. The user is able to quickly see which listings might be worth looking into, and more information can be found by clicking on the 'view website' button on the more information sidebar.
+- #### Returning visitors   
+    - As a returning visitor, I have already seen the content from the site on the initial visit - I am only looking for new listings.
+        - The listings page allows the user to sort the listings by date they were posted to the site. This will enable returning visitors to quickly see what has been posted recently since they were last on the site.
+        - The homepage also clearly outlines the most recent additions in the second section, below the fold. A returning visitor would quickly be able to see if there are new listings by comparing these listing cards to those that were shown on their last visit.
+    - Part of the reason I am returning may be to give feedback on a listing after visiting their location.
+        - The user can easily navigate to the 'contact' page and submit a quick message to the site owner.
+        - On submitting the form, the user will recieve and automated email reply acknowledging receipt of the message.
+        - The user will also be directed to a 'thank you' page on successful submission to acknowledg that the site has sent the message, and then clearly direct the user back to the homepage through a 'call to action' button.
+- #### Freelancers who work irregular or part time hours
+    - As a Freelancer, my day will likely be split between multiple projects and clients. I don't always need a location to work from for a full day, so I want to see listings that do not require a full day booking.
+    > need to add tags to listings?
+    - I am looking for locations that will allow me to meet clients and collaborate for a few hours at a time.
+    > need to add tags to listings?
+
+- #### A full time employee who cannot work from home comfortably
+    - As a full time employee working from home due to the pandemic, I am solely interested in listings that I know I can work from for the full day. 
+    > need to add tags to listings?
+    - I want to see only the listings that will have quiet places I can make calls with a good internet connection
+    > need to add tags to listings?
+- #### Location owners
+    - As someone who owns a location users can work remotely from, I want to add my listing to the site with ease in order to promote my business.
+        - This can be accomplished by the user by going to the contact page and completing the form.
+        - The fields are mandatory and require the user to enter their name, message, subject and email so that we can contact them regarding the message.
+        - The user is also required to confirm that they are happy to the site owner contacting them to discuss the message. 
+        - If these fields are not completed, the form will fail validation and call out the errors to the user.
+        - If the user completes the form successfully, the page will redirect to the 'thank you' page and an auto-reply email will be sent to the user, using the EmailJS API.
+    - I want to see what other listings are offering in order to learn more about the site users and tailor my listing content accordingly. 
+        - The user can see this from the other listings on the 'Locations' page.
+        - The user can see where the listing is located, and read more information on what the listing offers
+        > mention tags here
+- #### Site owner
+    - As the site owner, I want to ensure that information is accurate and user feedback is received, to improve value to the user.
+        - As site owner, I can collect user feedback from the 'contact' page. The copy above the form clearly states what the form is to be used for; "Have a new listing to share, or feedback for an existing one?", prompting the user to focus their message on topics such as this.
+    - I want users to share the site content with others to drive traffic to site.
+    > need to add social?
 
 ### **Lighthouse Testing**
 > add lighthouse testing screens
@@ -120,40 +172,56 @@ To ensure accessibility by all modern browsers and differing devices and users, 
         - This bug has been quickly fixed by correcting the extra '.' in the root file path in links. Images now direct to './' not '../' which has resolved the issue.
     - Search function on homepage header returns 404 instead of locations page
         - This has now been fixed, again this was due to an incorrect file path when deploying to GitHub Pages.
-        - The search input adds a query string to the end of the locations.html href, from which an Immediately Invoked Function Expression splits this URL string when locations.html loads, in order to get the query. 
-        - The root path of the window.location.href was set incorrectly, with a '.' at the beginning that was not required.
+        - Since I was using window.location.href to set the new path, it was not including the host to the URL string (removing 'MS2-remoteworking-london'), which would return an invalid URL.
+        - This bug was fixed with the help of [this article at CSS Tricks](https://css-tricks.com/snippets/javascript/get-url-and-url-parts-in-javascript/)
     - Click to scroll to top button not functioning
         - After many iterations of code to create scroll to top function using jQuery, I discovered through [this thread in StackOverflow](https://stackoverflow.com/questions/1144805/scroll-to-the-top-of-the-page-using-javascript), that the DOM must be loaded before the jQuery scrollTop() method will work. 
 
 
-
-
 ### **Known Bugs**
+> complete known bugs
 
 
-## **Features**
-
-
-
-
-
-
-## **Languages & Frameworks**
 
 ## **Deployment**
-> how this was deployed to github pages
 
-> how to run this locally
+### **Version Control: GitHub & GitPod**
 
-### Issue Log:
- - Quota limit within same page causing places to not render - Google API
- - Sorting by date changes on each request - suggest pushing to new array and serving up this data?
+The Remote London website has been built using a [GitHub](https://github.com) Repository (MS2-remoteworking-london), with the code written, edited and pushed from [GitPod.io](https://gitpod.io), using the extension available within GitHub.
 
+### **Deploying to GitHub Pages**
+The site has been deployed to a production environment using GitHub Pages. Hosting the site on GitHub Pages ensures that a new deployment is available from the same Repository that the GitPod code commits are pushed to. This means that updates to the live site are quick to take affect after each push.
 
+To deploy to GitHub Pages, the below steps were taken and can be followed to repeat deployment: 
+- Repository is created within GitHub and made publicly visible.
+- With the GitPod extension already installed within GitHub, the codebase is opened within GitPod using the green 'GitPod' button. 
+- GitPod will start a development environment of the code tree, from which code can be edited and commits pushed.
+- Once the initial commit has been pushed, return to the GitHub Repository and click 'Settings' in the top right of the repository navigation items.
+- To deploy the initial GitHub Pages, scroll to the section titled 'GitHub Pages' and select the master branch (or whichever is your primary branch), set the rooth file path (/root by default), and click 'save'.
+- Your site will then be published and could take 5 - 10 minutes for this to be visible. 
+- Following the initial deployment, all commit pushes will automatically create a new deployment. 
+- To see the live site, click on the 'code' tab at the top of the repository, then select 'github-pages' under 'Environments' on the right-hand sidebar.
+- The page will then show all deployments with the most recent showing first. 
 
+### **Forking the GitHub Repository**
+To fork this repository into a new environment, follow the below steps: 
+- Go to the top of this page if viewing in GitHub or [go to the repository here](https://github.com/bradleyhc/MS2-remoteworking-london). 
+- To clone to a local environment, click the 'code' button in the top right above the file list, with the download icon. 
+- Copy the HTTPS URL provided.
+- Open terminal window on your device and open the folder you intend to save the clone to.
+- Run `git clone [THE URL YOU COPIED]`. 
+- This will save a clone of the repository to this folder for you to launch in a local server.
 
+### **Branching the GitHub Repository**
+To create a new branch within this repository, follow the below steps (note: you must have edit access to the repository for this to be possible):
+- At the top of the file list under the 'code' tab, click the 'branch' button in the top left (this is set to 'master' by default).
+- Start typing the name of the branch you wish to created.
+- Hit enter to create the new branch. 
+- Edits to code can now be committed to this branch and pulled / pushed to the master branch as required.
 
- ### Credit:
+<br>
+
+## Credits:
  - cssgradient.io
 - Indirect snap-scroll support Stack Overflow: "Luke" https://stackoverflow.com/questions/60724786/why-is-my-simple-css-scroll-snap-not-working 
 

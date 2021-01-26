@@ -641,14 +641,17 @@ color: #fff;
     max-width: 250px;
     width: 200px;
     min-height: 100%;
-    max-height: 185px;
+    max-height: 100%;
     overflow: hidden;
+    position: relative;
 }
 
 .list-item-img > img {
     width: auto;
     height: 100%;
     display: flex;
+    position: absolute;
+    left: -40%;
 }
 
 .location-info {
