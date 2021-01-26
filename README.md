@@ -80,26 +80,56 @@ To ensure accessibility by all modern browsers and differing devices and users, 
 > user story testing to add
 
 ### **Lighthouse Testing**
+> add lighthouse testing screens
 
+### **Responsiveness**
+> add mobile views 
 
 
 ### **Fixed Bugs**
 - Google API & Location listing (google_maps_init.js & location_listing.js)
     - Items not filtering by date order 
-        - Since the code is written to only pull the data from Google on the initial page load, to increase site performance and reduce data quota,
+        - Since the code is written to only pull the data from Google on the initial page load, to increase site performance and reduce data quota, a second Object array is now created after the Google data is pulled.
+        - The 'listingObjectsCombined' array combines the listing content, posted date and location to allow for text based search and filtering of date and location based on an active button, with content already existing within the DOM.
+        - Following a code review during testing in the final stage of this project, the code was further refactored to use the filter() method to sort Objects using an if/else statement when a button is active, vs a previous structure that created a new array for each area of London ('listingObjectNorth' ... etc).
+    - Pagination causing array to sort and filter for only the items shown within that page tab, not based on whole dataset.
+        - The initial build was structured prior to the pagination implementation, resulting in the slice() method and subsequent sort() method applied to the array to determine which listings to show on each page, sorting the objects only on the current for loop (i.e Objects 4, 5, 6 were sorted by date, but not 1 - 6). 
+        - This bug was fixed by creating a function flow in initList() that each time a sort or filter button was toggled, would clear the previous listings and work through the function to check the criteria based on which buttons were 'active', and unhide the corresponding listing. 
+        - Since the data is already pulled from Google and pushed to a new Object array on initial page load, this function now simply hides or unhides listings already loaded into the DOM, making the response time instant.
+        - After lots of research on the most effective way to implement this, it was [Tyler Potts](https://www.youtube.com/channel/UCBBGM84ZOs7z5jpTQAaZ_Hg) on YouTube that provided the tutorial that allowed me to fix the above. The pagination tutorial [can be found here](https://www.youtube.com/watch?v=IqYiVHrO2U8).
+    - Frequent Google API http request errors on random page loaded
+        - This bug caused the 'content' variable within 'initMap()' function to return undefined which resulted in only partial or no return of places data from Google.
+        - The error was tested repeatedly whilst changing the script load orders as well as applying async and defer, but the pattern still appeared randomised.
+        - After narrowing down the issue to possibly being a result of an inconsistent load time on the Google request, causing location_listing.js to attempt to call data from a script that had not yet run, I decided to use jQuery to append the last script to the <head> tag only after the page had loaded (the answers on [this StackOverflow thread](https://stackoverflow.com/questions/19737031/loading-scripts-after-page-load) guided me on this). 
+        - Whilst loading location_listing.js only after the page had loaded helped with the issue, it was still occuring intermittently. Throught further testing, I discovered that the issue is likely caused but the Google API request attempting to run a callback function (initMap()) from a script that may not have loaded at that point. 
+        - Having now positioned the Google API request at the bottom of the body, this appears to have dramatically improved this issue, as the initMap() function exists before the script attempts the Google request.
+        - It appears that this issue can still occur if there are too many requests within a short span of time from the same session (i.e continuously reloading the page), however I understand this to be expected behaviour.
+    - Jumping / flickering of page structure on page load caused by jQuery append() adding items to existing divs that load at different times.
+        - This was an expected issue when using javascript to manipulate the HTML on the page, since the scripts would load at different speeds to the HTML in the page. 
+        - To fix this issue and improve user experience, I added a loading screen animation with the CSS transform property to continuously run until the full page is loaded where javascript is altering the HTML (index.html and locations.html).
+    - Map and list overlay when opening sidebar would remain / disappear early if too many clicks
+        - The overlays that appear behind the 'more info' sidebar would frequently become out of sync with the sidebar as their styles were adjusted independently from one another.
+        - I have since refactored the code and used jQuery's existing fadeOut() method to show and hide a page-wide overlay, which functions much smoother.
+
+- Deployment & Site-wide
+    - Footer not sticking to bottom of page when content height in body is less than 100vh
+        - The bug was first discovered on the 'About Us' supporting page, whereby only a small paragraph of text existed, the footer would sit at the bottom of the last div.
+        - This has now been remedied by creating a footer-wrapper, to which the footer tag can have an absolute position, relative to the wrapper.
+        - The wrapper is then set to have a min-height of the footer, and a margin-top of auto to push the wrapper to the bottom of the body (which has a min-height of 100vh))
+    - Broken image file path when deploying to GitHub Pages
+        - This bug has been quickly fixed by correcting the extra '.' in the root file path in links. Images now direct to './' not '../' which has resolved the issue.
+    - Search function on homepage header returns 404 instead of locations page
+        - This has now been fixed, again this was due to an incorrect file path when deploying to GitHub Pages.
+        - The search input adds a query string to the end of the locations.html href, from which an Immediately Invoked Function Expression splits this URL string when locations.html loads, in order to get the query. 
+        - The root path of the window.location.href was set incorrectly, with a '.' at the beginning that was not required.
+    - Click to scroll to top button not functioning
+        - After many iterations of code to create scroll to top function using jQuery, I discovered through [this thread in StackOverflow](https://stackoverflow.com/questions/1144805/scroll-to-the-top-of-the-page-using-javascript), that the DOM must be loaded before the jQuery scrollTop() method will work. 
 
 
-
-- Top page button not scrolling - document read function required before would load
-- Footer not sticking to bottom of page when height of content is less than 100vh
-- Location listing JS frequently not finding initMap() function content 
-- Fixed broken image links when deploying - required singular './' to begin file path from base URL
-- Fixed search query from homepage returning 404 in deployment due to broken URL path
-- 
 
 
 ### **Known Bugs**
-- Thank_you.html file path broken in deployment
+
 
 ## **Features**
 

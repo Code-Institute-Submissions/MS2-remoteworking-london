@@ -65,15 +65,13 @@ function initList(page) {
     }
 
     $("#locations_list").html("");
+
+    // Pagination code created with guidance from Tyler Potts YouTube tutorial: https://www.youtube.com/watch?v=IqYiVHrO2U8
+
     page--;
     let start = itemsPerPage * page;
     let end = start + itemsPerPage;
-
     let pagItems = arrayChoice.slice(start, end);
-
-    // new credits: https://www.youtube.com/watch?v=IqYiVHrO2U8 
-
-
 
     for (var i = 0; i < pagItems.length; i++) {
         let item = pagItems[i];
@@ -83,11 +81,9 @@ function initList(page) {
         <a href="locations.html"><button class="btn cta-btn">Show all results</button></a></div>`
             )
         } else {
-
             $("#locations_list").append(
                 `<div class="fade-in">${item.content}</div>`
             )
-
         }
     }
 
@@ -98,7 +94,6 @@ function initList(page) {
             `<div id="no_results" class="card fade-in"><h3>Looks like we're all out of ideas here. <i class="far fa-frown"></i> </h3><p>Try a different flavour or show all results for inspiration</p>
         <a href="locations.html"><button class="btn cta-btn">Show all results</button></a></div>`
         )
-        //$(".map-overlay").css({ "z-index": "1", "opacity": "1", "display": "block" })
     } else {
         $("#results_title").html(
 
@@ -106,8 +101,6 @@ function initList(page) {
         <h3>We found <span class="bold-in-text">${arrayChoice.length} results</span> <span class="d-none d-lg-inline">that you may be interested in</span></h3>
         </div>`
         )
-
-        //$(".map-overlay").css({ "z-index": "-1", "opacity": "0", "display": "none" })
     };
 
 
@@ -143,7 +136,7 @@ function pagButtons(btnNum) {
     })
     return button;
 }
-//pagination();
+
 initList(currentPage);
 
 
@@ -236,7 +229,7 @@ $(document).ready(function () {
 
 function landingSearch(searchInput) {
     let search = searchInput;
-    window.location.href = `./locations.html?&q=${search}`;
+    window.location.href = `/locations.html?&q=${search}`;
     //searchField();
 }
 
@@ -356,7 +349,6 @@ function listFilterArea(area) {
     let href = window.location.href;
     let addSpace = href.replace("%20", " ");
     let URLstring = addSpace.split('q=')
-    //let URLstringSearch = href.split('q=');
     let idInfo = href.split('id=');
 
     let idInfoSearch = idInfo[1]

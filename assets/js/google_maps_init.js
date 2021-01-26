@@ -1,13 +1,7 @@
 
 // Define arrays for markers and cards to allow for filtering
 let filteredMarkers = [];
-let locationListings = new Array();
-let locationListingsDates = [];
 let listingObjectCombined = [];
-let listingObjectNorth = [];
-let listingObjectSouth = [];
-let listingObjectEast = [];
-let listingObjectWest = [];
 
 // Empty array for only the three featured cards on the homepage
 let featured = [];
@@ -99,28 +93,14 @@ function initMap() {
                             </div>
                             </div>`
                 );
-
-
-                locationListings.push(cardContent);
-                locationListingsDates.push(location.posted);
+                
                 listingObjectCombined[x] = { content: cardContent, date: location.posted, location: location.area }
 
                 // Set the default sorting of arrays based on most recent posting date
                 featured.sort((a, b) => b.date - a.date);
                 request.sort((a, b) => b.posted - a.posted);
                 listingObjectCombined.sort((a, b) => b.posted - a.posted);
-                /*if (location.area == "North London") listingObjectNorth.push({ content: cardContent, date: location.posted });
-                if (location.area == "South London") listingObjectSouth.push({ content: cardContent, date: location.posted });
-                if (location.area == "East London") listingObjectEast.push({ content: cardContent, date: location.posted });
-                if (location.area == "West London") listingObjectWest.push({ content: cardContent, date: location.posted });
 
-
-                /*   for (var i in locationListings) {
-       let item = locationListings[i];
-       $("#locations_list").append(
-           `<div>${item}</div>`
-       )
-   }*/
             } else {
                 console.log("Error - place could not be found");
             }
