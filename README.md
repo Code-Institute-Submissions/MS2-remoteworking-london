@@ -285,7 +285,7 @@ To create a new branch within this repository, follow the below steps (note: you
 ## Credits:
 
 ### **Images**
-- Homepage header image - Pixabay on [Pixabay](https://www.pexels.com/photo/architecture-bay-boats-bridge-372470/)
+- Homepage header image - Giammarco Boscaro on [Pixabay](https://unsplash.com/photos/q140lHKzXZY)
 - Location page header image - Jaanus Jagomägi on [Pixabay](https://unsplash.com/@jaanus?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)
 - Rude Health listing image - [Rude Health Website](https://rudehealth.com/rude-health-cafe/)
 - Uncommon listing image - [Uncommon Website](https://uncommon.co.uk/)

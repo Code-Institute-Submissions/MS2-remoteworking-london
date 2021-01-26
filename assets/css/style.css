@@ -129,8 +129,12 @@ section {
     height: 100vh;
     overflow-x: hidden;
 }
-
-
+.snap-scroll-parent-home {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+    overflow-x: hidden;
+}
 
 .snap-scroll-child {
     scroll-snap-align: start;
