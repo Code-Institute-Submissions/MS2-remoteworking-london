@@ -229,7 +229,7 @@ $(document).ready(function () {
 
 function landingSearch(searchInput) {
     let search = searchInput;
-    let root = window.location.host;
+    let root = window.location.pathname;
     window.location.href = `${root}/locations.html?&q=${search}`;
 }
 
