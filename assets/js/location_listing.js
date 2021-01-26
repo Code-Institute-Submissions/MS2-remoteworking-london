@@ -229,8 +229,8 @@ $(document).ready(function () {
 
 function landingSearch(searchInput) {
     let search = searchInput;
-    window.location.href = `/locations.html?&q=${search}`;
-    //searchField();
+    let root = window.location.host;
+    window.location.href = `${root}/locations.html?&q=${search}`;
 }
 
 function showMap() {
