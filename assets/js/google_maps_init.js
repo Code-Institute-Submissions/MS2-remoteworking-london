@@ -110,8 +110,6 @@ function initMap() {
     }
 }
 
-initMap();
-
 
 // Add marker function to push markers to array, allowing filter and sorting. 
 // ** Acknowledgements - Peter on JS Fiddle for function concept - https://jsfiddle.net/peter/drytwvL8/ **
