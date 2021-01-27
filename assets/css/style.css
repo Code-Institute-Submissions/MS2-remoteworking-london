@@ -91,7 +91,7 @@ body {
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
-    background: #efefef;
+    background: #fdfdfd;
     position: relative;
 }
 

@@ -108,39 +108,9 @@ function initMap() {
 
 
     }
-
-    // Sidebar each item
-    /* for (let s = 0; s < request.length; s++) {
-             let locationSide = request[s];
- 
-             //   if (request.item[c].photo_reference === undefined) {
-             //     return "";
-             //} else {
-             service.getDetails(locationSide, (place, status) => {
-                // if (status === google.maps.places.PlacesServiceStatus.OK) {
- 
-                         let sidebarContent = $("#locations_sidebar").append(
- 
-                             `<div class="" id="sidebar_list_${[s++]}"><strong>
-                             ${place.name}
-                             </strong><br>
-                             ${place.formatted_address}
-                             <br><img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${locationSide.photo_reference}&key=${gAPI}">
-                             </div>`
-                         );
-          //       } else {
-         //             console.log("Error - place could not be found");
-         //            }
-                 }
-             
- 
- 
-             )
- 
-         }*/
-
 }
 
+initMap();
 
 
 // Add marker function to push markers to array, allowing filter and sorting. 
