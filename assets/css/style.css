@@ -1199,10 +1199,13 @@ padding: 10px 0;
 .list-item-img {
     max-width: 100%;
     width: 100%;
+    min-height: 120px;
 }
 .list-item-img > img {
     width: 100%;
     height: auto;
+    left: 0;
+    top: -15%;
 }
 
 .location-info div {

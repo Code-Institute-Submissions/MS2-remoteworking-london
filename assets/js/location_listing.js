@@ -229,13 +229,13 @@ $(document).ready(function () {
 
 function landingSearch(searchInput) {
     let search = searchInput;
-    let isDeployed = window.location.host.indexOf("github.io") > -1;
-
-    if (isDeployed === true) {
+    //let isDeployed = window.location.host.indexOf("github.io") > -1;
+ window.location.href = `./locations.html?&q=${search}`;
+    /*if (isDeployed === true) {
         window.location.href = `MS2-remoteworking-london/locations.html?&q=${search}`;
     } else {
         window.location.href = `/locations.html?&q=${search}`;
-    }
+    }*/
 }
 
 function showMap() {

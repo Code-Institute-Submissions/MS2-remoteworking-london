@@ -4,7 +4,7 @@
 
 function openInfoHome(loc_id) {
     let id = loc_id
-    window.location.href = `/locations.html?&id=${id}`;
+    window.location.href = `./locations.html?&id=${id}`;
 }
 
 
