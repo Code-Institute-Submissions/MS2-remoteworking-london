@@ -89,14 +89,13 @@ function initList(page) {
 
     let mapActive = $("#map_btn").hasClass("filter-btn.active")
 
-    if (arrayChoice.length === 0) {
+    if (arrayChoice.length === 0 && mapActive === false) {
         $("#results_title").html(
             `<div id="no_results" class="card fade-in"><h3>Looks like we're all out of ideas here. <i class="far fa-frown"></i> </h3><p>Try a different flavour or show all results for inspiration</p>
         <a href="locations.html"><button class="btn cta-btn">Show all results</button></a></div>`
         )
     } else {
         $("#results_title").html(
-
             `<div id="results" class="fade-in">
         <h3>We found <span class="bold-in-text">${arrayChoice.length} results</span> <span class="d-none d-lg-inline">that you may be interested in</span></h3>
         </div>`
@@ -181,7 +180,7 @@ function closeBtn() {
     $(".modal-overlay").removeClass("show");
     setTimeout(function () {
         $(".sidebar-item").addClass("hide");
-    }, 500);
+    }, 100);
     if ($(".list-overlay").css({ "display": "none" }) == false) {
         hideOverlay();
     } else {
@@ -242,12 +241,13 @@ function showMap() {
     $("#locations_list").addClass("hide");
     $(".location-list-wrapper").addClass("hide");
     $("#pagination_btns").addClass("hide");
+    //$("div#no_results").addClass("hide");
     $("#list_btn").removeClass("active");
-    //$("#results_title").addClass("no-results-map")
+    $("#search").val("")
     $("#map_btn").addClass("active");
     $("#map").removeClass("hide");
-    //$(".map-overlay").removeClass("hide")
     $("#results_title").addClass("map")
+    searchField("");
     closeBtn();
 }
 

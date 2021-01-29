@@ -635,7 +635,6 @@ color: #fff;
     position: absolute;
     z-index: 3;
     margin: 40px 40px 0px 40px;
-    left: 10%;
     width: 70%;
 }
 
@@ -1289,7 +1288,7 @@ button.to-top {
 }
 
 #filter_mobile {
-    display: inline;
+    display: flex;
 }
 
 #filter-sidebar > div:nth-child(1) {
