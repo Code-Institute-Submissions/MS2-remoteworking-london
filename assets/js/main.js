@@ -7,6 +7,13 @@ function openInfoHome(loc_id) {
     window.location.href = `./locations.html?&id=${id}`;
 }
 
+function enterKey() {
+    document.getElementById("search").addEventListener('keyup', function (event) {
+        if (event.keyCode === 13) {
+            $(".search-btn").click();
+        }
+    });
+}
 
 
 // Mobile - change dropdown menu on click

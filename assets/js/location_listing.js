@@ -189,15 +189,6 @@ function closeBtn() {
 }
 
 
-function enterKey() {
-    document.getElementById("search").addEventListener('keyup', function (event) {
-        if (event.keyCode === 13) {
-            $(".search-btn").click();
-        }
-    });
-}
-
-
 
 
 // Filter items functions
@@ -225,23 +216,13 @@ $(document).ready(function () {
 
 })
 
-
 function landingSearch(searchInput) {
     let search = searchInput;
-    //let isDeployed = window.location.host.indexOf("github.io") > -1;
  window.location.href = `./locations.html?&q=${search}`;
-    /*if (isDeployed === true) {
-        window.location.href = `MS2-remoteworking-london/locations.html?&q=${search}`;
-    } else {
-        window.location.href = `/locations.html?&q=${search}`;
-    }*/
 }
 
 function showMap() {
-    $("#locations_list").addClass("hide");
     $(".location-list-wrapper").addClass("hide");
-    $("#pagination_btns").addClass("hide");
-    //$("div#no_results").addClass("hide");
     $("#list_btn").removeClass("active");
     $("#search").val("")
     $("#map_btn").addClass("active");
@@ -254,38 +235,39 @@ function showMap() {
 function showList() {
     $("#map").addClass("hide");
     $("#map_btn").removeClass("active");
-    //$(".map-overlay").addClass("hide")
     $("#list_btn").addClass("active");
-    //  $("#no_locations").removeClass("no-results-map")
-    $("#locations_list").removeClass("hide");
     $(".location-list-wrapper").removeClass("hide");
-    $("#pagination_btns").removeClass("hide");
     $("#results_title").removeClass("map")
 };
-
-/*jQuery(function ($) {
-    $(".area-btn").click(function () {
-        $(".area-btn").removeClass("active");
-        $(this).addClass("active");
-    });
-});*/
 
 // Filter markers by area only
 function filterArea(area) {
     for (var i in filteredMarkers) {
-        marker = filteredMarkers[i];
+        let marker = filteredMarkers[i];
+        let areaBtn = $(".area-btn")
+
+google.maps.event.addListener(areaBtn, "click", function () {
+             if (infowindow) {
+        infowindow.close();
+    }
+     
+        });
 
         if (marker.area === area || area.length === 0) {
             marker.setVisible(true);
+            
         } else {
             marker.setVisible(false);
+            google.maps.event.addListener(areaBtn, "click", function () {
+            infowindow.close();
+            closeBtn();
+            return
+        });
         }
     }
 }
 
 function listFilterArea(area) {
-
-
     if (area == "North London") {
         $(".area-btn").removeClass("active");
         $("#north_btn").addClass("active");
@@ -309,44 +291,6 @@ function listFilterArea(area) {
     initList(currentPage);
     pagination(currentPage);
 
-
-
-    // Determine item count from each area
-    /*    let north = request.filter(function (item) {
-            return item.area === "North London";
-        }).length
-        let south = request.filter(function (item) {
-            return item.area === "South London";
-        }).length
-        let east = request.filter(function (item) {
-            return item.area === "East London";
-        }).length
-        let west = request.filter(function (item) {
-            return item.area === "West London";
-        }).length
-    
-        console.log("north:", north)
-        //$("#no_locations").addClass("hide");
-        for (var li in request) {
-            let item = request[li];
-    
-    
-            if (area == "") {
-                $(`.list-item`).removeClass("hide");
-                //          $(`#no_locations`).addClass("hide");
-            } else if (item.area == area) {
-                $(`#list_item_${li}`).removeClass("hide");
-                //    $(`#no_locations`).addClass("hide");
-            }
-            else //if(north == 0 || south == 0 || east == 0 || west == 0  ) 
-            {
-                $(`#list_item_${li}`).addClass("hide");
-                //    $(`#no_locations`).removeClass("hide");
-                console.log("no item:", item)
-            }
-    
-    
-        }*/
 }
 
 // Get search query from URL & run text search more 'read more' if exists

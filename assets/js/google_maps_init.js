@@ -15,6 +15,7 @@ function initMap() {
         mapId: "1daab95bc3f973ff",
         mapTypeControl: false,
     });
+    var centerMap = map.getCenter({ lat: 51.501027, lng: -0.124095 });
 
     const infowindow = new google.maps.InfoWindow();
     const service = new google.maps.places.PlacesService(map);
@@ -40,7 +41,7 @@ function initMap() {
                     <button class="btn cta-btn infowindow-cta" onclick="moreDetails(${[mm]});"><i class="fas fa-chevron-circle-right"></i></p>
                 </div>
             </div>`;
-                addMarker(locationMap, place, map, infowindow, content);
+                addMarker(locationMap, place, map, infowindow, content, centerMap);
             } else {
                 console.log("Error - place could not be found");
             }
@@ -53,7 +54,7 @@ function initMap() {
         $("#locations_list").html("");
         $("#sidebar_item_container").html("");
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        
+
         // Get the date posted from the object and create string for frontend. Credits to https://www.w3schools.com/js/js_date_methods.asp for date methods.
         let postedDate = location.posted;
         let formatted_date = postedDate.getDate() + " " + months[postedDate.getMonth()] + " " + postedDate.getFullYear();
@@ -110,19 +111,14 @@ function initMap() {
     }
 }
 
-
 // Add marker function to push markers to array, allowing filter and sorting. 
 // ** Acknowledgements - Peter on JS Fiddle for function concept - https://jsfiddle.net/peter/drytwvL8/ **
-function addMarker(locationMap, place, map, infowindow, content) {
-    //let x++ = 0; 
+function addMarker(locationMap, place, map, infowindow, content, centerMap) {
+
     let title = locationMap.title;
     let position = place.geometry.location;
     let address = place.formatted_address;
-    //   let content = `<h6>${place.name}</h6><p>${place.formatted_address}<br>${place.place_id}</p><p onclick="moreDetails(${[m++]});">Read More</p>`;
     let area = locationMap.area;
-
-
-
 
     const marker = new google.maps.Marker({
         map: map,
@@ -140,10 +136,19 @@ function addMarker(locationMap, place, map, infowindow, content) {
             infowindow.open(map, marker);
             map.panTo(this.getPosition());
             closeBtn();
-            return
-
+            return;
         });
     })(marker, content);
+
+// Close all infowindows when filtering by area
+    let areaBtn = $(".area-btn");    
+
+    areaBtn.click(function(map, marker) {
+        infowindow.close(map, marker);
+        bounds = new google.maps.LatLngBounds();
+        console.log(centerMap);
+    });
+
 };
 
 function emptyMapMarkers() {

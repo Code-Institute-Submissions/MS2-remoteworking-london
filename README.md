@@ -301,6 +301,8 @@ To create a new branch within this repository, follow the below steps (note: you
 - API places name, address and location date from [Google Places API](https://developers.google.com/places/web-service/overview)
 - Script load order issue in Safari (callback from Google API was not running as 'initMap' had not yet loaded), was fixed with guidance from [Iván Ibarra Pacheco's](https://stackoverflow.com/users/11120704/iv%c3%a1n-ibarra-pacheco) answer in this [StackOverflow thread](https://stackoverflow.com/questions/36795150/uncaught-invalidvalueerror-initmap-is-not-a-function).
 - Array filter - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+- MARKER STRUCTURE - Acknowledgements - Peter on JS Fiddle for function concept - https://jsfiddle.net/peter/drytwvL8/ **
+
 > rewrite above
 
 ### **Acknowledgements**
