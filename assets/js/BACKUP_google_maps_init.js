@@ -15,17 +15,17 @@ function initMap() {
         mapId: "1daab95bc3f973ff",
         mapTypeControl: false,
     });
-    
+    var centerMap = map.getCenter({ lat: 51.501027, lng: -0.124095 });
 
     const infowindow = new google.maps.InfoWindow();
     const service = new google.maps.places.PlacesService(map);
 
     // For ...in loop to iterate through 'request' array and show on map as markers and infowindow
-    for (var m = 0; m < request.length; m++) {
+    for (var m = 0; m < 5; m++) {
         let locationMap = request[m];
         let mm = m
-     //   service.getDetails(locationMap, (place, status) => {
-       //     if (status === google.maps.places.PlacesServiceStatus.OK) {
+        service.getDetails(locationMap, (place, status) => {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
 
                 let content = `
             <div class="d-flex flex-row infowindow">
@@ -33,42 +33,23 @@ function initMap() {
                     <img src="${locationMap.photo_reference}" alt="${locationMap.name}">
                 </div>
                 <div class="d-flex flex-column mx-2">
-                    ${locationMap.title}
+                    <h6>${place.name}</h6>
+                    <p>${place.formatted_address}</p>
                     <p onclick="moreDetails(${[mm]});" class="infowindow-readmore">Read More</p>
                 </div>
                 <div class="d-flex">
-                    <button id="info_cta_${mm}" class="btn cta-btn infowindow-cta" onclick="moreDetails(${[mm]});initMap();"><i class="fas fa-chevron-circle-right"></i></p>
+                    <button class="btn cta-btn infowindow-cta" onclick="moreDetails(${[mm]});"><i class="fas fa-chevron-circle-right"></i></p>
                 </div>
             </div>`;
-        addMarker(locationMap, map, infowindow, content);
-
-        function getDetails(index) {
-    //
-
-              console.log(map)
-    //for (var i in request) {
-        item = request[index]
-
-
-       
-        service.getDetails(item, (place, status) => {
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-                console.log(place.formatted_address)
+                addMarker(locationMap, place, map, infowindow, content, centerMap);
+            } else {
+                console.log("Error - place could not be found");
             }
-        })
-    //}
-
-
-}
-        
- //           } else {
- //               console.log("Error - place could not be found");
-    //        }
-  //      });
+        });
     };
-/*
+
     // For ...in loop to iterate through 'request' array and show as list
-    for (let x = 0; x < request.length; x++) {
+    for (let x = 0; x < 5; x++) {
         let location = request[x];
         $("#locations_list").html("");
         $("#sidebar_item_container").html("");
@@ -127,25 +108,16 @@ function initMap() {
         });
 
 
-    } */
-
-
-
-
-
-
-
+    }
 }
-
-
 
 // Add marker function to push markers to array, allowing filter and sorting. 
 // ** Acknowledgements - Peter on JS Fiddle for function concept - https://jsfiddle.net/peter/drytwvL8/ **
-function addMarker(locationMap, map, infowindow, content, centerMap) {
+function addMarker(locationMap, place, map, infowindow, content, centerMap) {
 
     let title = locationMap.title;
-    let position = {lat: locationMap.lat, lng:locationMap.lng};
-    //let address = place.formatted_address;
+    let position = place.geometry.location;
+    let address = place.formatted_address;
     let area = locationMap.area;
 
     const marker = new google.maps.Marker({

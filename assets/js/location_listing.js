@@ -23,22 +23,22 @@ function initList(page) {
 
     // Use filter() to sort array by area. Credits: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
     if (btnNorth == true) {
-        arrayChoiceArea = listingObjectCombined.filter(listingObjectCombined => listingObjectCombined.location === "North London")
+        arrayChoiceArea = request.filter(request => request.location === "North London")
     } else if (btnSouth == true) {
-        arrayChoiceArea = listingObjectCombined.filter(listingObjectCombined => listingObjectCombined.location === "South London")
+        arrayChoiceArea = request.filter(request => request.location === "South London")
     } else if (btnEast == true) {
-        arrayChoiceArea = listingObjectCombined.filter(listingObjectCombined => listingObjectCombined.location === "East London")
+        arrayChoiceArea = request.filter(request => request.location === "East London")
     } else if (btnWest == true) {
-        arrayChoiceArea = listingObjectCombined.filter(listingObjectCombined => listingObjectCombined.location === "West London")
+        arrayChoiceArea = request.filter(request => request.location === "West London")
     } else {
-        arrayChoiceArea = listingObjectCombined
+        arrayChoiceArea = request
     }
 
     // Sort the dates based on button value
     if (asc == true) {
-        arrayChoiceArea.sort((a, b) => a.date - b.date);
+        arrayChoiceArea.sort((a, b) => a.posted - b.posted);
     } else {
-        arrayChoiceArea.sort((a, b) => b.date - a.date);
+        arrayChoiceArea.sort((a, b) => b.posted - a.posted);
 
     }
 
@@ -157,9 +157,39 @@ function sort(sort) {
 
 // Show the sidebar details when 'read more' is clicked
 function moreDetails(j) {
+      
+    
+    item = request[j]
+    
+        const service = new google.maps.places.PlacesService(map);
+        service.getDetails(item, (place, status) => {
+            $("#sidebar_item_container").html("");
+            initMap();
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+                console.log(place.formatted_address)
+                $("#sidebar_item_container").append(
+
+                    `<div class="sidebar-item" id="sidebar_list_${[j]}">
+                            <button onclick="closeBtn();hideOverlay();" class="btn close_btn"><i class="fas fa-times"></i></button>
+                            <div class="sidebar-img-wrapper"><img src="${item.photo_reference}" alt="${place.name}"></div>
+                            <div class="sidebar-content-wrapper p-4">
+                            <h4>${place.name}</h4>
+                            <p class="area-tag m-0">${item.area}</p>
+                            <p class="m-0">${place.formatted_address}</p>
+                            <div class="hz-rule"></div>
+                            <p>${item.para}</p>
+                            <a href="${item.web}" target="_blank"><button class="btn sidebar-website-btn">Visit Website</button></a>
+                            </div>
+                            </div>`
+                );
+                
+            }
+        })
+    
+
     $("#locations_sidebar").removeClass("hidden");
     $(".modal-overlay").addClass("show");
-    $(`#sidebar_list_${[j]}`).removeClass("hide");
+    //$(`#sidebar_list_${[j]}`).removeClass("hide");
     $(".list-overlay").animate({ opacity: '1' }, "medium").css({ "z-index": "2", "display": "block" })
 };
 

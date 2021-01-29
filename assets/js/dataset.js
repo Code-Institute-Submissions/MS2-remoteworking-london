@@ -11,7 +11,9 @@ const request =
             photo_reference: "./assets/images/listings/thedock.png",
             posted: new Date('2020-12-25'),
             web: "https://www.tobaccodocklondon.com/workspaces/",
-            cat_icon: 'desktop'
+            cat_icon: 'desktop',
+            lat: 51.508331918585334, 
+            lng: -0.059331656983684894,
         }, {
             placeId: "ChIJNYMc2XQPdkgRNrDf5jzuVSU",
             fields: ["name", "formatted_address", "place_id", "geometry"],
@@ -21,7 +23,9 @@ const request =
             photo_reference: "./assets/images/listings/rudehealth.jpg",
             posted: new Date('2020-12-01'),
             web: "https://rudehealth.com/rude-health-cafe/ ",
-            cat_icon: 'coffee'
+            cat_icon: 'coffee',
+            lat: 51.46991102971483, 
+            lng: -0.2087093606740712,
         },
         {
             placeId: "ChIJq6pq8FgDdkgR00mfXSJQ_lE",
@@ -32,7 +36,9 @@ const request =
             photo_reference: "./assets/images/listings/uncommon.jpg",
             posted: new Date('2020-12-31'),
             web: "https://uncommon.co.uk/",
-            cat_icon: 'building'
+            cat_icon: 'building',
+            lat: 51.50140179673166, 
+            lng: -0.09141299384238823,
         },
         {
             placeId: "ChIJC9BYx0QDdkgRM8cEOlJ-cgQ",
@@ -43,7 +49,9 @@ const request =
             photo_reference: "./assets/images/listings/worklife.jpg",
             posted: new Date('2020-12-31'),
             web: "https://work.life/locations/bermondsey/",
-            cat_icon: 'building'
+            cat_icon: 'building',
+            lat: 51.50059007146171, 
+            lng: -0.08146762827075194,
         },
         {
             placeId: "ChIJ2a2DyE0bdkgRNzoEi9LTGo8",
@@ -54,6 +62,22 @@ const request =
             photo_reference: "./assets/images/listings/headspace.jpg",
             posted: new Date('2020-12-31'),
             web: "https://www.headspacegroup.co.uk/",
-            cat_icon: 'building'
+            cat_icon: 'building',
+            lat: 51.5211880677619, 
+            lng: -0.10039151917712165,
+        },
+        {
+            placeId: "ChIJ2a2DyE0bdkgRNzoEi9LTGo8",
+            fields: ["name", "formatted_address", "place_id", "geometry"],
+            title: "Battersea Park",
+            area: "South London",
+            para: "On the smaller side of co-working offices, Headspace is perfect for those looking for a part-time base in East London. Close to the City and Silicon Roundabout (Old Street), this co-working space offers everything you would expect from such a building, but at a flexible rate - starting at just £40pcm for Headspace membership.<br><br>Suited to freelancers, remote-workers and startups who need to collaborate, Headspace is great for solo work or scaling your startup.<br><br>Oh did we mention they offer free breakfast five days a week? Count me in.",
+            photo_reference: "./assets/images/listings/headspace.jpg",
+            posted: new Date('2020-12-31'),
+            web: "https://www.headspacegroup.co.uk/",
+            cat_icon: 'building',
+            lat: 51.479556605545255,
+            lng: -0.15543546985977563,
+
         },
     ];
