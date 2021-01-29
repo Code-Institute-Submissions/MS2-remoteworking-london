@@ -1,5 +1,9 @@
 # Remote London
 
+![Remote London homepage responsiveness](./documentation/screenshots/home_responsive.png)
+<br><br>
+![Remote London locations responsiveness](./documentation/screenshots/locations_responsive.png)
+
 ## About this Site
 
 This site will provide users with a directory of local listings in which users can visit and work from remotely.
@@ -112,6 +116,7 @@ The core codebase for the Remote London website is created using HTML5, CSS3 and
 - [Jigsaw W3 Validator](https://jigsaw.w3.org/css-validator/) - CSS validation tool used to test quality of CSS code.
 - [W3 HTML Validator](https://validator.w3.org/) - used to validate and check quality of HTML on site.
 - [JS Hint](https://jshint.com/) 
+- [Am I Responsive](http://ami.responsivedesign.is/) - used to generate site images showing various devices at within this README.md
 > need to add js hint
 
 <br>
@@ -179,8 +184,6 @@ To ensure accessibility by all modern browsers and differing devices and users, 
 - #### Site owner
     - As the site owner, I want to ensure that information is accurate and user feedback is received, to improve value to the user.
         - As site owner, I can collect user feedback from the 'contact' page. The copy above the form clearly states what the form is to be used for; "Have a new listing to share, or feedback for an existing one?", prompting the user to focus their message on topics such as this.
-    - I want users to share the site content with others to drive traffic to site.
-    > need to add social?
 
 ### **Lighthouse Testing**
 > add lighthouse testing screens
@@ -213,6 +216,8 @@ To ensure accessibility by all modern browsers and differing devices and users, 
     - Map and list overlay when opening sidebar would remain / disappear early if too many clicks
         - The overlays that appear behind the 'more info' sidebar would frequently become out of sync with the sidebar as their styles were adjusted independently from one another.
         - I have since refactored the code and used jQuery's existing fadeOut() method to show and hide a page-wide overlay, which functions much smoother.
+    - Safari cannot load second initMap function - need to make function name unique
+    > rewrite above
 
 - Deployment & Site-wide
     - Footer not sticking to bottom of page when content height in body is less than 100vh
@@ -232,8 +237,6 @@ To ensure accessibility by all modern browsers and differing devices and users, 
 ### **Known Bugs**
 - Currently there is an existing limitation present on the site caused by pulling data from the Google Places API. If a user makes too many requests in a single session, the request will return no, or only partial results. Whilst a fix is being researched, this appears to be a Google quota limitation to avoid overloading the server with requests.
 > re-write below
-- Safari cannot load second initMap function - need to make function name unique
-> complete known bugs
 
 <br>
 
