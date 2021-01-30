@@ -31,7 +31,7 @@
     </div>
     <div class="snap-scroll-parent">
         <header id="locations_header">
-            <div class="location-pg-overlay">
+            <div class="location-pg-overlay"></div>
                 <div class="mobile-menu-wrapper clear fade-in">
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <a class="navbar-brand" href="index.html"><img src="assets/images/logo.svg" alt="logo"></a>
@@ -85,7 +85,7 @@
                         <h1>Find remote working locations near you</h1>
                     </div>
                 </div>
-            </div>
+            
         </header>
         <div class="modal-overlay fade-in" onclick="hideOverlay();"></div>
         <div id="locations_sidebar" class="hidden">
@@ -102,8 +102,8 @@
                         <button id="filter_mobile" class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#filter" aria-controls="filter" aria-expanded="false"
                             aria-label="Toggle navigation">
-                            <i class="fas fa-filter"></i>
-                            <h3 class="d-lg-none d-xl-none d-xxl-none m-0">Filter</h3>
+                            <i class="fas fa-filter d-flex m-0"></i>
+                            <h3 class="d-lg-none d-xl-none d-xxl-none">Filter</h3>
                         </button>
                     </div>
                     <div id="filter">
@@ -148,16 +148,19 @@
                             <button class="filter-btn active" id="list_btn" onclick="showList();hideOverlay();"
                                 data-toggle="tooltip" data-placement="top" title="Display list"><i
                                     class="fas fa-th-list"></i></button>
-                            <button class="filter-btn" id="map_btn" onclick="showMap();hideOverlay();"
+                            <button class="filter-btn d-sm-none d-xs-none" id="map_btn" onclick="showMap();hideOverlay();"
                                 data-toggle="tooltip" data-placement="top" title="Display map"><i
-                                    class="fas fa-map-marked-alt"></i></button>
+                                    class="fas fa-map-marked-alt "></i></button>
+                            <!-- For mobile without tooltip-->
+                            <button class="filter-btn d-none d-xs-inline d-sm-inline" id="map_btn_mob" onclick="showMap();hideOverlay();">
+                            <i class="fas fa-map-marked-alt"></i></button>
 
 
                         </div>
                         <div class="hz-rule my-4"></div>
                         <div class="filter-section">
-                            <button id="clear_results" onclick="clearFilters();"
-                                class="filter-btn">Clear Filters</button>
+                            <button id="clear_results" onclick="clearFilters();" class="filter-btn">Clear
+                                Filters</button>
                         </div>
                         <div class="hz-rule my-2 d-none d-xs-block"></div>
                     </div>
@@ -204,8 +207,7 @@
         </div>
 
     </div>
-    <button class="to-top fade-in hide"><i
-            class="fas fa-arrow-circle-up"></i></button>
+    <button class="to-top fade-in hide"><i class="fas fa-arrow-circle-up"></i></button>
 
     <!-- Load the Google API & listings once complete -->
     <script>

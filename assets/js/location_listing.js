@@ -289,8 +289,7 @@ function moreDetails(md) {
                     <a class="review-auth" href="${review.author_url}" target="_blank">${review.author_name}</a>
                     <div class="star-ratings" id="star_rating_${r}"></div>
                     </div>
-                    ${review.rating}, 
-                    <p>${newReviewLength} &nbsp;<span class="review-posted">${review.relative_time_description}</span></p>
+                    <p class="pt-0">${newReviewLength} &nbsp;<span class="review-posted">${review.relative_time_description}</span></p>
                     </div>
                     </div>`
                 )
