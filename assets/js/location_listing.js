@@ -95,7 +95,7 @@ function initList(page) {
 
     for (var j = start; j < start + maxItems; j++) {
         let item = arrayChoice[j];
-
+        let tags = item.tags;
         if (arrayChoice.length === 0) {
             return false;
             //         console.log("nothing here")
@@ -110,7 +110,7 @@ function initList(page) {
             let formatted_date = postedDate.getDate() + " " + months[postedDate.getMonth()] + " " + postedDate.getFullYear();
             let paraWords = item.para.split(" ", 22);
             let paraWordLimit = paraWords.join(" ");
-            let tags = item.tags;
+
             console.log(tags)
 
 
@@ -123,7 +123,7 @@ function initList(page) {
                     </div>
                     <div class="location-info d-flex flex-column p-2">
                         <h4>${item.title}</h4>
-                        <div class="d-flex"><div class="area-tag"><span>${item.area}</span></div><div class="location-tags flex-row" id="location_tags_${j}"></div></div>
+                        <div class="d-flex"><div class="area-tag"><span>${item.area}</span></div><div class="location-tags flex-row" id="listing_tags_${j}"></div></div>
                         <p class="list-item-date">Posted on: ${formatted_date}</p>
                         <p class="list-item-short-desc">${paraWordLimit}... <span onclick="moreDetails(${[j]});" class="read-more-trigger">Read More</span></p>
                         <button onclick="moreDetails(${[j]});" class="read-more-trigger d-lg-none d-xl-none d-xxl-none">Read More</button>
@@ -131,12 +131,7 @@ function initList(page) {
                     </div>`
                 )
 
-                for (var t = 0; t < tags.length; t++) {
-                    let tag = tags[t];
-                    $(`#location_tags_${j}`).append(
-                        `<div class="loc-tag">${tag}</div>`
-                    )
-                }
+
             } else {
                 $("#results_title").html(
                     `<div id="no_results" class="card fade-in"><h3>Looks like we're all out of ideas here. <i class="far fa-frown"></i> </h3><p>Try a different flavour or show all results for inspiration</p>
@@ -146,6 +141,13 @@ function initList(page) {
 
         }
 
+
+        for (var mt = 0; mt < tags.length; mt++) {
+            let tag = tags[mt];
+            $(`#listing_tags_${j}`).append(
+                `<div class="loc-tag">${tag}</div>`
+            )
+        }
     }
 
     let mapActive = $("#map_btn").hasClass("filter-btn.active")
@@ -218,10 +220,10 @@ function sort(sort) {
 
 
 // Show the sidebar details when 'read more' is clicked
-function moreDetails(j) {
+function moreDetails(md) {
 
 
-    item = request[j]
+    item = request[md]
 
     const service = new google.maps.places.PlacesService(map);
     service.getDetails(item, (place, status) => {
@@ -232,14 +234,14 @@ function moreDetails(j) {
             console.log(place.formatted_address)
             $("#sidebar_item_container").append(
 
-                `<div class="sidebar-item" id="sidebar_list_${[j]}">
+                `<div class="sidebar-item" id="sidebar_list_${[md]}">
                             <button onclick="closeBtn();hideOverlay();" class="btn close_btn"><i class="fas fa-times"></i></button>
                             <div class="sidebar-img-wrapper"><img src="${item.photo_reference}" alt="${place.name}"></div>
                             <div class="sidebar-content-wrapper p-4">
                             <h4>${place.name}</h4>
                             <div class="d-flex mb-2">
                             <div class="area-tag"><span>${item.area}</span></div>
-                            <div class="location-tags flex-row" id="location_tags_${j}"></div>
+                            <div class="location-tags flex-row" id="location_tags_${md}"></div>
                             </div>
                             <div class="d-flex flex-wrap mb-2">
                             <p class="p-0"><i class="fas fa-home"></i> ${place.formatted_address}</p>
@@ -267,7 +269,7 @@ function moreDetails(j) {
             // Add the tags to more info
             for (var t = 0; t < tags.length; t++) {
                 let tag = tags[t];
-                $(`#location_tags_${j}`).append(
+                $(`#location_tags_${md}`).append(
                     `<div class="loc-tag">${tag}</div>`
                 )
             }
@@ -509,6 +511,6 @@ function listFilterArea(area) {
             );
         }
     }
-    
+
 
 })();
