@@ -485,6 +485,10 @@ color: #fff;
     width: 60%;
 }
 
+p.landing {
+    font-size: 20px;
+}
+
 /* Feature Section */
 
 .featured-btn-cta {
@@ -500,7 +504,7 @@ color: #fff;
 }
 
 #featured_locations > div {
-    max-width: 25%;
+    max-width: 29%;
 }
 
 #ft_section {
@@ -1239,14 +1243,8 @@ footer {
 #ft_section {
 height: max-content;
 }
-#featured_locations {
-    flex-direction: column;
-}
 
-#featured_locations > div {
-    max-width: 100%;;
-    margin-bottom: 30px;
-}
+
 #featured_locations > div:last-of-type {
     margin-bottom: 0px;
 }
@@ -1372,7 +1370,14 @@ button.read-more-trigger {
 
 @media (max-width: 767.98px) {
 
+#featured_locations > div {
+    max-width: 100%;
+    margin-bottom: 30px;
+}
 
+#featured_locations {
+    flex-direction: column;
+}
 
 p.to-top {
     display: block;

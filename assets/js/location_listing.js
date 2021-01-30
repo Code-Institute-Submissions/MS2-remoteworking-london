@@ -264,13 +264,13 @@ function moreDetails(j) {
             );
             console.log("opening hours", place.opening_hours.weekday_text)
 
-// Add the tags to more info
+            // Add the tags to more info
             for (var t = 0; t < tags.length; t++) {
-                    let tag = tags[t];
-                    $(`#location_tags_${j}`).append(
-                        `<div class="loc-tag">${tag}</div>`
-                    )
-                }
+                let tag = tags[t];
+                $(`#location_tags_${j}`).append(
+                    `<div class="loc-tag">${tag}</div>`
+                )
+            }
 
             // Sort the reviews to show most recent first. Credits for sort() method guidance: https://www.w3schools.com/jsref/jsref_sort.asp 
             let sortRevByDate = place.reviews.sort(function (a, b) { return b.time - a.time })
@@ -485,19 +485,30 @@ function listFilterArea(area) {
         let item = request[i]
         let paraWords = item.para.split(" ", 22);
         let paraWordLimit = paraWords.join(" ");
-
+        let tags = item.tags
         $(`#ft${[i]}`).append(
             `<div class="featured-img-wrap">
                     <img src="${item.photo_reference}" alt="${item.title}">
                 </div>
-                <div class="featured-icon"><i class="fas fa-${item.cat_icon}"></i></div>
+                
             <div class="featured-content">
                 <h4 class="mb-1">${item.title}</h4>
-                <div class="area-tag mb-1">${item.area}</div>
+     <div class="d-flex flex-column">
+        <div class="area-tag mb-2"><span>${item.area}</span></div>
+        <div class="location-tags flex-row mb-2" id="location_tags_${i}"></div>
+     </div>
                 <p  class="mb-1">${paraWordLimit}</p>
                 <button class="cta-btn featured-btn-cta" onclick="landingSearch('${item.title}');" value="${item.title}">Read More</button>
             </div>`
 
         );
+        for (var tg = 0; tg < tags.length; tg++) {
+            let tag = tags[tg];
+            $(`#location_tags_${i}`).append(
+                `<div class="loc-tag">${tag}</div>`
+            );
+        }
     }
+    
+
 })();
