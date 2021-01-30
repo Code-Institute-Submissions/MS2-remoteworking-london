@@ -24,13 +24,13 @@ function initList(page) {
 
     // Use filter() to sort array by area. Credits: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
     if (btnNorth == true) {
-        arrayChoiceArea = request.filter(request => request.location === "North London")
+        arrayChoiceArea = request.filter(request => request.area === "North London")
     } else if (btnSouth == true) {
-        arrayChoiceArea = request.filter(request => request.location === "South London")
+        arrayChoiceArea = request.filter(request => request.area === "South London")
     } else if (btnEast == true) {
-        arrayChoiceArea = request.filter(request => request.location === "East London")
+        arrayChoiceArea = request.filter(request => request.area === "East London")
     } else if (btnWest == true) {
-        arrayChoiceArea = request.filter(request => request.location === "West London")
+        arrayChoiceArea = request.filter(request => request.area === "West London")
     } else {
         arrayChoiceArea = request
     }
@@ -47,6 +47,7 @@ function initList(page) {
 
     if (search == "") {
         arrayChoice = arrayChoiceArea
+        console.log("current list", arrayChoice)
     } else {
         for (var i = 0; i < arrayChoiceArea.length; i++) {
             if (arrayChoiceArea === undefined) {
@@ -55,14 +56,14 @@ function initList(page) {
         <a href="locations.html"><button class="btn cta-btn">Show all results</button></a></div>`
                 )
             } else {
-                let item = arrayChoiceArea[i]
-                let itemLower = item.content.toLowerCase()
-                if (item.content.includes(search) || itemLower.includes(search))
-                    searchResults.push(item)
+                let itemSearch = arrayChoiceArea[i]
+                let itemContent = itemSearch.para + itemSearch.title + itemSearch.area;
+                let itemLower = itemContent.toLowerCase()
+                if (itemContent.includes(search) || itemLower.includes(search))
+                    searchResults.push(itemSearch)
             }
         }
         arrayChoice = searchResults;
-
     }
 
     $("#locations_list").html("");
@@ -74,27 +75,44 @@ function initList(page) {
     let end = start + itemsPerPage;
     let maxItems;
 
-    if (end < arrayChoice.length) {
+    // Determine what the max list of results should be based on rull array set, sorted array set, and page
+
+    if (itemsPerPage > arrayChoice.length) {
+        maxItems = arrayChoice.length
+    } else if (end < arrayChoice.length) {
         maxItems = end
+    } else if (itemsPerPage < arrayChoice.length) {
+        maxItems = arrayChoice.length - start
     } else {
-        maxItems = end - arrayChoice.length
+        maxItems = itemsPerPage
     }
+
+    console.log("start", start)
+    console.log("end", end)
+    console.log("max", maxItems)
+    console.log("Array choice", arrayChoice)
 
     for (var j = start; j < start + maxItems; j++) {
         let item = arrayChoice[j];
-        console.log("item", item)
 
-        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        if (arrayChoice.length === 0) {
+            return false;
+            //         console.log("nothing here")
+        } else {
 
-        // Get the date posted from the object and create string for frontend. Credits to https://www.w3schools.com/js/js_date_methods.asp for date methods.
-        let postedDate = item.posted;
-        let formatted_date = postedDate.getDate() + " " + months[postedDate.getMonth()] + " " + postedDate.getFullYear();
-        let paraWords = item.para.split(" ", 22);
-        let paraWordLimit = paraWords.join(" ");
+            console.log("item", item)
 
-        if (arrayChoice != undefined) {
-            $("#locations_list").append(
-                `<div class="d-flex card list-item mt-3" id="list_item_${[j]}" onclick="moreDetails(${[j]});">
+            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+            // Get the date posted from the object and create string for frontend. Credits to https://www.w3schools.com/js/js_date_methods.asp for date methods.
+            let postedDate = item.posted;
+            let formatted_date = postedDate.getDate() + " " + months[postedDate.getMonth()] + " " + postedDate.getFullYear();
+            let paraWords = item.para.split(" ", 22);
+            let paraWordLimit = paraWords.join(" ");
+
+            if (arrayChoice != undefined) {
+                $("#locations_list").append(
+                    `<div class="d-flex card list-item mt-3" id="list_item_${[j]}" onclick="moreDetails(${[j]});">
                     <div class="list-item-img"><img
                             src="${item.photo_reference}"> alt="${item.title}"
                     </div>
@@ -106,12 +124,13 @@ function initList(page) {
                         <button onclick="moreDetails(${[j]});" class="read-more-trigger d-lg-none d-xl-none d-xxl-none">Read More</button>
                     </div>
                     </div>`
-            )
-        } else {
-            $("#results_title").html(
-                `<div id="no_results" class="card fade-in"><h3>Looks like we're all out of ideas here. <i class="far fa-frown"></i> </h3><p>Try a different flavour or show all results for inspiration</p>
+                )
+            } else {
+                $("#results_title").html(
+                    `<div id="no_results" class="card fade-in"><h3>Looks like we're all out of ideas here. <i class="far fa-frown"></i> </h3><p>Try a different flavour or show all results for inspiration</p>
         <a href="locations.html"><button class="btn cta-btn">Show all results</button></a></div>`
-            )
+                )
+            }
         }
     }
 
