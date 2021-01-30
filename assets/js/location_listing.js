@@ -399,7 +399,7 @@ function showList() {
 };
 
 function clearFilters() {
-    $("#search").html("");
+    $("#search").val("");
     $(".area-btn").removeClass("active");
     $("#all_btn").addClass("active");
     $(".sort-date").removeClass("active");
