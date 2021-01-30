@@ -9,17 +9,21 @@
     <!-- Styles-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
     <link rel="stylesheet" href="assets/css/style.css">
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
     <script src="assets/js/main.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" defer></script>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("form_submit").submit();
+        }
+    </script>
 </head>
 
 <body>
@@ -89,18 +93,18 @@
         </div>
 
 
-
+        <!-- Credits: https://www.codegrepper.com/code-examples/lisp/alpha+validation+html+inputs -->
         <div>
             <form id="contact_form" class="d-flex flex-column mb-3" action="./thank_you.html"
                 onsubmit="sendEmail(this);">
                 <div class="d-flex justify-content-between input-row-section">
                     <div class="input-group-item flex-column">
                         <label for="fname" class="form-label">First Name</label>
-                        <input class="contact-input" type="text" name="fname" required>
+                        <input class="contact-input" type="text" name="fname" required pattern="[A-Za-z]{3}">
                     </div>
                     <div class="input-group-item flex-column">
                         <label for="lname" class="form-label">Last Name</label>
-                        <input class="contact-input" type="text" name="lname" required>
+                        <input class="contact-input" type="text" name="lname" required pattern="[A-Za-z]{3}">
                     </div>
                 </div>
                 <label for="email" class="form-label">Email</label>
@@ -117,7 +121,9 @@
                         message information to help guide us on what our users are looking for. Your personal
                         information will only be used to respond to you.</label>
                 </div>
-                <input class="contact-input cta-btn" type="submit" value="Send Message">
+                <input id="form_submit" data-sitekey="6LdgLrAUAAAAAO0eefrAeS1cRm51YQtofu-_SCvd" data-callback="onSubmit"
+                    class="contact-input cta-btn g-recaptcha" type="submit" value="Send Message">
+                <!-- LOCAL DEV TEST -- <input id="form_submit" class="contact-input cta-btn" type="submit" value="Send Message">-->
             </form>
 
         </div>
@@ -128,7 +134,8 @@
         <footer>
             <div class="d-flex flex-column">
                 <div class="footer-links mb-3">
-                    <p> <a href="about_us.html">About Us</a><a href="contact.html">Contact Us</a><a href="privacy.html">Privacy</a></p>
+                    <p> <a href="about_us.html">About Us</a><a href="contact.html">Contact Us</a><a
+                            href="privacy.html">Privacy</a></p>
                 </div>
                 <div>
                     <p>&copy; Copyright 2021 Remote London </p>
