@@ -1,12 +1,13 @@
 let currentPage = 1;
 let itemsPerPage = 4;
-
+let indexBegin = 0;
 // new credits: https://www.youtube.com/watch?v=IqYiVHrO2U8 
 
 // =======
 // =======
 
 function initList(page) {
+
 
     // Define buttons in html that are active filters
     let asc = $("#btn_asc").hasClass("active");
@@ -71,18 +72,45 @@ function initList(page) {
     page--;
     let start = itemsPerPage * page;
     let end = start + itemsPerPage;
-    let pagItems = arrayChoice.slice(start, end);
+    let maxItems;
 
-    for (var i = 0; i < pagItems.length; i++) {
-        let item = pagItems[i];
-        if (pagItems === undefined) {
+    if (end < arrayChoice.length) {
+        maxItems = end
+    } else {
+        maxItems = end - arrayChoice.length
+    }
+
+    for (var j = start; j < start + maxItems; j++) {
+        let item = arrayChoice[j];
+        console.log("item", item)
+
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+        // Get the date posted from the object and create string for frontend. Credits to https://www.w3schools.com/js/js_date_methods.asp for date methods.
+        let postedDate = item.posted;
+        let formatted_date = postedDate.getDate() + " " + months[postedDate.getMonth()] + " " + postedDate.getFullYear();
+        let paraWords = item.para.split(" ", 22);
+        let paraWordLimit = paraWords.join(" ");
+
+        if (arrayChoice != undefined) {
+            $("#locations_list").append(
+                `<div class="d-flex card list-item mt-3" id="list_item_${[j]}" onclick="moreDetails(${[j]});">
+                    <div class="list-item-img"><img
+                            src="${item.photo_reference}"> alt="${item.title}"
+                    </div>
+                    <div class="location-info d-flex flex-column p-2">
+                        <h4>${item.title}</h4>
+                        <div class="d-flex"><div class="area-tag"><span>${item.area}</span></div> <p class="list-item-address my-auto pl-2">${item.name}</p></div>
+                        <p class="list-item-date">Posted on: ${formatted_date}</p>
+                        <p class="list-item-short-desc">${paraWordLimit}... <span onclick="moreDetails(${[j]});" class="read-more-trigger">Read More</span></p>
+                        <button onclick="moreDetails(${[j]});" class="read-more-trigger d-lg-none d-xl-none d-xxl-none">Read More</button>
+                    </div>
+                    </div>`
+            )
+        } else {
             $("#results_title").html(
                 `<div id="no_results" class="card fade-in"><h3>Looks like we're all out of ideas here. <i class="far fa-frown"></i> </h3><p>Try a different flavour or show all results for inspiration</p>
         <a href="locations.html"><button class="btn cta-btn">Show all results</button></a></div>`
-            )
-        } else {
-            $("#locations_list").append(
-                `<div class="fade-in">${item.content}</div>`
             )
         }
     }
@@ -103,6 +131,7 @@ function initList(page) {
     };
 
 
+    console.log("new index", indexBegin)
     // Start pagination
     $("#pagination_btns").html("")
     let pageCount = Math.ceil(arrayChoice.length / itemsPerPage);
@@ -157,19 +186,19 @@ function sort(sort) {
 
 // Show the sidebar details when 'read more' is clicked
 function moreDetails(j) {
-      
-    
-    item = request[j]
-    
-        const service = new google.maps.places.PlacesService(map);
-        service.getDetails(item, (place, status) => {
-            $("#sidebar_item_container").html("");
-            initMap();
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-                console.log(place.formatted_address)
-                $("#sidebar_item_container").append(
 
-                    `<div class="sidebar-item" id="sidebar_list_${[j]}">
+
+    item = request[j]
+
+    const service = new google.maps.places.PlacesService(map);
+    service.getDetails(item, (place, status) => {
+        $("#sidebar_item_container").html("");
+        initMap();
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+            console.log(place.formatted_address)
+            $("#sidebar_item_container").append(
+
+                `<div class="sidebar-item" id="sidebar_list_${[j]}">
                             <button onclick="closeBtn();hideOverlay();" class="btn close_btn"><i class="fas fa-times"></i></button>
                             <div class="sidebar-img-wrapper"><img src="${item.photo_reference}" alt="${place.name}"></div>
                             <div class="sidebar-content-wrapper p-4">
@@ -181,11 +210,11 @@ function moreDetails(j) {
                             <a href="${item.web}" target="_blank"><button class="btn sidebar-website-btn">Visit Website</button></a>
                             </div>
                             </div>`
-                );
-                
-            }
-        })
-    
+            );
+
+        }
+    })
+
 
     $("#locations_sidebar").removeClass("hidden");
     $(".modal-overlay").addClass("show");
@@ -248,7 +277,7 @@ $(document).ready(function () {
 
 function landingSearch(searchInput) {
     let search = searchInput;
- window.location.href = `./locations.html?&q=${search}`;
+    window.location.href = `./locations.html?&q=${search}`;
 }
 
 function showMap() {
@@ -276,23 +305,23 @@ function filterArea(area) {
         let marker = filteredMarkers[i];
         let areaBtn = $(".area-btn")
 
-google.maps.event.addListener(areaBtn, "click", function () {
-             if (infowindow) {
-        infowindow.close();
-    }
-     
+        google.maps.event.addListener(areaBtn, "click", function () {
+            if (infowindow) {
+                infowindow.close();
+            }
+
         });
 
         if (marker.area === area || area.length === 0) {
             marker.setVisible(true);
-            
+
         } else {
             marker.setVisible(false);
             google.maps.event.addListener(areaBtn, "click", function () {
-            infowindow.close();
-            closeBtn();
-            return
-        });
+                infowindow.close();
+                closeBtn();
+                return
+            });
         }
     }
 }
