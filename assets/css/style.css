@@ -761,6 +761,24 @@ p.area-tag {
     margin: auto;
 }
 
+.location-tags {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.loc-tag {
+    font-size: 12px;
+    background: linear-gradient(
+160deg
+,#f8554a 30%, #dc3545 80%);
+    color: white;
+    border-radius: 2px;
+    padding: 0 5px;
+    height: max-content;
+    margin: auto;
+    margin-right: 5px;
+}
+
 .sidebar-website-btn {
     background-color: #0062cc;
     box-shadow: 1px 1px 5px #7b7b7b;
@@ -814,6 +832,19 @@ button.read-more-trigger {
     background: #f8554a;
     color: #fff;
     box-shadow: inset 1px 1px 4px 0px #3c3c3c;
+}
+
+#clear_results {
+    width: 100%;
+    background: linear-gradient(to right,#f8554a 50%, #7bfac3 50%);
+    background-size: 200% 100%;
+    background-position: left;
+    transition: 0.3s ease-in-out;
+}
+
+#clear_results:hover{
+    background-position: right;
+    color: #000;
 }
 
 .filter-section {

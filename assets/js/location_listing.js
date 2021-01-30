@@ -56,8 +56,9 @@ function initList(page) {
         <a href="locations.html"><button class="btn cta-btn">Show all results</button></a></div>`
                 )
             } else {
+                // Define what to search within the object
                 let itemSearch = arrayChoiceArea[i]
-                let itemContent = itemSearch.para + itemSearch.title + itemSearch.area;
+                let itemContent = itemSearch.para + itemSearch.title + itemSearch.area + itemSearch.tags;
                 let itemLower = itemContent.toLowerCase()
                 if (itemContent.includes(search) || itemLower.includes(search))
                     searchResults.push(itemSearch)
@@ -75,7 +76,7 @@ function initList(page) {
     let end = start + itemsPerPage;
     let maxItems;
 
-    // Determine what the max list of results should be based on rull array set, sorted array set, and page
+    // Determine what the max list of results should be based on full array set, sorted array set, and page
 
     if (itemsPerPage > arrayChoice.length) {
         maxItems = arrayChoice.length
@@ -109,6 +110,10 @@ function initList(page) {
             let formatted_date = postedDate.getDate() + " " + months[postedDate.getMonth()] + " " + postedDate.getFullYear();
             let paraWords = item.para.split(" ", 22);
             let paraWordLimit = paraWords.join(" ");
+            let tags = item.tags;
+            console.log(tags)
+
+            
 
             if (arrayChoice != undefined) {
                 $("#locations_list").append(
@@ -118,46 +123,55 @@ function initList(page) {
                     </div>
                     <div class="location-info d-flex flex-column p-2">
                         <h4>${item.title}</h4>
-                        <div class="d-flex"><div class="area-tag"><span>${item.area}</span></div> <p class="list-item-address my-auto pl-2">${item.name}</p></div>
+                        <div class="d-flex"><div class="area-tag"><span>${item.area}</span></div><div class="location-tags" id="location_tags_${j}"></div></div>
                         <p class="list-item-date">Posted on: ${formatted_date}</p>
                         <p class="list-item-short-desc">${paraWordLimit}... <span onclick="moreDetails(${[j]});" class="read-more-trigger">Read More</span></p>
                         <button onclick="moreDetails(${[j]});" class="read-more-trigger d-lg-none d-xl-none d-xxl-none">Read More</button>
                     </div>
                     </div>`
                 )
+
+for (var t = 0; t < tags.length; t++) {
+                let tag = tags[t];
+                $(`#location_tags_${j}`).append(
+                    `<div class="loc-tag">${tag}</div>`
+                )
+            }
             } else {
                 $("#results_title").html(
                     `<div id="no_results" class="card fade-in"><h3>Looks like we're all out of ideas here. <i class="far fa-frown"></i> </h3><p>Try a different flavour or show all results for inspiration</p>
         <a href="locations.html"><button class="btn cta-btn">Show all results</button></a></div>`
                 )
             }
+
         }
-    }
+    
+}
 
-    let mapActive = $("#map_btn").hasClass("filter-btn.active")
+let mapActive = $("#map_btn").hasClass("filter-btn.active")
 
-    if (arrayChoice.length === 0 && mapActive === false) {
-        $("#results_title").html(
-            `<div id="no_results" class="card fade-in"><h3>Looks like we're all out of ideas here. <i class="far fa-frown"></i> </h3><p>Try a different flavour or show all results for inspiration</p>
+if (arrayChoice.length === 0 && mapActive === false) {
+    $("#results_title").html(
+        `<div id="no_results" class="card fade-in"><h3>Looks like we're all out of ideas here. <i class="far fa-frown"></i> </h3><p>Try a different flavour or show all results for inspiration</p>
         <a href="locations.html"><button class="btn cta-btn">Show all results</button></a></div>`
-        )
-    } else {
-        $("#results_title").html(
-            `<div id="results" class="fade-in">
+    )
+} else {
+    $("#results_title").html(
+        `<div id="results" class="fade-in">
         <h3>We found <span class="bold-in-text">${arrayChoice.length} results</span> <span class="d-none d-lg-inline">that you may be interested in</span></h3>
         </div>`
-        )
-    };
+    )
+};
 
 
-    console.log("new index", indexBegin)
-    // Start pagination
-    $("#pagination_btns").html("")
-    let pageCount = Math.ceil(arrayChoice.length / itemsPerPage);
-    pagination(btnNorth, btnSouth, btnEast, btnWest, pageCount);
+console.log("new index", indexBegin)
+// Start pagination
+$("#pagination_btns").html("")
+let pageCount = Math.ceil(arrayChoice.length / itemsPerPage);
+pagination(btnNorth, btnSouth, btnEast, btnWest, pageCount);
 
-    // Reset the overlay before displaying results
-    hideOverlay();
+// Reset the overlay before displaying results
+hideOverlay();
 
 };
 
@@ -224,6 +238,7 @@ function moreDetails(j) {
                             <h4>${place.name}</h4>
                             <p class="area-tag m-0">${item.area}</p>
                             <p class="m-0">${place.formatted_address}</p>
+                            <p class="m-0">${place.formatted_phone_number}</p>
                             <div class="hz-rule"></div>
                             <p>${item.para}</p>
                             <a href="${item.web}" target="_blank"><button class="btn sidebar-website-btn">Visit Website</button></a>
@@ -317,6 +332,18 @@ function showList() {
     $(".location-list-wrapper").removeClass("hide");
     $("#results_title").removeClass("map")
 };
+
+function clearFilters() {
+    $("#search").html("");
+    $(".area-btn").removeClass("active");
+    $("#all_btn").addClass("active");
+    $(".sort-date").removeClass("active");
+    $("#btn_des").addClass("active");
+    initMap();
+    showList();
+    initList(currentPage);
+}
+
 
 // Filter markers by area only
 function filterArea(area) {

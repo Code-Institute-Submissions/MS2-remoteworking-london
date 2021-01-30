@@ -236,6 +236,8 @@ To ensure accessibility by all modern browsers and differing devices and users, 
 
 ### **Known Bugs**
 - Currently there is an existing limitation present on the site caused by pulling data from the Google Places API. If a user makes too many requests in a single session, the request will return no, or only partial results. Whilst a fix is being researched, this appears to be a Google quota limitation to avoid overloading the server with requests.
+- Images on listings show alt for a few seconds when pulling data.
+- On 'more details' trigger on map view, the initMap function reloads the map, making it dissappear for a few seconds
 > re-write below
 
 <br>
