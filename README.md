@@ -66,9 +66,9 @@ Images within the primary site body are used to compliment the colour palette in
 <br>
 
 ### **Wireframes**
-- View the [Desktop wireframe here](./documentation/wireframes/MS2-wireframes-desktop.pdf).
-- View the [Tablet wireframe here](./documentation/wireframes/MS2-wireframes-tablet.pdf).
-- View the [Mobile wireframe here](./documentation/wireframes/MS2-wireframes-mobile.pdf).
+- View the [Desktop wireframe here](./documentation/wireframes/wireframes-desktop.pdf).
+- View the [Tablet wireframe here](./documentation/wireframes/wireframes-tablet.pdf).
+- View the [Mobile wireframe here](./documentation/wireframes/wireframes-mobile.pdf).
 
 <br>
 
