@@ -475,13 +475,14 @@ function listFilterArea(area) {
 // Get search query from URL & run text search more 'read more' if exists
 (function () {
     let href = window.location.href;
-    let addSpace = href.replace("%20", " ");
+    let addSpace = href.replace(/%20/g, " ");
     let URLstring = addSpace.split('q=')
     let idInfo = href.split('id=');
-
+console.log("query",URLstring)
     let idInfoSearch = idInfo[1]
     let URLsearch = URLstring[1];
     if (URLsearch != undefined) { searchField(URLsearch) }
+    console.log("query",URLsearch)
     //else { };
     //if (idInfoSearch != undefined) { moreDetails(idInfoSearch); }
     //else { return false }

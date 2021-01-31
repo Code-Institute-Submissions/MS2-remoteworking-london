@@ -18,6 +18,15 @@
             integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
             crossorigin="anonymous"></script>
         <script src="assets/js/main.js"></script>
+        <script src="assets/js/email.js"></script>
+
+        <script>
+$("#contact_form").submit(function(e) {
+    e.preventDefault();
+});
+
+
+        </script>
     </head>
     <body>
         <div class="pre-load-bg">
@@ -84,7 +93,7 @@
                 <!-- Text pattern validation credits: https://www.codegrepper.com/code-examples/lisp/alpha+validation+html+inputs -->
                 <div>
                     <form id="contact_form" class="d-flex flex-column mb-3" action="./thank_you.html"
-                        onsubmit="sendEmail(this);">
+                        onsubmit="return sendEmail(this);">
                         <div class="d-flex justify-content-between input-row-section">
                             <div class="input-group-item flex-column">
                                 <label for="fname" class="form-label">First Name</label>
@@ -96,7 +105,7 @@
                             </div>
                         </div>
                         <label for="email" class="form-label">Email</label>
-                        <input aria-label="email" class="contact-input" type="email" name="email" id="email" required>
+                        <input aria-label="email" class="contact-input" type="email" name="emailaddress" id="email" required>
                         <label for="subject" class="form-label">Subject Line</label>
                         <input aria-label="subject line" class="contact-input" type="text" name="subject" id="subject" required>
                         <label for="message_body" class="form-label">Your Message</label>

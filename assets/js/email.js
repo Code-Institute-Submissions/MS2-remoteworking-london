@@ -9,7 +9,6 @@ function sendEmail(contactForm) {
         email: contactForm.email.value,
         subject: contactForm.subject.value,
         message_body: contactForm.message_body.value,
-        termsAccept: contactForm.terms.value,
     }
 
     emailjs.send("service_fsjc9yj", "template_evpkkwd", templateParams)

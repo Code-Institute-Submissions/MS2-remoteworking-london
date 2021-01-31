@@ -147,20 +147,35 @@ To ensure accessibility by all modern browsers and differing devices and users, 
     - As a first time visitor, I want to quickly decide whether spending more time on this site will be worthwhile in answering my needs.
         - This is accomplished by the immediate indication on the index.html page what the site content is about with the headline 'Find remote working locations near you' and the background image of London.
         - This, coupled with the brand logo 'Remote London' clearly signifies that this site has been created to show information on where to work.
+        ![Homepage screenshot](./documentation/screenshots/pages/homepage.png)
     - I am only interested in listings that are within suitable distance to me.
         - The site currently clearly states that the listings will cover the London area only. 
         - Whilst not yet on the site, future releases will include geolocation of the user and the ability to filter locations based on the distance from the user.
+        - Users can filter the listings that are shown on the locations page by clicking one of the five 'area buttons'. 
+            - Clicking on North, South, East or West will only return results that have those values in the 'area-tag' div.
+            <br><img src="./documentation/screenshots/features/filter-by-area.png" height="350" alt="Filter by area">
+    
     - I will likely use the content from this site and others to form a decision on the best location to visit, so my time on this site will be limited.
         - The site clearly pushes users to a single listings page through 'call to action' search inputs and listing cards on the homepage. 
         - Once on the listings page, information is clearly laid out and easy to read. The user is able to quickly see which listings might be worth looking into, and more information can be found by clicking on the 'view website' button on the more information sidebar.
-
+        ![Latest additions feature](./documentation/screenshots/features/latest-additions.png)
 - #### Returning visitors   
     - As a returning visitor, I have already seen the content from the site on the initial visit - I am only looking for new listings.
         - The listings page allows the user to sort the listings by date they were posted to the site. This will enable returning visitors to quickly see what has been posted recently since they were last on the site.
         - The homepage also clearly outlines the most recent additions in the second section, below the fold. A returning visitor would quickly be able to see if there are new listings by comparing these listing cards to those that were shown on their last visit.
+        ![Sort by date](./documentation/screenshots/features/sort-by-date.png)
     - Part of the reason I am returning may be to give feedback on a listing after visiting their location.
-        - The user can easily navigate to the 'contact' page and submit a quick message to the site owner.
-        - On submitting the form, the user will recieve and automated email reply acknowledging receipt of the message.
+        - The user can easily navigate to the 'contact' page and submit a quick message to the site owner. Form validation is in place to prevent spam messaging from automated bots.
+            - The form can be tested by entering numerical information in the 'first name' and 'last name' fields. On submit, the form should prevent posting and return an error notice to users.
+            - The email field validation can also be tested by entering a string without an '@' symbol. If the user clicks 'submit' the form will not post and return field validation error to the user.
+            - The subject, message and terms fields are also set to required. This can be tested by attempting to submit the form without these fields completed. The form will not submit and return a 'field' required error to the user.
+            - Once the 'first/last name' fields contains only alpha characters and the email field contains the '@' symbol, the form will successfully submit, showing the 'thank you' page.
+            <br><img src="./documentation/screenshots/testing/must-be-alpha-fname.png" alt="First name must be alpha" width="300">
+            <img src="./documentation/screenshots/testing/must-be-alpha-lname.png" alt="Last name must be alpha" width="300">
+            <br><img src="./documentation/screenshots/testing/email-req.png" alt="Valid email is required" width="300">
+            <img src="./documentation/screenshots/testing/must-not-be-empty.png" alt="Field must not be empty" width="300">
+
+        - On submitting the form, the user will receive and automated email reply acknowledging receipt of the message.
         - The user will also be directed to a 'thank you' page on successful submission to acknowledg that the site has sent the message, and then clearly direct the user back to the homepage through a 'call to action' button.
 
 - #### Freelancers who work irregular or part time hours
@@ -309,6 +324,9 @@ To create a new branch within this repository, follow the below steps (note: you
 - The Dock listing image - [The Tobacco Dock Website](https://www.tobaccodocklondon.com/workspaces/private-offices/)
 - Headspace listing image - [Headspace Website](https://www.headspacegroup.co.uk/location/farringdon/)
 - Work.Life Bermondsey listing image - [Work.Life Website](https://work.life/locations/bermondsey/)
+- The Hoxton hotel listing image - [The Hoxton Website](https://thehoxton.com/london/holborn/)
+- TOG Borough High Street listing image - [TOG Borough Website](https://www.theofficegroup.com/office-space/uk/london/southwark-borough?utm_source=google&utm_medium=local&utm_campaign=borough-high-street)
+- CitizenM listing image - [CitizenM Website](https://www.citizenm.com/hotels/europe/london/tower-of-london-hotel)
 
 ### **Code Snippets**
 - Snap-scroll CSS attribute used with guidance from [Stack Overflow: "Luke"](https://stackoverflow.com/questions/60724786/why-is-my-simple-css-scroll-snap-not-working).
@@ -321,6 +339,7 @@ To create a new branch within this repository, follow the below steps (note: you
 - Star rating guidance on 'more details' sidebar from [I wrestled a bear once](https://codereview.stackexchange.com/users/39953/i-wrestled-a-bear-once) on this [Stack Exchange thread](https://codereview.stackexchange.com/questions/177945/convert-rating-value-to-visible-stars-using-fontawesome-icons)
 - Contact form text input alpha only validation created with guidance from [Code Grepper](https://www.codegrepper.com/code-examples/lisp/alpha+validation+html+inputs)
 - Sidebar filter items by locId using the filter method was possible with guidance from [Elliot Bonneville](https://stackoverflow.com/users/339852/elliot-bonneville) on this [StackOverflow thread](https://stackoverflow.com/questions/21437163/loop-through-array-of-objects-to-find-object-with-matching-property)
+- Regex replace() method instructions provided by [W3 Schools](https://www.w3schools.com/jsref/jsref_replace.asp)
 > rewrite above
 
 ### **Listing Research**
@@ -328,12 +347,4 @@ To create a new branch within this repository, follow the below steps (note: you
 ### **Acknowledgements**
 
  > to complete
-
-
- <!-- >   - Photo by Chait Goli from Pexels https://www.pexels.com/photo/white-and-brown-sailing-ship-1796715/
-    - Image by <a href="https://pixabay.com/photos/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=945497">Free-Photos</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=945497">Pixabay</a>
-    - arial - <span>Photo by <a href="https://unsplash.com/@jaanus?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jaanus Jagomägi</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span> 
-    -  london eye wide angle <span>Photo by <a href="https://unsplash.com/@arkadiuszradek?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Arkadiusz Radek</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
-    - arial 2 - <span>Photo by <a href="https://unsplash.com/@giamboscaro?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Giammarco Boscaro</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
-
     
