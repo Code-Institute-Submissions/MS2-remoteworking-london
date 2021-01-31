@@ -66,10 +66,6 @@ $(document).ready(function () {
         $('.snap-scroll-parent').animate({ scrollTop: 0 }, 300);
     });
 
-    // Don't scroll search input
-    $("#search").focus({ preventScroll: true });
-    $("#searchMobile").focus({ preventScroll: true });
-    
 });
 
 
