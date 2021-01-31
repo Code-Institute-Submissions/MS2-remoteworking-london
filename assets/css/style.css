@@ -779,6 +779,15 @@ p.area-tag {
     margin-left: 0;
 }
 
+.infowindow-tags {
+    display: flex;
+    flex-wrap: wrap;
+    height: max-content;
+    margin: auto;
+    margin-left: 0;
+    max-width: 250px;
+}
+
 .loc-tag {
     font-size: 12px;
     background: linear-gradient(
@@ -1037,11 +1046,11 @@ button.read-more-trigger {
     justify-content: center;
 }
 .infowindow div {
-    justify-content: center;
+    justify-content: start;
 }
 
 .infowindow-cta {
- font-size: 28px;   
+ font-size: 24px;   
  margin: 5px;
 }
 .infowindow-cta:hover {

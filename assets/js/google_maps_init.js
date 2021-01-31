@@ -15,7 +15,7 @@ function initMap() {
         mapId: "1daab95bc3f973ff",
         mapTypeControl: false,
     });
-    
+
 
     const infowindow = new google.maps.InfoWindow();
     const service = new google.maps.places.PlacesService(map);
@@ -23,111 +23,117 @@ function initMap() {
     // For ...in loop to iterate through 'request' array and show on map as markers and infowindow
     for (var m = 0; m < request.length; m++) {
         let locationMap = request[m];
+        let tags = locationMap.tags;
+        let tagStr = tags.toString()
+        let tagSplit = tagStr.split(",")
+        let tagJoin = tagSplit.join('</div><div class="loc-tag">')
         let mm = m
-     //   service.getDetails(locationMap, (place, status) => {
-       //     if (status === google.maps.places.PlacesServiceStatus.OK) {
-
-                let content = `
+        
+        let content = `
             <div class="d-flex flex-row infowindow">
-                <div class="infowindow-img-wrap">
-                    <img src="${locationMap.photo_reference}" alt="${locationMap.name}">
-                </div>
+                
                 <div class="d-flex flex-column mx-2">
-                    ${locationMap.title}
-                    <p onclick="moreDetails(${[mm]});" class="infowindow-readmore">Read More</p>
-                </div>
+                    <h4>${locationMap.title}</h4>
+                    <p onclick="moreDetails(${[locationMap.locId]});" class="infowindow-readmore">Read More</p>
+                <div class="infowindow-tags flex-row" ><div class="loc-tag">${tagJoin}</div></div>
+                    </div>
+                
                 <div class="d-flex">
-                    <button id="info_cta_${mm}" class="btn cta-btn infowindow-cta" onclick="moreDetails(${[mm]});initMap();"><i class="fas fa-chevron-circle-right"></i></p>
+                    <button id="info_cta_${mm}" class="btn cta-btn infowindow-cta" onclick="moreDetails(${[locationMap.locId]});initMap();"><i class="fas fa-chevron-circle-right"></i></button>
                 </div>
             </div>`;
         addMarker(locationMap, map, infowindow, content);
 
+     
+
         function getDetails(index) {
-    //
-
-              console.log(map)
-    //for (var i in request) {
-        item = request[index]
+            //
 
 
-       
-        service.getDetails(item, (place, status) => {
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-                console.log(place.formatted_address)
-            }
-        })
-    //}
+
+            console.log(map)
+            //for (var i in request) {
+            item = request[index]
 
 
-}
-        
- //           } else {
- //               console.log("Error - place could not be found");
-    //        }
-  //      });
+
+            /*        service.getDetails(item, (place, status) => {
+                        if (status === google.maps.places.PlacesServiceStatus.OK) {
+                            console.log(place.formatted_address)
+                        }
+                    })*/
+            //}
+
+
+        }
+
+        //           } else {
+        //               console.log("Error - place could not be found");
+        //        }
+        //      });
     };
-/*
-    // For ...in loop to iterate through 'request' array and show as list
-    for (let x = 0; x < request.length; x++) {
-        let location = request[x];
-        $("#locations_list").html("");
-        $("#sidebar_item_container").html("");
-        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-        // Get the date posted from the object and create string for frontend. Credits to https://www.w3schools.com/js/js_date_methods.asp for date methods.
-        let postedDate = location.posted;
-        let formatted_date = postedDate.getDate() + " " + months[postedDate.getMonth()] + " " + postedDate.getFullYear();
-
-        service.getDetails(location, (place, status) => {
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-                // Find and limit the number of words shown in the 'para' key. Credits to ProNeticas for providing core solution here: https://stackoverflow.com/questions/1662308/javascript-substr-limit-by-word-not-char
-                let paraWords = location.para.split(" ", 22);
-                let paraWordLimit = paraWords.join(" ");
-
-                let cardContent =
-                    `<div class="d-flex card list-item mt-3" id="list_item_${[x]}" onclick="moreDetails(${[x]});">
-                    <div class="list-item-img"><img
-                            src="${location.photo_reference}"> alt="${place.name}"
-                    </div>
-                    <div class="location-info d-flex flex-column p-2">
-                        <h4>${place.name}</h4>
-                        <div class="d-flex"><div class="area-tag"><span>${location.area}</span></div> <p class="list-item-address my-auto pl-2">${place.formatted_address}</p></div>
-                        <p class="list-item-date">Posted on: ${formatted_date}</p>
-                        <p class="list-item-short-desc">${paraWordLimit}... <span onclick="moreDetails(${[x]});" class="read-more-trigger">Read More</span></p>
-                        <button onclick="moreDetails(${[x]});" class="read-more-trigger d-lg-none d-xl-none d-xxl-none">Read More</button>
-                    </div>
-                    </div>`;
-
-                let sidebarContent = $("#sidebar_item_container").append(
-
-                    `<div class="hide sidebar-item" id="sidebar_list_${[x]}">
-                            <button onclick="closeBtn();hideOverlay();" class="btn close_btn"><i class="fas fa-times"></i></button>
-                            <div class="sidebar-img-wrapper"><img src="${location.photo_reference}" alt="${place.name}"></div>
-                            <div class="sidebar-content-wrapper p-4">
+    /*
+        // For ...in loop to iterate through 'request' array and show as list
+        for (let x = 0; x < request.length; x++) {
+            let location = request[x];
+            $("#locations_list").html("");
+            $("#sidebar_item_container").html("");
+            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    
+            // Get the date posted from the object and create string for frontend. Credits to https://www.w3schools.com/js/js_date_methods.asp for date methods.
+            let postedDate = location.posted;
+            let formatted_date = postedDate.getDate() + " " + months[postedDate.getMonth()] + " " + postedDate.getFullYear();
+    
+            service.getDetails(location, (place, status) => {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    // Find and limit the number of words shown in the 'para' key. Credits to ProNeticas for providing core solution here: https://stackoverflow.com/questions/1662308/javascript-substr-limit-by-word-not-char
+                    let paraWords = location.para.split(" ", 22);
+                    let paraWordLimit = paraWords.join(" ");
+    
+                    let cardContent =
+                        `<div class="d-flex card list-item mt-3" id="list_item_${[x]}" onclick="moreDetails(${[x]});">
+                        <div class="list-item-img"><img
+                                src="${location.photo_reference}"> alt="${place.name}"
+                        </div>
+                        <div class="location-info d-flex flex-column p-2">
                             <h4>${place.name}</h4>
-                            <p class="area-tag m-0">${location.area}</p>
-                            <p class="m-0">${place.formatted_address}</p>
-                            <div class="hz-rule"></div>
-                            <p>${location.para}</p>
-                            <a href="${location.web}" target="_blank"><button class="btn sidebar-website-btn">Visit Website</button></a>
-                            </div>
-                            </div>`
-                );
-
-                listingObjectCombined[x] = { content: cardContent, date: location.posted, location: location.area }
-
-                // Set the default sorting of arrays based on most recent posting date
-                featured.sort((a, b) => b.date - a.date);
-                request.sort((a, b) => b.posted - a.posted);
-                listingObjectCombined.sort((a, b) => b.posted - a.posted);
-
-            } else {
-                console.log("Error - place could not be found");
-            }
-        });
-
-
-    } */
+                            <div class="d-flex"><div class="area-tag"><span>${location.area}</span></div> <p class="list-item-address my-auto pl-2">${place.formatted_address}</p></div>
+                            <p class="list-item-date">Posted on: ${formatted_date}</p>
+                            <p class="list-item-short-desc">${paraWordLimit}... <span onclick="moreDetails(${[x]});" class="read-more-trigger">Read More</span></p>
+                            <button onclick="moreDetails(${[x]});" class="read-more-trigger d-lg-none d-xl-none d-xxl-none">Read More</button>
+                        </div>
+                        </div>`;
+    
+                    let sidebarContent = $("#sidebar_item_container").append(
+    
+                        `<div class="hide sidebar-item" id="sidebar_list_${[x]}">
+                                <button onclick="closeBtn();hideOverlay();" class="btn close_btn"><i class="fas fa-times"></i></button>
+                                <div class="sidebar-img-wrapper"><img src="${location.photo_reference}" alt="${place.name}"></div>
+                                <div class="sidebar-content-wrapper p-4">
+                                <h4>${place.name}</h4>
+                                <p class="area-tag m-0">${location.area}</p>
+                                <p class="m-0">${place.formatted_address}</p>
+                                <div class="hz-rule"></div>
+                                <p>${location.para}</p>
+                                <a href="${location.web}" target="_blank"><button class="btn sidebar-website-btn">Visit Website</button></a>
+                                </div>
+                                </div>`
+                    );
+    
+                    listingObjectCombined[x] = { content: cardContent, date: location.posted, location: location.area }
+    
+                    // Set the default sorting of arrays based on most recent posting date
+                    featured.sort((a, b) => b.date - a.date);
+                    request.sort((a, b) => b.posted - a.posted);
+                    listingObjectCombined.sort((a, b) => b.posted - a.posted);
+    
+                } else {
+                    console.log("Error - place could not be found");
+                }
+            });
+    
+    
+        } */
 
 
 
@@ -144,7 +150,7 @@ function initMap() {
 function addMarker(locationMap, map, infowindow, content, centerMap) {
 
     let title = locationMap.title;
-    let position = {lat: locationMap.lat, lng:locationMap.lng};
+    let position = { lat: locationMap.lat, lng: locationMap.lng };
     //let address = place.formatted_address;
     let area = locationMap.area;
 
@@ -157,7 +163,7 @@ function addMarker(locationMap, map, infowindow, content, centerMap) {
 
     filteredMarkers.push(marker);
 
-    (function (marker, content) {
+    (function (marker, content, tag) {
         // Show info on marker click
         google.maps.event.addListener(marker, "click", function () {
             infowindow.setContent(content);
@@ -168,10 +174,10 @@ function addMarker(locationMap, map, infowindow, content, centerMap) {
         });
     })(marker, content);
 
-// Close all infowindows when filtering by area
-    let areaBtn = $(".area-btn");    
+    // Close all infowindows when filtering by area
+    let areaBtn = $(".area-btn");
 
-    areaBtn.click(function(map, marker) {
+    areaBtn.click(function (map, marker) {
         infowindow.close(map, marker);
         bounds = new google.maps.LatLngBounds();
         console.log(centerMap);
