@@ -84,6 +84,7 @@ Images within the primary site body are used to compliment the colour palette in
 - Filter listings by most recent or oldest posts - users can sort the listings on the 'Locations' page by clicking 'Latest' or 'Oldest' in the filter section.
 - Display listings in a list view or map view - Users can select how they wish to view the listings by clicking either the list or map icon buttons at the bottom of the filter section. On hover, a tooltip provides guidance on what the buttons do.
 - View and filter listing markers on map - the above filters are available to users on the map view also, with the markers hidden and unhidden based on the search criteria. If the user enters a text search query, the view will default back to the list view to show more detailed information.
+- On the 'more info' sidebar, users can view Google reviews of locations and click button to view location in google maps.
 
 ### **Features to add in future releases**
 - Social sharing of each listing to social media sites.
@@ -135,6 +136,7 @@ To ensure accessibility by all modern browsers and differing devices and users, 
     - 
 - ### JS Hint Results
     - 
+    
 
 > insert screenshot here!
 
@@ -151,6 +153,7 @@ To ensure accessibility by all modern browsers and differing devices and users, 
     - I will likely use the content from this site and others to form a decision on the best location to visit, so my time on this site will be limited.
         - The site clearly pushes users to a single listings page through 'call to action' search inputs and listing cards on the homepage. 
         - Once on the listings page, information is clearly laid out and easy to read. The user is able to quickly see which listings might be worth looking into, and more information can be found by clicking on the 'view website' button on the more information sidebar.
+
 - #### Returning visitors   
     - As a returning visitor, I have already seen the content from the site on the initial visit - I am only looking for new listings.
         - The listings page allows the user to sort the listings by date they were posted to the site. This will enable returning visitors to quickly see what has been posted recently since they were last on the site.
@@ -159,6 +162,7 @@ To ensure accessibility by all modern browsers and differing devices and users, 
         - The user can easily navigate to the 'contact' page and submit a quick message to the site owner.
         - On submitting the form, the user will recieve and automated email reply acknowledging receipt of the message.
         - The user will also be directed to a 'thank you' page on successful submission to acknowledg that the site has sent the message, and then clearly direct the user back to the homepage through a 'call to action' button.
+
 - #### Freelancers who work irregular or part time hours
     - As a Freelancer, my day will likely be split between multiple projects and clients. I don't always need a location to work from for a full day, so I want to see listings that do not require a full day booking.
     > need to add tags to listings?
@@ -170,6 +174,7 @@ To ensure accessibility by all modern browsers and differing devices and users, 
     > need to add tags to listings?
     - I want to see only the listings that will have quiet places I can make calls with a good internet connection
     > need to add tags to listings?
+
 - #### Location owners
     - As someone who owns a location users can work remotely from, I want to add my listing to the site with ease in order to promote my business.
         - This can be accomplished by the user by going to the contact page and completing the form.
@@ -181,6 +186,7 @@ To ensure accessibility by all modern browsers and differing devices and users, 
         - The user can see this from the other listings on the 'Locations' page.
         - The user can see where the listing is located, and read more information on what the listing offers
         > mention tags here
+
 - #### Site owner
     - As the site owner, I want to ensure that information is accurate and user feedback is received, to improve value to the user.
         - As site owner, I can collect user feedback from the 'contact' page. The copy above the form clearly states what the form is to be used for; "Have a new listing to share, or feedback for an existing one?", prompting the user to focus their message on topics such as this.
@@ -209,14 +215,15 @@ To ensure accessibility by all modern browsers and differing devices and users, 
         - After narrowing down the issue to possibly being a result of an inconsistent load time on the Google request, causing location_listing.js to attempt to call data from a script that had not yet run, I decided to use jQuery to append the last script to the <head> tag only after the page had loaded (the answers on [this StackOverflow thread](https://stackoverflow.com/questions/19737031/loading-scripts-after-page-load) guided me on this). 
         - Whilst loading location_listing.js only after the page had loaded helped with the issue, it was still occuring intermittently. Throught further testing, I discovered that the issue is likely caused but the Google API request attempting to run a callback function (initMap()) from a script that may not have loaded at that point. 
         - Having now positioned the Google API request at the bottom of the body, this appears to have dramatically improved this issue, as the initMap() function exists before the script attempts the Google request.
-        - It appears that this issue can still occur if there are too many requests within a short span of time from the same session (i.e continuously reloading the page), however I understand this to be expected behaviour.
+        - Whilst the above fix mitigated this bug the majority of the time, I decided to refactor the code, to now pull the initial data from the 'request' dataset within the codebase, then only call the Google API when 'more details' is clicked. By doing this, the user is only requesting Google information on one result only, making the response time quicker, and ensuring that data will always show.
     - Jumping / flickering of page structure on page load caused by jQuery append() adding items to existing divs that load at different times.
         - This was an expected issue when using javascript to manipulate the HTML on the page, since the scripts would load at different speeds to the HTML in the page. 
         - To fix this issue and improve user experience, I added a loading screen animation with the CSS transform property to continuously run until the full page is loaded where javascript is altering the HTML (index.html and locations.html).
     - Map and list overlay when opening sidebar would remain / disappear early if too many clicks
         - The overlays that appear behind the 'more info' sidebar would frequently become out of sync with the sidebar as their styles were adjusted independently from one another.
         - I have since refactored the code and used jQuery's existing fadeOut() method to show and hide a page-wide overlay, which functions much smoother.
-    - Safari cannot load second initMap function - need to make function name unique
+    - Safari would not load initMap in Google callback in script load order specified, resulting in empty dataset
+        - In refactoring the code to only reuqest the Google data when the user clicks 'more details', this ensures that the callback function in the Google API is not required to successfully show the initial listing data.
     > rewrite above
 
 - Deployment & Site-wide
