@@ -1214,10 +1214,6 @@ footer {
     margin-bottom: 10px!important;
 }
 
-.snap-scroll-child-mobile {
-    scroll-snap-align: start;
-}
-
 .color-bg-nav nav ul li a.active {
     padding-bottom: 5px;
     border-bottom: 3px solid #7bfac3;
