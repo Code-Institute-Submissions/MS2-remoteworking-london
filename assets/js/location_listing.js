@@ -516,7 +516,7 @@ function listFilterArea(area) {
         <div class="area-tag mb-2"><span>${item.area}</span></div>
         <div class="location-tags flex-row mb-2" id="location_tags_${i}"></div>
      </div>
-                <p  class="mb-1">${paraWordLimit}</p>
+                <p  class="mb-1">${paraWordLimit}...</p>
                 <button class="cta-btn featured-btn-cta" onclick="landingSearch('${item.title}');" value="${item.title}">Read More</button>
             </div>`
 
