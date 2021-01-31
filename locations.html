@@ -1,42 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Locations | Remote London</title>
+        <link rel="shortcut icon" href="./assets/images/rl-fav.png" type="image/x-icon">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Locations</title>
+        <!-- Styles -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/css/style.css">
 
-    <!-- Styles -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">
-
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-        crossorigin="anonymous"></script>
-    <script async src="assets/js/google_maps_init.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/dataset.js"></script>
+            integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+            crossorigin="anonymous"></script>
+        <script async src="assets/js/google_maps_init.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src="assets/js/dataset.js"></script>
+    </head>
 
-</head>
+    <body id="top_page">
+        <div class="pre-load-bg">
+            <div class="pre-loader"></div>
+        </div>
+        <div class="snap-scroll-parent">
 
-
-
-<body id="top_page">
-    <div class="pre-load-bg">
-        <div class="pre-loader"></div>
-    </div>
-    <div class="snap-scroll-parent">
-        <header id="locations_header" aria-label="cityscape of london at dusk">
-            <div class="location-pg-overlay"></div>
+            <!-- Header section -->
+            <header id="locations_header" aria-label="cityscape of london at dusk">
+                <div class="location-pg-overlay"></div>
                 <div class="mobile-menu-wrapper clear fade-in">
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <a class="navbar-brand" href="index.html"><img src="assets/images/logo.svg" alt="Remote London logo"></a>
                         <ul class="navbar-nav d-none d-md-flex d-sm-md-none">
-
                             <li class="nav-item">
                                 <a class="nav-link" href="index.html">Home</a>
                             </li>
@@ -50,19 +48,15 @@
                                 <a class="nav-link" href="contact.html">Contact</a>
                             </li>
                         </ul>
-
-
-
                         <button class="navbar-toggler d-sm" type="button" data-bs-toggle="collapse"
                             data-bs-target="#mobile_menu" aria-controls="mobile_menu" aria-expanded="false"
                             aria-label="Toggle navigation">
-                            <i class="fas fa-bars"></i>
+                        <i class="fas fa-bars"></i>
                         </button>
                     </nav>
                     <nav class="navbar mobile">
                         <div id="mobile_menu" class="collapse">
                             <ul class="navbar-nav">
-
                                 <li class="nav-item">
                                     <a class="nav-link" href="index.html">Home</a>
                                 </li>
@@ -77,148 +71,128 @@
                                 </li>
                             </ul>
                         </div>
-
                     </nav>
                 </div>
-                
-                    <div class="page-title">
-                        <h1>Find remote working locations near you</h1>
-                    </div>
-                
-            
-        </header>
-        <div class="modal-overlay fade-in" onclick="hideOverlay();"></div>
-        <div id="locations_sidebar" class="hidden">
-            <div id="sidebar_item_container"></div>
-        </div>
-        <div class="container locations-pg-wrapper ">
-            <div class="row full-width">
+                <div class="page-title">
+                    <h1>Find remote working locations near you</h1>
+                </div>
+            </header>
 
-
-                <div class="col-md-4 col-lg-3" id="filter-sidebar">
-                    <div class="underline-hdr  filter-section mb-4 ">
-                        <h3 class="d-none d-lg-inline">Filter your search</h3>
-
-                        <button id="filter_mobile" class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#filter" aria-controls="filter" aria-expanded="false"
-                            aria-label="Toggle navigation">
+            <!-- Body content & Filter sidebar start -->
+            <div class="modal-overlay fade-in" onclick="hideOverlay();"></div>
+            <div id="locations_sidebar" class="hidden">
+                <div id="sidebar_item_container"></div>
+            </div>
+            <div class="container locations-pg-wrapper ">
+                <div class="row full-width">
+                    <div class="col-md-4 col-lg-3" id="filter-sidebar">
+                        <div class="underline-hdr  filter-section mb-4 ">
+                            <h3 class="d-none d-lg-inline">Filter your search</h3>
+                            <button id="filter_mobile" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#filter" aria-controls="filter" aria-expanded="false"
+                                aria-label="Toggle navigation">
                             <i class="fas fa-filter d-flex m-0"></i>
                             <span class="h3 d-lg-none d-xl-none d-xxl-none">Filter</span>
-                        </button>
-                    </div>
-                    <div id="filter">
-                        <div class="filter-section mt-4 ">
-                            <h4>By Keyword</h4>
-                            <div class="d-flex">
-                                <input type="text" aria-label="enter search criteria" id="search" name="search" placeholder="Search"
-                                    oninput="enterKey();"><button aria-label="search locations" class="search-btn"
-                                    onclick="searchField($(`#search`).val());showList();"><i
+                            </button>
+                        </div>
+                        <div id="filter">
+                            <div class="filter-section mt-4 ">
+                                <h4>By Keyword</h4>
+                                <div class="d-flex">
+                                    <input type="text" aria-label="enter search criteria" id="search" name="search" placeholder="Search"
+                                        oninput="enterKey();"><button aria-label="search locations" class="search-btn"
+                                        onclick="searchField($(`#search`).val());showList();"><i
                                         class="fas fa-search"></i></button>
+                                </div>
+                            </div>
+                            <div class="filter-section mt-4">
+                                <h4 class="filter-label">Area of London</h4>
+                                <button id="north_btn" class="area-btn"
+                                    onclick="filterArea(this.value);listFilterArea(this.value);"
+                                    value="North London">North</button>
+                                <button id="south_btn" class="area-btn"
+                                    onclick="filterArea(this.value);listFilterArea(this.value);"
+                                    value="South London">South</button>
+                                <button id="east_btn" class="area-btn"
+                                    onclick="filterArea(this.value);listFilterArea(this.value);"
+                                    value="East London">East</button>
+                                <button id="west_btn" class="area-btn"
+                                    onclick="filterArea(this.value);listFilterArea(this.value);"
+                                    value="West London">West</button>
+                                <button id="all_btn" class="area-btn active"
+                                    onclick="filterArea(this.value);listFilterArea(this.value);" value="">All</button>
+                            </div>
+                            <div class="filter-section mt-4">
+                                <h4 class="filter-label">By Date</h4>
+                                <button aria-label="search by latest" class="sort-date active" id="btn_des" onclick="sort(this.value);"
+                                    value="des">Latest</button>
+                                <button aria-label="search by oldest" class="sort-date" id="btn_asc" onclick="sort(this.value);"
+                                    value="asc">Oldest</button>
+                            </div>
+                            <div class="filter-section mt-4">
+                                <h4 class="filter-label">Display</h4>
+                                <button aria-label="show list view" class="filter-btn active" id="list_btn" onclick="showList();hideOverlay();"
+                                    data-toggle="tooltip" data-placement="top" title="Display list"><i
+                                    class="fas fa-th-list"></i></button>
+                                <button aria-label="show map view" aria-hidden="true" class="filter-btn d-sm-none d-xs-none" id="map_btn" onclick="showMap();hideOverlay();"
+                                    data-toggle="tooltip" data-placement="top" title="Display map"><i
+                                    class="fas fa-map-marked-alt "></i></button>
+                                <!-- For mobile without tooltip-->
+                                <button aria-hidden="true" aria-label="show map view" class="filter-btn d-none d-xs-inline d-sm-inline" id="map_btn_mob" onclick="showMap();hideOverlay();">
+                                <i aria-hidden="true" class="fas fa-map-marked-alt"></i></button>
+                            </div>
+                            <div class="hz-rule my-4"></div>
+                            <div class="filter-section">
+                                <button id="clear_results" onclick="clearFilters();" class="filter-btn">Clear
+                                Filters</button>
+                            </div>
+                            <div class="hz-rule my-2 d-none d-xs-block"></div>
+                        </div>
+                    </div>
+
+                    <!-- Listing & Map section -->
+                    <div id="list_section" class="col-md-8 col-lg-9 p-0 d-flex flex-column">
+                        <div id="results_title">
+                            <h3>We found <span class="bold-in-text">0 results</span><span class="d-none d-lg-inline"> that
+                                you may be interested in</span>
+                            </h3>
+                        </div>
+                        <div class="list-overlay" onclick="hideOverlay();"></div>
+                        <div aria-hidden="true" class="map-overlay hide"></div>
+                        <div aria-hidden="true" id="map" class="hide"> </div>
+                        <div class="location-list-wrapper">
+                            <div id="locations_list"></div>
+                            <div id="pagination_wrapper">
+                                <div id="pagination_btns"></div>
                             </div>
                         </div>
-
-                        <div class="filter-section mt-4">
-                            <h4 class="filter-label">Area of London</h4>
-                            <button id="north_btn" class="area-btn"
-                                onclick="filterArea(this.value);listFilterArea(this.value);"
-                                value="North London">North</button>
-                            <button id="south_btn" class="area-btn"
-                                onclick="filterArea(this.value);listFilterArea(this.value);"
-                                value="South London">South</button>
-                            <button id="east_btn" class="area-btn"
-                                onclick="filterArea(this.value);listFilterArea(this.value);"
-                                value="East London">East</button>
-                            <button id="west_btn" class="area-btn"
-                                onclick="filterArea(this.value);listFilterArea(this.value);"
-                                value="West London">West</button>
-                            <button id="all_btn" class="area-btn active"
-                                onclick="filterArea(this.value);listFilterArea(this.value);" value="">All</button>
-                        </div>
-
-                        <div class="filter-section mt-4">
-                            <h4 class="filter-label">By Date</h4>
-                            <button aria-label="search by latest" class="sort-date active" id="btn_des" onclick="sort(this.value);"
-                                value="des">Latest</button>
-                            <button aria-label="search by oldest" class="sort-date" id="btn_asc" onclick="sort(this.value);"
-                                value="asc">Oldest</button>
-                        </div>
-
-                        <div class="filter-section mt-4">
-                            <h4 class="filter-label">Display</h4>
-                            <button aria-label="show list view" class="filter-btn active" id="list_btn" onclick="showList();hideOverlay();"
-                                data-toggle="tooltip" data-placement="top" title="Display list"><i
-                                    class="fas fa-th-list"></i></button>
-                            <button aria-label="show map view" aria-hidden="true" class="filter-btn d-sm-none d-xs-none" id="map_btn" onclick="showMap();hideOverlay();"
-                                data-toggle="tooltip" data-placement="top" title="Display map"><i
-                                    class="fas fa-map-marked-alt "></i></button>
-                            <!-- For mobile without tooltip-->
-                            <button aria-hidden="true" aria-label="show map view" class="filter-btn d-none d-xs-inline d-sm-inline" id="map_btn_mob" onclick="showMap();hideOverlay();">
-                            <i aria-hidden="true" class="fas fa-map-marked-alt"></i></button>
-
-
-                        </div>
-                        <div class="hz-rule my-4"></div>
-                        <div class="filter-section">
-                            <button id="clear_results" onclick="clearFilters();" class="filter-btn">Clear
-                                Filters</button>
-                        </div>
-                        <div class="hz-rule my-2 d-none d-xs-block"></div>
                     </div>
                 </div>
-                <div id="list_section" class="col-md-8 col-lg-9 p-0 d-flex flex-column">
-                    <div id="results_title">
-                        <h3>We found <span class="bold-in-text">0 results</span><span class="d-none d-lg-inline"> that
-                                you may be interested in</span></h3>
-                    </div>
-                    <div class="list-overlay" onclick="hideOverlay();"></div>
-
-                    <div aria-hidden="true" class="map-overlay hide"></div>
-                    <div aria-hidden="true" id="map" class="hide"> </div>
-                    <div class="location-list-wrapper">
-
-                        <div id="locations_list"></div>
-                        <div id="pagination_wrapper">
-                            <div id="pagination_btns"></div>
+            </div>
+            
+            <!-- Footer wrapper div ensures footer always at bottom of page if content less than 100vh-->
+            <div class="footer-wrapper">
+                <footer>
+                    <div class="d-flex flex-column">
+                        <div class="footer-links mb-3">
+                            <p> <a href="about_us.html">About Us</a><a href="contact.html">Contact Us</a><a
+                                href="privacy.html">Privacy</a></p>
+                        </div>
+                        <div>
+                            <p>&copy; Copyright 2021 Remote London </p>
+                        </div>
+                        <div>
+                            <p class="to-top">Back to top</p>
                         </div>
                     </div>
-                </div>
-
-
-
+                </footer>
             </div>
         </div>
+        <button aria-label="scroll to top" class="to-top fade-in hide"><i class="fas fa-arrow-circle-up"></i></button>
 
-        <!-- Footer wrapper div ensures footer always at bottom of page if content less than 100vh-->
-        <div class="footer-wrapper">
-            <footer>
-                <div class="d-flex flex-column">
-                    <div class="footer-links mb-3">
-                        <p> <a href="about_us.html">About Us</a><a href="contact.html">Contact Us</a><a
-                                href="privacy.html">Privacy</a></p>
-                    </div>
-                    <div>
-                        <p>&copy; Copyright 2021 Remote London </p>
-                    </div>
-                    <div>
-                        <p class="to-top">Back to top</p>
-                    </div>
-                </div>
-            </footer>
-        </div>
-
-    </div>
-    <button aria-label="scroll to top" class="to-top fade-in hide"><i class="fas fa-arrow-circle-up"></i></button>
-
-
-
-
-<!-- Load the Scripts below once complete to improve performance -->
-
-<script src="assets/js/location_listing.js"></script>
-
-    <script defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMVUvw_I7qUBzKQmDtLsmAk2ktpqvD7Mo&map_ids=1daab95bc3f973ff&libraries=places&callback=initMap"></script>
-
-</body>
-
+        <!-- Load the Scripts below once complete to improve performance -->
+        <script src="assets/js/location_listing.js"></script>
+        <script defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMVUvw_I7qUBzKQmDtLsmAk2ktpqvD7Mo&map_ids=1daab95bc3f973ff&libraries=places&callback=initMap"></script>
+    </body>
 </html>
