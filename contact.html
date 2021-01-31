@@ -93,7 +93,7 @@ $("#contact_form").submit(function(e) {
                 <!-- Text pattern validation credits: https://www.codegrepper.com/code-examples/lisp/alpha+validation+html+inputs -->
                 <div>
                     <form id="contact_form" class="d-flex flex-column mb-3" action="./thank_you.html"
-                        onsubmit="return sendEmail(this);">
+                        onsubmit="sendEmail(this);">
                         <div class="d-flex justify-content-between input-row-section">
                             <div class="input-group-item flex-column">
                                 <label for="fname" class="form-label">First Name</label>
