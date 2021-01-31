@@ -824,6 +824,11 @@ a.review-auth-img{
  margin-right: 15px;
 }
 
+.review-auth-img > img {
+    max-width: 50px;
+    max-height: 50px;
+}
+
 .star-ratings {
     color: #eb6e00;
     line-height: initial;
@@ -844,6 +849,7 @@ a.review-auth-img{
 
 .powered-by-google > img {
 max-width: 150px;
+margin-left: auto;
 }
 /* Filter Section & Read more */
 
