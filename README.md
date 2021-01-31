@@ -197,6 +197,10 @@ To ensure accessibility by all modern browsers and differing devices and users, 
 ### **Responsiveness**
 > add mobile views 
 
+### **Accessibility**
+- 'aria-hidden' added to Google Map button and map due to poor accessibility. 
+- Initial colour scheme changed slightly to make white on orange contrast improved.
+> write
 
 ### **Fixed Bugs**
 - Google API & Location listing (google_maps_init.js & location_listing.js)

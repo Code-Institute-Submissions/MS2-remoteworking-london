@@ -14,9 +14,6 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-        crossorigin="anonymous"></script>
     <script async src="assets/js/google_maps_init.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/dataset.js"></script>
@@ -30,11 +27,11 @@
         <div class="pre-loader"></div>
     </div>
     <div class="snap-scroll-parent">
-        <header id="locations_header">
+        <header id="locations_header" role="img" aria-label="cityscape of london at dusk">
             <div class="location-pg-overlay"></div>
                 <div class="mobile-menu-wrapper clear fade-in">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="index.html"><img src="assets/images/logo.svg" alt="logo"></a>
+                        <a class="navbar-brand" href="index.html"><img src="assets/images/logo.svg" alt="Remote London logo"></a>
                         <ul class="navbar-nav d-none d-md-flex d-sm-md-none">
 
                             <li class="nav-item">
@@ -110,8 +107,8 @@
                         <div class="filter-section mt-4 ">
                             <h4>By Keyword</h4>
                             <div class="d-flex">
-                                <input type="text" id="search" name="search" placeholder="Search"
-                                    oninput="enterKey();"><button class="search-btn"
+                                <input type="text" aria-label="enter search criteria" id="search" name="search" placeholder="Search"
+                                    oninput="enterKey();"><button aria-label="search locations" class="search-btn"
                                     onclick="searchField($(`#search`).val());showList();"><i
                                         class="fas fa-search"></i></button>
                             </div>
@@ -137,22 +134,22 @@
 
                         <div class="filter-section mt-4">
                             <h4 class="filter-label">By Date</h4>
-                            <button class="sort-date active" id="btn_des" onclick="sort(this.value);"
+                            <button aria-label="search by latest" class="sort-date active" id="btn_des" onclick="sort(this.value);"
                                 value="des">Latest</button>
-                            <button class="sort-date" id="btn_asc" onclick="sort(this.value);"
+                            <button aria-label="search by oldest" class="sort-date" id="btn_asc" onclick="sort(this.value);"
                                 value="asc">Oldest</button>
                         </div>
 
                         <div class="filter-section mt-4">
                             <h4 class="filter-label">Display</h4>
-                            <button class="filter-btn active" id="list_btn" onclick="showList();hideOverlay();"
+                            <button aria-label="show list view" class="filter-btn active" id="list_btn" onclick="showList();hideOverlay();"
                                 data-toggle="tooltip" data-placement="top" title="Display list"><i
                                     class="fas fa-th-list"></i></button>
-                            <button class="filter-btn d-sm-none d-xs-none" id="map_btn" onclick="showMap();hideOverlay();"
+                            <button aria-label="show map view" aria-hidden="true" class="filter-btn d-sm-none d-xs-none" id="map_btn" onclick="showMap();hideOverlay();"
                                 data-toggle="tooltip" data-placement="top" title="Display map"><i
                                     class="fas fa-map-marked-alt "></i></button>
                             <!-- For mobile without tooltip-->
-                            <button class="filter-btn d-none d-xs-inline d-sm-inline" id="map_btn_mob" onclick="showMap();hideOverlay();">
+                            <button aria-hidden="true" aria-label="show map view" class="filter-btn d-none d-xs-inline d-sm-inline" id="map_btn_mob" onclick="showMap();hideOverlay();">
                             <i class="fas fa-map-marked-alt"></i></button>
 
 
@@ -172,8 +169,8 @@
                     </div>
                     <div class="list-overlay" onclick="hideOverlay();"></div>
 
-                    <div class="map-overlay hide"></div>
-                    <div id="map" class="hide"> </div>
+                    <div aria-hidden="true" class="map-overlay hide"></div>
+                    <div aria-hidden="true" id="map" class="hide"> </div>
                     <div class="location-list-wrapper">
 
                         <div id="locations_list"></div>
@@ -207,16 +204,17 @@
         </div>
 
     </div>
-    <button class="to-top fade-in hide"><i class="fas fa-arrow-circle-up"></i></button>
+    <button aria-label="scroll to top" class="to-top fade-in hide"><i class="fas fa-arrow-circle-up"></i></button>
 
-    <!-- Load the Google API & listings once complete -->
-    <script>
-        $(window).bind("load", function () {
-            $("head").append(
-                `<script src="assets/js/location_listing.js"><\/script>`
-            );
-        });
-    </script>
+
+
+
+<!-- Load the Scripts below once complete to improve performance -->
+
+<script src="assets/js/location_listing.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
     <script async="false" type="text/javascript"
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMVUvw_I7qUBzKQmDtLsmAk2ktpqvD7Mo&map_ids=1daab95bc3f973ff&libraries=places&callback=initMap"></script>
 

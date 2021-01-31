@@ -119,7 +119,7 @@ function initList(page) {
                 $("#locations_list").append(
                     `<div class="d-flex card list-item mt-3" id="list_item_${[j]}" onclick="moreDetails(${item.locId});">
                     <div class="list-item-img"><img
-                            src="${item.photo_reference}"> alt="${item.title}"
+                            src="${item.photo_reference}" alt="${item.title}">
                     </div>
                     <div class="location-info d-flex flex-column p-2">
                         <h4>${item.title}</h4>
@@ -287,7 +287,7 @@ function moreDetails(md) {
                         let newReviewLength = textSplit.join(" ");
                         $(`#google_reviews`).append(
                             `<div class="google-review d-flex flex-row">
-                    <a class="review-auth-img" href="${review.author_url}" target="_blank"><img src="${review.profile_photo_url}" alt="${review.author_name}"></a>
+                    <a class="review-auth-img" href="${review.author_url}" target="_blank"><img src="${review.profile_photo_url}" alt="${review.author_name}" aria-label="${review.author_name}"></a>
                     <div class="d-flex flex-column">
                     <div class="d-flex flex-row flex-wrap">
                     <a class="review-auth" href="${review.author_url}" target="_blank">${review.author_name}</a>
@@ -497,7 +497,7 @@ function listFilterArea(area) {
         let tags = item.tags
         $(`#ft${[i]}`).append(
             `<div class="featured-img-wrap">
-                    <img src="${item.photo_reference}" alt="${item.title}">
+                    <img src="${item.photo_reference}" alt="${item.title}" aria-label="${item.title}">
                 </div>
                 
             <div class="featured-content">

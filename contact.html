@@ -29,7 +29,7 @@
 
         <div class="mobile-menu-wrapper clear fade-in  color-bg-nav">
             <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="index.html"><img src="assets/images/logo.svg" alt="logo"></a>
+                <a class="navbar-brand" href="index.html"><img src="assets/images/logo.svg" alt="Remote London logo"></a>
                 <ul class="navbar-nav d-none d-md-flex d-sm-md-none">
 
                     <li class="nav-item">
@@ -94,28 +94,28 @@
                 <div class="d-flex justify-content-between input-row-section">
                     <div class="input-group-item flex-column">
                         <label for="fname" class="form-label">First Name</label>
-                        <input class="contact-input" type="text" name="fname" required pattern="[A-Za-z]+">
+                        <input aria-label="first name" class="contact-input" type="text" name="fname" required pattern="[A-Za-z]+">
                     </div>
                     <div class="input-group-item flex-column">
                         <label for="lname" class="form-label">Last Name</label>
-                        <input class="contact-input" type="text" name="lname" required pattern="[A-Za-z]+">
+                        <input aria-label="last name" class="contact-input" type="text" name="lname" required pattern="[A-Za-z]+">
                     </div>
                 </div>
                 <label for="email" class="form-label">Email</label>
-                <input class="contact-input" type="email" name="email" required>
+                <input aria-label="email" class="contact-input" type="email" name="email" required>
                 <label for="subject" class="form-label">Subject Line</label>
-                <input class="contact-input" type="text" name="subject" required>
+                <input aria-label="subject line" class="contact-input" type="text" name="subject" required>
                 <label for="message_body" class="form-label">Your Message</label>
-                <textarea class="contact-input form-control" rows="4" type="textarea" name="message_body"
+                <textarea aria-label="enter your message" class="contact-input form-control" rows="4" type="textarea" name="message_body"
                     required></textarea>
                 <div class="d-flex flex-row mb-4">
-                    <input class="contact-input form-check-input" type="checkbox" name="terms_approved" required>
+                    <input aria-label="confirm the terms" class="contact-input form-check-input" type="checkbox" name="terms_approved" required>
                     <label for="terms_approved" class="form-label t_and_cs">Please confirm that you are happy for us to
                         use your email address to contact you regarding this form submission and that we may use the
                         message information to help guide us on what our users are looking for. Your personal
                         information will only be used to respond to you.</label>
                 </div>
-                <input id="form_submit" class="contact-input cta-btn" type="submit" value="Send Message">
+                <input aria-label="submit the form" id="form_submit" class="contact-input cta-btn" type="submit" value="Send Message">
             </form>
 
         </div>

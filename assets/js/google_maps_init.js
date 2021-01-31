@@ -40,7 +40,7 @@ function initMap() {
                     </div>
                 
                 <div class="d-flex">
-                    <button id="info_cta_${mm}" class="btn cta-btn infowindow-cta" onclick="moreDetails(${[locationMap.locId]});initMap();"><i class="fas fa-chevron-circle-right"></i></button>
+                    <button aria-label="get more info" id="info_cta_${mm}" class="btn cta-btn infowindow-cta" onclick="moreDetails(${[locationMap.locId]});initMap();"><i class="fas fa-chevron-circle-right"></i></button>
                 </div>
             </div>`;
         addMarker(locationMap, map, infowindow, content);

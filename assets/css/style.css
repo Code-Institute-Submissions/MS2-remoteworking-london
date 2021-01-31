@@ -52,7 +52,7 @@ a:hover {
 
 .bold-in-text {
     font-weight: 600;
-    background-color: #f8554a;
+    background-color: #DF2626;
     padding: 0 8px;
     box-shadow: 1px 1px 4px 0px #3c3c3c;
     outline: none;
@@ -99,8 +99,8 @@ body {
     height: 120px;
     width: 120px;
     border: 7px solid #ececec;
-    border-top: 7px solid #f8554a;
-    border-right: 7px solid #f8554a;
+    border-top: 7px solid #DF2626;
+    border-right: 7px solid #DF2626;
     border-radius: 50%;
     margin: auto;
     animation-name: preLoad;
@@ -165,7 +165,7 @@ button {
     padding: 15px 40px;
     display: flex;
     border-radius: 2px;
-    background: linear-gradient( to right, #f8554a 50%, #7bfac3 50%);
+    background: linear-gradient( to right, #DF2626 50%, #7bfac3 50%);
     background-size: 200% 100%;
     background-position: left;
     transition: 0.3s ease-in-out;
@@ -197,7 +197,7 @@ background-color: #ffffff;
 
 .cta-btn {
     color: #fff;
-    background-color: #f8554a;
+    background-color: #DF2626;
 }
 
 button.to-top {
@@ -206,7 +206,7 @@ button.to-top {
     bottom: 25px;
     z-index: 2;
     font-size: 24px;
-    background-color: #f8554a;
+    background-color: #DF2626;
     color: #fff;
 }
 
@@ -238,7 +238,7 @@ p.to-top {
 .underline-hdr {
     width: max-content;
     padding-bottom: 10px;
-    border-bottom: 3px solid #f8554a;
+    border-bottom: 3px solid #DF2626;
 max-width: 100%;
 }
 
@@ -275,7 +275,7 @@ max-width: 100%;
     color: #fff!important;
 
     background: transparent;
-    background: linear-gradient(to bottom, transparent 50%, #f8554a 50%);
+    background: linear-gradient(to bottom, transparent 50%, #DF2626 50%);
     background-size: 100% 200%;
     background-position: top;
     transition: 0.3s ease-in-out;
@@ -287,11 +287,11 @@ background-position: bottom;
 
 nav ul li a.active {
     padding-bottom: 5px;
-    border-bottom: 3px solid #f8554a;
+    border-bottom: 3px solid #DF2626;
 }
 
 .color-bg-nav {
-    background: linear-gradient(160deg,#f8554a 30%, #dc3545 80%);
+    background: linear-gradient(160deg,#f8554a 30%, #DF2626 80%);
 }
 
 .color-bg-nav nav > ul > li > .nav-link {
@@ -385,7 +385,7 @@ footer > div div {
     padding: 0px 10px;
     border-right: 1px solid #fff;
     background: transparent;
-    background: linear-gradient(to bottom, transparent 50%, #f8554a 50%);
+    background: linear-gradient(to bottom, transparent 50%, #DF2626 50%);
     background-size: 100% 200%;
     background-position: top;
     transition: 0.3s ease-in-out;
@@ -422,7 +422,7 @@ color: #fff;
 }
 
 .location-pg-overlay {
-    background: linear-gradient(180deg, #001631a6 5%, rgb(94 121 255 / 0%) 65%);
+    background: linear-gradient(180deg, #001631b8 5%, rgb(0 21 123 / 20%) 65%);
 }
 
 /* Searchbar */
@@ -448,8 +448,8 @@ color: #fff;
 .search-btn.home, .featured-btn-cta {
     color: #fff;
     border-radius: 2px;
-    background: #f8554a;
-    background: linear-gradient( to right, #f8554a 50%, #7bfac3 50%);
+    background: #DF2626;
+    background: linear-gradient( to right, #DF2626 50%, #7bfac3 50%);
     background-size: 200% 100%;
     background-position: left;
     font-size: 16px;
@@ -474,7 +474,7 @@ color: #fff;
 .home-section-hdr {
     padding: 10px 20px;
     text-align: center;
-    border-bottom: 4px solid #f8554a;
+    border-bottom: 4px solid #DF2626;
     width: max-content;
     margin: auto;
 }
@@ -549,8 +549,8 @@ p.landing {
     margin-bottom: -35px;
     position: relative;
     top: -35px;
-    border: 6px solid #f8554a;
-    color: #f8554a;
+    border: 6px solid #DF2626;
+    color: #DF2626;
     font-size: 24px;
     transition: 0.3s ease-in-out;
 }
@@ -749,7 +749,7 @@ margin-right: 10px;
 
 .close_btn {
     position: absolute;
-    background-color: #f8564bf2;
+    background-color: #DF2626;
     border-radius: 0px 0px 2px 0px;
     z-index: 1;
     box-shadow: none;
@@ -797,7 +797,7 @@ p.area-tag {
     font-size: 12px;
     background: linear-gradient(
 160deg
-,#f8554a 30%, #dc3545 80%);
+,#f8554a 30%, #DF2626 80%);
     color: white;
     border-radius: 2px;
     padding: 0 5px;
@@ -816,8 +816,8 @@ p.area-tag {
 .sidebar-website-btn:hover {
     background-color: #fff;
     box-shadow: 1px 1px 5px #7b7b7b;
-    color: #f8564b;
-    border: 1px solid #f8564b;
+    color: #DF2626;
+    border: 1px solid #DF2626;
 }
 
 .google-maps-trigger {
@@ -872,9 +872,9 @@ button.read-more-trigger {
 }
 
 .read-more-trigger, .infowindow-readmore {
-    color: #f8564b;
+    color: #DF2626;
     font-weight: 500;
-    border-bottom: 2px solid #f8564b;
+    border-bottom: 2px solid #DF2626;
     width: max-content;
 }
 
@@ -903,14 +903,14 @@ button.read-more-trigger {
 
 .filter-btn.active, .area-btn.active, .sort-date.active {
    transition: 0s;
-    background: #f8554a;
+    background: #DF2626;
     color: #fff;
     box-shadow: inset 1px 1px 4px 0px #3c3c3c;
 }
 
 #clear_results {
     width: 100%;
-    background: linear-gradient(to right,#f8554a 50%, #7bfac3 50%);
+    background: linear-gradient(to right,#DF2626 50%, #7bfac3 50%);
     background-size: 200% 100%;
     background-position: left;
     transition: 0.3s ease-in-out;
@@ -941,7 +941,7 @@ button.read-more-trigger {
     display: none;
 }
 #filter_mobile i {
-    color: #f8564b;
+    color: #DF2626;
     padding: 0px;
     box-shadow: none;
     width: 40px;
@@ -1033,7 +1033,7 @@ button.read-more-trigger {
 }
 
 .pagination-btn.active {
-    background: #f8554a;
+    background: #DF2626;
     color: #fff;
     box-shadow: inset 1px 1px 4px 0px #3c3c3c;
     border: none;
@@ -1114,7 +1114,7 @@ button.read-more-trigger {
 }
 
 .contact-input:focus {
-    border: 1px solid #f8554a;
+    border: 1px solid #DF2626;
     border-radius: 2px;
 }
 
@@ -1136,7 +1136,7 @@ button.read-more-trigger {
 }
 
 .form-check-input:checked {
-    background:#f8554a;
+    background:#DF2626;
 }
 
 
@@ -1146,7 +1146,7 @@ button.read-more-trigger {
 }
 
 input.cta-btn {
-    background: linear-gradient( to right, #f8554a 50%, #7bfac3 50%);
+    background: linear-gradient( to right, #DF2626 50%, #7bfac3 50%);
     background-size: 200% 100%;
     background-position: left;
     transition: 0.3s ease-in-out;
@@ -1346,7 +1346,7 @@ button.read-more-trigger {
     padding: 10px 15px;
     width: max-content;
     margin: 10px auto;
-    background: #f85549;
+    background: #DF2626;
 }
 
 .infowindow-cta {
@@ -1448,7 +1448,7 @@ button.to-top {
 }
 
 #filter-sidebar > div:nth-child(1) {
-    color: #f8564b;
+    color: #DF2626;
     display: flex;
     flex-direction: row-reverse;
     justify-content: flex-end;
