@@ -170,25 +170,45 @@ To ensure accessibility by all modern browsers and differing devices and users, 
             - The email field validation can also be tested by entering a string without an '@' symbol. If the user clicks 'submit' the form will not post and return field validation error to the user.
             - The subject, message and terms fields are also set to required. This can be tested by attempting to submit the form without these fields completed. The form will not submit and return a 'field' required error to the user.
             - Once the 'first/last name' fields contains only alpha characters and the email field contains the '@' symbol, the form will successfully submit, showing the 'thank you' page.
-            <br><img src="./documentation/screenshots/testing/must-be-alpha-fname.png" alt="First name must be alpha" width="300">
+           
+           <a name="form-flow"></a>
+            <img src="./documentation/screenshots/testing/must-be-alpha-fname.png" alt="First name must be alpha" width="300">
             <img src="./documentation/screenshots/testing/must-be-alpha-lname.png" alt="Last name must be alpha" width="300">
             <br><img src="./documentation/screenshots/testing/email-req.png" alt="Valid email is required" width="300">
             <img src="./documentation/screenshots/testing/must-not-be-empty.png" alt="Field must not be empty" width="300">
 
         - On submitting the form, the user will receive and automated email reply acknowledging receipt of the message.
-        - The user will also be directed to a 'thank you' page on successful submission to acknowledg that the site has sent the message, and then clearly direct the user back to the homepage through a 'call to action' button.
+        - The user will also be directed to a 'thank you' page on successful submission to acknowledge that the site has sent the message, and then clearly direct the user back to the homepage through a call-to-action button.
+
+        <img src="./documentation/screenshots/pages/thankyou-email.png" alt="Auto reply email" height="250"> 
+        <img src="./documentation/screenshots/pages/thankyou.png" alt="Thank you page" height="250">
 
 - #### Freelancers who work irregular or part time hours
     - As a Freelancer, my day will likely be split between multiple projects and clients. I don't always need a location to work from for a full day, so I want to see listings that do not require a full day booking.
-    > need to add tags to listings?
+        - This user story can be tested by entering the keyword "Hourly booking". The search function successfully returns only those results that have the tag "Hourly Booking". 
+        - This user story can also be tested by viewing the 'more details' section of these listings. The additional information states that hourly booking is available and the cost for this.
+        
+        <img src="./documentation/screenshots/features/search-by-keyword.png" alt="Search by keyword" width="300">
+        <img src="./documentation/screenshots/features/more-info.png" alt="More info" width="300">
+    
     - I am looking for locations that will allow me to meet clients and collaborate for a few hours at a time.
-    > need to add tags to listings?
+        - As with hourly booking, the above story can be tested by using the 'search by keyword' function. The below image shows that a keyword search of 'co-working' returns all results where a tag or listing information contains the string 'co-working'.
+        
+        <img src="./documentation/screenshots/features/coworking.png" alt="Search by keyword" width="300">
 
 - #### A full time employee who cannot work from home comfortably
     - As a full time employee working from home due to the pandemic, I am solely interested in listings that I know I can work from for the full day. 
-    > need to add tags to listings?
+        - This user story can be tested by using the keyword search. If the user enters the keyword 'Daily booking', all results that allow the user to work from for the day will be returned.
+        - The user can verify each of these listings by clicking on 'read more' or the listing card and reviewing the additional information.
+        
+        <img src="./documentation/screenshots/features/daily-booking.png" alt="Daily booking search" width="300">
+        <img src="./documentation/screenshots/features/daily-booking-info.png" alt="Daily search info" width="300">
+
     - I want to see only the listings that will have quiet places I can make calls with a good internet connection
-    > need to add tags to listings?
+        - As with the above user story tests, this story is tested by entering the keyword 'meeting rooms' into the search field will return all listings that provide meeting rooms or phone-booths that will allow users to make quiet calls.
+
+        <img src="./documentation/screenshots/features/meeting-rooms.png" alt="Meeting room search" width="300">
+        <img src="./documentation/screenshots/features/meeting-rooms-info.png" alt="Meeting room info" width="300">
 
 - #### Location owners
     - As someone who owns a location users can work remotely from, I want to add my listing to the site with ease in order to promote my business.
@@ -197,14 +217,18 @@ To ensure accessibility by all modern browsers and differing devices and users, 
         - The user is also required to confirm that they are happy to the site owner contacting them to discuss the message. 
         - If these fields are not completed, the form will fail validation and call out the errors to the user.
         - If the user completes the form successfully, the page will redirect to the 'thank you' page and an auto-reply email will be sent to the user, using the EmailJS API.
+        - See the form validation flow screenshots in the ['user feedback' testing above](#form-flow)
     - I want to see what other listings are offering in order to learn more about the site users and tailor my listing content accordingly. 
         - The user can see this from the other listings on the 'Locations' page.
-        - The user can see where the listing is located, and read more information on what the listing offers
-        > mention tags here
+        - The user can see where the listing is located by clicking the 'map' filter, and read more information on what the listing offers by clicking the info window and enclosed call-to-action button.
+        
+        <img src="./documentation/screenshots/features/infowindow-cta.png" alt="Map marker infowindow" width="300">
+        <img src="./documentation/screenshots/features/map-moreinfo.png" alt="Map view more info" width="300">
 
 - #### Site owner
     - As the site owner, I want to ensure that information is accurate and user feedback is received, to improve value to the user.
         - As site owner, I can collect user feedback from the 'contact' page. The copy above the form clearly states what the form is to be used for; "Have a new listing to share, or feedback for an existing one?", prompting the user to focus their message on topics such as this.
+        <img src="./documentation/screenshots/features/contact-header.png" alt="Contact header">
 
 ### **Lighthouse Testing**
 > add lighthouse testing screens

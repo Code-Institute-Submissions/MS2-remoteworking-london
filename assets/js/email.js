@@ -14,9 +14,14 @@ function sendEmail(contactForm) {
     emailjs.send("service_fsjc9yj", "template_evpkkwd", templateParams)
         .then(function () {
             console.log("Success");
-            $("#contact_form").fadeOut();
+         
         }, function (error) {
             console.log("Error", response.text)
         });
-    return false;
+        redirectThanks()
+    return ;
+}
+
+function redirectThanks() {
+    window.location.replace = "./thank_you.html";
 }
