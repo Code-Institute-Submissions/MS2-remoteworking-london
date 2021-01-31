@@ -34,8 +34,9 @@ function initMap() {
                 
                 <div class="d-flex flex-column mx-2">
                     <h4>${locationMap.title}</h4>
-                    <p onclick="moreDetails(${[locationMap.locId]});" class="infowindow-readmore">Read More</p>
+                    
                 <div class="infowindow-tags flex-row" ><div class="loc-tag">${tagJoin}</div></div>
+                <p onclick="moreDetails(${[locationMap.locId]});" class="infowindow-readmore">Read More</p>
                     </div>
                 
                 <div class="d-flex">
