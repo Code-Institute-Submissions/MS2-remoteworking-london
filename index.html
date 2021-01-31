@@ -29,7 +29,7 @@
 
     <div id="map" class="hide"></div>
     <div class="snap-scroll-parent">
-        <header id="home_header"  role="img" aria-label="cityscape of london at night">
+        <header id="home_header" aria-label="cityscape of london at night">
             <div class="homepage-overlay"></div>
             <div class="mobile-menu-wrapper clear fade-in">
                 <nav class="navbar navbar-expand-lg navbar-light">
@@ -88,7 +88,7 @@
                         <input aria-label="enter your search here" class="home-search" type="text" id="search" name="search"
                             placeholder="What are you looking for?" oninput="enterKey();scrollTop();">
                         <button class="search-btn home" onclick="landingSearch($('#search').val());showList();">
-                            <p><i class="fas fa-search pr-2"></i> Find Location</p>
+                            <i class="fas fa-search pr-2"></i> <span class="p-2"> Find Location</span>
                         </button>
                     </div>
                 </div>

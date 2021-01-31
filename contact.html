@@ -94,22 +94,22 @@
                 <div class="d-flex justify-content-between input-row-section">
                     <div class="input-group-item flex-column">
                         <label for="fname" class="form-label">First Name</label>
-                        <input aria-label="first name" class="contact-input" type="text" name="fname" required pattern="[A-Za-z]+">
+                        <input aria-label="first name" class="contact-input" type="text" name="fname" id="fname" required pattern="[A-Za-z]+">
                     </div>
                     <div class="input-group-item flex-column">
                         <label for="lname" class="form-label">Last Name</label>
-                        <input aria-label="last name" class="contact-input" type="text" name="lname" required pattern="[A-Za-z]+">
+                        <input aria-label="last name" class="contact-input" type="text" name="lname" id="lname" required pattern="[A-Za-z]+">
                     </div>
                 </div>
                 <label for="email" class="form-label">Email</label>
-                <input aria-label="email" class="contact-input" type="email" name="email" required>
+                <input aria-label="email" class="contact-input" type="email" name="email" id="email" required>
                 <label for="subject" class="form-label">Subject Line</label>
-                <input aria-label="subject line" class="contact-input" type="text" name="subject" required>
+                <input aria-label="subject line" class="contact-input" type="text" name="subject" id="subject" required>
                 <label for="message_body" class="form-label">Your Message</label>
-                <textarea aria-label="enter your message" class="contact-input form-control" rows="4" type="textarea" name="message_body"
+                <textarea aria-label="enter your message" class="contact-input form-control" rows="4" name="message_body" id="message_body"
                     required></textarea>
                 <div class="d-flex flex-row mb-4">
-                    <input aria-label="confirm the terms" class="contact-input form-check-input" type="checkbox" name="terms_approved" required>
+                    <input aria-label="confirm the terms" class="contact-input form-check-input" type="checkbox" name="terms_approved" id="terms_approved" required>
                     <label for="terms_approved" class="form-label t_and_cs">Please confirm that you are happy for us to
                         use your email address to contact you regarding this form submission and that we may use the
                         message information to help guide us on what our users are looking for. Your personal
@@ -144,8 +144,8 @@
 
     <!-- Load and initialise Email.js script-->
     <script src="assets/js/email.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
-    <script type="text/javascript">
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script>
         (function () {
             emailjs.init("user_kzLXPsKeCx1gBgjDlfL4H");
         })();
