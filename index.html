@@ -85,7 +85,7 @@
                         <p class="landing">A quaint café in a quiet corner of London, or a co-working, collaborative ideas mega-factory... </p>
                         <div class="d-flex" id="homepage_search_wrapper">
                             <input class="home-search d-xs-none d-sm-none" type="text" id="search" name="search"
-                                placeholder="What are you looking for?" oninput="enterKey();">
+                                placeholder="What are you looking for?" oninput="enterKey();scrollTop();">
                                 <input class="home-search d-none d-sm-block d-xs-block" type="text" id="searchMobile" name="search"
                                 placeholder="What are you looking for?">
                             <button class="search-btn home" onclick="landingSearch($('#search').val());showList();">

@@ -50,6 +50,8 @@ $(window).on("load", function () {
 
 
 
+
+
 // Show scroll to top button
 $(document).ready(function () {
     $(".snap-scroll-parent").scroll(function () {
@@ -63,6 +65,11 @@ $(document).ready(function () {
     $('.to-top').on('click', function () {
         $('.snap-scroll-parent').animate({ scrollTop: 0 }, 300);
     });
+
+    // Don't scroll search input
+    $("#search").focus({ preventScroll: true });
+    $("#searchMobile").focus({ preventScroll: true });
+    
 });
 
 
