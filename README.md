@@ -10,7 +10,20 @@ This site will provide users with a directory of local listings in which users c
 
 The site is primarily designed for those users who either as Freelancers, need a working environment they can meet with colleagues and clients, or for those working from home full-time since lockdown during the pandemic, need a suitable place to work for the day with spaces to make calls.
 
-<br>
+[View the live site here](https://bradleyhc.github.io/MS2-remoteworking-london/)
+
+
+## Contents
+
+### [User Experience (UX)](#user-experience-(ux))
+- [User Stories](#user-stories)   
+- [Design](#design)
+- [Typography](#typography)
+- [Colours](#colours)
+- [Imagery](#imagery)
+- [Wireframes](#wireframes)
+
+> continue
 
 ---
 
@@ -79,12 +92,13 @@ Images within the primary site body are used to compliment the colour palette in
 ## **Features**
 - Location Search from homepage - this feature allows users to search the directory from the homepage by entering a search query in the text input in the header section. Submitting the search query will return all results on the 'Location' page where the query matches any string of text within the name, or content of the listing.
 - Most recent listings on homepage - this feature enables users to quickly see if there are new listings on the site, but viewing the 'Our Latest Additions' section on the homepage.
-- Instant listing filter without page load - as the data is loaded into the page when the DOM is loaded, the listings are filtered by hiding and unhiding results based on criteria, versus triggering a new HTTP request each time, requiring a page reload <em>(note: this method of serving data may need to be adjusted in future versions where more listings are shown, to avoid longer page load times).</em>
+- Instant listing filter without page load - as the data is loaded into the page when the DOM is loaded, the listings are filtered by hiding and unhiding results based on criteria, versus triggering a new HTTP request each time, requiring a page reload. The additional information from Google is only called when a user clicks on 'read more' on a listing, allowing more listings to be shown, whilst remaining under the 5 result limit that Google imposes.
 - Filter listings by area of London - on the 'Locations' page, users are able to filter the listings based on the area of london. By simply clicking one of the area buttons, the results will immediately hide all results that do not meet the criteria.
 - Filter listings by most recent or oldest posts - users can sort the listings on the 'Locations' page by clicking 'Latest' or 'Oldest' in the filter section.
 - Display listings in a list view or map view - Users can select how they wish to view the listings by clicking either the list or map icon buttons at the bottom of the filter section. On hover, a tooltip provides guidance on what the buttons do.
 - View and filter listing markers on map - the above filters are available to users on the map view also, with the markers hidden and unhidden based on the search criteria. If the user enters a text search query, the view will default back to the list view to show more detailed information.
 - On the 'more info' sidebar, users can view Google reviews of locations and click button to view location in google maps.
+- The site is responsive on all devices from mobile to desktop. See the [Responsiveness](#responsiveness) testing section below. 
 
 ### **Features to add in future releases**
 - Social sharing of each listing to social media sites.
@@ -141,7 +155,6 @@ To ensure accessibility by all modern browsers and differing devices and users, 
 > insert screenshot here!
 
 ### **User Story Testing**
-> user story testing to add
 
 - #### First time visitors
     - As a first time visitor, I want to quickly decide whether spending more time on this site will be worthwhile in answering my needs.
@@ -170,12 +183,12 @@ To ensure accessibility by all modern browsers and differing devices and users, 
             - The email field validation can also be tested by entering a string without an '@' symbol. If the user clicks 'submit' the form will not post and return field validation error to the user.
             - The subject, message and terms fields are also set to required. This can be tested by attempting to submit the form without these fields completed. The form will not submit and return a 'field' required error to the user.
             - Once the 'first/last name' fields contains only alpha characters and the email field contains the '@' symbol, the form will successfully submit, showing the 'thank you' page.
-           
            <a name="form-flow"></a>
-            <img src="./documentation/screenshots/testing/must-be-alpha-fname.png" alt="First name must be alpha" width="300">
-            <img src="./documentation/screenshots/testing/must-be-alpha-lname.png" alt="Last name must be alpha" width="300">
-            <br><img src="./documentation/screenshots/testing/email-req.png" alt="Valid email is required" width="300">
-            <img src="./documentation/screenshots/testing/must-not-be-empty.png" alt="Field must not be empty" width="300">
+
+            <img src="./documentation/screenshots/testing/must-be-alpha-fname.png" alt="First name must be alpha" width="350">
+            <img src="./documentation/screenshots/testing/must-be-alpha-lname.png" alt="Last name must be alpha" width="350">
+            <br><img src="./documentation/screenshots/testing/email-req.png" alt="Valid email is required" width="350">
+            <img src="./documentation/screenshots/testing/must-not-be-empty.png" alt="Field must not be empty" width="350">
 
         - On submitting the form, the user will receive and automated email reply acknowledging receipt of the message.
         - The user will also be directed to a 'thank you' page on successful submission to acknowledge that the site has sent the message, and then clearly direct the user back to the homepage through a call-to-action button.
@@ -188,27 +201,27 @@ To ensure accessibility by all modern browsers and differing devices and users, 
         - This user story can be tested by entering the keyword "Hourly booking". The search function successfully returns only those results that have the tag "Hourly Booking". 
         - This user story can also be tested by viewing the 'more details' section of these listings. The additional information states that hourly booking is available and the cost for this.
         
-        <img src="./documentation/screenshots/features/search-by-keyword.png" alt="Search by keyword" width="300">
-        <img src="./documentation/screenshots/features/more-info.png" alt="More info" width="300">
+        <img src="./documentation/screenshots/features/search-by-keyword.png" alt="Search by keyword" width="350">
+        <img src="./documentation/screenshots/features/more-info.png" alt="More info" width="350">
     
     - I am looking for locations that will allow me to meet clients and collaborate for a few hours at a time.
         - As with hourly booking, the above story can be tested by using the 'search by keyword' function. The below image shows that a keyword search of 'co-working' returns all results where a tag or listing information contains the string 'co-working'.
         
-        <img src="./documentation/screenshots/features/coworking.png" alt="Search by keyword" width="300">
+        <img src="./documentation/screenshots/features/coworking.png" alt="Search by keyword" width="350">
 
 - #### A full time employee who cannot work from home comfortably
     - As a full time employee working from home due to the pandemic, I am solely interested in listings that I know I can work from for the full day. 
         - This user story can be tested by using the keyword search. If the user enters the keyword 'Daily booking', all results that allow the user to work from for the day will be returned.
         - The user can verify each of these listings by clicking on 'read more' or the listing card and reviewing the additional information.
         
-        <img src="./documentation/screenshots/features/daily-booking.png" alt="Daily booking search" width="300">
-        <img src="./documentation/screenshots/features/daily-booking-info.png" alt="Daily search info" width="300">
+        <img src="./documentation/screenshots/features/daily-booking.png" alt="Daily booking search" width="350">
+        <img src="./documentation/screenshots/features/daily-booking-info.png" alt="Daily search info" width="350">
 
     - I want to see only the listings that will have quiet places I can make calls with a good internet connection
         - As with the above user story tests, this story is tested by entering the keyword 'meeting rooms' into the search field will return all listings that provide meeting rooms or phone-booths that will allow users to make quiet calls.
 
-        <img src="./documentation/screenshots/features/meeting-rooms.png" alt="Meeting room search" width="300">
-        <img src="./documentation/screenshots/features/meeting-rooms-info.png" alt="Meeting room info" width="300">
+        <img src="./documentation/screenshots/features/meeting-rooms.png" alt="Meeting room search" width="350">
+        <img src="./documentation/screenshots/features/meeting-rooms-info.png" alt="Meeting room info" width="350">
 
 - #### Location owners
     - As someone who owns a location users can work remotely from, I want to add my listing to the site with ease in order to promote my business.
@@ -222,8 +235,8 @@ To ensure accessibility by all modern browsers and differing devices and users, 
         - The user can see this from the other listings on the 'Locations' page.
         - The user can see where the listing is located by clicking the 'map' filter, and read more information on what the listing offers by clicking the info window and enclosed call-to-action button.
         
-        <img src="./documentation/screenshots/features/infowindow-cta.png" alt="Map marker infowindow" width="300">
-        <img src="./documentation/screenshots/features/map-moreinfo.png" alt="Map view more info" width="300">
+        <img src="./documentation/screenshots/features/infowindow-cta.png" alt="Map marker infowindow" width="350">
+        <img src="./documentation/screenshots/features/map-moreinfo.png" alt="Map view more info" width="350">
 
 - #### Site owner
     - As the site owner, I want to ensure that information is accurate and user feedback is received, to improve value to the user.
@@ -234,7 +247,43 @@ To ensure accessibility by all modern browsers and differing devices and users, 
 > add lighthouse testing screens
 
 ### **Responsiveness**
-> add mobile views 
+Remote London is fully responsive on all device sizes. Using the Bootstrap breakpoints as the primary differentiator, the key differences are outlined below:
+- Hamburger menu on navigation:
+    - On mobile, the default navigation menu items are hidden by default, and revealed upon the click on the hamburger nav icon. 
+    - Clicking the icon smoothly pushes the remainder of the page down and reveals the menu items. This ensures the users do not have to scroll more than necessary to get to the content of the page and thus improves useability.
+    - On tablet and desktop, the nav items are clearly located at the top right of the page, where users are accustomed to seeing navigation menus.
+    
+    <br><img src="./documentation/screenshots/responsiveness/mob-menu.png" alt="Mobile menu" width="350">
+    <br><img src="./documentation/screenshots/responsiveness/mob-menu-open.png" alt="Mobile menu open" width="350">
+    <br><img src="./documentation/screenshots/responsiveness/desktop-menu.png" alt="Desktop menu" width="650">
+    
+
+- Filter section on locations.html page:
+    - On mobile, the filter section is collapsed by default using the Bootstrap 'collapse' class and data-toggle.
+    - The filter is easily opened by clicking the filter icon or header 'filter'. Having the entire header act as the trigger ensures that the area required to click is larger, and improves useability for users on small mobile devices.
+    - With the filter built to be collapsable, this also ensures that the user does not have to uneccessarily scroll to view the listings - they can simply close the filter and quickly see the first result. 
+    - On screen sizes medium and above, the filter section is positioned as a sidebar on the page, which reduces the need for the user to scroll, when the screen is wide enough to show both the filter section and the listings with ease.
+    <br><img src="./documentation/screenshots/responsiveness/filter-mobile.png" alt="Filter mobile" height="350" style="margin-right:20px">
+    <img src="./documentation/screenshots/responsiveness/filter-tablet.png" alt="Tablet mobile" height="350">
+    <br><img src="./documentation/screenshots/responsiveness/filter-desktop.png" alt="Desktop mobile" width="350">
+
+- More information sidebar on locations.html page:
+    - On mobile devices, clicking the 'read more' call-to-action on an listing item will open the more info sidebar full screen, to ensure content is easily readable and as much of the screen real-estate is used, preventing uneccessary scrolling by the user.
+    - On tablet devices, the more info sidebar opens as a modal in the center of the screen. The section doesn't require the full height and width of the screen here, but having the sidebar on the right of the page as with desktop, would add unnecessary scrolling for the user to view all of the contents. 
+    - On larger screens, the more info sidebar opens as a sidebar from the right, with a dark content overlay over the rest of the page. As with the modal on tablet, the darker background focusses user attention to the new content on the page. 
+    <br><img src="./documentation/screenshots/responsiveness/moreinfo-mobile.png" alt="More info mobile" height="350" style="margin-right:20px">
+    <img src="./documentation/screenshots/responsiveness/moreinfo-tablet.png" alt="More info tablet" height="350">
+    <br><img src="./documentation/screenshots/responsiveness/moreinfo-desktop.png" alt="More info desktop" height="350">
+
+- Map view on locations.html page:
+    - To improve useability on all devices, the map view resizes the map div to the width and height of the screen. 
+    - On mobile, the map is set to 100vh and width 100% to ensure the entire map can be visible without the need for page scroll.
+    - On tablet and above, the same is true - generating a much wider map, using as much screen real-estate as possible, increasing the area in which users can scroll and use the map functionality.
+    <br><img src="./documentation/screenshots/responsiveness/map-mobile.png" alt="Map mobile" height="350" style="margin-right:20px">
+    <img src="./documentation/screenshots/responsiveness/map-tablet.png" alt="Map tablet" height="350">
+    <br><img src="./documentation/screenshots/responsiveness/map-desktop.png" alt="Map desktop" height="350">
+
+<br>
 
 ### **Accessibility**
 - 'aria-hidden' added to Google Map button and map due to poor accessibility. 

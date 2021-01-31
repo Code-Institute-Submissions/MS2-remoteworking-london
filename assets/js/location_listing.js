@@ -345,9 +345,6 @@ function hideOverlay() {
 function closeBtn() {
     $("#locations_sidebar").addClass("hidden");
     $(".modal-overlay").removeClass("show");
-    setTimeout(function () {
-        $(".sidebar-item").addClass("hide");
-    }, 100);
     if ($(".list-overlay").css({ "display": "none" }) == false) {
         hideOverlay();
     } else {
