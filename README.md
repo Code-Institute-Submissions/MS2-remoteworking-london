@@ -66,9 +66,9 @@ Images within the primary site body are used to compliment the colour palette in
 <br>
 
 ### **Wireframes**
-- View the <a href="" target="_blank">Desktop wireframe here</a>.
-- View the <a href="" target="_blank">Tablet wireframe here</a>.
-- View the <a href="" target="_blank">Mobile wireframe here</a>.
+- View the [Desktop wireframe here](./documentation/wireframes/MS2-wireframes-desktop.pdf).
+- View the [Tablet wireframe here](./documentation/wireframes/MS2-wireframes-tablet.pdf).
+- View the [Mobile wireframe here](./documentation/wireframes/MS2-wireframes-mobile.pdf).
 
 <br>
 
@@ -319,6 +319,8 @@ To create a new branch within this repository, follow the below steps (note: you
 - Sidebar filter items by locId using the filter method was possible with guidance from [Elliot Bonneville](https://stackoverflow.com/users/339852/elliot-bonneville) on this [StackOverflow thread](https://stackoverflow.com/questions/21437163/loop-through-array-of-objects-to-find-object-with-matching-property)
 > rewrite above
 
+### **Listing Research**
+- [Click Do](https://business.clickdo.co.uk/best-35-coworking-spaces-in-london/) was used to gather further research on locations that may be suitable to freelancers.
 ### **Acknowledgements**
 
  > to complete

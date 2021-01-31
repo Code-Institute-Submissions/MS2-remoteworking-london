@@ -227,17 +227,7 @@ function moreDetails(md) {
     let item = request.filter(function (request) {
         return request.locId === md
     })[0];
-
-/*
-    for (var side = 0; side < request.length; side++) {
-        let item = request[side]
-        
-        //if (item === md) {
-            //item = sideItem.filter(request => request.locId === md);
-        console.log(item)    
-            //console.log(item.request.placeId)
-    
-  */  
+ 
             console.log(item)
             const service = new google.maps.places.PlacesService(map);
             service.getDetails(item, (place, status) => {
@@ -278,7 +268,7 @@ function moreDetails(md) {
                             </div>
                             </div>`
                     );
-                    console.log("opening hours", place.opening_hours.weekday_text)
+                    
 
                     // Add the tags to more info
                     for (var t = 0; t < tags.length; t++) {
