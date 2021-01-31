@@ -101,7 +101,7 @@ function initList(page) {
             //         console.log("nothing here")
         } else {
 
-            console.log("item", item)
+            console.log("item", j)
 
             const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -117,7 +117,7 @@ function initList(page) {
 
             if (arrayChoice != undefined) {
                 $("#locations_list").append(
-                    `<div class="d-flex card list-item mt-3" id="list_item_${[j]}" onclick="moreDetails(${[j]});">
+                    `<div class="d-flex card list-item mt-3" id="list_item_${[j]}" onclick="moreDetails(${item.locId});">
                     <div class="list-item-img"><img
                             src="${item.photo_reference}"> alt="${item.title}"
                     </div>
@@ -125,8 +125,8 @@ function initList(page) {
                         <h4>${item.title}</h4>
                         <div class="d-flex"><div class="area-tag"><span>${item.area}</span></div><div class="location-tags flex-row" id="listing_tags_${j}"></div></div>
                         <p class="list-item-date">Posted on: ${formatted_date}</p>
-                        <p class="list-item-short-desc">${paraWordLimit}... <span onclick="moreDetails(${[j]});" class="read-more-trigger">Read More</span></p>
-                        <button onclick="moreDetails(${[j]});" class="read-more-trigger d-lg-none d-xl-none d-xxl-none">Read More</button>
+                        <p class="list-item-short-desc">${paraWordLimit}... <span onclick="moreDetails(${item.locId});" class="read-more-trigger">Read More</span></p>
+                        <button onclick="moreDetails(${item.locId});" class="read-more-trigger d-lg-none d-xl-none d-xxl-none">Read More</button>
                     </div>
                     </div>`
                 )
@@ -223,22 +223,36 @@ function sort(sort) {
 function moreDetails(md) {
 
 
-    item = request[md]
+    // Credits to Elliot Bonneville for filter method guidance: https://stackoverflow.com/questions/21437163/loop-through-array-of-objects-to-find-object-with-matching-property
+    let item = request.filter(function (request) {
+        return request.locId === md
+    })[0];
 
-    const service = new google.maps.places.PlacesService(map);
-    service.getDetails(item, (place, status) => {
-        $("#sidebar_item_container").html("");
-        initMap();
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-            let tags = item.tags;
-            console.log(place.formatted_address)
-            $("#sidebar_item_container").append(
+/*
+    for (var side = 0; side < request.length; side++) {
+        let item = request[side]
+        
+        //if (item === md) {
+            //item = sideItem.filter(request => request.locId === md);
+        console.log(item)    
+            //console.log(item.request.placeId)
+    
+  */  
+            console.log(item)
+            const service = new google.maps.places.PlacesService(map);
+            service.getDetails(item, (place, status) => {
+                $("#sidebar_item_container").html("");
+                initMap();
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    let tags = item.tags;
+                    console.log(place.formatted_address)
+                    $("#sidebar_item_container").append(
 
-                `<div class="sidebar-item" id="sidebar_list_${[md]}">
+                        `<div class="sidebar-item" id="sidebar_list_${[md]}">
                             <button onclick="closeBtn();hideOverlay();" class="btn close_btn"><i class="fas fa-times"></i></button>
                             <div class="sidebar-img-wrapper"><img src="${item.photo_reference}" alt="${place.name}"></div>
                             <div class="sidebar-content-wrapper p-4">
-                            <h4>${place.name}</h4>
+                            <h3 class="mb-2">${place.name}</h3>
                             <div class="d-flex mb-2">
                             <div class="area-tag"><span>${item.area}</span></div>
                             <div class="location-tags flex-row" id="location_tags_${md}"></div>
@@ -253,36 +267,36 @@ function moreDetails(md) {
 <a href="${place.url}" target="_blank"><button class="btn sidebar-website-btn google-maps-trigger"><i class="fas fa-map-marker-alt"></i> View on Google Maps</button></a>
 <a href="${place.website}" target="_blank"><button class="btn sidebar-website-btn">Visit Website</button></a>
 </div>
-                            <div class="hz-rule my-3"></div>
+                            <div class="hz-rule my-4"></div>
                             <p>${item.para}</p>
                             
 <div class="hz-rule my-4"></div>
-<h3 class="mb-3">Recent Google Reviews</h3>
+<h4 class="mb-3">Recent Google Reviews</h4>
                             <div id="google_reviews" class="google-reviews"></div>
 <div class="d-flex mt-2 powered-by-google"><img
                                 src="./assets/images/powered_by_google_on_white.png" alt="powered by Google"></div>
                             </div>
                             </div>`
-            );
-            console.log("opening hours", place.opening_hours.weekday_text)
+                    );
+                    console.log("opening hours", place.opening_hours.weekday_text)
 
-            // Add the tags to more info
-            for (var t = 0; t < tags.length; t++) {
-                let tag = tags[t];
-                $(`#location_tags_${md}`).append(
-                    `<div class="loc-tag">${tag}</div>`
-                )
-            }
+                    // Add the tags to more info
+                    for (var t = 0; t < tags.length; t++) {
+                        let tag = tags[t];
+                        $(`#location_tags_${md}`).append(
+                            `<div class="loc-tag">${tag}</div>`
+                        )
+                    }
 
-            // Sort the reviews to show most recent first. Credits for sort() method guidance: https://www.w3schools.com/jsref/jsref_sort.asp 
-            let sortRevByDate = place.reviews.sort(function (a, b) { return b.time - a.time })
+                    // Sort the reviews to show most recent first. Credits for sort() method guidance: https://www.w3schools.com/jsref/jsref_sort.asp 
+                    let sortRevByDate = place.reviews.sort(function (a, b) { return b.time - a.time })
 
-            for (var r = 0; r < 3; r++) {
-                let review = sortRevByDate[r];
-                let textSplit = review.text.split(" ", 22);
-                let newReviewLength = textSplit.join(" ");
-                $(`#google_reviews`).append(
-                    `<div class="google-review d-flex flex-row">
+                    for (var r = 0; r < 3; r++) {
+                        let review = sortRevByDate[r];
+                        let textSplit = review.text.split(" ", 22);
+                        let newReviewLength = textSplit.join(" ");
+                        $(`#google_reviews`).append(
+                            `<div class="google-review d-flex flex-row">
                     <a class="review-auth-img" href="${review.author_url}" target="_blank"><img src="${review.profile_photo_url}" alt="${review.author_name}"></a>
                     <div class="d-flex flex-column">
                     <div class="d-flex flex-row flex-wrap">
@@ -292,34 +306,38 @@ function moreDetails(md) {
                     <p class="pt-0">${newReviewLength} &nbsp;<span class="review-posted">${review.relative_time_description}</span></p>
                     </div>
                     </div>`
-                )
+                        )
 
-                // Guidance on star rating output from "I wrestled a bear once" on StackExchange thread: https://codereview.stackexchange.com/questions/177945/convert-rating-value-to-visible-stars-using-fontawesome-icons
-                // Add a filled star for each iteration until maximum rating reached
-                for (var star = 0; star < review.rating; star++) {
-                    $(`#star_rating_${r}`).append(`<i class="fas fa-star"></i>`)
-                    if (star === .5) {
-                        $(`#star_rating_${r}`).append(`<i class="fas fa-star-half-alt"></i>`)
+                        // Guidance on star rating output from "I wrestled a bear once" on StackExchange thread: https://codereview.stackexchange.com/questions/177945/convert-rating-value-to-visible-stars-using-fontawesome-icons
+                        // Add a filled star for each iteration until maximum rating reached
+                        for (var star = 0; star < review.rating; star++) {
+                            $(`#star_rating_${r}`).append(`<i class="fas fa-star"></i>`)
+                            if (star === .5) {
+                                $(`#star_rating_${r}`).append(`<i class="fas fa-star-half-alt"></i>`)
+                            }
+                        }
+                        // If the rating is less than 5, fill the remaining section with blank stars up to 5 stars total
+                        if (review.rating < 5) {
+                            let emptyStars = 5 - review.rating
+                            for (var empty = 0; empty < emptyStars; empty++) {
+                                $(`#star_rating_${r}`).append(`<i class="far fa-star"></i>`)
+                            }
+                        }
                     }
                 }
-                // If the rating is less than 5, fill the remaining section with blank stars up to 5 stars total
-                if (review.rating < 5) {
-                    let emptyStars = 5 - review.rating
-                    for (var empty = 0; empty < emptyStars; empty++) {
-                        $(`#star_rating_${r}`).append(`<i class="far fa-star"></i>`)
-                    }
-                }
-            }
-        }
-    })
-
-
+            
+            })
+      //  } else {
+     //       return null
+       // }
+    
 
 
     $("#locations_sidebar").removeClass("hidden");
     $(".modal-overlay").addClass("show");
     //$(`#sidebar_list_${[j]}`).removeClass("hide");
     $(".list-overlay").animate({ opacity: '1' }, "medium").css({ "z-index": "2", "display": "block" })
+    //}
 };
 
 function hideOverlay() {
@@ -474,9 +492,9 @@ function listFilterArea(area) {
     let idInfoSearch = idInfo[1]
     let URLsearch = URLstring[1];
     if (URLsearch != undefined) { searchField(URLsearch) }
-    else { };
-    if (idInfoSearch != undefined) { moreDetails(idInfoSearch); }
-    else { return false }
+    //else { };
+    //if (idInfoSearch != undefined) { moreDetails(idInfoSearch); }
+    //else { return false }
 })();
 
 

@@ -361,7 +361,7 @@ footer {
     background: linear-gradient(160deg, rgb(0 61 138 / 92%) 60%, rgba(94,121,255,1) 100%);
     min-height: 150px;
     box-shadow: 1px -1px 4px 0px #3c3c3c;
-    z-index: 1;
+    z-index: 0;
     padding: 20px 40px;
     color: #fff;
 }
@@ -730,7 +730,7 @@ transition: 0.5s ease-in-out;
 
 .sidebar-img-wrapper img {
     width: 100%;
-    transform: translateY(-75px);
+    transform: translateY(-20%);
 }
 .sidebar-content-wrapper p {
  padding-bottom: 10px;
@@ -837,12 +837,14 @@ a.review-auth-img{
 
 
 .powered-by-google {
-    max-width: 110px;
     margin: auto;
     margin-right: 0;
+    justify-content: flex-end;
 }
 
-
+.powered-by-google > img {
+max-width: 150px;
+}
 /* Filter Section & Read more */
 
 button.read-more-trigger {

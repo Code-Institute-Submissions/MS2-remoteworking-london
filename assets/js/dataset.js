@@ -3,6 +3,7 @@ const gAPI = "AIzaSyCpRl6zH6f6HELDSNwfvLzNZQj_NPaOcZs";
 const request =
     [
         {
+            locId: 01,
             placeId: "ChIJP_8Q3TEDdkgRRT5ojRyPikM",
             fields: ["name", "formatted_address", "place_id", "formatted_phone_number", "type", "website", "opening_hours", "rating", "review", "business_status", "url"],
             title: "The Dock @ Tobacco Dock",
@@ -15,6 +16,7 @@ const request =
             lat: 51.508331918585334, 
             lng: -0.059331656983684894,
         }, {
+            locId: 02,
             placeId: "ChIJNYMc2XQPdkgRNrDf5jzuVSU",
             fields: ["name", "formatted_address", "place_id", "formatted_phone_number", "type", "website", "opening_hours", "rating", "review", "business_status", "url"],
             title: "Rude Health Putney",
@@ -29,6 +31,7 @@ const request =
             lng: -0.2087093606740712,
         },
         {
+            locId: 03,
             placeId: "ChIJq6pq8FgDdkgR00mfXSJQ_lE",
             fields: ["name", "formatted_address", "place_id", "formatted_phone_number", "type", "website", "opening_hours", "rating", "review", "business_status", "url"],
             title: "Uncommon",
@@ -43,6 +46,7 @@ const request =
             lng: -0.09141299384238823,
         },
         {
+            locId: 04,
             placeId: "ChIJC9BYx0QDdkgRM8cEOlJ-cgQ",
             fields: ["name", "formatted_address", "place_id", "formatted_phone_number", "type", "website", "opening_hours", "rating", "review", "business_status", "url"],
             title: "Work.Life Bermondsey",
@@ -57,6 +61,7 @@ const request =
             lng: -0.08146762827075194,
         },
         {
+            locId: 05,
             placeId: "ChIJ2a2DyE0bdkgRNzoEi9LTGo8",
             fields: ["name", "formatted_address", "place_id", "formatted_phone_number", "type", "website", "opening_hours", "rating", "review", "business_status", "url"],
             title: "Headspace",
@@ -71,6 +76,7 @@ const request =
             lng: -0.10039151917712165,
         },
         {
+            locId: 06,
             placeId: "ChIJ2a2DyE0bdkgRNzoEi9LTGo8",
             fields: ["name", "formatted_address", "place_id", "formatted_phone_number", "type", "website", "opening_hours", "rating", "review", "business_status", "url"],
             title: "Battersea Park",
@@ -84,10 +90,11 @@ const request =
             lat: 51.479556605545255,
             lng: -0.15543546985977563,
         },
-          {
+        {
+              locId: 07,
             placeId: "ChIJC9BYx0QDdkgRM8cEOlJ-cgQ",
             fields: ["name", "formatted_address", "place_id", "formatted_phone_number", "type", "website", "opening_hours", "rating", "review", "business_status", "url"],
-            title: "Work.Life Bermondsey",
+            title: "Test",
             area: "South London",
             para: "If you’re looking for a central-London base to work alongside other like-minded freelance and remote working types, it doesn’t get much more central than this. Oh and let’s not forget that lunch is sorted courtesy of Borough Market, conveniently located on the doorstep of Work.Life Bermondsey.<br></br>Since this is a co-working space, you are going to need to part with a little cash - prices here start at £310 per month for hot-desk rights, or for those who just need to be out of the house for a few days a week, the £4.50 per hour flex package will suit you nicely.<br><br>In addition to it’s easy transport links across London and beyond, the space also offers bookable meeting rooms, bike storage, showers, social events and lunch & learns, and since it’s an office space, is also able to open during the current UK COVID restrictions.",
             photo_reference: "./assets/images/listings/worklife.jpg",
@@ -98,7 +105,8 @@ const request =
             lat: 51.50059007146171, 
             lng: -0.08146762827075194,
         },
-            {
+        {
+                locId: 08,
             placeId: "ChIJC9BYx0QDdkgRM8cEOlJ-cgQ",
             fields: ["name", "formatted_address", "place_id", "formatted_phone_number", "type", "website", "opening_hours", "rating", "review", "business_status", "url"],
             title: "Work.Life Bermondsey",
