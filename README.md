@@ -24,7 +24,7 @@ The site is primarily designed for those users who either as Freelancers, need a
 - [Wireframes](#wireframes)
 ## - [Features](#features)
 - [Features to add in Future Releases](#features-to-add-in-future-releases)   
-## - [Technologies & Tools Used](#technologies-&-tools-used)
+## - [Technologies & Tools Used](#technologies-and-tools-used)
 ## - [Testing](#testing)
 - [Code Validation](#code-validation)
 - [User Story Testing](#user-story-testing)   
@@ -125,7 +125,7 @@ Images within the primary site body are used to compliment the colour palette in
 
 <br>
 
-## **Technologies & Tools Used**
+## **Technologies and Tools Used**
 The core codebase for the Remote London website is created using HTML5, CSS3 and Javascript. In addition to these core languages, a number of frameworks, libraries and APIs were used to create the initial release. A full list of these are shown below:
 - [HTML5](https://html.spec.whatwg.org/multipage/) - is used as the core language to create the Document Object Model (DOM).
 - [CSS3](https://www.w3.org/Style/CSS/specs.en.html) - is used to style the HTML elements. 
