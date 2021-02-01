@@ -1,8 +1,5 @@
-function openInfoHome(loc_id) {
-    let id = loc_id;
-    window.location.href = `./locations.html?&id=${id}`;
-}
 
+// Create enter key function for search - users can hit enter vs click button to initiate search.
 function enterKey() {
     document.getElementById("search").addEventListener('keyup', function (event) {
         if (event.keyCode === 13) {
@@ -11,13 +8,12 @@ function enterKey() {
     });
 }
 
-// Mobile - change dropdown menu on click
+// Mobile - change dropdown menu on click to hamburger nav
 jQuery(function ($) {
     let width = screen.width;
     let mobile = (width <= 767);
     if (mobile == true) {
         $("#filter").addClass("collapse");
-        //$("#filter > .filter-section:nth-child(1)").removeClass("mt-4");
     }
     $("#nav_collapse").click(() => {
         $("#nav_collapse > i").addClass("fa-times").removeClass("fa-bars");
@@ -30,12 +26,14 @@ jQuery(function ($) {
     });
 });
 
-// Pre-loader
+
+// Launch pre-loader and fadeout once page is loaded
 $(window).on("load", function () {
     $(".pre-load-bg").fadeOut("medium");
 });
 
-// Show scroll to top button
+
+// Show scroll to top button. On click smooth scroll to top of page
 $(document).ready(function () {
     $(".snap-scroll-parent").scroll(function () {
         let scrollLength = $(".snap-scroll-parent").scrollTop();
@@ -49,6 +47,7 @@ $(document).ready(function () {
         $('.snap-scroll-parent').animate({ scrollTop: 0 }, 300);
     });
 });
+
 
 // Initilialize Popper.js tooltips
 $(function () {
