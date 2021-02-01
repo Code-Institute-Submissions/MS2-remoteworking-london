@@ -27,9 +27,11 @@ jQuery(function ($) {
 });
 
 
-// Launch pre-loader and fadeout once page is loaded
+// Launch pre-loader and fadeout once page is loaded. Timeout added to ensure dom elements in final position.
 $(window).on("load", function () {
-    $(".pre-load-bg").fadeOut("medium");
+    setTimeout(function(){
+        $(".pre-load-bg").fadeOut("slow");
+        }, 500)
 });
 
 
