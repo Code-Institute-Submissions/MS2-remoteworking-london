@@ -325,7 +325,7 @@ nav ul li a.active {
 	color: #000 !important;
 }
 
-/* --- Mobile --- */
+/* Mobile */
 .navbar-toggler,
 .navbar-toggler>i {
 	padding: 0;
@@ -598,7 +598,6 @@ p.landing {
 }
 
 
-
 /* === LOCATION LISTING PAGE === */
 /* ===  === === === === ===  === */
 
@@ -617,9 +616,6 @@ p.landing {
 	flex-direction: column;
 }
 
-
-
-
 .locations-pg-wrapper {
 	max-width: 100%;
 	height: min-content;
@@ -634,7 +630,6 @@ p.landing {
 	display: flex;
 	flex-direction: column;
 }
-
 
 #results_title {
 	margin: 40px 40px 0px 40px;
@@ -847,7 +842,6 @@ p.area-tag {
 	margin-right: 10px;
 }
 
-
 /* Sidebar Google Reviews */
 .review-auth {
 	color: #f15649;
@@ -891,7 +885,6 @@ a.review-auth-img {
 }
 
 /* Filter Section & Read more */
-
 button.read-more-trigger {
 	display: none;
 }
@@ -1017,7 +1010,6 @@ button.read-more-trigger {
 	transform-style: preserve-3d;
 }
 
-
 .list-item:hover {
 	box-shadow: 1px 1px 6px -1px #484848;
 	transform: translate3d(0, -3px, 0) !important;
@@ -1073,9 +1065,7 @@ button.read-more-trigger {
 	border: none;
 }
 
-
 /* Google Maps */
-
 #map {
 	height: 100%;
     width: 100%;
@@ -1133,7 +1123,6 @@ button.read-more-trigger {
 	max-height: 50px;
 	justify-content: center;
 }
-
 
 .infowindow-img-wrap>img {
 	height: 100%;
@@ -1202,7 +1191,6 @@ button.read-more-trigger {
 	background: #DF2626;
 }
 
-
 .input-group-item {
 	display: flex;
 	width: 49%;
@@ -1231,7 +1219,6 @@ input.cta-btn:hover {
 	}
 }
 
-
 @media (max-width: 410.98px) {
 	.sidebar-cta-btns {
 		flex-wrap: wrap;
@@ -1245,7 +1232,6 @@ input.cta-btn:hover {
 		flex-direction: column;
 	}
 }
-
 
 @media (max-width: 575.98px) {
 
@@ -1428,13 +1414,9 @@ input.cta-btn:hover {
 		display: block;
 	}
 
-	/* Support Pages */
-
 	.info-pg-wrapper {
 		width: 85%;
 	}
-
-
 
 }
 

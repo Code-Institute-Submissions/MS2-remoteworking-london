@@ -21,16 +21,16 @@ function initList(page) {
     let arrayChoiceArea;
 
     // Use filter() to sort array by area. Credits: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
-    if (btnNorth == true) {
+    if (btnNorth === true) {
         arrayChoiceArea = request.filter(request => request.area ===
             "North London");
-    } else if (btnSouth == true) {
+    } else if (btnSouth === true) {
         arrayChoiceArea = request.filter(request => request.area ===
             "South London");
-    } else if (btnEast == true) {
+    } else if (btnEast === true) {
         arrayChoiceArea = request.filter(request => request.area ===
             "East London");
-    } else if (btnWest == true) {
+    } else if (btnWest === true) {
         arrayChoiceArea = request.filter(request => request.area ===
             "West London");
     } else {
