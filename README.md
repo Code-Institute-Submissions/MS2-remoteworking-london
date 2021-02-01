@@ -15,7 +15,7 @@ The site is primarily designed for those users who either as Freelancers, need a
 
 ## Contents
 
-### [User Experience (UX)](#user-experience-(ux))
+### [User Experience (UX)](#user-experience-ux)
 - [User Stories](#user-stories)   
 - [Design](#design)
 - [Typography](#typography)
