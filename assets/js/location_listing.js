@@ -19,18 +19,18 @@ function initList(page) {
     // Use filter() to sort array by area. Credits: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
     if (btnNorth == true) {
         arrayChoiceArea = request.filter(request => request.area ===
-            "North London")
+            "North London");
     } else if (btnSouth == true) {
         arrayChoiceArea = request.filter(request => request.area ===
-            "South London")
+            "South London");
     } else if (btnEast == true) {
         arrayChoiceArea = request.filter(request => request.area ===
-            "East London")
+            "East London");
     } else if (btnWest == true) {
         arrayChoiceArea = request.filter(request => request.area ===
-            "West London")
+            "West London");
     } else {
-        arrayChoiceArea = request
+        arrayChoiceArea = request;
     }
 
     // Sort the dates based on button value
@@ -42,22 +42,22 @@ function initList(page) {
     let arrayChoice;
 
     if (search == "") {
-        arrayChoice = arrayChoiceArea
+        arrayChoice = arrayChoiceArea;
     } else {
         for (var i = 0; i < arrayChoiceArea.length; i++) {
             if (arrayChoiceArea === undefined) {
                 $("#results_title").html(
                     `<div id="no_results" class="card fade-in"><h3>Looks like we're all out of ideas here. <i class="far fa-frown"></i> </h3><p>Try a different flavour or show all results for inspiration</p>
                         <a href="locations.html"><button class="btn cta-btn">Show all results</button></a>
-                    </div>`)
+                    </div>`);
             } else {
                 // Define what to search within the object
-                let itemSearch = arrayChoiceArea[i]
+                let itemSearch = arrayChoiceArea[i];
                 let itemContent = itemSearch.para + itemSearch.title +
                     itemSearch.area + itemSearch.tags;
-                let itemLower = itemContent.toLowerCase()
+                let itemLower = itemContent.toLowerCase();
                 if (itemContent.includes(search) || itemLower.includes(search))
-                    searchResults.push(itemSearch)
+                    searchResults.push(itemSearch);
             }
         }
         arrayChoice = searchResults;
@@ -72,13 +72,13 @@ function initList(page) {
 
     // Determine what the max list of results should be based on full array set, sorted array set, and page
     if (itemsPerPage > arrayChoice.length) {
-        maxItems = arrayChoice.length
+        maxItems = arrayChoice.length;
     } else if (end < arrayChoice.length) {
-        maxItems = end
+        maxItems = end;
     } else if (itemsPerPage < arrayChoice.length) {
-        maxItems = arrayChoice.length - start
+        maxItems = arrayChoice.length - start;
     } else {
-        maxItems = itemsPerPage
+        maxItems = itemsPerPage;
     }
 
     for (var j = start; j < start + maxItems; j++) {
@@ -113,12 +113,12 @@ function initList(page) {
                         <p class="list-item-short-desc">${paraWordLimit}... <span onclick="moreDetails(${item.locId});" class="read-more-trigger">Read More</span></p>
                         <button onclick="moreDetails(${item.locId});" class="read-more-trigger d-lg-none d-xl-none d-xxl-none">Read More</button>
                     </div>
-                    </div>`)
+                    </div>`);
             } else {
                 $("#results_title").html(
                     `<div id="no_results" class="card fade-in"><h3>Looks like we're all out of ideas here. <i class="far fa-frown"></i> </h3><p>Try a different flavour or show all results for inspiration</p>
                         <a href="locations.html"><button class="btn cta-btn">Show all results</button></a>
-                    </div>`)
+                    </div>`);
             }
         }
 
@@ -126,53 +126,53 @@ function initList(page) {
             let tag = tags[mt];
             $(`#listing_tags_${j}`).append(
                 `<div class="loc-tag">${tag}</div>`
-            )
+            );
         }
     }
 
-    let mapActive = $("#map_btn").hasClass("filter-btn.active")
+    let mapActive = $("#map_btn").hasClass("filter-btn.active");
 
     if (arrayChoice.length === 0 && mapActive === false) {
         $("#results_title").html(
             `<div id="no_results" class="card fade-in"><h3>Looks like we're all out of ideas here. <i class="far fa-frown"></i> </h3><p>Try a different flavour or show all results for inspiration</p>
         <a href="locations.html"><button class="btn cta-btn">Show all results</button></a></div>`
-        )
+        );
     } else {
         $("#results_title").html(
             `<div id="results" class="fade-in">
         <h3>We found <span class="bold-in-text">${arrayChoice.length} results</span> <span class="d-none d-lg-inline">that you may be interested in</span></h3>
         </div>`
-        )
-    };
+        );
+    }
 
     // Start pagination
-    $("#pagination_btns").html("")
+    $("#pagination_btns").html("");
     let pageCount = Math.ceil(arrayChoice.length / itemsPerPage);
     pagination(btnNorth, btnSouth, btnEast, btnWest, pageCount);
 
     // Reset the overlay before displaying results
     hideOverlay();
-};
+}
 
 function pagination(btnNorth, btnSouth, btnEast, btnWest, pageCount) {
 
     for (let i = 1; i < pageCount + 1; i++) {
         let btn = pagButtons(i);
-        $("#pagination_btns").append(btn)
+        $("#pagination_btns").append(btn);
     }
-};
+}
 
 
 function pagButtons(btnNum) {
     let button = document.createElement("button");
     button.innerText = btnNum;
-    button.classList.add("btn", "pagination-btn")
+    button.classList.add("btn", "pagination-btn");
 
     if (currentPage == btnNum) button.classList.add("active");
-    button.addEventListener('click', function() {
+    button.addEventListener('click', function () {
         currentPage = btnNum;
         initList(currentPage);
-    })
+    });
     return button;
 }
 initList(currentPage);
@@ -188,7 +188,7 @@ function sort(sort) {
         $("#btn_asc").removeClass("active");
     }
     initList(currentPage);
-};
+}
 
 
 // Show the sidebar details when 'read more' is clicked
@@ -196,7 +196,7 @@ function moreDetails(md) {
 
     // Credits to Elliot Bonneville for filter method guidance: https://stackoverflow.com/questions/21437163/loop-through-array-of-objects-to-find-object-with-matching-property
     let item = request.filter(function(request) {
-        return request.locId === md
+        return request.locId === md;
     })[0];
 
     const service = new google.maps.places.PlacesService(map);
@@ -239,13 +239,13 @@ function moreDetails(md) {
                 let tag = tags[t];
                 $(`#location_tags_${md}`).append(
                     `<div class="loc-tag">${tag}</div>`
-                )
+                );
             }
 
             // Sort the reviews to show most recent first. Credits for sort() method guidance: https://www.w3schools.com/jsref/jsref_sort.asp 
-            let sortRevByDate = place.reviews.sort(function(a, b) {
-                return b.time - a.time
-            })
+            let sortRevByDate = place.reviews.sort(function (a, b) {
+                return b.time - a.time;
+            });
 
             for (var r = 0; r < 3; r++) {
                 let review = sortRevByDate[r];
@@ -262,29 +262,29 @@ function moreDetails(md) {
                     <p class="pt-0">${newReviewLength} &nbsp;<span class="review-posted">${review.relative_time_description}</span></p>
                     </div>
                     </div>`
-                )
+                );
 
                 // Guidance on star rating output from "I wrestled a bear once" on StackExchange thread: https://codereview.stackexchange.com/questions/177945/convert-rating-value-to-visible-stars-using-fontawesome-icons
                 // Add a filled star for each iteration until maximum rating reached
                 for (var star = 0; star < review.rating; star++) {
                     $(`#star_rating_${r}`).append(
-                        `<i class="fas fa-star"></i>`)
-                    if (star === .5) {
+                        `<i class="fas fa-star"></i>`);
+                    if (star === 0.5) {
                         $(`#star_rating_${r}`).append(
-                            `<i class="fas fa-star-half-alt"></i>`)
+                            `<i class="fas fa-star-half-alt"></i>`);
                     }
                 }
                 // If the rating is less than 5, fill the remaining section with blank stars up to 5 stars total
                 if (review.rating < 5) {
-                    let emptyStars = 5 - review.rating
+                    let emptyStars = 5 - review.rating;
                     for (var empty = 0; empty < emptyStars; empty++) {
                         $(`#star_rating_${r}`).append(
-                            `<i class="far fa-star"></i>`)
+                            `<i class="far fa-star"></i>`);
                     }
                 }
             }
         }
-    })
+    });
     $("#locations_sidebar").removeClass("hidden");
     $(".modal-overlay").addClass("show");
     $(".list-overlay").animate({
@@ -292,19 +292,18 @@ function moreDetails(md) {
     }, "medium").css({
         "z-index": "2",
         "display": "block"
-    })
-};
+    });
+}
 
 function hideOverlay() {
-    $(".modal-overlay").click(function() {
+    $(".modal-overlay").click(function () {
         $(".modal-overlay").removeClass("show");
-    })
+    });
     if ($("#locations_sidebar").hasClass("hidden") === false) {
         closeBtn();
     } else {
-        return false
+        return false;
     }
-
 }
 
 function closeBtn() {
@@ -315,7 +314,7 @@ function closeBtn() {
         }) == false) {
         hideOverlay();
     } else {
-        return false
+        return false;
     }
 }
 
@@ -331,17 +330,17 @@ function searchField(URLsearch) {
     $("#filter_mobile").addClass("collapsed");
     $("#filter_mobile i").addClass("fa-filter").removeClass("fa-times");
     $("#filter").removeClass("show");
-    hideOverlay()
-    initList(currentPage)
+    hideOverlay();
+    initList(currentPage);
 }
 
-$(document).ready(function() {
-    $(".search-btn").click(function() {
+$(document).ready(function () {
+    $(".search-btn").click(function () {
         $("#list_section").animate({
             scrollTop: 0
         }, 300);
-    })
-})
+    });
+});
 
 function landingSearch(searchInput) {
     let search = searchInput;
@@ -351,10 +350,10 @@ function landingSearch(searchInput) {
 function showMap() {
     $(".location-list-wrapper").addClass("hide");
     $("#list_btn").removeClass("active");
-    $("#search").val("")
+    $("#search").val("");
     $("#map_btn").addClass("active");
     $("#map").removeClass("hide");
-    $("#results_title").addClass("map")
+    $("#results_title").addClass("map");
     searchField("");
     closeBtn();
 }
@@ -364,8 +363,8 @@ function showList() {
     $("#map_btn").removeClass("active");
     $("#list_btn").addClass("active");
     $(".location-list-wrapper").removeClass("hide");
-    $("#results_title").removeClass("map")
-};
+    $("#results_title").removeClass("map");
+}
 
 function clearFilters() {
     $("#search").val("");
@@ -382,9 +381,9 @@ function clearFilters() {
 // Filter markers by area only
 // Marker filter guidance from 'Peter' on JS Fiddle: https://jsfiddle.net/peter/drytwvL8/
 function filterArea(area) {
-    for (var i in filteredMarkers) {
+    for (var i = 0; i < filteredMarkers.length; i++) {
         let marker = filteredMarkers[i];
-        let areaBtn = $(".area-btn")
+        let areaBtn = $(".area-btn");
 
         google.maps.event.addListener(areaBtn, "click", function() {
             if (infowindow) {
@@ -399,7 +398,7 @@ function filterArea(area) {
             google.maps.event.addListener(areaBtn, "click", function() {
                 infowindow.close();
                 closeBtn();
-                return
+                return;
             });
         }
     }
@@ -435,12 +434,12 @@ function listFilterArea(area) {
 (function() {
     let href = window.location.href;
     let addSpace = href.replace(/%20/g, " ");
-    let URLstring = addSpace.split('q=')
+    let URLstring = addSpace.split('q=');
     let idInfo = href.split('id=');
-    let idInfoSearch = idInfo[1]
+    let idInfoSearch = idInfo[1];
     let URLsearch = URLstring[1];
     if (URLsearch != undefined) {
-        searchField(URLsearch)
+        searchField(URLsearch);
     }
 })();
 
@@ -448,10 +447,10 @@ function listFilterArea(area) {
 // Get featured items on homepage
 (function() {
     for (var i = 0; i < 3; i++) {
-        let item = request[i]
+        let item = request[i];
         let paraWords = item.para.split(" ", 22);
         let paraWordLimit = paraWords.join(" ");
-        let tags = item.tags
+        let tags = item.tags;
         $(`#ft${[i]}`).append(
             `<div class="featured-img-wrap">
                 <img src="${item.photo_reference}" alt="${item.title}" aria-label="${item.title}">
