@@ -306,7 +306,13 @@ Remote London is fully responsive on all device sizes. Using the Bootstrap break
         <img src="./documentation/screenshots/browser/ff3.png" alt="Firefox listings" width="450">
         <img src="./documentation/screenshots/browser/ff2.png" alt="Firefox contact" width="450">
 
+<br>
+
 ### **Accessibility**
+Whilst the website has been optimised to nearly 100% accessibility rating on both [Google Lighthouse](https://developers.google.com/web/tools/lighthouse) and [WAVE Accessibility Evaluation Tool](https://wave.webaim.org/), there are a few minor warnings that are thrown in both of these tools that have been mitigated where possible:
+-   No alt tag
+
+
 - 'aria-hidden' added to Google Map button and map due to poor accessibility. 
 - Initial colour scheme changed slightly to make white on orange contrast improved.
 > write
