@@ -1301,8 +1301,8 @@ padding: 10px 0;
 }
 
 .list-item-img {
-    max-width: 100%;
-    width: 100%;
+    max-width: 100%!important;
+    width: 100%!important;
     min-height: 120px;
 }
 .list-item-img > img {
