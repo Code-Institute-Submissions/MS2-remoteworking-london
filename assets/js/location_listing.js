@@ -362,6 +362,34 @@ function showMap() {
     closeBtn();
 }
 
+// IF MAP FAILS - if map fails to load due to late callback from Google, then prompt user to reload
+(function () {
+    let mapEmpty = $("#map").html(); 
+
+    if (mapEmpty === "") {
+        $("#map").append(
+            `<div aria-hidden="true" id="mapFail">
+                <div class="card failed-load-map">
+                    <h3>Oh no!</h3>
+                        <p> It looks like we've run into an issue loading
+                            the Google Data. Click below to reload the page so we can try again...</p>
+                        <a href="/locations.html" class="my-3 featured-btn-cta">Reload Page</a>
+                </div>
+            </div>`);
+        $("#locations_sidebar").append(
+            `<div aria-hidden="true" id="sidebarFail">
+                <div class="card failed-load-sidebar">
+                    <h3>Oh no!</h3>
+                    <p> It looks like we've run into an issue loading
+                        the Google Data. Click below to reload the page so we can try again...</p>
+                    <a href="/locations.html" class="my-3 featured-btn-cta">Reload Page</a>
+                </div>
+            </div>`);
+    } else {
+        return false;
+    }
+})();
+    
 function showList() {
     $("#map").addClass("hide");
     $("#map_btn").removeClass("active");

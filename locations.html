@@ -83,14 +83,6 @@
         <!-- Body content & Filter sidebar start -->
         <div class="modal-overlay fade-in" onclick="hideOverlay();"></div>
         <div id="locations_sidebar" class="hidden">
-            <div aria-hidden="true" id="sidebarFail" class="hide">
-                <div class="card failed-load-sidebar">
-                    <h3>Oh no!</h3>
-                    <p> It looks like we've run into an issue loading
-                        the Google Data. Click below to reload the page so we can try again...</p>
-                    <a href="/locations.html" class="my-3 featured-btn-cta">Reload Page</a>
-                </div>
-            </div>
             <div id="sidebar_item_container"></div>
         </div>
         <div class="container locations-pg-wrapper ">
@@ -171,16 +163,7 @@
                     </div>
                     <div class="list-overlay" onclick="hideOverlay();"></div>
                     <div aria-hidden="true" class="map-overlay hide"></div>
-                    <div aria-hidden="true" id="map" class="hide">
-                        <div aria-hidden="true" id="mapFail" class="hide">
-                            <div class="card failed-load-map">
-                                <h3>Oh no!</h3>
-                                <p> It looks like we've run into an issue loading
-                                    the Google Data. Click below to reload the page so we can try again...</p>
-                                <a href="/locations.html" class="my-3 featured-btn-cta">Reload Page</a>
-                            </div>
-                        </div>
-                    </div>
+                    <div aria-hidden="true" id="map" class="hide"></div>
 
                     <div class="location-list-wrapper">
                         <div id="locations_list"></div>
@@ -220,19 +203,8 @@
             )
         })
     </script>
-    <script defer
+    <script async
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMVUvw_I7qUBzKQmDtLsmAk2ktpqvD7Mo&map_ids=1daab95bc3f973ff&libraries=places&callback=initMap"></script>
-    <!-- If Google fails to call the initMap function, 
-         show error to users in map and more infosidebar, instructing them to reload page -->
-    <script>
-        setTimeout(function () {
-            if (typeof initMap !== "function") {
-                $("#mapFail").removeClass("hide");
-                $("#sidebarFail").removeClass("hide");
-                console.log("no")
-            }
-        }, 3000);
-    </script>
 </body>
 
 </html>
