@@ -524,9 +524,6 @@ p.landing {
     border: none;
     box-shadow: 1px 1px 15px -5px #3c3c3c;
     transition: 0.7s ease;
-    backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
 }
 
 .featured-card:hover {
@@ -605,9 +602,8 @@ p.landing {
 
 .locations-pg-wrapper {
     max-width: 100%;
-    height: -webkit-min-content;
+    height: min-content;
     background: #fdfdfd;
-    display: -webkit-box;
     transition: 0.7s ease-in-out;
     position: relative;
 }
@@ -984,8 +980,6 @@ button.read-more-trigger {
     transition: 0.3s ease-in-out;
     flex-direction: row;
     transform: translate3d(0,0,0);
-    backface-visibility: hidden; 
-    -webkit-backface-visibility: hidden;
     transform-style: preserve-3d;
 }
 

@@ -145,9 +145,13 @@ The core codebase for the Remote London website is created using HTML5, CSS3 and
 ### **Code Validation**
 To ensure accessibility by all modern browsers and differing devices and users, the Remote London website has been validated on W3C HTML, W3 Jigsaw CSS and JS Hint validators. Whilst the initial codebase passed validation, the third party libraries such as FontAwesome and Bootstrap have presented common errors and warnings. See further details below:
 - ### W3C HTML Results
-    - 
+    - All HTML pages have been validated through the official W3C validator and now return no errors or warnings.
 - ### W3 CSS Results
-    - 
+    - All HTML pages have been validated through the Jigsaw W3 validator and whilst there are no errors flagged in the style.css file, third party css libraries are returning common errors and warnings:
+        - Bootstrap.min.css returns 18 errors - multiple 'value errors', 'Unknown psuedo-elements', 'Property doesn't exist'. These errors [can be viewed here](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fbradleyhc.github.io%2FMS2-remoteworking-london%2Flocations.html&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en).
+        - In addition to Bootstrap, there are a number of warnings only, from FontAwesome and the local Style.css. The style.css file contains the below warnings:
+            - Unknown vendor extension for 'width: -webkit-fill-available' - this is used to ensure the div uses all available width on browsers where this is compatible.
+            - Same border colour as background - this is a decision to ensure that the buttons are hovered onto, the button size doesn't increase by the additional pixel on each side, making the transition smoother. 
 - ### JS Hint Results
     - 
     
@@ -313,6 +317,10 @@ Whilst the website has been optimised to nearly 100% accessibility rating on bot
 - Missing alt text for the Google Map image tiles that are generated. This is unavoidable, as the tiles are generated from the the Google API call and cannot be altered. However to mitigate this, the map view button and map div have been given an 'aria-hidden' parameter of 'true', to ensure that users who require accessibility functions on their device, are not presented with an option that they could not use.
 - Low contrast between the orange background and white text errors initially presented from the accessibility testing has resulted in the colour scheme being updated slightly. Instead of the lighter, pastel colours in the initial version, darker background elements have been introduced. 
 
+<img src="./documentation/screenshots/accessibility/home-aria.png" alt="Home page accessibility" width="450">
+<img src="./documentation/screenshots/accessibility/contact-aria.png" alt="Contact page accessibility" width="450">
+<img src="./documentation/screenshots/accessibility/listings-aria.png" alt="Listings page accessibility" width="450">
+<img src="./documentation/screenshots/accessibility/map-aria.png" alt="Map errors" width="450">
 
 
 ### **Fixed Bugs**
@@ -340,7 +348,7 @@ Whilst the website has been optimised to nearly 100% accessibility rating on bot
         - The overlays that appear behind the 'more info' sidebar would frequently become out of sync with the sidebar as their styles were adjusted independently from one another.
         - I have since refactored the code and used jQuery's existing fadeOut() method to show and hide a page-wide overlay, which functions much smoother.
     - Safari would not load initMap in Google callback in script load order specified, resulting in empty dataset
-        - In refactoring the code to only reuqest the Google data when the user clicks 'more details', this ensures that the callback function in the Google API is not required to successfully show the initial listing data.
+        - In refactoring the code to only request the Google data when the user clicks 'more details', this ensures that the callback function in the Google API is not required to successfully show the initial listing data.
     > rewrite above
 
 - Deployment & Site-wide
