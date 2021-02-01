@@ -407,6 +407,7 @@ color: #fff;
     background-size: cover;
     background-repeat: no-repeat;
     box-shadow: 0px 2px 5px -2px #2b2b2b;
+    background-color: #18293c;
     z-index: 2;
     height: auto;
     min-height: 100vh;
@@ -589,6 +590,7 @@ p.landing {
     background-size: cover;
     background-position-y: 15%;
     background-repeat: no-repeat;
+    background-color: #18293c;
     box-shadow: 0px 2px 5px -2px #2b2b2b;
     z-index: 1;
     height: auto;

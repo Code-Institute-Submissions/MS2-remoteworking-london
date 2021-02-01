@@ -310,12 +310,10 @@ Remote London is fully responsive on all device sizes. Using the Bootstrap break
 
 ### **Accessibility**
 Whilst the website has been optimised to nearly 100% accessibility rating on both [Google Lighthouse](https://developers.google.com/web/tools/lighthouse) and [WAVE Accessibility Evaluation Tool](https://wave.webaim.org/), there are a few minor warnings that are thrown in both of these tools that have been mitigated where possible:
--   No alt tag
+- Missing alt text for the Google Map image tiles that are generated. This is unavoidable, as the tiles are generated from the the Google API call and cannot be altered. However to mitigate this, the map view button and map div have been given an 'aria-hidden' parameter of 'true', to ensure that users who require accessibility functions on their device, are not presented with an option that they could not use.
+- Low contrast between the orange background and white text errors initially presented from the accessibility testing has resulted in the colour scheme being updated slightly. Instead of the lighter, pastel colours in the initial version, darker background elements have been introduced. 
 
 
-- 'aria-hidden' added to Google Map button and map due to poor accessibility. 
-- Initial colour scheme changed slightly to make white on orange contrast improved.
-> write
 
 ### **Fixed Bugs**
 - Google API & Location listing (google_maps_init.js & location_listing.js)
