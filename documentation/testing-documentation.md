@@ -40,7 +40,7 @@ See below further information on the testing and results for the Remote London w
 <br>
 
 ### **Lighthouse Testing**
-> add lighthouse testing screens
+A Google dev tools Lighthouse test has been run on all pages for both mobile and desktop.
 
 <br>
 
