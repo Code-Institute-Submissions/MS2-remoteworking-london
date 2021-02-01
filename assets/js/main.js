@@ -31,7 +31,7 @@ jQuery(function ($) {
 $(window).on("load", function () {
     setTimeout(function(){
         $(".pre-load-bg").fadeOut("slow");
-        }, 1500)
+        }, 1000)
 });
 
 
