@@ -46,7 +46,7 @@ The site is primarily designed for those users who either as Freelancers, need a
 ## User Experience (UX)
 The primary purpose of this site is to quickly provide users with information that they are likely to use in conjunction with wider research. Since this site will likely be one of many similar sites they visit, the user needs to quickly learn what content the site provides and convince them that reading further is worth their attention.
 
-In order to achieve this, the site is built with simplicity in mind - a simple landing page that clearly sets out the purpose, followed by a single directory listing page, that also allows the user to chose how they view (via list or map) and quickly search for and filter listings that are most relevant to them (through keyword search and area and tag filters) 
+In order to achieve this, the site is built with simplicity in mind - a simple landing page that clearly sets out the purpose, followed by a single directory listing page, that also allows the user to choose how they view (via list or map) and quickly search for and filter listings that are most relevant to them (through keyword search and area and tag filters) 
 
 ### User Stories
  
@@ -69,7 +69,6 @@ In order to achieve this, the site is built with simplicity in mind - a simple l
     - I want to see what other listings are offering in order to learn more about the site users and tailor my listing content accordingly. 
 - #### Site owner
     - As the site owner, I want to ensure that information is accurate and user feedback is received, to improve value to the user.
-    - I want users to share the site content with others to drive traffic to site.
 
 <br>
 
@@ -82,7 +81,7 @@ The Google Font "Poppins" is used as an easy to read, sans-serif font that compl
 #### Colours
 Colours on Remote London have been selected based on the initial emotional response a user can be expected to have, according to color theory guides such as <a href="https://userpeek.com/blog/what-is-color-psychology-in-ux/" target="_blank">User Peek</a>.
 - The blue footer, overlay on headers and accent within the body evokes a feeling of stability and confidence
-- The lighter, slightly pastel orange with the accompanying pastel teal promotes a feeling of inspiration and creativity, but without the agression that can often be felt with darker, warmer colours. 
+- The bold orange with the accompanying pastel teal promotes a feeling of inspiration and creativity, but without the agression that can often be felt with darker colours. 
 
 
 #### Imagery
@@ -132,10 +131,10 @@ The core codebase for the Remote London website is created using HTML5, CSS3 and
 - [CSS3](https://www.w3.org/Style/CSS/specs.en.html) - is used to style the HTML elements. 
 - [Javascript](https://www.javascript.com/) - is used to manipulate the DOM elements and change styling based on a number of functions in the site.
 - [jQuery](https://jquery.com/) - library is used to extend the vanilla Javascript functionality and efficiently manipulate DOM elements both with IIFE functions and function declarations.
-- [Google Places API](https://cloud.google.com/maps-platform/places) - has been used to pull place information from Google using the place ID, into the 'request' dataset, which generates the objects for the listings loop.
+- [Google Places API](https://cloud.google.com/maps-platform/places) - has been used to pull place information from Google using the place ID, into the 'more info' sidebar, when a user clicks 'read more' on a listing.
 - [EmailJS](https://emailjs.com) - used as an API to send an email from the contact form on 'Contact' page and return an auto-reply to the user.
 - [Bootstrap](https://getbootstrap.com/) - a frontend framework used to create the base for styling the layout and elements on the page.
-- [GitHub](https://github.com) - used to for code version control and hosting. 
+- [GitHub](https://github.com) - used for code version control and hosting. 
 - [GitHub Pages](https://pages.github.com/) - used to deploy to a production environment accessible by users.
 - [GitPod](https://gitpod.io/) - browser based code editor used to write, edit and commit code directly to GitHub. 
 - [Tiny PNG](https://tinypng.com/) - an image lossless compression tool used to reduce the site image assets.
@@ -144,9 +143,9 @@ The core codebase for the Remote London website is created using HTML5, CSS3 and
 - [Chrome Dev Tools](https://developers.google.com/web/tools/chrome-devtools) - used for debugging of JS, CSS and HTML.
 - [Jigsaw W3 Validator](https://jigsaw.w3.org/css-validator/) - CSS validation tool used to test quality of CSS code.
 - [W3 HTML Validator](https://validator.w3.org/) - used to validate and check quality of HTML on site.
-- [JS Hint](https://jshint.com/) 
-- [Am I Responsive](http://ami.responsivedesign.is/) - used to generate site images showing various devices at within this README.md
-> need to add js hint
+- [JS Hint](https://jshint.com/) - used to validate Javascript code and flag errors in syntax.
+- [Am I Responsive](http://ami.responsivedesign.is/) - used to generate site images on various devices used in hte header section of this README.md
+
 
 <br>
 
@@ -201,7 +200,7 @@ To ensure accessibility by all modern browsers and differing devices and users, 
         - The user can easily navigate to the 'contact' page and submit a quick message to the site owner. Form validation is in place to prevent spam messaging from automated bots.
             - The form can be tested by entering numerical information in the 'first name' and 'last name' fields. On submit, the form should prevent posting and return an error notice to users.
             - The email field validation can also be tested by entering a string without an '@' symbol. If the user clicks 'submit' the form will not post and return field validation error to the user.
-            - The subject, message and terms fields are also set to required. This can be tested by attempting to submit the form without these fields completed. The form will not submit and return a 'field' required error to the user.
+            - The subject, message and terms fields are also set to required. This can be tested by attempting to submit the form without these fields completed. The form will not submit and return a 'field required' error to the user.
             - Once the 'first/last name' fields contains only alpha characters and the email field contains the '@' symbol, the form will successfully submit, showing the 'thank you' page.
            <a name="form-flow"></a>
 
@@ -212,6 +211,7 @@ To ensure accessibility by all modern browsers and differing devices and users, 
 
         - On submitting the form, the user will receive and automated email reply acknowledging receipt of the message.
         - The user will also be directed to a 'thank you' page on successful submission to acknowledge that the site has sent the message, and then clearly direct the user back to the homepage through a call-to-action button.
+        - If there is an API error on submission, the browser will show a browser notifying the user that they should attempt to send the form again.
 
         <img src="./documentation/screenshots/pages/thankyou-email.png" alt="Auto reply email" height="250"> 
         <img src="./documentation/screenshots/pages/thankyou.png" alt="Thank you page" height="250">
@@ -287,7 +287,7 @@ To deploy to GitHub Pages, the below steps were taken and can be followed to rep
 - With the GitPod extension already installed within GitHub, the codebase is opened within GitPod using the green 'GitPod' button. 
 - GitPod will start a development environment of the code tree, from which code can be edited and commits pushed.
 - Once the initial commit has been pushed, return to the GitHub Repository and click 'Settings' in the top right of the repository navigation items.
-- To deploy the initial GitHub Pages, scroll to the section titled 'GitHub Pages' and select the master branch (or whichever is your primary branch), set the rooth file path (/root by default), and click 'save'.
+- To deploy the initial GitHub Pages, scroll to the section titled 'GitHub Pages' and select the master branch (or whichever is your primary branch), set the root file path (/root by default), and click 'save'.
 - Your site will then be published and could take 5 - 10 minutes for this to be visible. 
 - Following the initial deployment, all commit pushes will automatically create a new deployment. 
 - To see the live site, click on the 'code' tab at the top of the repository, then select 'github-pages' under 'Environments' on the right-hand sidebar.
