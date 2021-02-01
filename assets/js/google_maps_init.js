@@ -73,6 +73,5 @@ function addMarker(locationMap, map, infowindow, content, centerMap) {
     areaBtn.click(function (map, marker) {
         infowindow.close(map, marker);
         bounds = new google.maps.LatLngBounds();
-        console.log(centerMap);
     });
 }
