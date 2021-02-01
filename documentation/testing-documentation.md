@@ -51,9 +51,9 @@ Remote London is fully responsive on all device sizes. Using the Bootstrap break
     - Clicking the icon smoothly pushes the remainder of the page down and reveals the menu items. This ensures the users do not have to scroll more than necessary to get to the content of the page and thus improves useability.
     - On tablet and desktop, the nav items are clearly located at the top right of the page, where users are accustomed to seeing navigation menus.
     
-    <br><img src="./documentation/screenshots/responsiveness/mob-menu.png" alt="Mobile menu" width="350">
-    <br><img src="./documentation/screenshots/responsiveness/mob-menu-open.png" alt="Mobile menu open" width="350">
-    <br><img src="./documentation/screenshots/responsiveness/desktop-menu.png" alt="Desktop menu" width="650">
+    <br><img src="./screenshots/responsiveness/mob-menu.png" alt="Mobile menu" width="350">
+    <br><img src="./screenshots/responsiveness/mob-menu-open.png" alt="Mobile menu open" width="350">
+    <br><img src="./screenshots/responsiveness/desktop-menu.png" alt="Desktop menu" width="650">
     
 
 - Filter section on locations.html page:
@@ -61,25 +61,25 @@ Remote London is fully responsive on all device sizes. Using the Bootstrap break
     - The filter is easily opened by clicking the filter icon or header 'filter'. Having the entire header act as the trigger ensures that the area required to click is larger, and improves useability for users on small mobile devices.
     - With the filter built to be collapsable, this also ensures that the user does not have to uneccessarily scroll to view the listings - they can simply close the filter and quickly see the first result. 
     - On screen sizes medium and above, the filter section is positioned as a sidebar on the page, which reduces the need for the user to scroll, when the screen is wide enough to show both the filter section and the listings with ease.
-    <br><img src="./documentation/screenshots/responsiveness/filter-mobile.png" alt="Filter mobile" height="350" style="margin-right:20px">
-    <img src="./documentation/screenshots/responsiveness/filter-tablet.png" alt="Tablet mobile" height="350">
-    <br><img src="./documentation/screenshots/responsiveness/filter-desktop.png" alt="Desktop mobile" width="350">
+    <br><img src="./screenshots/responsiveness/filter-mobile.png" alt="Filter mobile" height="350" style="margin-right:20px">
+    <img src="./screenshots/responsiveness/filter-tablet.png" alt="Tablet mobile" height="350">
+    <br><img src="./screenshots/responsiveness/filter-desktop.png" alt="Desktop mobile" width="350">
 
 - More information sidebar on locations.html page:
     - On mobile devices, clicking the 'read more' call-to-action on an listing item will open the more info sidebar full screen, to ensure content is easily readable and as much of the screen real-estate is used, preventing uneccessary scrolling by the user.
     - On tablet devices, the more info sidebar opens as a modal in the center of the screen. The section doesn't require the full height and width of the screen here, but having the sidebar on the right of the page as with desktop, would add unnecessary scrolling for the user to view all of the contents. 
     - On larger screens, the more info sidebar opens as a sidebar from the right, with a dark content overlay over the rest of the page. As with the modal on tablet, the darker background focusses user attention to the new content on the page. 
-    <br><img src="./documentation/screenshots/responsiveness/moreinfo-mobile.png" alt="More info mobile" height="350" style="margin-right:20px">
-    <img src="./documentation/screenshots/responsiveness/moreinfo-tablet.png" alt="More info tablet" height="350">
-    <br><img src="./documentation/screenshots/responsiveness/moreinfo-desktop.png" alt="More info desktop" height="350">
+    <br><img src="./screenshots/responsiveness/moreinfo-mobile.png" alt="More info mobile" height="350" style="margin-right:20px">
+    <img src="./screenshots/responsiveness/moreinfo-tablet.png" alt="More info tablet" height="350">
+    <br><img src="./screenshots/responsiveness/moreinfo-desktop.png" alt="More info desktop" height="350">
 
 - Map view on locations.html page:
     - To improve useability on all devices, the map view resizes the map div to the width and height of the screen. 
     - On mobile, the map is set to 100vh and width 100% to ensure the entire map can be visible without the need for page scroll.
     - On tablet and above, the same is true - generating a much wider map, using as much screen real-estate as possible, increasing the area in which users can scroll and use the map functionality.
-    <br><img src="./documentation/screenshots/responsiveness/map-mobile.png" alt="Map mobile" height="350" style="margin-right:20px">
-    <img src="./documentation/screenshots/responsiveness/map-tablet.png" alt="Map tablet" height="350">
-    <br><img src="./documentation/screenshots/responsiveness/map-desktop.png" alt="Map desktop" height="350">
+    <br><img src="./screenshots/responsiveness/map-mobile.png" alt="Map mobile" height="350" style="margin-right:20px">
+    <img src="./screenshots/responsiveness/map-tablet.png" alt="Map tablet" height="350">
+    <br><img src="./screenshots/responsiveness/map-desktop.png" alt="Map desktop" height="350">
 
 <br>
 
@@ -88,21 +88,21 @@ Remote London is fully responsive on all device sizes. Using the Bootstrap break
 - Whilst minor styling incompatabilities were discovered (min-width of images and max-content vs fit-content widths), these have now been corrected and Chrome, Safari and Firefox browsers now render an equal experience for users, as shown by the screenshots below:
     - Chrome:
 
-        <img src="./documentation/screenshots/browser/c2.png" alt="Chrome home" width="450">
-        <img src="./documentation/screenshots/browser/c3.png" alt="Chrome listings" width="450">
-        <img src="./documentation/screenshots/browser/c1.png" alt="Chrome contact" width="450">
+        <img src="./screenshots/browser/c2.png" alt="Chrome home" width="450">
+        <img src="./screenshots/browser/c3.png" alt="Chrome listings" width="450">
+        <img src="./screenshots/browser/c1.png" alt="Chrome contact" width="450">
 
     - Safari:
 
-        <img src="./documentation/screenshots/browser/s2.png" alt="Safari home" width="450">
-        <img src="./documentation/screenshots/browser/s1.png" alt="Safari listings" width="450">
-        <img src="./documentation/screenshots/browser/s1.png" alt="Safari contact" width="450">
+        <img src="./screenshots/browser/s2.png" alt="Safari home" width="450">
+        <img src="./screenshots/browser/s1.png" alt="Safari listings" width="450">
+        <img src="./screenshots/browser/s1.png" alt="Safari contact" width="450">
 
     - Firefox:   
 
-        <img src="./documentation/screenshots/browser/ff1.png" alt="Firefox home" width="450">
-        <img src="./documentation/screenshots/browser/ff3.png" alt="Firefox listings" width="450">
-        <img src="./documentation/screenshots/browser/ff2.png" alt="Firefox contact" width="450">
+        <img src="./screenshots/browser/ff1.png" alt="Firefox home" width="450">
+        <img src="./screenshots/browser/ff3.png" alt="Firefox listings" width="450">
+        <img src="./screenshots/browser/ff2.png" alt="Firefox contact" width="450">
 
 <br>
 
@@ -111,10 +111,10 @@ Whilst the website has been optimised to nearly 100% accessibility rating on bot
 - Missing alt text for the Google Map image tiles that are generated. This is unavoidable, as the tiles are generated from the the Google API call and cannot be altered. However to mitigate this, the map view button and map div have been given an 'aria-hidden' parameter of 'true', to ensure that users who require accessibility functions on their device, are not presented with an option that they could not use.
 - Low contrast between the orange background and white text errors initially presented from the accessibility testing has resulted in the colour scheme being updated slightly. Instead of the lighter, pastel colours in the initial version, darker background elements have been introduced. 
 
-<img src="./documentation/screenshots/accessibility/home-aria.png" alt="Home page accessibility" width="450">
-<img src="./documentation/screenshots/accessibility/contact-aria.png" alt="Contact page accessibility" width="450">
-<img src="./documentation/screenshots/accessibility/listings-aria.png" alt="Listings page accessibility" width="450">
-<img src="./documentation/screenshots/accessibility/map-aria.png" alt="Map errors" width="450">
+<img src="./screenshots/accessibility/home-aria.png" alt="Home page accessibility" width="450">
+<img src="./screenshots/accessibility/contact-aria.png" alt="Contact page accessibility" width="450">
+<img src="./screenshots/accessibility/listings-aria.png" alt="Listings page accessibility" width="450">
+<img src="./screenshots/accessibility/map-aria.png" alt="Map errors" width="450">
 
 
 ### **Fixed Bugs**
@@ -164,4 +164,4 @@ Whilst the website has been optimised to nearly 100% accessibility rating on bot
 - Currently there is an existing limitation present on the site caused by pulling data from the Google Places API. If a user makes too many requests in a single session, the request will return no, or only partial results. Whilst a fix is being researched, this appears to be a Google quota limitation to avoid overloading the server with requests.
 - Images on listings show alt for a few seconds when pulling data.
 - On 'more details' trigger on map view, the initMap function reloads the map, making it dissappear for a few seconds
-> re-write below
+
