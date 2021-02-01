@@ -667,7 +667,6 @@ p.landing {
     height: 100%;
     display: flex;
     position: absolute;
-    left: -25%;
 }
 
 .location-info {

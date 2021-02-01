@@ -290,9 +290,21 @@ Remote London is fully responsive on all device sizes. Using the Bootstrap break
 - Whilst minor styling incompatabilities were discovered (min-width of images and max-content vs fit-content widths), these have now been corrected and Chrome, Safari and Firefox browsers now render an equal experience for users, as shown by the screenshots below:
     - Chrome:
 
+        <img src="./documentation/screenshots/browser/c2.png" alt="Chrome home" width="450">
+        <img src="./documentation/screenshots/browser/c3.png" alt="Chrome listings" width="450">
+        <img src="./documentation/screenshots/browser/c1.png" alt="Chrome contact" width="450">
+
     - Safari:
 
+        <img src="./documentation/screenshots/browser/s2.png" alt="Safari home" width="450">
+        <img src="./documentation/screenshots/browser/s1.png" alt="Safari listings" width="450">
+        <img src="./documentation/screenshots/browser/s1.png" alt="Safari contact" width="450">
+
     - Firefox:   
+
+        <img src="./documentation/screenshots/browser/ff1.png" alt="Firefox home" width="450">
+        <img src="./documentation/screenshots/browser/ff3.png" alt="Firefox listings" width="450">
+        <img src="./documentation/screenshots/browser/ff2.png" alt="Firefox contact" width="450">
 
 ### **Accessibility**
 - 'aria-hidden' added to Google Map button and map due to poor accessibility. 
