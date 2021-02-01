@@ -655,7 +655,7 @@ p.landing {
 .list-item-img {
     max-width: 190px;
     width: 190px;
-    min-width: 120px;
+    min-width: 190px;
     min-height: 100%;
     max-height: 100%;
     overflow: hidden;
@@ -667,7 +667,7 @@ p.landing {
     height: 100%;
     display: flex;
     position: absolute;
-    left: -40%;
+    left: -25%;
 }
 
 .location-info {
@@ -1433,6 +1433,12 @@ button.to-top {
 
 .list-item:hover {
     transform: translateX(0px);
+}
+
+.list-item-img {
+    max-width: 135px;
+    width: 135px;
+    min-width: 135px;
 }
 
 .d-sm-md-none{

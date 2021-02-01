@@ -108,7 +108,7 @@ function initList(page) {
             // Get the date posted from the object and create string for frontend. Credits to https://www.w3schools.com/js/js_date_methods.asp for date methods.
             let postedDate = item.posted;
             let formatted_date = postedDate.getDate() + " " + months[postedDate.getMonth()] + " " + postedDate.getFullYear();
-            let paraWords = item.para.split(" ", 22);
+            let paraWords = item.para.split(" ", 15);
             let paraWordLimit = paraWords.join(" ");
 
             console.log(tags)
