@@ -13,10 +13,12 @@ function sendEmail(contactForm) {
 
     emailjs.send("service_fsjc9yj", "template_evpkkwd", templateParams)
         .then(function () {
-            console.log("Success");
-         
+            
+         // Add in redirect
         }, function (error) {
-            console.log("Error", response.text)
+               
+                
+                // Add error alert
         });
         redirectThanks()
     return ;

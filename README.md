@@ -112,7 +112,7 @@ Images within the primary site body are used to compliment the colour palette in
 - Display listings in a list view or map view - Users can select how they wish to view the listings by clicking either the list or map icon buttons at the bottom of the filter section. On hover, a tooltip provides guidance on what the buttons do.
 - View and filter listing markers on map - the above filters are available to users on the map view also, with the markers hidden and unhidden based on the search criteria. If the user enters a text search query, the view will default back to the list view to show more detailed information.
 - On the 'more info' sidebar, users can view Google reviews of locations and click button to view location in google maps.
-- The site is responsive on all devices from mobile to desktop. See the [Responsiveness](#responsiveness) testing section below. 
+- The site is responsive on all devices from mobile to desktop. See the 'Responsiveness' testing section in [further testing documentation](./documentation/testing-documentation.md). 
 
 ### **Features to add in future releases**
 - Social sharing of each listing to social media sites.
@@ -162,7 +162,7 @@ To ensure accessibility by all modern browsers and differing devices and users, 
     - All HTML pages have been validated through the official W3C validator and now return no errors or warnings.
 - ### W3 CSS Results
     - All HTML pages have been validated through the Jigsaw W3 validator and whilst there are no errors flagged in the style.css file, third party css libraries are returning common errors and warnings:
-        - Bootstrap.min.css returns 18 errors - multiple 'value errors', 'Unknown psuedo-elements', 'Property doesn't exist'. These errors [can be viewed here](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fbradleyhc.github.io%2FMS2-remoteworking-london%2Flocations.html&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en).
+        - Bootstrap.min.css returns minimal errors with the description 'Property doesn't exist'. These errors [can be viewed here](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fbradleyhc.github.io%2FMS2-remoteworking-london%2Flocations.html&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en).
         - In addition to Bootstrap, there are a number of warnings only, from FontAwesome and the local Style.css. The style.css file contains the below warnings:
             - Unknown vendor extension for 'width: -webkit-fill-available' - this is used to ensure the div uses all available width on browsers where this is compatible.
             - Same border colour as background - this is a decision to ensure that the buttons are hovered onto, the button size doesn't increase by the additional pixel on each side, making the transition smoother. 

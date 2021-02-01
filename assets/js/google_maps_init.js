@@ -76,4 +76,3 @@ function addMarker(locationMap, map, infowindow, content, centerMap) {
         console.log(centerMap);
     });
 }
-

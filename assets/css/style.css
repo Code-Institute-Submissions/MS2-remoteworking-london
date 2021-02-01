@@ -1078,7 +1078,32 @@ button.read-more-trigger {
 
 #map {
 	height: 100%;
-	width: 100%;
+    width: 100%;
+    position: relative;
+}
+
+#mapFail, #sidebarFail{
+    background-color: #1a4c93;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+}
+
+.failed-load-map{
+    width: 70%;
+    padding: 30px;
+    margin: auto;
+    top: 35%;
+    box-shadow: 2px 2px 10px 0px #252525;
+}
+
+.failed-load-sidebar{
+    width: 80%;
+    padding: 20px;
+    margin: auto;
+    top: 35%;
+    box-shadow: 2px 2px 10px 0px #252525;
 }
 
 .infowindow {
@@ -1476,12 +1501,6 @@ input.cta-btn:hover {
 		transform: translateX(0px);
 	}
 
-	.list-item-img {
-		max-width: 135px;
-		width: 135px;
-		min-width: 135px;
-	}
-
 	.d-sm-md-none {
 		display: none;
 	}
@@ -1544,6 +1563,12 @@ input.cta-btn:hover {
 @media (max-width: 949.98px) {
 	.location-info>div {
 		width: 100%;
+    }
+    
+	.list-item-img {
+		max-width: 135px;
+		width: 135px;
+		min-width: 135px;
 	}
 
 }
@@ -1564,12 +1589,6 @@ input.cta-btn:hover {
 		margin-bottom: 10px;
 	}
 }
-
-@media (max-width: 1199.98px) {}
-
-@media (max-width: 1399.98px) {}
-
-
 
 /* ANIMATIONS */
 

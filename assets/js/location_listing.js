@@ -47,7 +47,9 @@ function initList(page) {
         for (var i = 0; i < arrayChoiceArea.length; i++) {
             if (arrayChoiceArea === undefined) {
                 $("#results_title").html(
-                    `<div id="no_results" class="card fade-in"><h3>Looks like we're all out of ideas here. <i class="far fa-frown"></i> </h3><p>Try a different flavour or show all results for inspiration</p>
+                    `<div id="no_results" class="card fade-in"><h3>Looks like we're all out of ideas here. 
+                        <i class="far fa-frown"></i> </h3>
+                        <p>Try a different flavour or show all results for inspiration</p>
                         <a href="locations.html"><button class="btn cta-btn">Show all results</button></a>
                     </div>`);
             } else {
@@ -108,7 +110,9 @@ function initList(page) {
                     </div>
                     <div class="location-info d-flex flex-column p-2">
                         <h4>${item.title}</h4>
-                        <div class="d-flex"><div class="area-tag"><span>${item.area}</span></div><div class="location-tags flex-row" id="listing_tags_${j}"></div></div>
+                        <div class="d-flex"><div class="area-tag"><span>${item.area}</span></div>
+                        <div class="location-tags flex-row" id="listing_tags_${j}"></div>
+                    </div>
                         <p class="list-item-date">Posted on: ${formatted_date}</p>
                         <p class="list-item-short-desc">${paraWordLimit}... <span onclick="moreDetails(${item.locId});" class="read-more-trigger">Read More</span></p>
                         <button onclick="moreDetails(${item.locId});" class="read-more-trigger d-lg-none d-xl-none d-xxl-none">Read More</button>
