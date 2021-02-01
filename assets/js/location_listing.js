@@ -391,12 +391,13 @@ function landingSearch(searchInput) {
 }
 
 
-// Show the map view on click
+// Show the map view on click and add relevant 'active' classes
 function showMap() {
     $(".location-list-wrapper").addClass("hide");
     $("#list_btn").removeClass("active");
     $("#search").val("");
     $("#map_btn").addClass("active");
+    $("#map_btn_mob").addClass("active");
     $("#map").removeClass("hide");
     $("#results_title").addClass("map");
     searchField("");
@@ -436,6 +437,7 @@ function showMap() {
 function showList() {
     $("#map").addClass("hide");
     $("#map_btn").removeClass("active");
+    $("#map_btn_mob").removeClass("active");
     $("#list_btn").addClass("active");
     $(".location-list-wrapper").removeClass("hide");
     $("#results_title").removeClass("map");
