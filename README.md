@@ -345,7 +345,12 @@ To create a new branch within this repository, follow the below steps (note: you
 
 ### **Listing Research**
 - [Click Do](https://business.clickdo.co.uk/best-35-coworking-spaces-in-london/) was used to gather further research on locations that may be suitable to freelancers.
+- This [SquareMeal](https://www.squaremeal.co.uk/restaurants/news/where-to-work-remotely-in-london_7483) blog post also helped steer my research in the right direction when looking for the best listings to show.
+
 ### **Acknowledgements**
 
- > to complete
+- I would like to thank my Code Institute peers on Slack for their helpful feedback on the site.
+- In addition, my friends and colleagues who were able to provide anecdotal feedback on user experience.
+- Finally, I would like to acknowledge my mentor for his guidance and support during this project, as well as useful tips to ensure I manage the build well and code to industry standards. 
+
     
