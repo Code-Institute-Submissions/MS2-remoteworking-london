@@ -655,6 +655,7 @@ p.landing {
 .list-item-img {
     max-width: 190px;
     width: 190px;
+    min-width: 120px;
     min-height: 100%;
     max-height: 100%;
     overflow: hidden;
@@ -1330,6 +1331,7 @@ padding: 10px 0;
 
 .location-info div.location-tags{
     justify-content: center;
+margin-left: auto;
 }
 .list-item-short-desc {
     display: none;
