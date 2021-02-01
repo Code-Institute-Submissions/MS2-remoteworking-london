@@ -1,17 +1,21 @@
+// Set the current page based to 1 so first button shows 1
+// Set the number of items per page
 let currentPage = 1;
 let itemsPerPage = 4;
 
+
+// Create the list shown on the page based on the relevant filters and sorting
 function initList(page) {
 
     // Define buttons in html that are active filters
     let asc = $("#btn_asc").hasClass("active");
     let desc = $("#btn_des").hasClass("active");
-
     let btnNorth = $("#north_btn").hasClass("active");
     let btnSouth = $("#south_btn").hasClass("active");
     let btnEast = $("#east_btn").hasClass("active");
     let btnWest = $("#west_btn").hasClass("active");
 
+    // Create an array for all results matching value of search input
     let searchResults = [];
     let search = $("#search").val();
     let arrayChoiceArea;
@@ -83,6 +87,7 @@ function initList(page) {
         maxItems = itemsPerPage;
     }
 
+    // Begin list iteration based on above parameters
     for (var j = start; j < start + maxItems; j++) {
         let item = arrayChoice[j];
         let tags = item.tags;
@@ -105,27 +110,33 @@ function initList(page) {
             if (arrayChoice != undefined) {
                 $("#locations_list").append(
                     `<div class="d-flex card list-item mt-3" id="list_item_${[j]}" onclick="moreDetails(${item.locId});">
-                    <div class="list-item-img"><img
-                            src="${item.photo_reference}" alt="${item.title}">
-                    </div>
-                    <div class="location-info d-flex flex-column p-2">
-                        <h4>${item.title}</h4>
-                        <div class="d-flex"><div class="area-tag"><span>${item.area}</span></div>
-                        <div class="location-tags flex-row" id="listing_tags_${j}"></div>
-                    </div>
-                        <p class="list-item-date">Posted on: ${formatted_date}</p>
-                        <p class="list-item-short-desc">${paraWordLimit}... <span onclick="moreDetails(${item.locId});" class="read-more-trigger">Read More</span></p>
-                        <button onclick="moreDetails(${item.locId});" class="read-more-trigger d-lg-none d-xl-none d-xxl-none">Read More</button>
-                    </div>
+                        <div class="list-item-img">
+                            <img src="${item.photo_reference}" alt="${item.title}">
+                        </div>
+                        <div class="location-info d-flex flex-column p-2">
+                            <h4>${item.title}</h4>
+                            <div class="d-flex">
+                                <div class="area-tag"><span>${item.area}</span></div>
+                                <div class="location-tags flex-row" id="listing_tags_${j}"></div>
+                            </div>
+                            <p class="list-item-date">Posted on: ${formatted_date}</p>
+                            <p class="list-item-short-desc">${paraWordLimit}... 
+                                <span onclick="moreDetails(${item.locId});" class="read-more-trigger">Read More</span>
+                            </p>
+                            <button onclick="moreDetails(${item.locId});" class="read-more-trigger d-lg-none d-xl-none d-xxl-none">Read More</button>
+                        </div>
                     </div>`);
             } else {
                 $("#results_title").html(
-                    `<div id="no_results" class="card fade-in"><h3>Looks like we're all out of ideas here. <i class="far fa-frown"></i> </h3><p>Try a different flavour or show all results for inspiration</p>
+                    `<div id="no_results" class="card fade-in">
+                        <h3>Looks like we're all out of ideas here. <i class="far fa-frown"></i> </h3>
+                        <p>Try a different flavour or show all results for inspiration</p>
                         <a href="locations.html"><button class="btn cta-btn">Show all results</button></a>
                     </div>`);
             }
         }
 
+        // Iterate through the tags and append to the list item
         for (var mt = 0; mt < tags.length; mt++) {
             let tag = tags[mt];
             $(`#listing_tags_${j}`).append(
@@ -133,19 +144,25 @@ function initList(page) {
             );
         }
     }
-
+    
+    // Show the number of results on the map page and show 'no results' if criteria not met
     let mapActive = $("#map_btn").hasClass("filter-btn.active");
 
     if (arrayChoice.length === 0 && mapActive === false) {
         $("#results_title").html(
-            `<div id="no_results" class="card fade-in"><h3>Looks like we're all out of ideas here. <i class="far fa-frown"></i> </h3><p>Try a different flavour or show all results for inspiration</p>
-        <a href="locations.html"><button class="btn cta-btn">Show all results</button></a></div>`
-        );
+            `<div id="no_results" class="card fade-in">
+                <h3>Looks like we're all out of ideas here. <i class="far fa-frown"></i> </h3>
+                <p>Try a different flavour or show all results for inspiration</p>
+                <a href="locations.html"><button class="btn cta-btn">Show all results</button></a>
+            </div>`);
     } else {
         $("#results_title").html(
             `<div id="results" class="fade-in">
-        <h3>We found <span class="bold-in-text">${arrayChoice.length} results</span> <span class="d-none d-lg-inline">that you may be interested in</span></h3>
-        </div>`
+                <h3>
+                We found <span class="bold-in-text">${arrayChoice.length} results</span> 
+                <span class="d-none d-lg-inline">that you may be interested in</span>
+                </h3>
+            </div>`
         );
     }
 
@@ -158,8 +175,9 @@ function initList(page) {
     hideOverlay();
 }
 
-function pagination(btnNorth, btnSouth, btnEast, btnWest, pageCount) {
 
+// Determine the number of pagination buttons to created based on pagecount, and active area filter results
+function pagination(btnNorth, btnSouth, btnEast, btnWest, pageCount) {
     for (let i = 1; i < pageCount + 1; i++) {
         let btn = pagButtons(i);
         $("#pagination_btns").append(btn);
@@ -167,6 +185,7 @@ function pagination(btnNorth, btnSouth, btnEast, btnWest, pageCount) {
 }
 
 
+// Create the pagination buttons based on the number required & add listener to switch page on click
 function pagButtons(btnNum) {
     let button = document.createElement("button");
     button.innerText = btnNum;
@@ -179,11 +198,13 @@ function pagButtons(btnNum) {
     });
     return button;
 }
+
+// Once pagination functions initialized, run initList to show all listings
 initList(currentPage);
 
 
+// Sort the listings by most recent / oldest
 function sort(sort) {
-
     if (sort == "asc") {
         $("#btn_asc").addClass("active");
         $("#btn_des").removeClass("active");
@@ -212,8 +233,12 @@ function moreDetails(md) {
 
             $("#sidebar_item_container").append(
                 `<div class="sidebar-item" id="sidebar_list_${[md]}">
-                    <button onclick="closeBtn();hideOverlay();" class="btn close_btn"><i class="fas fa-times"></i></button>
-                    <div class="sidebar-img-wrapper"><img src="${item.photo_reference}" alt="${place.name}"></div>
+                    <button onclick="closeBtn();hideOverlay();" class="btn close_btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="sidebar-img-wrapper">
+                        <img src="${item.photo_reference}" alt="${place.name}">
+                    </div>
                     <div class="sidebar-content-wrapper p-4">
                         <h3 class="mb-2">${place.name}</h3>
                         <div class="d-flex mb-2">
@@ -225,8 +250,14 @@ function moreDetails(md) {
                         <p class="p-0"><i class="fas fa-phone-square"></i> ${place.formatted_phone_number}</p>
                     </div>
                     <div class="sidebar-cta-btns d-flex">
-                        <a href="${place.url}" target="_blank"><button class="btn sidebar-website-btn google-maps-trigger"><i class="fas fa-map-marker-alt"></i> View on Google Maps</button></a>
-                        <a href="${place.website}" target="_blank"><button class="btn sidebar-website-btn">Visit Website</button></a>
+                        <a href="${place.url}" target="_blank">
+                            <button class="btn sidebar-website-btn google-maps-trigger">
+                                <i class="fas fa-map-marker-alt"></i> View on Google Maps
+                            </button>
+                        </a>
+                        <a href="${place.website}" target="_blank">
+                            <button class="btn sidebar-website-btn">Visit Website</button>
+                        </a>
                     </div>
                     <div class="hz-rule my-4"></div>
                     <p>${item.para}</p>        
@@ -251,22 +282,26 @@ function moreDetails(md) {
                 return b.time - a.time;
             });
 
+            // Iterate through all reviews
             for (var r = 0; r < 3; r++) {
                 let review = sortRevByDate[r];
                 let textSplit = review.text.split(" ", 22);
                 let newReviewLength = textSplit.join(" ");
                 $(`#google_reviews`).append(
                     `<div class="google-review d-flex flex-row">
-                    <a class="review-auth-img" href="${review.author_url}" target="_blank"><img src="${review.profile_photo_url}" alt="${review.author_name}" aria-label="${review.author_name}"></a>
-                    <div class="d-flex flex-column">
-                    <div class="d-flex flex-row flex-wrap">
-                    <a class="review-auth" href="${review.author_url}" target="_blank">${review.author_name}</a>
-                    <div class="star-ratings" id="star_rating_${r}"></div>
-                    </div>
-                    <p class="pt-0">${newReviewLength} &nbsp;<span class="review-posted">${review.relative_time_description}</span></p>
-                    </div>
-                    </div>`
-                );
+                        <a class="review-auth-img" href="${review.author_url}" target="_blank">
+                            <img src="${review.profile_photo_url}" alt="${review.author_name}" aria-label="${review.author_name}">
+                        </a>
+                        <div class="d-flex flex-column">
+                            <div class="d-flex flex-row flex-wrap">
+                                <a class="review-auth" href="${review.author_url}" target="_blank">${review.author_name}</a>
+                                <div class="star-ratings" id="star_rating_${r}"></div>
+                            </div>
+                            <p class="pt-0">${newReviewLength} &nbsp;
+                                <span class="review-posted">${review.relative_time_description}</span>
+                            </p>
+                        </div>
+                    </div>`);
 
                 // Guidance on star rating output from "I wrestled a bear once" on StackExchange thread: https://codereview.stackexchange.com/questions/177945/convert-rating-value-to-visible-stars-using-fontawesome-icons
                 // Add a filled star for each iteration until maximum rating reached
@@ -291,14 +326,12 @@ function moreDetails(md) {
     });
     $("#locations_sidebar").removeClass("hidden");
     $(".modal-overlay").addClass("show");
-    $(".list-overlay").animate({
-        opacity: '1'
-    }, "medium").css({
-        "z-index": "2",
-        "display": "block"
-    });
+    $(".list-overlay").animate({ opacity: '1' }, "medium").css(
+        { "z-index": "2", "display": "block" });
 }
 
+
+// Close the list overlay when clicked to make all listings interactive again
 function hideOverlay() {
     $(".modal-overlay").click(function () {
         $(".modal-overlay").removeClass("show");
@@ -310,6 +343,8 @@ function hideOverlay() {
     }
 }
 
+
+// Close moreinfo sidebar on click and make listings interactive again
 function closeBtn() {
     $("#locations_sidebar").addClass("hidden");
     $(".modal-overlay").removeClass("show");
@@ -338,6 +373,8 @@ function searchField(URLsearch) {
     initList(currentPage);
 }
 
+
+// When keyword search is initiated scroll to top of list automatically
 $(document).ready(function () {
     $(".search-btn").click(function () {
         $("#list_section").animate({
@@ -346,11 +383,15 @@ $(document).ready(function () {
     });
 });
 
+
+// Search function on homepage. When user inputs string, pass into URL and redirect to locations page
 function landingSearch(searchInput) {
     let search = searchInput;
     window.location.href = `./locations.html?&q=${search}`;
 }
 
+
+// Show the map view on click
 function showMap() {
     $(".location-list-wrapper").addClass("hide");
     $("#list_btn").removeClass("active");
@@ -390,6 +431,8 @@ function showMap() {
     }
 })();
     
+
+// Show the list view and hide map view
 function showList() {
     $("#map").addClass("hide");
     $("#map_btn").removeClass("active");
@@ -398,6 +441,8 @@ function showList() {
     $("#results_title").removeClass("map");
 }
 
+
+// Button click resets all filters and sorting to default and sets search val() to empty. Resets all map markers also
 function clearFilters() {
     $("#search").val("");
     $(".area-btn").removeClass("active");
@@ -436,6 +481,8 @@ function filterArea(area) {
     }
 }
 
+
+// Filter the list items by area based on the value of the button 
 function listFilterArea(area) {
     if (area == "North London") {
         $(".area-btn").removeClass("active");

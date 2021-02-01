@@ -75,7 +75,7 @@
 
             <!-- Body content section -->
             <div class="info-pg-wrapper">
-                <div class="support-page-header">
+                <div class="support-page-header" id="contact-form-head">
                     <h1 class="info-pg-title">Contact Us</h1>
                     <p>Have a new listing to share, or feedback for an existing one? Perhaps you are looking for something
                         specific and have ideas to improve our site offering? Whatever it may be, send us a message below and
@@ -85,8 +85,8 @@
                 
                 <!-- Text pattern validation credits: https://www.codegrepper.com/code-examples/lisp/alpha+validation+html+inputs -->
                 <div>
-                    <form id="contact_form" class="d-flex flex-column mb-3" action="./thank_you.html"
-                        onsubmit="sendEmail(this);">
+                    <form id="contact_form" class="d-flex flex-column mb-3"
+                        onsubmit="return sendEmail(this);">
                         <div class="d-flex justify-content-between input-row-section">
                             <div class="input-group-item flex-column">
                                 <label for="fname" class="form-label">First Name</label>
